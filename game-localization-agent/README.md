@@ -8,10 +8,10 @@ src/          图谱、记忆、检索、上下文选择和模型适配
 configs/      各阶段配置与提取协议
 prompts/      建图、记忆、选择、翻译和评审提示词
 sample/       Teacher 与 DPO 轨迹采集说明和准备工具
-train/        冻结 SFT/DPO 配方、训练记录和启动说明
+train/        冻结 SFT/DPO 配方
 inference/    小样本、独立翻译与正式推理入口
 evaluate/     评分输入、校验及复评入口
-results/      新版上传译文的 38 组重评结果
+results/      上传译文的结果
 scripts/      复用的导入、提取、训练、翻译和评分脚本
 tests/        离线测试
 installation/ 各实验环境的依赖
@@ -58,9 +58,9 @@ python3 -m inference.translate --project demo --graph outputs/demo/graph.sqlite 
 
 ## 3. 正式实验与测试
 
-- [推理复现](inference/README.md)说明如何解包源侧图，运行 Naev、News 和 GuoFeng 的原始自动翻译对照，以及为评分导出状态。
-- [采样](sample/README.md)和[训练](train/README.md)说明如何准备训练集、导出轨迹与选择器权重。正式权重及完整训练轨迹由具备访问权限的复现者提供。
-- [评测复现](evaluate/README.md)列出 sCOMET、Doc-COMET、BLEU-4、LTCR、可选 Judge 与各自的环境。测试参考、冻结译文和结果记录均按 occurrence ID 及文档行对齐。
+- [实验口径](docs/EXPERIMENT.md)说明各条件的推理入口、模型和数据边界。
+- [采样](sample/README.md)说明如何准备训练数据和导出轨迹。[训练配方](train/recipes/)保留 SFT 和 DPO 的实验参数。
+- [评测复现](evaluate/README.md)列出 sCOMET、Doc-COMET、BLEU-4 和 LTCR 的运行环境。测试参考、冻结译文和结果记录均按 occurrence ID 及文档行对齐。
 
 ```bash
 python3 -m venv .venv
@@ -73,8 +73,8 @@ python -m unittest discover -s tests
 
 ## 4. 已提交结果
 
-`results/` 与服务器 `/root/autodl-tmp/test/projectdata_newversion_rescore_20261117/results/` 逐文件一致。结果按 `数据集/模型/方法/语言方向/目标语言.文档ID` 排列。每组同时提供逐条 `records.json`、指标 `scores.json` 及对齐的语言文件。
+`results/` 保存各组评测结果。结果按 `数据集/模型/方法/语言方向/目标语言.文档ID` 排列。每组同时提供逐条 `records.json`、指标 `scores.json` 及对齐的语言文件。
 
-[汇总表](evaluate/report.md)包含通用领域 24 组、Naev 100 条多模型 9 组、Naev 300 条消融 5 组，共 4,788 条译文记录。这个版本评估的是**新版上传修订译文**。GuoFeng TEST_2 参与过选择器训练，按 seen 数据解读。Naev 100 条是 300 条集的前缀。
+[评分汇总](evaluate/summary.json)包含通用领域 24 组、Naev 100 条多模型 9 组、Naev 300 条消融 5 组，共 4,788 条译文记录。
 
 本包已跑通离线和 DeepSeek 小样本流程，现有测试发现 100 项，91 项通过，9 项因缺少可选原始快照或历史采样产物跳过。Naev 两套实验的 14 组 BLEU-4 已重算并与冻结分数完全一致。正式训练、GPU 翻译与其余指标的全量重跑需要相应环境和外部资产。本次提交附带它们的输入、评分文件及代码入口。

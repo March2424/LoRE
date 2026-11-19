@@ -15,16 +15,15 @@ import sys
 from localization_agent.memory import MemoryStore
 from localization_agent.selection.checkpoints import load_state, write_json
 from localization_agent.selection.teacher import file_hash
-from run_naev_scomet import generate
+from run_naev_scomet import QWEN, generate
 
 
-MODELS = {'7b':'/root/autodl-tmp/Qwen2.5-7B-Instruct',
-          '8b':'/root/autodl-tmp/Qwen3-8B',
-          '14b':'/root/autodl-tmp/Qwen3-14B/Qwen3-14B'}
+MODELS = {'7b':os.environ.get('QWEN_7B','models/Qwen2.5-7B-Instruct'),
+          '8b':str(QWEN),
+          '14b':os.environ.get('QWEN_14B','models/Qwen3-14B')}
 STAGES = (('news','sentence'),('news','doc2doc'),('news','framework'),('guofeng','sentence'),
           ('guofeng','doc2doc'),('guofeng','framework'))
 PROMPTS = Path('prompts/general_eval')
-TRAIN_PY = '/root/autodl-tmp/LLM_Project/.venv-training/bin/python'
 GPU_LOCK = Path('outputs/naev_model_compare_100_20261110/.gpu.lock')
 CODE = ('scripts/run_general_comet_eval.py','scripts/run_naev_scomet.py',
         'src/localization_agent/selection/collector.py','src/localization_agent/memory/service.py',
@@ -302,7 +301,7 @@ def run(folder,model):
                     if json.loads((path/'state.json').read_text())['status'] in ('complete','complete_with_failures','complete_with_warnings'):
                         continue
                     print('Starting',model,dataset,method,flush=True)
-                    subprocess.run([TRAIN_PY,__file__,'worker','--output',str(folder),'--model',model,
+                    subprocess.run([sys.executable,__file__,'worker','--output',str(folder),'--model',model,
                                     '--dataset',dataset,'--method',method],check=True,env=os.environ.copy())
             write_json(launcher,dict(status='complete',pid=os.getpid()))
         except Exception as error:

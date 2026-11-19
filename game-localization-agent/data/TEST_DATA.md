@@ -2,7 +2,7 @@
 
 Each directory contains the exact source and reference translation used in
 scoring. Its language files use the same document IDs and line order as the
-corresponding files under [results](../results/README.md).
+corresponding files under [results](../results/).
 
 | Test set | Data directory | Source files | Reference files |
 |---|---|---|---|

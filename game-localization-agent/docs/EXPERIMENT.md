@@ -4,4 +4,6 @@
 2. **记忆与选择**。术语、摘要、短期译例、长期译例与角色笔记按独立运行推进。正式配置的软候选上限为 16，最多选择 8 个，DPO 和正式评测使用 2,048 token 软预算。程序装入所有适用硬约束。通过校验的 ContextPack 保留实际供给模型的 ID、版本和来源。
 3. **翻译**。Qwen2.5-7B-Instruct、Qwen3-8B 或 Qwen3-14B 执行翻译。完整框架以 DeepSeek 更新记忆。DelTA-adapted 由同一个 Qwen 后端执行翻译和更新，使用 3 条短期历史、20 条长期窗口、top-2 与每 20 条更新摘要。游戏 100 条实验的 14B DelTA 使用 300 条自动输出的 100 条前缀。
 4. **数据边界**。Naev 预热 10 条且不计分，Sentence 基线无运行记忆。News 与 GuoFeng 各有两篇文档或章节，在边界处重置记忆。不同方法隔离运行历史。GuoFeng TEST_2 参与过训练及偏好构造，所有正式生成条件仅读取许可源侧资料。
-5. **评分与结果**。通用领域为 sCOMET 与 Doc-COMET。Naev 为 sCOMET、BLEU-4、LTCR-1 与 LTCR-1f。结果表使用上传修订译文，比较口径与覆盖见[评测说明](../evaluate/README.md)及[汇总表](../evaluate/report.md)。程序检查和标为 unreviewed 的写回是正式实验路径。完整人工 Reviewer、LangGraph 和跨版本修订闭环仍属局部能力或设计。
+5. **评分与结果**。通用领域为 sCOMET 与 Doc-COMET。Naev 为 sCOMET、BLEU-4、LTCR-1 与 LTCR-1f。结果表使用上传修订译文，比较口径与覆盖见[评测说明](../evaluate/README.md)及[评分汇总](../evaluate/summary.json)。程序检查和标为 unreviewed 的写回是正式实验路径。完整人工 Reviewer、LangGraph 和跨版本修订闭环仍属局部能力或设计。
+
+`PYTHONPATH=.:src:scripts` 下，`python3 -m inference.formal prepare --output outputs/formal` 准备源侧图。原始自动翻译由 `inference.formal run` 逐组生成，模型目录通过 `QWEN_7B`、`QWEN_8B`、`QWEN_14B` 指定。Doc2Doc 需要三套 Qwen tokenizer 计算统一窗口。完整框架还需要本地的已合并 SFT 模型和 DPO adapter（`SELECTOR_SFT`、`SELECTOR_DPO`）及记忆服务密钥（默认 `LLM_API_KEY`）。SFT/DPO 配方保留历史参数，重训时应在副本中配置本地模型、数据和输出目录。

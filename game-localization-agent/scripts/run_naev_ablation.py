@@ -4,6 +4,7 @@ from collections import Counter
 from dataclasses import asdict
 import fcntl
 import json
+import os
 from pathlib import Path
 import random
 import sqlite3
@@ -11,12 +12,12 @@ import sqlite3
 from localization_agent.memory import MemoryStore
 from localization_agent.selection.checkpoints import load_state, write_json
 from localization_agent.selection.teacher import file_hash
-from run_naev_scomet import COMET_CACHE, TRANSLATION_POLICY
+from run_naev_scomet import TRANSLATION_POLICY
 
 
 ROOT = Path('outputs/naev_scomet_500_20261107_v2')
 GRAPH = Path('outputs/naev_full_2026-11-01/graph.sqlite')
-TRANSLATOR = Path('/root/autodl-tmp/Qwen3-14B/Qwen3-14B')
+TRANSLATOR = Path(os.environ.get('QWEN_14B', 'models/Qwen3-14B'))
 CONDITIONS = ('baseline','memory','graph','selector')
 
 
@@ -205,11 +206,9 @@ def run(folder, condition, *, selector_variant='dpo'):
 
 
 def score(folder):
-    import os
     from statistics import mean
     from localization_agent.selection.preferences import LocalSComet,CometLengthError,lines
     from run_naev_scomet import COMET,COMET_SHA256,SPLIT_ROOT
-    os.environ.update(HF_HOME=COMET_CACHE,HF_HUB_CACHE=COMET_CACHE,HUGGINGFACE_HUB_CACHE=COMET_CACHE)
     manifest=json.loads((folder/'manifest.json').read_text())
     wanted={x['source_id'] for x in manifest['samples'] if x['phase']=='target'}
     refs={r['record_id']:r['reference_text'] for r in lines(SPLIT_ROOT/'offline/references.jsonl')

@@ -48,13 +48,13 @@ def position(row):
 def prepare(root, output, prompts):
     specs = read(root / 'data/test_manifest.json')['datasets']
     result_manifest = root / 'results/manifest.json'
-    revision = root / 'results/revision.json'
     index = read(result_manifest)['conditions']
     if len(index) != 38 or len({c['path'] for c in index}) != 38:
-        raise ValueError('Expected 38 distinct conditions in the revised result export')
+        raise ValueError('Expected 38 distinct conditions in results/manifest.json')
     files = {str(result_manifest.relative_to(root)): digest(result_manifest),
-             str(revision.relative_to(root)): digest(revision),
              'data/test_manifest.json': digest(root / 'data/test_manifest.json')}
+    score_summary = root / 'evaluate/summary.json'
+    source_note = read(score_summary).get('hypothesis_source') if score_summary.is_file() else None
     data = {}
     for name, spec in specs.items():
         path = root / 'data' / name / spec['direction'] / 'records.json'
@@ -109,8 +109,7 @@ def prepare(root, output, prompts):
         raise ValueError(f'Unexpected evaluation plan: {counts}')
     write(output / 'plan.json', dict(ready_at=now(), version='loong-domain-judge-v1',
         model=MODEL, endpoint=ENDPOINT, input_root=str(root.resolve()), input_files=files,
-        source_note='latest supplied revised hypotheses, not a fresh translation run',
-        template_sha256=copied_prompts, response_parameters='gateway defaults',
+        source_note=source_note, template_sha256=copied_prompts, response_parameters='gateway defaults',
         request_counts=dict(counts), tasks=tasks, conditions=index,
         aggregation='unweighted five core scores per batch; equal-weight batches per condition'))
     print(f'Prepared {len(tasks)} requests: {dict(counts)}', flush=True)
@@ -313,7 +312,7 @@ def summarize(output):
             if isinstance(amount, int):
                 usage[field] += amount
     summary = dict(model=plan['model'], response_models=dict(response_models), attempt_status=dict(attempt_status),
-                   usage=dict(usage), source_note=plan['source_note'], conditions=conditions)
+                   usage=dict(usage), source_note=plan.get('source_note'), conditions=conditions)
     write(output / 'summary.json', summary)
     (output / 'report.md').write_text(render(summary), encoding='utf-8')
     return summary
@@ -339,8 +338,10 @@ def render(summary):
             base += [100 * scores['dcomet']['dcomet']]
         return [f(v) for v in (*base, c['judge']['llm'])]
 
-    lines = ['# LLM 评审结果', '', f'Judge 为 `{summary["model"]}`。本轮评的是上传修订译文。', '',
-             '## 通用领域', '',
+    lines = ['# LLM 评审结果', '', f'Judge 为 `{summary["model"]}`。']
+    if source_note := summary.get('source_note'):
+        lines.extend(['', f'评审使用{source_note}。'])
+    lines += ['', '## 通用领域', '',
              '| 模型 | 方法 | News sCMT | News dCMT | News LLM | GuoFeng sCMT | GuoFeng dCMT | GuoFeng LLM |',
              '|---|---|---:|---:|---:|---:|---:|---:|']
     for model in ('qwen2.5-7B-Instruct', 'qwen3-8B', 'qwen3-14B'):

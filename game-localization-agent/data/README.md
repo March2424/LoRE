@@ -10,7 +10,7 @@
 
 三个游戏各自保留原始署名、许可、资源位置和版本。见 [Flare](flare/v0.2/README.md)、[Shattered](shattered/v4.0.2/README.md)、[Naev](naev/snapshot-123fdc1/README.md)。训练发行版语料从原项目获取并按 [采样说明](../sample/README.md)准备。News 使用 [LoongDocMT](https://github.com/YutongWang1216/LoongDocMT) 的文档边界。GuoFeng V1 的来源和使用条件见 [GuoFeng-Webnovel](https://github.com/longyuewangdcu/GuoFeng-Webnovel) 与 [DocMTAgent](https://github.com/YutongWang1216/DocMTAgent)。
 
-`graphs/source-graphs.tar.gz` 包含三个游戏及正式通用实验四个文档/章节的源侧 SQLite。图包含已登记的源文及可定位建图证据，为各实验的独立运行记忆提供起点。使用 [正式推理入口](../inference/README.md)解包并检查 Naev 与通用实验图的固定哈希。`graphs/tokenizer.json` 为该轮实验的预算 tokenizer。五类记忆与当前资源的作用域、语言方向和读水位绑定。
+`graphs/source-graphs.tar.gz` 包含三个游戏及正式通用实验四个文档/章节的源侧 SQLite。图包含已登记的源文及可定位建图证据，为各实验的独立运行记忆提供起点。`inference.formal prepare` 解包并检查 Naev 与通用实验图的固定哈希。`graphs/tokenizer.json` 为该轮实验的预算 tokenizer。五类记忆与当前资源的作用域、语言方向和读水位绑定。
 
 ## 从原始快照重新导入
 

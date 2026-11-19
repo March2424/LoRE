@@ -1,14 +1,13 @@
 # 评测与结果核验
 
-在提交根目录设置 `PYTHONPATH=.:src:scripts`。包内 [results](../results/README.md) 是 2026-11-17 新版上传译文的重评分。原始使用记录、修改审计、共同比较覆盖和汇总见 [运行记录](run_record.md)、[修订审计](../results/revision.json)及[汇总表](report.md)。
+在提交根目录设置 `PYTHONPATH=.:src:scripts`。
 
 ```bash
 python3 -m evaluate.verify
-shasum -a 256 -c evaluate/experiment/results.sha256
 python3 -m evaluate.reproduce prepare --output outputs/rescore
 ```
 
-第一条校验测试清单、文档顺序、原译文行、冻结评分状态与分数。第二条核对原服务器导出的 209 个结果文件 SHA-256。准备命令复制独立评分工作区；如要评分一套完整的全新正式翻译结果，加 `--generated outputs/formal`。
+
 
 ## BLEU-4
 
@@ -19,7 +18,7 @@ python3 -m evaluate.reproduce metric --work outputs/rescore --suite naev100 --me
 python3 -m evaluate.reproduce metric --work outputs/rescore --suite naev300 --metric bleu
 ```
 
-按固定资源顺序使用中文分词与一份参考，保持失败条目位置。两套实验的 14 个条件均已在本提交包重算，与保存结果一致。
+
 
 ## sCOMET
 
@@ -48,7 +47,7 @@ python scripts/score_general_comet_dcomet.py --output outputs/rescore/general \
   --test-data outputs/rescore/general-test.json --gpus 0
 ```
 
-`HF_HOME` 中须有 XLM-R 配置与 tokenizer 缓存。Doc-COMET 启用文档评分，读同篇前两句以内的源侧及离线参考历史。所有方法共享窗口及超限排除项。冻结结果中 News 覆盖 98/100，GuoFeng 覆盖 99/99。
+`HF_HOME` 中须有 XLM-R 配置与 tokenizer 缓存。Doc-COMET 启用文档评分，读同篇前两句以内的源侧及离线参考历史。所有方法共享窗口及超限排除项。
 
 ## LTCR
 
@@ -61,12 +60,4 @@ for suite in naev100 naev300; do
 done
 ```
 
-每个重复专名以第一处资源中的译法为比较基准。LTCR-1 要求精确一致，LTCR-1f 也接受子串。包内汇总使用各条件共同可对齐的比较，Naev 100 为 24/38，Naev 300 为 349/417。
-
-## 可选 LLM Judge
-
-```bash
-python3 scripts/run_llm_judge.py prepare --root . --output outputs/judge
-```
-
-此命令离线生成匿名评审请求。正式表中没有 Judge 分数。后续 `pilot` 或 `run` 使用脚本所配置的 Responses API 及独立的 `TOKENDANCE_API_KEY`，并会发送评审输入。评审提示词见 [prompts/judge](../prompts/judge)。
+每个重复专名以第一处资源中的译法为比较基准。LTCR-1 要求精确一致，LTCR-1f 也接受子串。包内汇总使用各条件共同可对齐的比较。

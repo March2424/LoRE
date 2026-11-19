@@ -1,4 +1,3 @@
-ec5d03d51bb7cb4bcfeb7c126a366179717c6781da3094f129df6fc43e622c51  results/README.md
 ec30472616c8208df487f3d7ca9f374e7a92ea7fa4799d17a9260e5db85bc7f0  results/guofeng/qwen2.5-7B-Instruct/delta/zh-en/comet.txt
 d0370b65e6b6e9ce934626cc2d2bc185f01ffc17b766b818295a0cbcd7d6a0d4  results/guofeng/qwen2.5-7B-Instruct/delta/zh-en/doccomet_total.txt
 67e1f2f51ca96903dc2c05154a1e692eed18e88b385d12818d2b7332fb144a86  results/guofeng/qwen2.5-7B-Instruct/delta/zh-en/en.gf_210_210
@@ -204,6 +203,3 @@ e3625a51e6883862dedac5c49a50c27adac8c28ed0024d2ceab6419a4a489fea  results/news_c
 9d7ed0b116dd51c3fb9a6f31cb17e85c3f342edbea0f64012f8f6c4b21063a60  results/news_commentary/qwen3-8B/sentence/en-zh/scores.json
 9a32e3197a38b0cc5566ae6f4eb2b51f8c9245206803a3a2dfc5486861082f9f  results/news_commentary/qwen3-8B/sentence/en-zh/zh.nc_3
 88d5d41019a210b7e170e433ad1b51b63b425e24fa60061423f53ba7e0e6e9d7  results/news_commentary/qwen3-8B/sentence/en-zh/zh.nc_6
-0159f5712176192b98d49b4920dd63f9dd13eae0ccafe3d60d3e94f6e3f88d39  results/revision.json
-ab0496b161d39103e139792f3d0ea094510c418e84402b10eafbb13e7dbe8b33  results/score_table.json
-2f4d4b5d71c2dc456dafd0dc8d150a4686c7828fdb6342afde5a737f966c4b6b  results/score_table.md

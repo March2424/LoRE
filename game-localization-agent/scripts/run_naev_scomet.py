@@ -19,16 +19,15 @@ from localization_agent.selection.teacher import file_hash
 SPLIT_ROOT = Path('outputs/cpu_preparation_2026-11-02_2000_context_v2')
 DEPLOYMENT = Path('outputs/server_stage_inputs_2026-11-03/stage_inputs.json')
 TRAINING = Path('outputs/selector_training')
-QWEN = Path('/root/autodl-tmp/Qwen3-8B')
-SFT = Path('/root/dpo-runtime/pi_sft_multidomain_e2_merged')
-DPO = TRAINING / 'dpo_pro6000_20261107'
-COMET = Path('/root/autodl-tmp/comet-models/wmt22-comet-da/checkpoints/model.ckpt')
+QWEN = Path(os.environ.get('QWEN_8B', 'models/Qwen3-8B'))
+SFT = Path(os.environ.get('SELECTOR_SFT', 'models/pi_sft_multidomain_e2_merged'))
+DPO = Path(os.environ.get('SELECTOR_DPO', TRAINING / 'dpo_pro6000_20261107'))
+COMET = Path(os.environ.get('COMET_CHECKPOINT', 'models/wmt22-comet-da/checkpoints/model.ckpt'))
 COMET_SHA256 = 'e213091cde220f97b89f8bdfa750c458cfea741ad62affb455b59900210ff2af'
 GRAPH_CONFIG = Path('configs/training/dpo_multidomain_graph.json')
 PROMPT = Path('prompts/selection/context_selector.txt')
 TRANSLATION_PROMPT = Path('prompts/memory/translate_game_small.txt')
 TOKENIZER = Path('artifacts/retrieval_tokenizer/tokenizer.json')
-COMET_CACHE = '/root/autodl-tmp/hf-comet-dpo'
 TRANSLATION_POLICY = 'whole_source_prompt_v1'
 
 
@@ -271,7 +270,6 @@ def run(folder):
 
 
 def score(folder, *, stopped_only=False):
-    os.environ.update(HF_HOME=COMET_CACHE,HF_HUB_CACHE=COMET_CACHE,HUGGINGFACE_HUB_CACHE=COMET_CACHE)
     state=load_state(folder)
     jobs=[job for job in state['jobs'] if job['phase']=='target']
     if stopped_only:

@@ -63,7 +63,7 @@ def collect(judge, results):
     if len(rows) != len(by_path) or len(rows) != len(task_groups) or len(rows) != 38 or len(plan['tasks']) != 288:
         raise ValueError('Expected 38 complete conditions and 288 Judge units')
     return dict(judge_model=summary['model'], response_models=summary['response_models'],
-                judge_completed=len(plan['tasks']), source_note=summary['source_note'],
+                judge_completed=len(plan['tasks']), source_note=summary.get('source_note'),
                 judge_summary_path=str(judge.resolve() / 'summary.json'),
                 judge_summary_sha256=digest(judge / 'summary.json'),
                 average={'general': list(GENERAL[:-1]), 'naev': list(GAME[:-1]),
@@ -82,7 +82,7 @@ def render(table):
     def line(items):
         return '| ' + ' | '.join(items) + ' |'
 
-    lines = ['# 最新修订译文评分表', '',
+    lines = ['# 译文评分表', '',
              f'LLM Judge 使用 `{table["judge_model"]}`，已完成 {table["judge_completed"]} 个评审单元。'
              '粗体表示组内最高值。Avg 先统一到百分制，再对该数据集显示的指标等权平均，最后保留两位小数。',
              '', '## 通用领域', '',
@@ -108,7 +108,9 @@ def render(table):
     peers = [r for r in rows if r['dataset'] == 'naev_ablation_300']
     for method in ('baseline', 'memory', 'memory_graph', 'memory_graph_base_selector', 'memory_graph_sft_dpo_selector'):
         lines.append(line([DISPLAY[method], *values(index['naev_ablation_300', 'qwen3-14B', method], GAME, peers)]))
-    lines += ['', 'GuoFeng 为选择器训练内数据。分数对应最新上传修订稿。']
+    lines += ['', 'GuoFeng 为选择器训练内数据。']
+    if source_note := table.get('source_note'):
+        lines.append(f'评分使用{source_note}。')
     return '\n'.join(lines) + '\n'
 
 

@@ -53,4 +53,4 @@ python3 scripts/finalize_dpo_collection.py --stage outputs/dpo-collect \
   --tokenizer "$QWEN_8B" --output outputs/dpo-dataset
 ```
 
-同一冻结观察采样多种选择动作，固定翻译服务各自生成译文，隔离的句级 COMET 进程在训练参考上评分。最高与最低分构成严格正分差的偏好对。终稿收集可重复传入互不重叠的 `--stage`。历史生效条件、数据指纹与统计留在 [DPO 数据清单](../train/records/summary.json)。
+同一冻结观察采样多种选择动作，固定翻译服务各自生成译文，隔离的句级 COMET 进程在训练参考上评分。最高与最低分构成严格正分差的偏好对。终稿收集可重复传入互不重叠的 `--stage`。

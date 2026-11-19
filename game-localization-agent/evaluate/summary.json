@@ -1,5 +1,6 @@
 {
   "version": "experiment-summary-v1",
+  "hypothesis_source": "2026-11-17 上传的修订译文",
   "rows": [
     {
       "experiment": "general",
@@ -558,34 +559,5 @@
     "Failed outputs follow each pre-existing scorer policy; inspect failed/empty/oversize",
     "DelTA-adapted uses the translation model for memory, while framework uses DeepSeek for memory",
     "News document IDs follow upstream Loong files; original publication identity not independently verified"
-  ],
-  "revision": {
-    "origin": "supplied revised hypotheses; no translation generation in this run",
-    "repairs": [
-      {
-        "file": "naev_ablation_300/qwen3-14B/memory_graph_sft_dpo_selector/en-zh/zh.0",
-        "physical_lines": [
-          69,
-          70
-        ],
-        "resource_line": 69,
-        "operation": "preserve both supplied lines as one hypothesis with an embedded LF"
-      }
-    ],
-    "changed": {
-      "news_commentary/qwen2.5-7B-Instruct/sentence/en-zh": 4,
-      "news_commentary/qwen2.5-7B-Instruct/framework/en-zh": 33,
-      "news_commentary/qwen3-8B/framework/en-zh": 19,
-      "news_commentary/qwen3-14B/sentence/en-zh": 4,
-      "news_commentary/qwen3-14B/framework/en-zh": 13,
-      "guofeng/qwen2.5-7B-Instruct/framework/zh-en": 19,
-      "guofeng/qwen3-8B/sentence/zh-en": 4,
-      "guofeng/qwen3-8B/framework/zh-en": 38,
-      "guofeng/qwen3-14B/sentence/zh-en": 2,
-      "naev/qwen2.5-7B-Instruct/sentence/en-zh": 10,
-      "naev/qwen2.5-7B-Instruct/framework/en-zh": 8,
-      "naev_ablation_300/qwen3-14B/baseline/en-zh": 9,
-      "naev_ablation_300/qwen3-14B/memory_graph_sft_dpo_selector/en-zh": 9
-    }
-  }
+  ]
 }

@@ -8,8 +8,7 @@
       "eval_reply": {
         "text": "当你带着二十余名儿童走下登陆甲板时，你之前通过通讯器交谈的两位父母跑到了你面前。你身后传来几个孩子喊道：“妈妈！爸爸！”三个孩子挤到前面，父母和孩子们在一堆拥抱、亲吻、眼泪和笑容中团聚在一起。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_68d795897fb43da453f2",
@@ -18,8 +17,7 @@
       "eval_reply": {
         "text": "“我明白了。我知道这一天迟早会到来。现在，我们可不能让一群低三下四的人过得不错，对吧？”  \n他们从饮料中喝了一口。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_d3e4ad8888a3540ee15e",
@@ -28,8 +26,7 @@
       "eval_reply": {
         "text": "你和其他孩子站在一旁，看着你所见过的最美丽的重逢之一。过了一会儿，父亲走向你，擦去脸颊上的一滴泪水，将你拥入怀中。放开你并擦干眼睛后，他说：“非常感谢你，{player}。你无法想象这对我们意味着什么。我很想以某种方式报答你，但现在我却不知道该如何做。你救了我的孩子，并将他们带回了我身边。感谢是不够的，但恐怕现在这是我唯一能做的了。如果你将来有什么需要我帮忙的，随时告诉我，我的朋友。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_579f8ff1cd60f0032b5f",
@@ -38,8 +35,7 @@
       "eval_reply": {
         "text": "“我知道！找到它花了我很多钱。它在各地都卖光了！但最终这一切都是值得的。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_5c03897e2317bc870601",
@@ -48,8 +44,7 @@
       "eval_reply": {
         "text": "“我和你所说的米涅瓦首席执行官，我们都是在乔兰出生的。不确定我们是被遗弃还是被抛弃了，但自从年幼起，这个世界就只给了我们残酷和痛苦。为了生存，我们被迫在矿场工作。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_316c18becd6597aa7e56",
@@ -58,8 +53,7 @@
       "eval_reply": {
         "text": "“嘘……你无法欣赏这种美。看看这些曲线！这些闪耀的灯光！这是一比128的完全解剖学正确模型！你甚至能透过驾驶舱看到飞行员。”\n你仔细看去，确实能够看到飞行员。细节的精细程度相当荒谬。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_92300ae509f39d65b5b3",
@@ -68,8 +62,7 @@
       "eval_reply": {
         "text": "“这个破地方教会了我们，世上没有不劳而获的东西。你必须拼尽全力去争取你想要的！不，不是这个意思，是我们应得的！”  \n他们用力拍了下桌子以加强语气。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_1b0bee9d31cd44c20bce",
@@ -78,8 +71,7 @@
       "eval_reply": {
         "text": "飞船内部状况糟糕透顶。到处都是垃圾和污垢。你可以清楚地看到墙壁上的损坏痕迹，大多数气闸似乎都卡在了开启的位置。当你滑行过走廊时，有什么东西抓住了你的脚，你本能地拔出武器并开火。当你的子弹反弹声逐渐消失后，只剩下你加速跳动的心脏声。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_43a8c21be0fe58dad520",
@@ -88,8 +80,7 @@
       "eval_reply": {
         "text": "你向他保证一切都没问题，并且你不会犹豫接受他的提议。过了一会儿，他脸上的笑容消失了。“你看到我的家人有多开心吗？不过，看看这里还有这么多孩子仍然和他们的父母分离。我想把他们都送回家。我也想对抗所有的人口贩卖，但这需要大量的计划。现在，我想和我的家人在一起。不过如果你愿意的话，很快再回来吧。我想做些安排。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_72002de8421b6a5c79f6",
@@ -98,8 +89,7 @@
       "eval_reply": {
         "text": "“我想像你这样的雇佣兵根本无法真正理解在矿场几乎累死的那种痛苦。你只是在这里听从你主人的吩咐，就像你这只忠诚的狗一样。”  \n他们小声笑了笑，然后向前倾身。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_3000f6751276d238779c",
@@ -108,8 +98,7 @@
       "eval_reply": {
         "text": "“真的吗？它也是西格玛-5中队的黄金Efreeti模型吗？！你不知道这是什么？别拿我开玩笑，这可能只是另一个没有历史背景的量产型兰斯洛特。这是一件杰作！”  \n他们举起自己的玩具兰斯洛特。你勉强能辨认出侧面刻着一个金色的Efreeti。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_cedc7795e78138792fe4",
@@ -118,8 +107,7 @@
       "eval_reply": {
         "text": "“说实话，我他妈的才不在乎你的主人是谁。结果是一样的，你试图用我们的血、汗和眼泪换来的成果据为己有。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_f5b5a395fe01fd914b85",
@@ -128,8 +116,7 @@
       "eval_reply": {
         "text": "你轻拍了哈佳的肩膀。他不耐烦地转过身来，毫无疑问是打算用毫不含糊的语气让你离开，但当他认出你时，脸色变得苍白，开始大声对你吼叫，让你不要打扰他，甚至威胁你。不过，他显然非常紧张，没能给你留下什么深刻的印象。花了一些时间和一个请他喝酒的提议，你终于说服了他，你并不是来给他找麻烦的。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_7e33395219de61b2a115",
@@ -138,8 +125,7 @@
       "eval_reply": {
         "text": "他们咬紧牙关。\n“我不会让你的！米涅瓦空间站是我们的！你根本不知道我们为了来到这里经历了多少地狱般的折磨，我发誓绝不会让这一切从我们手中被夺走！”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_6fc9e1d9448ffc241d07",
@@ -148,8 +134,7 @@
       "eval_reply": {
         "text": "“你知道吗，我们来玩个游戏吧。我了解所有飞船的所有事实。我会问你一个问题，如果你答对了，我会给你一个不错的奖励。你觉得怎么样？”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_bbfd73cc11bbd515b6e1",
@@ -158,8 +143,7 @@
       "eval_reply": {
         "text": "父亲回到他的孩子们身边，而当你开始往你的飞船走时，你注意到父亲和母亲正充满爱意地宠爱着他们的孩子。你望向其他现在围坐在一起、充满嫉妒地看着这个幸福家庭的孩子们。叹了口气，你开始爬进你的飞船，这时母亲跑向你，说道：“{player}，等一下！我们知道你的名字，但你还不知道我们的名字。我叫简妮斯。” 她看向正在和孩子们热烈交谈的丈夫，微笑着说：“我丈夫叫安德鲁。谢谢你所做的一切。” 她用明亮的榛子色眼睛看着你，一滴泪水顺着脸颊滑落，然后在你的脸颊上亲了一下。\n\n你看着她回到她的家人身边。一个孩子跳进她的怀抱，而你则爬进了你的飞船。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_3212dd2de1010b3113cb",
@@ -168,8 +152,7 @@
       "eval_reply": {
         "text": "你按照路标来到应该进行演讲的研究所。到达后，你四处打听自己应该去哪个地方进行演讲。显然，你已经被等候多时了。你被带到了一个相当小的研讨会房间。最终，你准备开始演讲，有几位科学家坐了下来。实际上你原本期望有超过17个听众。也许这次演讲并没有你想象的那么重要。他们不会只是把你派去一个重要的演讲，对吧？"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0ed62e766a51c2c08782",
@@ -178,8 +161,7 @@
       "eval_reply": {
         "text": "很明显，你从他那里得不到任何其他信息。你不知道该如何理解这件事。哈吉亚和乔安妮似乎都确信对方黑进了学院的电脑，但她们都没有任何证据来证明自己的说法。这件事看起来和之前一样没有接近结论，但此时你别无选择，只能将你的发现报告给乔安妮。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_8cfd2aea9f3577fd447c",
@@ -188,8 +170,7 @@
       "eval_reply": {
         "text": "“哦，是的。是的！那就是我！我是弗林特利，”那人回答道。“而你一定是{player}。我知道发生了什么事，巅峰的人已经告诉我了。哦，不过我太失礼了。让我正式介绍一下自己。我叫弗林特利，是一名考古学家和历史学家。有些人可能会说我是银河中最出色的，哈哈！”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_ea8e3571fbe8aa00f181",
@@ -198,8 +179,7 @@
       "eval_reply": {
         "text": "结果证明他们并没有。他们刚刚到达通往你飞船的对接桥时，几名武装的Dvaered安全人员突然冲进了对接机库。他们发现了这三名特工，立即开火。其中一人倒下，其余人匆忙将箱子推过桥送进你的飞船。尽管局势发生了巨大变化，你还是有时间注意到Dvaered似乎更感兴趣的是惩罚罪犯，而不是完好无损地取回他们的财物。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_6e1a2ea3c82f0daf7eed",
@@ -208,8 +188,7 @@
       "eval_reply": {
         "text": "“Kex是个很不错的人。他以前在这里闲逛，去星云冒险之前，总是和我们这群无用之辈混在一起。可惜他失踪了。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_d4b66500536942b7d050",
@@ -218,8 +197,7 @@
       "eval_reply": {
         "text": "“既然他们从未找到他的飞船，我宁愿相信他成功到达了星云的另一边，如果那里真的存在的话。”  \n他从饮料中大口喝了一口。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_78524818c4d8cbe9e550",
@@ -228,8 +206,7 @@
       "eval_reply": {
         "text": "第二名特工被一枚Dvaered的子弹击中，从对接桥上跌落，掉入下方的深渊。第三名特工设法将装有箱子的推车推进你的气闸，但随后他的胸部也被击中。当Dvaered接近你的飞船时，你关闭了气闸，启动引擎，冲出了对接机库。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c0d39b5589f4a28350d1",
@@ -238,8 +215,7 @@
       "eval_reply": {
         "text": "“这里以前是个更受欢迎的地方，但随着星云中大部分容易获得的资源都被搜刮一空，现在来这儿的人不多了。尤其是像Kex和Mireia这样的著名搜刮者失踪之后。”  \n他若有所思地沉思着。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_b17e3a012a13b7053160",
@@ -248,8 +224,7 @@
       "eval_reply": {
         "text": "“让我们看看你带来了什么，”弗林特利一边接过你在{pnt}买来的这件文物，一边说道。“啊，我甚至不用查什么资料就知道这是什么。这是旧式气闸机制的一部分，大多数派系战争时期的飞船都使用过这种机制。这说明它相当古老，但这也意味着它一文不值，恐怕如此。这仅仅是一堆废铁罢了。”他给你一个歉意的眼神。“别因此沮丧。第一次见到它时能认出来的人并不多。那些骗子确实挺聪明的。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_89f6b3bce047ce663937",
@@ -258,8 +233,7 @@
       "eval_reply": {
         "text": "你进入这艘废弃的飞船，里面出奇地安静。引擎室有一个大洞，表明核心引擎很可能爆炸了，迫使船员弃船逃生。虽然你没有找到任何有价值的东西，但船上仍有大量矿石货物可供获取。在离开之前，你迅速将能装下的矿石都装上了自己的飞船。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_a53d988f1b89b83f6281",
@@ -268,8 +242,7 @@
       "eval_reply": {
         "text": "他随意地吹了声口哨。\n“这星云真是个麻烦的东西。不过，飞穿它的时候几乎让人着迷，它确实很有个性。如果你试图深入其中，就很难再回来了。很多灵魂都在那里迷失了。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_f664faf678aab62972c0",
@@ -278,8 +251,7 @@
       "eval_reply": {
         "text": "你将从{pnt}获得的文物交给弗林特利。他仔细检查了几分钟，然后在桌上的信息终端上输入了几条查询。一旦他找到了他要找的东西，他叹了口气。“对不起，{player}。看来你被骗了。你手头的不过是个小玩意儿。这是由住在拉普拉的三级雕塑家比埃纳·加里布里创作的一件‘艺术品’。恐怕她并不怎么有才华。一位著名艺术评论家曾称她的作品‘比德瓦雷德歌剧还要糟糕’。我真的不认为你想要将这个呈给大人。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c7288e5738eed1f9ab12",
@@ -288,8 +260,7 @@
       "eval_reply": {
         "text": "望着窗外，你看到阴影在你的飞船周围盘旋。现在它们的数量已经很多了，但你不知道到底有多少。它们出现得毫无征兆，又消失得无影无踪。“难怪这么多飞行员都害怕这些鬼故事”，你心想，但你没有理由害怕它们。你知道摧毁你的飞船的是星云。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9a119bd89a0ae12815a1",
@@ -298,8 +269,7 @@
       "eval_reply": {
         "text": "你没有看到其他东西在移动，飞船一片寂静。随着肾上腺素逐渐消退，你用脚踢了踢你射中的物体，露出一具肮脏的尸体。看到这具尸体的木乃伊状态，你只能猜测它在你到达之前就已经死了很久。尸体穿着看起来像是一些旧宇航服的破布，当你注意到眼睛似乎呈现出一种褪色的紫色时，你仔细地看了起来。奇怪，也许是某种索罗米德生物科技？"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_ef497ee153911b882fad",
@@ -308,8 +278,7 @@
       "eval_reply": {
         "text": "“如果你打算去的话，应该带上你最好的传感器。由于那里的星云密度很高，很难看到任何东西。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c19e3417a5fb1d27894f",
@@ -318,8 +287,7 @@
       "eval_reply": {
         "text": "弗林特利在桌边观察这个物品一段时间，期间多次查阅了在线数据库。然后，他终于转向你。“我不想这么说，但看起来你买到了一个假货。不过，这假货做得很好！{pnt}上的那个卖家肯定很懂行。你看，这和第二次增长时期火星上悬浮车使用的车牌非常相似。然而，它缺少一些关键特征，一些细节也暴露了它最近才制造出来。接近了，{player}，接近了。但还是没成功。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_7ac920244644e5cd2b79",
@@ -328,8 +296,7 @@
       "eval_reply": {
         "text": "“这叫做滑板，”弗林特利继续说道。“关于它的记录有些模糊，很多内容只是猜测，但看起来它曾经被用于原始的集体仪式中。这些仪式的确切性质尚不清楚，但可能属于部落的入门仪式，甚至是交配仪式。滑板本身上的图案被认为具有精神或神秘的意义。此外，根据一些理论，人们过去曾站在滑板上，让圆柱形的轮子朝向地面。这使一些历史学家相信，脚曾经在人类心理学中占据核心地位。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_bdbd725f101efdb0498b",
@@ -338,8 +305,7 @@
       "eval_reply": {
         "text": "“啊哈！当然，就是它！没有任何东西能进入或离开那个仓库！我有情报显示Tricon已经在游说Nexus码头接受我们的索赔，因为他们负担不起那次罢工！”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_26e3a648360e0fa88253",
@@ -348,8 +314,7 @@
       "eval_reply": {
         "text": "“啊！我早该想到的！你拒绝是因为我说这很危险！你是个懦夫，从你脸上缺乏伤痕就可以看出来！”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_f0793a3f8912c1aad5e3",
@@ -358,8 +323,7 @@
       "eval_reply": {
         "text": "“请坐在那边的那个终端那里，我会在这边的那个。你知道这个是怎么运作的对吧？只要连接上，我会设置好服务器的细节。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_08b205fc6177a2b8cd0c",
@@ -368,8 +332,7 @@
       "eval_reply": {
         "text": "你完成了与{plt}的对接操作，清楚地知道你的飞船并没有载着他们期待的那个人。在气闸门前，你遇到了两名身穿灰色制服的船员。你向他们解释你无法将乔雷克带过去，他们以干练、公事公办的态度接收了你的报告。会议简短。船员们消失在他们的飞船中，关上了气闸门，你回到了自己的舰桥。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_890ad565f43ffcf02dde",
@@ -378,8 +341,7 @@
       "eval_reply": {
         "text": "无人机闪烁了一下，然后一切陷入黑暗。看起来它里面的生命已经彻底结束了。你运行最后一次常规扫描，看看是否还能做些什么。虽然看起来这架无人机已经永久损坏，但你发现它上似乎附着着一块扎尔克制造的实验性硬件。既然它对无人机已经没有用处，你就把它带走了。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_8e5ea07e8523e7923b03",
@@ -388,8 +350,7 @@
       "eval_reply": {
         "text": "他带你来到基地最大的房间，那是不太讲究的自助餐厅。他打开门，你被众多的面孔迎接，其中一些是你认识的殖民者，你曾帮助他们从银河系各地来到安特列若斯五号星。当你走向房间中央时，人群爆发出一阵欢呼。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_063129115c2202bbd234",
@@ -398,8 +359,7 @@
       "eval_reply": {
         "text": "她带你来到她飞船“粉恶魔”上一个临时搭建的设施。你将全息驱动器交给马基，她立刻将它们交给自己的工程师检查内容，而你则向她解释你所经历的磨难。当你解释你遇到的两名海盗马利和塞奇的结局时，她流露出悲伤，但这也是海盗的生存之道。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_ee11c0efdec96704beac",
@@ -408,8 +368,7 @@
       "eval_reply": {
         "text": "最终，一名工程师回来汇报情况。看起来他们已经找回了一些凯克斯设计的图纸，还有一些其他可能有用，或者至少在最坏的情况下，在黑市上值不少钱的蓝图。马基对能够修复她父亲这一可能性，尽管微乎其微，却显得非常激动。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_f973e3b0211a41f23186",
@@ -418,8 +377,7 @@
       "eval_reply": {
         "text": "他们向前倾身，压低声音说话。\n“你瞧，灵魂，那是那些失落的星系。被涅布拉吞噬了。里面充满了那些富人和他们留下的东西。不过，灵魂，许多人进去，却没人出来！就像那些单程门一样。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_e115725d7ba02da19966",
@@ -428,8 +386,7 @@
       "eval_reply": {
         "text": "“众所周知，军阀是那些在德瓦雷德星球上被授予王权主权的成功将军。如果军阀感到被冒犯，或者为了征服他们的星球，他们被允许向对手宣战。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_f9e54854e7831a259990",
@@ -438,8 +395,7 @@
       "eval_reply": {
         "text": "在你和虾似乎进行了一场永恒的对视之后，你听到一声响亮的蜂鸣，虾的扬声器开始发出声音。  \n“人。人。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_e99ce5c69fdd68a912bd",
@@ -448,8 +404,7 @@
       "eval_reply": {
         "text": "“啊，很好。那么你就是真的了。在这样的时候，你可不能太不小心，你知道的。不管怎样，老乔雷克在这里，但他不能留下。他让我留意你，说你会来找他。” 酒吧招待环顾四周，确保没有人能听到，尽管酒吧的音乐使得很难听到那些不站在你旁边的人说的话。“我有一条消息要告诉你。去{sys}系统，降落在{pnt}。乔雷克会在那里等你。但你最好有所准备，会遇到一些麻烦。我不知道是什么样的麻烦，但乔雷克从不会遇到任何小麻烦。别说我没警告过你。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_e63515340f373752a48f",
@@ -458,8 +413,7 @@
       "eval_reply": {
         "text": "你试图用手打开这个盒子，但发现它很难打开。看起来打包它的人真的不希望它被打开。你尝试用几种器具来打开它，但发现如果不损坏它的话，似乎没有简单的方法可以打开。也许最好还是干脆一点完成这件事吧。现在是去{spb2}完成任务的时候了。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_89d9557544e0e749fc2d",
@@ -468,8 +422,7 @@
       "eval_reply": {
         "text": "“说实话，我其实并不清楚，”那人说道。“伯爵想让你去见他，好亲自向你做简报。你会在他的飞船在{sys}系统中找到。我应该告诉伯爵大人你要去拜访他吗？”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_879fb471c01cfcbd8d84",
@@ -478,8 +431,7 @@
       "eval_reply": {
         "text": "他们从不停下来表现出惊讶。  \n“你真的毫无头绪。我不确定你从哪里得到了你的超能力，但看起来你自己也不清楚。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c3f23ce51ac39e90a50c",
@@ -488,8 +440,7 @@
       "eval_reply": {
         "text": "没有合适的降落区，你试图寻找一片空地，但最终只能将飞船勉强停在一栋曾经宏伟建筑的废墟上。这比你希望的要显眼一些。核对了你得到的坐标，似乎你并没有走太远。现在得赶快行动了。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_d7e7a7a260f823699dea",
@@ -498,8 +449,7 @@
       "eval_reply": {
         "text": "最终，你找到了标有“粒子物理实验注册部”的隐藏房间，并进入去见一位毫无热情的学术秘书。你把包裹交给他们，他们叹了口气后开始检查里面的内容。他们提到沙德莱特博士又在搞这些事情，并递给你一个在包裹里的信封，说明这不属于报告的一部分。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_cf3be59989c43c6e7bc5",
@@ -508,8 +458,7 @@
       "eval_reply": {
         "text": "在成功绕过飞船的安全系统后，你进入驾驶舱，注意到这架战斗机已经被破坏，可能很快就会爆炸：你几乎没有时间去找到并抓住飞行员。你朝生活舱走去。当你穿过入口舱门时，你看见了他，漂浮在靠近地板的地方，无重力状态。当他把那张愤怒的脸转向你时，你发现自己被他脸上那副痛苦的面具吓坏了。他那鼓胀的、布满血丝的眼睛盯着你，仿佛想要刺穿你的皮肤。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_fb2fe5d66ce5f4b84b0b",
@@ -518,8 +467,7 @@
       "eval_reply": {
         "text": "“太好了。请尽快去见伯爵大人。他不喜欢等人。我会让人通知他你要来，所以当你到达{sys}时，请联系巅峰号，他们会允许你登船。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_bb5e445f9df919f43aa6",
@@ -528,8 +476,7 @@
       "eval_reply": {
         "text": "他扭曲的嘴裂开，吐出一种令人作呕的乳白色液体，当他开始用呻吟的声音说话时：\n“在外面干得不错。嗯。但是，你看到了吗？你抓不到我活的。哦，不。沉默药丸会确保这一点。哼。看起来很痛苦，不是吗？你知道吗？它看起来比实际还要糟糕。我向你保证。Gbf。哦，它让我想吐……对不起。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_2c64c1de7e7c85e3df17",
@@ -538,8 +485,7 @@
       "eval_reply": {
         "text": "“不过，你必须意识到，在那之后，下令执行这次行动的军阀的对手，也许还有他们的盟友，很可能会派飞船追捕你。因此，如果你接受这些任务之一，就必须准备好躲避复仇者的攻击。此外，降落在你刚刚投放传单的星球上并不是一个选项。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_a4e1187aba800d20ec6e",
@@ -548,8 +494,7 @@
       "eval_reply": {
         "text": "他们先仔细打量了你一番，然后才确定你一定是他们等待的人。  \n“是马基派你来的吧？我一直在等你。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_dcec954e24037d1d0bbf",
@@ -558,8 +503,7 @@
       "eval_reply": {
         "text": "你可能没有意识到，但天狼星家族以我们的超能力而闻名。我们能够投射我们的精神，操控我们周围的流，从而在不动一肌一骨的情况下完成各种任务！"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_a3670a5f5026ebea5e07",
@@ -568,8 +512,7 @@
       "eval_reply": {
         "text": "坐在那里的另一个海盗眼中闪过一丝光芒，回答道：“实际上，我听说在{pnt}那边的酒吧里，如果你做一些更危险的工作，可以赚到大把的钱。你只要抓几个小孩，就能每个卖15个大钱！”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_7706721e7e1c2e0e26ff",
@@ -578,8 +521,7 @@
       "eval_reply": {
         "text": "“当然，说起来容易做起来难。超能力因人而异，即使如此，还需要放大器才能展现真正的力量。幸好天狼星家族的飞船都内置了放大器。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_dfd727b11380c659ad64",
@@ -588,8 +530,7 @@
       "eval_reply": {
         "text": "你降落之后，立刻被核心矿工“GE Talpini”的船长迎接。在交换了一些寒暄之后，他们带你参观了他们的飞船。这艘飞船是一艘令人印象深刻的巨兽，装载着一排排看起来可怕的钻探设备。然而，你可以看出这艘飞船经过了大量改造，使得它在太空中的机动性远不如在地下或水下。看起来，在前往{pnt}的途中，保持这艘飞船的完整将主要要靠你了。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_acca84f74169dd7d4b63",
@@ -598,8 +539,7 @@
       "eval_reply": {
         "text": "当你接近空间站时，你可以清楚地看到外层船体上有明显的等离子体爆炸弹坑。你的飞船在扎克全程沉默、脸上带着困惑表情的情况下，必须推开漂浮的碎片，向太空码头靠近。你认为这并不是他所期待的。在看似永恒之后，飞船的磁性对接夹具终于与空间站接触。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_a5e2f12d370929b031a9",
@@ -608,8 +548,7 @@
       "eval_reply": {
         "text": "“请注意，只有‘错误’军阀的飞船会追捕你，并且只会出现在你执行任务的系统中。此外，摧毁这些飞船是完全被允许的，因为这是在荣誉军阀之间忠诚战争的框架内进行的。\n一旦你离开这个系统，你就再也不用担心德瓦雷德巡逻飞船了，即使你之后返回。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c6cdedf028174895cd06",
@@ -618,8 +557,7 @@
       "eval_reply": {
         "text": "你环顾四周，试图弄清楚这个原型机。它与实验室高度连接，看起来你无法轻易将其移除。此外，它甚至不明确是否真的能运作，或者只是一堆废铁。遗憾的是，你缺乏进行全面评估的专业知识。你唯一知道的是，它看起来真的很酷。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_00ffab1c74e6fd2e194c",
@@ -628,8 +566,7 @@
       "eval_reply": {
         "text": "对飞船的快速探索表明，大部分系统已经完全停止运作，经过这么长时间后，只有灯光和基本的生命支持系统仍然在线。你最终到达了船员宿舍，但除了一个年代久远的笔记本外，什么也没找到。在前往货舱的路上，你小心地翻阅着它，有几条记录特别引起了你的注意。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_7004b6329ff97eb8833f",
@@ -638,8 +575,7 @@
       "eval_reply": {
         "text": "为了完成其任务，第5613特遣队需要额外的1000万信用点。\n\n代表所有被派往第5613特遣队的人员，他们日复一日地工作，使Dvaered家族更接近其目标，我感谢您花时间考虑此事，并祝愿您始终正确、忠诚并#obfsrthgb#0。\n\n少将Klank"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0376f33f5dd8c4eb796f",
@@ -648,8 +584,7 @@
       "eval_reply": {
         "text": "当你降落时，你注意到星港已经被清空了。你还注意到一些柱子上装有炸药。这看起来不太妙。海军陆战队员告诉你在他们尝试完成囚犯交换时要保持不动。\n\n从驾驶舱里，你看到海军陆战队员用枪指着囚犯的后背，将他们带到了前面。你还看到一些人从阴影中走出来，手里也拿着武器；很可能是FLF的人。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_358e7845410ecf8720e6",
@@ -658,8 +593,7 @@
       "eval_reply": {
         "text": "你遇到了一个商人，他一开始对你不是韦纳感到惊讶，但很快便适应了这种情况。起初你们讨论了一些琐碎的话题，然后才进入交易细节。看起来一切都很顺利，你以{pnt}的代表身份签了字。握手之后，你就被送上了路。与商人打交道比帝国的官僚体系要高效得多。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_3fb2fd8dcb6ea1b43bc9",
@@ -668,8 +602,7 @@
       "eval_reply": {
         "text": "气闸门打开，你看到一个神情紧张的男人、一个害羞的女人和三个神经质的孩子。\n“感谢上帝你来了，”那人说道。“我不知道我们还能撑多久。你知道的，他们把我们丢下等死。没有燃料，没有食物，只有辅助电源维持我们的生存。”然后他开始语无伦次地告诉你他的家人在过去几个时期里遭受了多大的苦难，但你打断了他，不愿忍受他没完没了的唠叨。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_7eb70acb80e8f9438510",
@@ -678,8 +611,7 @@
       "eval_reply": {
         "text": "你和哈吉亚完成着陆后的程序后，在终端会合。哈吉亚似乎有些紧张——很明显，他并不太喜欢与乔安妮当面相见的想法。但他并没有抱怨。在这方面，他确实表现得信守诺言。你们一起前往乔安妮为这次会面预订的小型会议室。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_f4ae3814c3154149f08e",
@@ -688,8 +620,7 @@
       "eval_reply": {
         "text": "你和扎克穿上宇航服，开始在没有大气层的被破坏的空间站中以诡异的沉默进行搜索。一个漂浮的勺子，一些脏靴子……看起来这个空间站直到最近还有居民。虽然基地非常混乱，但考虑到扎尔克，这可能就是空间站平时的状态。你们逐一检查所有房间，但无法找到任何生命迹象。在整个过程中，扎克一直沉默而专注。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_08c86ee907712f0d2f3d",
@@ -698,8 +629,7 @@
       "eval_reply": {
         "text": "你开玩笑，但清晰而平静的精神状态对于操控流是根本的。没有良好的精神状态，你只会让自己头痛，或者更糟！"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_bfdef9c1012d185dbb72",
@@ -708,8 +638,7 @@
       "eval_reply": {
         "text": "“你好，飞行员。我有某艘无人看管的{fct} {class}的位置和安全代码。也许这会引起你的兴趣，谁知道呢？\n不过，我只打算出售这些信息。这要花你{credits}，但如果你能到达那里，这艘船可能值更多钱。”\n你想花钱知道那艘船在哪里吗？"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_5dd65c7a705060113b95",
@@ -718,8 +647,7 @@
       "eval_reply": {
         "text": "你最后一次环顾房间，然后准备离开。你注意到一些终端的外壳被撬开了，露出了一些内部连接。毫无疑问，有人入侵了你的猩红拳套会话。然而，考虑到房间里有具尸体，你决定在它引起注意之前离开。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_4ede2f7908f783ce83fd",
@@ -728,8 +656,7 @@
       "eval_reply": {
         "text": "他们开始露出笑容，用几乎像蛇一样的口音开始说话。  \n“啊，很高兴见到你。你一定是负责送货的人。你的朋友品味也很高啊。我们不常能拿到这么好的样品。”  \n他们舔了舔嘴唇。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_ea12e1fa347b0f493aea",
@@ -738,8 +665,7 @@
       "eval_reply": {
         "text": "你抓起背包，转过一个拐角，正面对上另外两个迷失者，他们嘶嘶低吼，你毫不犹豫地用几发精准的子弹将他们双双击倒。也许你真的能成功。你朝飞船的位置跑去，当你注意到它似乎正在移动时，你加快了脚步，突然间却被抛向空中……那到底是什么东西？"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_b697ce32fd328f93c49b",
@@ -748,8 +674,7 @@
       "eval_reply": {
         "text": "哈鲁斯正要开始讲述他作为商人的另一段经历，但你成功地阻止了他。你很快了解到，他的家庭的生活方式因一群小海盗的袭击而突然发生了变化。尽管{plt}拥有一些武器和防护系统，但攻击者对一艘货船来说太过强大了。\n\n“我从未想过事情会以这样的方式结束，”哈鲁斯叹气道。“我的意思是，我知道太空很危险，但我一直避开不安全的区域，只走巡逻航道，没有冒任何风险。你知道的，我有一个家庭。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_1c36d4b5f5c321d7f772",
@@ -758,8 +683,7 @@
       "eval_reply": {
         "text": "他嘟囔了很长时间，直到他突然按下回车键。你可以看到无人机周围短暂地闪烁了一下，因为站内的全息投影开始在它们上面叠加出可爱的猫咪全息影像。然而，考虑到无人机的体型，它们看起来更像是相当令人畏惧的大老虎。这些猫咪全息影像无人机再次飞入太空，在靠近站内时开始向野性生物飞船广播信息。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_cc4307f9d2fc889ae4c2",
@@ -768,8 +692,7 @@
       "eval_reply": {
         "text": "你付给线人钱，他告诉你这艘船现在位于{pnt}，在{sys}系统内。他还给你它的安全代码并警告你有关巡逻的情况。\n他给你的信息中还包含一种方法，可以让你的飞船降落在那颗行星上并隐藏起来。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9dcf6712138215b87373",
@@ -778,8 +701,7 @@
       "eval_reply": {
         "text": "“安排已经全部做好，很快你就能在你的飞船上拥有它了。如果我是你，我会把它尽可能远离任何人员存放。”  \n他们随后靠过来，低声对你说。  \n“你可能得提防一下，你的朋友并不是唯一想要它的人。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_8d3780fc944bcc2b6300",
@@ -788,8 +710,7 @@
       "eval_reply": {
         "text": "“我自己试着看了下，但完全搞不懂这是什么东西。而且我的博士后已经跑到Rulk'ar去了，我也没人可以处理这种麻烦事。如果你能试试看把它拆开，你应该就能把控制器带走。你只需要把数据盒推入数据接口，对齐内存就可以了。请试试看。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_aca37f07fd32ce7089d0",
@@ -798,8 +719,7 @@
       "eval_reply": {
         "text": "然后哈鲁斯的情绪变得开朗起来，显然他转瞬间就把最近的不幸抛到了脑后。“现在一切都会好起来的，”他愉快地说。“我们已经被救了，现在我们只需要你带我们去一个合适的世界，让我们在那里开始新的生活。”  \n毫不迟疑，甚至没有正式地请求这个恩惠，哈鲁斯和他的家人便登上你的飞船，并安顿在你的生活区里。他们似乎没有打算离开。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_dcfa5629402db70e71e8",
@@ -808,8 +728,7 @@
       "eval_reply": {
         "text": "你来到你的飞船，第一眼看到的就是有人用胶带把一个巨大的钻头绑在了你的飞船上，钻头侧面用永久记号笔写着“DRILLMASTER 5000”，上面还画了一些粗糙的火焰图案。你惊讶于它居然没有掉下来，于是转而向奈莉询问原因，却发现她满脸灿烂的笑容，显然对自己的改装非常自豪。你放弃了责备，朝“钻头大师”做了个手势。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_5f3a52da6cb8b1a2ea5b",
@@ -818,8 +737,7 @@
       "eval_reply": {
         "text": "你的飞船降落在站内。你和扎克刚走出飞船，就听到一声巨响，伴随着一阵火花，半个引擎发出嘶嘶声后掉落在地上。你们躲到一旁，现在失去平衡的飞船向一侧倾倒，并在金属地板上滑行，发出一片嘈杂的撞击和呻吟声。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_61d3180bdd81272a0708",
@@ -828,8 +746,7 @@
       "eval_reply": {
         "text": "你冲向指挥椅并接管控制，推动飞船进行急剧的上升。飞船在努力挣脱重力束缚时发出嘎嘎声。当你爬升时，你听到一个不受欢迎的锁定警告。你的飞船被某种地对空导弹击中。这会留下一个污点。你加大油门，最终成功挣脱。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_90449806746f6e5a86a0",
@@ -838,8 +755,7 @@
       "eval_reply": {
         "text": "当周围没有人时，你强行撬开一个格栅。看起来刚好够你挤过去。你深吸一口气，开始通过通风管道前进。你迷路了，不得不多次折返。经过一段漫长的旅程，你终于找到了一个通往安静区域的出口格栅。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_8fece4c9bd975b774acb",
@@ -848,8 +764,7 @@
       "eval_reply": {
         "text": "你被迅速护送回你的飞船。你根本没有机会向伯爵提问，比如这些潜在的袭击者是谁，一旦找到卖家，你又该如何支付这些文物的费用，或者你从这一切中能得到什么。不过，你发现银河地图更新了，上面显示了卖家的位置，还有一份名字和肖像的名单。看来，唯一弄清楚你所面对的事情的方法，就是硬着头皮去做了。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_d2b59e7e910ebc4c0c05",
@@ -858,8 +773,7 @@
       "eval_reply": {
         "text": "你稍微笨拙地操作了一下飞船的控制装置，刚好让飞船轻轻刮到了太空码头的内壁。虽然你预料到会发出一些声音，但你没料到金属与金属摩擦竟然发出如此刺耳的尖叫声。太空码头上所有人的头都转向了你，看来你成功引起了跨码头之间的注意。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_7a5eb5f382f8d9cdafa8",
@@ -868,8 +782,7 @@
       "eval_reply": {
         "text": "当你探索这艘飞船昏暗的内部时，你很快意识到船员显然从未逃脱。那些干枯的骷髅让你在游荡于这片漂浮的墓地时感到毛骨悚然。然而，尽管一阵阵寒意爬上你的脊背，你注意到在船员普通的灰色制服中，有不止几个骷髅的夹克上印着骷髅和交叉骨的图案。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_1a507a9035900a53e799",
@@ -878,8 +791,7 @@
       "eval_reply": {
         "text": "突然，你被一阵站内重新启动的嗡嗡声、嗡鸣声和呻吟声吵醒。警报响起，空间站开始生成可呼吸的大气和微弱的重力场。当你被这一切的骚动分散了注意力时，你感觉到有人轻拍你的肩膀，转过身来，看到一个面带微笑的扎克，手里拿着头盔。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_ba4e6c20106e64c1409b",
@@ -888,8 +800,7 @@
       "eval_reply": {
         "text": "你站在一旁，看着货物以惊人的速度从你的飞船卸下，不禁怀疑自己是否应该直接把东西丢进太空。就在最后一件货物被卸下时，那个显然已经冷静下来一些的检查员走到你面前，说道：“听着，我知道你是想帮我们一个忙，但下次如果你不能按时到达，就别费这个劲了。我很高兴你没有像某些人那样把所有东西都丢进太空，但这次我没法付你钱。”他摇了摇头，走开了。“那个飞行员肯定被解雇了……”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_fb600e4f19de0b0b7efe",
@@ -898,8 +809,7 @@
       "eval_reply": {
         "text": "你迷迷糊糊地努力站起身来，眼睛开始恢复视力，世界重新变得五彩缤纷。你发现自己被一群由扎克带领的无人机包围着，他们已经开始迅速进行手术。由于你目前的状态仍然完全无能为力，你拖着自己躲到一旁，靠在墙上。时间似乎在你不经意间飞快流逝，你闭上了眼睛。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_a283b3dc0ad793496bbc",
@@ -908,8 +818,7 @@
       "eval_reply": {
         "text": "你可能会认为扎尔克的聚会和普通的聚会会大不相同。事实上，你首先注意到的两件事是古典音乐和没有酒精饮料。不过，这里有一个自助餐。特别是有一个小冰箱装着冰淇淋。你看到很多人在吃冰淇淋。这难道是扎尔克版的啤酒吗？"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9bb5b0e9995904f0b460",
@@ -918,8 +827,7 @@
       "eval_reply": {
         "text": "还没等你反应过来，你就已经和其中一位科学家聊上了；他看到你和门辛博士一起进来，这促使他问出了这个问题……你和她是不是在恋爱。为了消除他对这种情况的疑虑，你告诉他她是雇用你的人。希望他相信你……"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_072a985c35060ac45ad1",
@@ -928,8 +836,7 @@
       "eval_reply": {
         "text": "你迅速搜索了房间，发现了船长和海盗之间搏斗的证据。墙壁上布满了粒子炮的灼烧痕迹，船长的制服上满是沾血的划痕。你带着些许好奇注意到，似乎海盗使用的是弯曲的纳米钢剑，而不是粒子炮。你捡起那把布满灰尘的剑，注意到它做工精良。剑身上繁复的雕刻让它不仅是一件武器，更是一件艺术品。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_d7be66815f330e0b89fc",
@@ -938,8 +845,7 @@
       "eval_reply": {
         "text": "你进入了一家只卖实验服的商店。实验服的种类令人印象深刻：各种颜色、不同材质和剪裁的实验服。这里还有专门的休闲装和工作装实验服区域。不管有什么不同，差别对你来说太细微了，难以把握。你选择了一件“商务”实验服，因为正式一点的可能适合你的演讲。价格标签上写着{credits}。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_96aca51cee38cff9e77f",
@@ -948,8 +854,7 @@
       "eval_reply": {
         "text": "着陆后，奥克兰让你和其他护航飞行员在太空港的酒吧等他。作为他的船员之一，你被允许进入仅供特殊VIP顾客使用的酒吧。\n墙壁上贴满了不同版本的戈达德战列巡洋舰的照片，每张照片旁边都附有一段简短的说明文字和一系列重要事实：“你知道在UST-510到UST-567年间，共制造了365艘戈达德七型DM吗？这个型号是最成功的，据称在UST-601时仍有大约120艘在使用中。”"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0d21aad916263d0a2f7c",
@@ -958,8 +863,7 @@
       "eval_reply": {
         "text": "你到达了货舱，但没有发现任何异常之处。你小心地打开舱门，发现墙上用某种蜡笔或粉笔写着一张很大的感谢便条，上面写着“感谢你所做的一切”。虽然将孤儿们送到安全的家对你来说可能并没有带来太多的麻烦，但对他们来说却意味着整整一生。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c37b84b5f0f8061f0c68",
@@ -968,8 +872,7 @@
       "eval_reply": {
         "text": "尽管看似武器力量悬殊，你却无法确定谁赢得了决斗。从结果来看，或许可以说他们都输了。但有一件事可以肯定，几发粒子炮的射击显然不足以解释这里明显发生过的爆炸。不过，你在船长的口袋里发现了一本被烧焦的日记，开始翻阅最近的几篇记录。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_255f6162f1becc7e9faf",
@@ -978,8 +881,7 @@
       "eval_reply": {
         "text": "你跟随船员们将推车推过飞船的主走廊。很快，你们来到一扇通往一个宽敞豪华舱室的门前。你一眼就能看出，这是伯爵索特菲尔特的私人房间。伯爵本人就在那里。他是个身材魁梧的人，穿着一件剪裁得体的西装，使他看起来庄重而不浮夸，还戴着单片眼镜，每根手指上都戴着几枚戒指。总而言之，伯爵喜欢奢华。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9a3aa476ec03bcfc03b7",
@@ -988,8 +890,7 @@
       "eval_reply": {
         "text": "你考虑让哈鲁斯离开你的舰桥，但他似乎不是那种会退让的人，所以你这样做只会让船上的气氛更加紧张。你告诉哈鲁斯你正在尽一切努力将他的家人送往安全的地方，这似乎让他满意。终于再次独处时，你在完成检查前花了一点时间平复心情。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_170af821b6f4728e2b60",
@@ -998,8 +899,7 @@
       "eval_reply": {
         "text": "你被看到离开了伯爵的房间，于是你穿过气闸门，回到自己的飞船上。你做的第一件事就是检查自己的余额，令你欣慰的是，它确实已经大幅提升了。你似乎还收到了一尊品味可疑的雕像。当你脱离对接时，你不禁想知道下次他会派你去追逐什么样的荒谬任务。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_6170de6e59829cd242c6",
@@ -1008,8 +908,7 @@
       "eval_reply": {
         "text": "在它成为帝国的官方垃圾场之前，这个世界就已经非常令人不快了。地壳活动剧烈，遭受小行星和太阳辐射的轰击，还容易发生毁灭性的酸雨，它尽一切努力劝阻人们进行殖民。甚至最冷酷的帝国官僚也发现，这里稀有矿物的储量不足以证明建立一个惩罚性采矿殖民地的合理性。然而，地表的恶劣环境却使得将帝国的集体废物合法地倾倒在这里并遗忘掉变得很方便。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_b009217fb0370e19cfd4",
@@ -1018,8 +917,7 @@
       "eval_reply": {
         "text": "伊内拉唯一拥有可着陆表面的卫星伊内拉I-a，如果它没有在伊内拉I的电离层表面滑行，现在应该已经被殖民了。持续不断的雷电风暴和极端的静电会使居住在伊内拉I-a上变成一个不断修理损坏的电子元件的无尽循环。再加上缺乏大气层和必须使用主动生命维持系统，居住在伊内拉I-a上意味着你永远不知道自己的生命系统何时会失效，从而将你判处缓慢窒息而死。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_1909209a5252e663fd8c",
@@ -1028,8 +926,7 @@
       "eval_reply": {
         "text": "温诺米的月亮原本是一颗巨大的小行星，被调整并推入温诺米世界轨道，以使其看起来更像地球。从技术上讲，它预计在大约500个周期后会撞上温诺米世界，但当地政府计划通过减少质量进行更多重大调整，以延长其轨道周期。和温诺米世界一样，温诺米的月亮也受到严格控制，大多数活动都需要许可。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_5661685834fbf69929f5",
@@ -1038,8 +935,7 @@
       "eval_reply": {
         "text": "迪亚波罗斯站是专门为使托托兰闻名的运动而建造的。这个站点拥有两个独立的竞技场。第一个是一个致命的三维迷宫，里面布满了危险的陷阱和障碍物。它占据了站点大部分的体积。第二个竞技场实际上是太空本身。角斗士们穿着生命服在站点的外壳上战斗，没有生命线。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_4ca311ea0917a8aeb6be",
@@ -1048,8 +944,7 @@
       "eval_reply": {
         "text": "奥尼是一个居住环境恶劣的地方，有着浓厚的有毒大气层、猛烈的天气和频繁的地震活动。所有这些因素使它成为德瓦雷德社会中罪犯和其他不受欢迎者所青睐的倾倒场所。被派到这里服役的士兵认为，这几乎和被监禁一样是一种严厉的惩罚。它是少数几个由德瓦雷德中央政府控制的星球之一，因为没有哪个理智的军阀想要这个地方。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_62265f46b6ca92067c32",
@@ -1058,8 +953,7 @@
       "eval_reply": {
         "text": "维吉尼丝阿尔法拥有一个非常尘土飞扬的大气层，大多数飞船都不适应这种环境。当风暴肆虐时，仅仅一次访问就可能造成足够的损害，几乎让飞船报废。然而，重要的矿物资源几乎确保总有足够愚蠢的飞行员愿意冒险，以期赚取一些快速的信用点。维吉尼丝阿尔法在斯皮卡之后不久就被殖民，但环境决定了它永远不会像斯皮卡那样繁荣。从国外移民到这里的人很快就会梦到回到原来的地方；只有那些出生在维吉尼丝阿尔法的不幸者，才可能真正适应这颗星球。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_f43cde73ad83c4e997b3",
@@ -1068,8 +962,7 @@
       "eval_reply": {
         "text": "你首先注意到的阿姆莱特船坞的特点是站点各处都装有大量的反舰武器。第二点是基础设施非常有限，似乎是为了以尽可能少的额外开支来最大化飞船的生产。这包括不使用加压的太空码头，工人直接在太空服中操作新制造的飞船。站点内实际的加压区域非常有限，大多数工人在闲暇时间更倾向于待在附近停泊的飞船上，而不是进入拥挤的站点区域。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_83cf321a5508a080d157",
@@ -1078,8 +971,7 @@
       "eval_reply": {
         "text": "科勒前哨站是通往多斯顿的航线上最后一个民用站点，它是大型事件后运动的一部分而建造的，试图从星云中夺回失地。许多运输飞船在此停靠，补充燃料并重新生成护盾，远离星云辐射的直接影响。\n这个站点人口不多，居民主要靠为往来星云的飞船提供服务为生。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c07056402b477e6f0084",
@@ -1088,8 +980,7 @@
       "eval_reply": {
         "text": "即使德瓦雷德家族尚未获得独立之前，就已经存在一些非官方的新闻渠道，煽动着帝国劳工阶层的不满情绪。后来，在完成任务后，这些渠道汇集资源，建立了德瓦雷德新闻网络，DVNN。\n因为这个站点是所有德瓦雷德大众媒体的主要枢纽，因此被许多军阀所觊觎，但德瓦雷德高层指挥部确保该站点始终牢牢掌握在自己手中。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_e8bcb371f4cf5639732b",
@@ -1098,8 +989,7 @@
       "eval_reply": {
         "text": "法拉斯是一个人口稀少的要塞星球，几乎没有经济价值的资源。然而，要塞的存在是因为在这里这个荒芜的岩石上建立前哨站比建造一个全新的太空站更便宜。但由于它位于帝国空间相对安全的区域，被派到这里的人没什么事情可做。相反，大部分问题都是由那些无聊至极的士兵引起的。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_63a67c270b82fd1fe81a",
@@ -1108,8 +998,7 @@
       "eval_reply": {
         "text": "这个站点是一个高产农作物种植设施。虽然大多数农场站点都始终朝向本地恒星以充分利用其光线，但这个站点缓慢旋转，轮流将两侧暴露在恒星下。站点的一侧用于种植农作物，另一侧则用于饲养牲畜。人工昼夜循环被发现对动物有积极影响。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c8665c0fb0b9fa2db72b",
@@ -1118,8 +1007,7 @@
       "eval_reply": {
         "text": "茉莉花曾是一个尘土飞扬的死胡同星球，位于索罗米德和帝国空间的边界，直到封锁解除并允许贸易。尽管如此，当地的经济从未真正起飞，这颗星球更像是通往拥有蓬勃工业和宝贵资源的成功世界的中途站。当事件发生后，来自帝国空间的难民开始涌入，索罗米德决定将茉莉花用作临时难民营，收容那些没有必要基因改造以长期在不太友好的索罗米德星球上生存的难民。虽然有些人能够接受基因治疗，但事实是，茉莉花仍然充斥着未来前景不佳的难民。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_8f0374080d05db708e41",
@@ -1128,8 +1016,7 @@
       "eval_reply": {
         "text": "卡塔尔是一颗拥有非常活跃地核的星球，它产生了一种非常特殊的电磁场，这种电磁场对高能物理实验非常有用。然而，同样的电磁场使得在附近使用标准电子设备几乎不可能。当决定建造一个地球静止轨道粒子物理测试站点时，卡塔尔很快就被排除在附近基地的选址之外，最终决定将基地建立在附近的小卫星卡塔尔一上。除了一个研究中心外，其他几乎没有什么建筑，卡塔尔一最终只有一小群扎尔克科学家，专注于与测试站点相关的研究。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_57601bf5dafc10393b24",
@@ -1138,8 +1025,7 @@
       "eval_reply": {
         "text": "皇帝之拳项目需要大量原材料。其中一部分材料就在这里的新火星上开采，这有其优势，因为不需要通过超空间旅行就能将它们运送到项目地点。新火星正在被系统性地开采，因此这颗星球在休闲或旅游方面一无所有。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_021ab61619ca7f3bbaf2",
@@ -1148,8 +1034,7 @@
       "eval_reply": {
         "text": "一个寒冷而令人不快的世界，当西里尔人刚开始向艾德文顿扩张时，他们在阿德里安建立了殖民地。当时该系统由帝国控制，但随着他们在该系统内建立了稳固的滩头阵地，西里尔人仅用了几个周期就掌握了政权。如今，尽管阿德里安已经完成了它唯一的目的，它依然存在。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0284543ee361c0c2e3a4",
@@ -1158,8 +1043,7 @@
       "eval_reply": {
         "text": "阿沃斯原本是一个普通但可居住的世界。当第十四艘殖民飞船“彼得罗夫斯基号”抵达时，殖民者们认为自己很幸运，找到了一个可以称之为家的地方。然而，在探险队登陆大约五十年后，这个世界开始发生变化。各地的地震活动急剧上升，导致全球范围内的地震和火山喷发。如今，这个世界已遭严重破坏，仅仅是它昔日的影子。然而，殖民者们设法生存了下来，今天仍有坚强的人们留在这里。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_5a2333b416ea99dee9a1",
@@ -1168,8 +1052,7 @@
       "eval_reply": {
         "text": "当索罗米德人占领荒芜的哈多什I星时，他们拥有将其和它的卫星命名的特权。这颗行星后来被称为达哈拉克斯。然而，令人印象深刻的是，由于官僚主义的犹豫不决，这颗行星的卫星至今仍未命名。各个政府机构对此一直存在争论，一再成立命名委员会，但他们的建议总是被迅速驳回。看起来索罗米德人短期内不会想出一个合适的名字。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_b2316b9e9596303c00ca",
@@ -1178,8 +1061,7 @@
       "eval_reply": {
         "text": "杜雷亚并不是一个非常宜居的地方，因为它围绕其恒星运行的距离有点太远，这使得这颗星球大部分地区都被冰雪覆盖。只有地表的一小部分在夏季融化得足够远，可以进行采矿作业，但尽管如此，地壳下的财富仍吸引着坚韧的人口去挖掘。事实上，如果有一天银河系的资源变得稀少，杜雷亚可能会发现自己处于经济上更有利的地位。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_dc95e21cb78e1ec05229",
@@ -1188,8 +1070,7 @@
       "eval_reply": {
         "text": "围绕着棺材二号的卫星，埃本泽尔的大气层对人类和索罗米德人来说都是致命的。然而，索罗米德人发现他们的生物飞船在这里非常适应，连续几周的暴露使它们的外层皮肤变得更坚韧，更能抵抗损伤。因此，大多数索罗米德军用飞船在其生命周期早期都会访问埃本泽尔。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_5f2054ca7081eb17dec7",
@@ -1198,8 +1079,7 @@
       "eval_reply": {
         "text": "萨尔瓦多系统对帝国来说几乎没有价值或用处，但它仍然拥有需要开采的宝贵矿物。因此，一群勇敢的矿工和商人将这里作为他们的基地。矿物在这里被开采和提炼，商人们以低价买进，在帝国更遥远的地方高价卖出。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_2425f21291377718c4ed",
@@ -1208,8 +1088,7 @@
       "eval_reply": {
         "text": "福尔特·艾伦是由一支巡逻队建立的，这支巡逻队被派出去探索太空的南部区域。随着“事件”的发生和帝国势力的衰退，士兵们被遗弃在那里，只能依靠自己用飞船的残骸和零件建立起了站点。现在，这个站点仅由一小队德瓦雷德士兵和工程师勉强维护，供商人使用。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_f131b3cf16b39bcd13b7",
@@ -1218,8 +1097,7 @@
       "eval_reply": {
         "text": "拉格兰要塞是德瓦雷德在边境星域中最为显眼的存在。官方上，这个站点既是贸易站点，也是德瓦雷德公民的使馆，但众所周知，德瓦雷德将该基地用作对抗FLF的据点，许多边境居民都担心，随着时间的推移，它也将成为德瓦雷德入侵边境的据点。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_5551da051b56290b7993",
@@ -1228,8 +1106,7 @@
       "eval_reply": {
         "text": "Gayathi上的殖民地早在Sirichana在Mutris定居之前就已经存在了。在那个时代，它是一个派系的前哨站，而该派系在派系战争中被摧毁，被所有人遗忘和忽视。随着资金和补给来源的消失，Gayathi从未有机会充分发展其经济基础设施。后来，当西里尔人崛起为一个银河势力时，Gayathi便落入了它的影响力之下。现在，它已成为西里尔人空间中一些最虔诚的信徒的家园。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_487d729ad261140f087f",
@@ -1238,8 +1115,7 @@
       "eval_reply": {
         "text": "威尔布罗德·吉利根是第二次扩张时期著名的太空探险家。他负责绘制了许多目前已知的跃迁路线，他擅长发现那些可以长时间进入超空间的太空区域。在那个时代，这是一项非凡的成就，因为扫描技术远没有现在先进。  \n为了表彰吉利根对旧派系的贡献，他被授予了自己的行星系统并在其中建立了定居点。派系战争之后，吉利根的记忆落入了西里尔人的统治之下，但西里尔人选择保留对吉利根记忆的纪念。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_575c38fff3033b24117c",
@@ -1248,8 +1124,7 @@
       "eval_reply": {
         "text": "INSS-2，即帝国营养补给站2号，建于这片偏远的太空区域，以弥补该地区农业产量的不足。食物在长距离贸易中并不是非常有利可图的商品，而纳图尔的殖民地由于长期短缺，发现自己在增长方面受到了限制。INSS-2使他们得以发展。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_5794ebfdd5bb62d107d0",
@@ -1258,8 +1133,7 @@
       "eval_reply": {
         "text": "有些奇怪的是，帝国营养补给站3号实际上是由德瓦雷德家族所拥有。虽然最初是由帝国建造的，但该站点作为其正式成立的一部分，被让与给了德瓦雷德家族。INSS-3仍然为位于室女座和范马恩的帝国殖民地提供食物，不过自从所有权变更以来，那里的食物价格已经上涨了不少。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c67e76f7649a8dc73f5b",
@@ -1268,8 +1142,7 @@
       "eval_reply": {
         "text": "jomos是一个小型的水世界，是富裕的西里尔人的豪华度假胜地。相对较低的重力，加上快速变化的天气系统，使这个世界成为各种壮观的水上娱乐活动的理想场所。这个地方在帕克多恩的上层阶级中很受欢迎，他们喜欢逃离那里的拥挤生活，但来自该派系太空各地的西里尔人也来这里放松。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_d92f600bb95746d051e6",
@@ -1278,8 +1151,7 @@
       "eval_reply": {
         "text": "这家酒吧除了有来自附近地球静止轨道粒子物理测试站点的实时直播外，其他都相当普通。他们有一种特制的饮料，叫做“原子粉碎机”，味道奇怪地像是引擎燃料，常用于一种不太健康的联谊仪式，实习生们在粉碎原子后往往会醉倒。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_46de9ac29a695bebeb80",
@@ -1288,8 +1160,7 @@
       "eval_reply": {
         "text": "德瓦雷德在这里设有一个“康复设施”。正如你所料，这是一座监狱，但与大多数德瓦雷德监狱不同——那些监狱只是让囚犯自生自灭——这个设施是一个劳改营，由看守、警卫和各个分部的监督员负责管理。不过囚犯们从来都不是非常积极的工人，因此这个设施的实际产出并不惊人。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_90ece1b94d3d43fe75c5",
@@ -1298,8 +1169,7 @@
       "eval_reply": {
         "text": "马嫩的月亮刚好位于“事件”影响范围之外，由于它位于一条主要的疏散路线上，结果成为了难民的热点地区——这一情况严重影响了这颗星球的未来。\n“事件”之后，许多受损的难民飞船抵达了马嫩的月亮；虽然其中最适于在太空中航行的飞船继续前进，但大量飞船则留下来进行紧急维修。但很快用于维修飞船的材料就用完了，而这个月亮也没有足够的住房来容纳如此众多的难民，因此许多留在这颗星球上的飞船被改造成临时住所，以容纳急剧增加的人口。\n随着当地物资逐渐耗尽，而由于帝国政府的混乱，未来获得更多物资的前景也不乐观，当地的帝国总督宣布了紧急状态，这一状态至今仍然有效。尽管事件相对稳定下来，并且像红星这样的组织提供了人道主义援助，但饥荒和瘟疫仍然持续严重地破坏着这颗星球。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_8d8f4cb447e8dcf2c3f9",
@@ -1308,8 +1178,7 @@
       "eval_reply": {
         "text": "尼克萨是一个年轻的殖民地。它在“事件”发生前仅仅几年就被首次定居。随着随之而来的银河经济崩溃，尼克萨初生的发展几乎停滞。尽管如此，人口仍在努力使殖民项目取得成功，但如今迪恩已成为一个边缘系统，这种成功的可能性似乎变得遥不可及。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_1cc60a934375b5eb43e2",
@@ -1318,8 +1187,7 @@
       "eval_reply": {
         "text": "你停靠在曾经辉煌的德瓦雷德·戈达德号残骸上。船体布满了烧痕和战争留下的伤疤，这些都是它在服役期间经历无数次战斗的见证。看起来这艘飞船最终遇到了它的对手，结构上布满了巨大的破洞，证明了它的结局。由于这艘飞船似乎已经没有多少还能工作的部件，甚至基本的结构完整性也丧失了，你在参观这艘飞船时必须一直穿着大气层防护服。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_2d322a4da77fedfb664c",
@@ -1328,8 +1196,7 @@
       "eval_reply": {
         "text": "在人类在此定居之前，科曼的大气层是纯度异常高的甲烷，这对于一个以岩石为基础的世界来说是不寻常的情况。在旧帝国时期，该星球上曾设立过开采作业，但由于当时糟糕的工程技术以及随后德瓦雷德的管理不善，科曼的大气层质量，以及随后的出口产品，都下降了。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c5713536a9611bb289e6",
@@ -1338,8 +1205,7 @@
       "eval_reply": {
         "text": "自德瓦雷德家族崛起之前很久，谢克哈尔就已经是贵重金属和宝贵矿物的重要出口地。这颗星球上的人们靠开采这些资源并将其加工成珠宝为生。尽管按照任何标准来看，这颗星球的原始产量并不高，但所涉及的资金规模却与一个中型采矿殖民地相当。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_618ce9539c65fac25904",
@@ -1348,8 +1214,7 @@
       "eval_reply": {
         "text": "虽然位于志摩的索罗米德医疗中心阿尔法处理了十个基因治疗客户中的七个，但它并不适合进行一些更具侵入性的手术。另一方面，索罗米德医疗中心贝塔则有几个设施，使得这些手术成为可能。当然，这些先进的手术程序成本更高，因此前往贝塔的客户往往来自银河社会的上层阶级。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_83650401f6fd126acbec",
@@ -1358,8 +1223,7 @@
       "eval_reply": {
         "text": "索罗米德人常常被银河系其他地方的人视为非人类，事实上他们自己也倾向于认为自己是另一种类型的人。但以许多方面来看，索罗米德人和其余的人类非常相似。例如，犯罪在索罗米德的太空里也和其它地方一样存在。塔努尔瓦是一个拘禁世界，一些最恶劣的索罗米德罪犯被关押在那里。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_3fbad16ad38f5a8040f4",
@@ -1368,8 +1232,7 @@
       "eval_reply": {
         "text": "伞形诊所是一个太空诊所。大多数星球通常会自行管理自己的医疗设施，因为将病人送离星球既昂贵又耗时，但有时像伞形这样的医疗站点也有其用途。伞形诊所主要是一个研究诊所，用于在完美的隔离条件下研究未知疾病，以开发治疗方法。如果没有这样的地方，银河系各地的公共健康将始终面临威胁。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_039a8700d2516afe7497",
@@ -1378,8 +1241,7 @@
       "eval_reply": {
         "text": "行星奥尔多斯是一片巨大的、对人类有毒的液体海洋。即使是最微小的接触奥尔多斯海洋中的有毒物质也会致命。就宜居性而言，像这样的行星在列表中排在最后。然而，仍有一些勇敢的人选择将这里作为他们的家园。海洋虽然有毒，但同时也是生产高质量的正电子电路的理想环境。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_e9d11b0ecba66dbdb86a",
@@ -1388,8 +1250,7 @@
       "eval_reply": {
         "text": "拥有90亿居民的阿尔克是银河系中人口最稠密的世界之一。这颗星球的大部分地表都被一座巨大而广袤的城市所覆盖。自然地，如此多的人口带来了巨大的环境污染，许多怀疑论者认为德瓦雷德在这里所做的是一种逆向改造地球的行为——试图将阿尔克变成一个X类星球。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_8d0940cb5487188aaed8",
@@ -1398,8 +1259,7 @@
       "eval_reply": {
         "text": "正如典型的索罗米德星球一样，阿伦蒂尔在其余人类看来是完全不适合居住的。大气层有毒，地表也不稳定，但索罗米德人已经成功地驯服了这颗星球。当然，即使如此他们也需要居住在受保护的栖息地中，但尽管如此，这里的人口正在蓬勃发展，以工业为主导的经济也保持稳定。从各方面来说，阿伦蒂尔都是索罗米德人坚韧不拔的一个例子。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_628b1aed12b322f2a418",
@@ -1408,8 +1268,7 @@
       "eval_reply": {
         "text": "阿斯塔纳是帝国实验武器测试设施的所在地，通常简称为IEWTF。大多数帝国军队新装备的武器和装备都是在这里进行测试并获得实战资格的。这颗行星是进行这种测试的理想地点，除了在这里工作的科学家之外，没有人愿意降落在这颗行星上。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_eb2cd48be48765ae9f53",
@@ -1418,8 +1277,7 @@
       "eval_reply": {
         "text": "布鲁克斯是一个繁华的、人口众多的帝国平民星球。但随着帝国的衰落，尤其是“事件”之后，它发现自己处于敌对太空边界的相当尴尬的位置。\n由于布鲁克斯是一个富庶的星球，在帝国中具有相当大的经济和政治分量，帝国海军为了布鲁克斯的利益，也为了帝国核心系统，保护着弧光星。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_6abbb6a1b11f45ce545e",
@@ -1428,8 +1286,7 @@
       "eval_reply": {
         "text": "事件之后，普罗特隆人留在普罗特拉西格玛星的幸存者试图建立新的殖民地以取代他们失去的殖民地。希斯特拉是第一个被发现的附近系统，但发现它包含一颗气态巨行星和一颗充满敌意的星球，没有值得一提的东西。因此，普罗特隆人决定建立一个前哨站，也就是这个环绕希斯特拉二号星的前哨站，目标是寻找附近更多的系统。随着科里法的发现，这个站完成了它的使命，并被改造成一个贸易中心。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_06588b3a39d873a5d431",
@@ -1438,8 +1295,7 @@
       "eval_reply": {
         "text": "太空港酒吧是这颗行星上受到保护最好的设施之一。当地政府认为潜在贸易伙伴的生命比其工作人员的生命更为重要。话虽如此，他们确实可以在主穹顶外穿上防护服，而且还能享受到相当不错的酒吧——这可不是许多德瓦雷德人能够拥有的。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_155a8232f36317a00850",
@@ -1448,8 +1304,7 @@
       "eval_reply": {
         "text": "杜兰船坞生产用于德瓦雷德军事机器的轻型支援舰。它还有一系列民用和货船，供零售商和消费者使用。\n由于这里生产的船只随时处于战斗状态，而且设施内至少有一支完整的中队随时待命，杜兰船坞是该地区稳定的重要贡献者。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_b3324ef799dfe870c180",
@@ -1458,8 +1313,7 @@
       "eval_reply": {
         "text": "这个酒吧是银河系中不受欢迎的采矿殖民地常见的标准型号。它基本上是一个普通的预制居住单元改装成的酒吧。它拥有你可能在公共设施中期望的所有设施和功能，但无法提供大都会行星上酒吧常见的舒适度。这里提供的酒类通常都很烈，这在很大程度上是由于该行星恶劣的环境所致。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_2adf6f584dd2a213fd92",
@@ -1468,8 +1322,7 @@
       "eval_reply": {
         "text": "厄瑞玻斯据点是在德瓦雷德家族的叛乱期间建立的，目的是在该地区加强其军事存在，并防止叛乱进一步蔓延到帝国空间。\n尽管德瓦雷德家族已正式被帝国承认，且对帝国空间不构成直接威胁，厄瑞玻斯据点仍作为活跃的军事设施使用，以监控德瓦雷德的动向。但“事件”之后，它还承担了另一个次要功能，即监视马杰斯泰卡二号星的情况，以防其演变成更加危险的局面。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_2791d0093606561235b4",
@@ -1478,8 +1331,7 @@
       "eval_reply": {
         "text": "福布斯修道院是西里尔人空间这一地区最大且装备最好的军事站点。它为最多三跳距离内的系统提供安全保障，并作为西里尔人舰队的当地总部。尽管“奇异果”本身空无一人，意味着该站点依赖周边系统提供支援，但西里尔人当局出于战略原因选择在此建造它。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_6c8939004b43f4d8df8f",
@@ -1488,8 +1340,7 @@
       "eval_reply": {
         "text": "官方上，弗朗西斯科要塞是一个地方安全枢纽，旨在保护当地系统免受海盗和FLF的侵扰，但它在维持法律和秩序方面的装备却相当重。有些人认为德瓦雷德正在逐步加强奥加特，为与帝国的军事冲突做准备。目前没有任何迹象表明德瓦雷德已准备开战，但弗朗西斯科要塞可能是未来事态的预示。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0590eadee5101a5a9187",
@@ -1498,8 +1349,7 @@
       "eval_reply": {
         "text": "索罗米德星域适合农业的星球很少，因此索罗米德人需要依靠其他方式生产食物。高拉是一颗水行星，就是这样一个替代选择。海洋底部的广阔区域建有巨大的水下农场，用于培育和收获特定种类的水生植物，再由上方的工厂站点加工成食物。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_cb12fe45c43e0d8fb2a5",
@@ -1508,8 +1358,7 @@
       "eval_reply": {
         "text": "现在，根努斯是一个寒冷的世界，但在第二次扩张期间它刚被定居时，情况并没有这么恶劣。糟糕的气候管理以及严重的污染使天空充满了阻挡阳光的物质，如今脆弱的生态系统已经崩溃。这里的人们之所以只能生活在根努斯，是因为他们别无选择。帝国官僚主义使得改变难以实现，这使问题更加恶化。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c05453b57709602e083e",
@@ -1518,8 +1367,7 @@
       "eval_reply": {
         "text": "杰伦曾经是帝国的殖民地，但当戈达德家族建立并被授予对该系统的全部权力时，它也获得了对杰伦的管辖权。在随后的几十年里，帝国的官僚体系被大部分拆除，并被一种更接近总督制的安排所取代。这提高了这个世界的运行效率，但失去了帝国地位后，经济受到了严重打击。如今，杰伦是一个相当普通的平民世界，居住着戈达德家族的大多数公民。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_4ef11f7bb28387077715",
@@ -1528,8 +1376,7 @@
       "eval_reply": {
         "text": "哈尔德在银河系中“最不适宜居住的行星”官方名单中排名相当靠前，这份名单由吉尔吉安基金会定期编制。事实上，即使是最乐观的太空旅行者也很难找到任何理由说明为什么有人会想要来到哈尔德，更不用说长期居住了。结果证明，德瓦雷德高层指挥部却有这样一个理由：哈尔德是德瓦雷德军队新兵的训练场。尽管许多即将成为士兵的人在哈尔德放射性地表丧生，但那些幸存下来的人确实成为了顽强的战士。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_176ffe0e58506154900e",
@@ -1538,8 +1385,7 @@
       "eval_reply": {
         "text": "第一批索罗米德生物飞船是在索罗姆本身培育出来的，也正是在这些飞船上，索罗米德人遍布整个银河系。但索罗姆已经不复存在。如今，大多数索罗米德飞船都是在这里，赫罗努斯培育出来的。这颗行星的引力和大气特性使其成为培育各种大小和形状飞船的理想之地。一艘母舰级别的飞船只需短短四个周期就能成熟。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_39729ce326eab1124e27",
@@ -1548,8 +1394,7 @@
       "eval_reply": {
         "text": "赫罗努斯·尼杜斯是一座直接与下方赫罗努斯相连的军事基地。它的主要职责是保护这颗行星，因为这颗行星对索罗米德舰队至关重要。如果赫罗努斯停止生产新飞船，索罗米德将对其军事能力造成巨大打击。不用说，赫罗努斯·尼杜斯是索罗米德星域中武装最精良的站点之一。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_913abcf0d7bbf7d9e70e",
@@ -1558,8 +1403,7 @@
       "eval_reply": {
         "text": "希卡塔拉特曾经是一个资源星球，在帝国崛起之前。但随着时间的推移，殖民地被认为不再有利可图，开采作业也随之停止。如今这个星球仍然有人居住，但其唯一的价值现在只在于德瓦雷德军阀对领土的控制。当地人口贫困，生活条件恶劣。对于外星人来说，这里几乎没有什么可做的事情。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_d9eb20b6f10675652480",
@@ -1568,8 +1412,7 @@
       "eval_reply": {
         "text": "这个农业站是扎尔克家族建造的一系列站点中的第一个，旨在模仿帝国中成功的INSS系统。由于有许多扎尔克星球在没有外界援助的情况下无法自给自足，这些站点成为养活当地居民的必需设施。与后来的站点不同，HZNSS-1设有一个研究中心，里面有一个大型温室，培育着多种改良和稀有植物，吸引了许多对该地区感兴趣的平民前来参观。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_b6d8d90c9fc13c7c3eef",
@@ -1578,8 +1421,7 @@
       "eval_reply": {
         "text": "jomos的酒吧首先是一个豪华酒吧。通常来说，这是游客下船后首先光顾的地方，当地当局希望让他们感受到欢迎。这里播放着音乐，窗户让大量的阳光照进来，内部装饰着植物和小件艺术品。然而，对于普通的太空人来说，这几乎没有用处，因为他们通常来这里是为了商务，而不是为了娱乐。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_ba1a4a43fd98908082bc",
@@ -1588,8 +1430,7 @@
       "eval_reply": {
         "text": "火山A类行星通常不是殖民的首选对象。但有时，对某个产业来说，在像卡乌拉斯这样的行星上建立一两家工厂可能有其优势。该行星的地热能源供应充足，而且星球表面的一些特定地点足够稳定，可以建立天然熔炉，用于生产需要大量热量的物品。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_bda3af57b18bf5dc82e0",
@@ -1598,8 +1439,7 @@
       "eval_reply": {
         "text": "科加拥有一层非常活跃的地壳，许多人形容其地表是地狱的一个合理仿制品。他们可能并没有夸大其词，因为熔岩流和地面突然的震动相当常见。尽管这颗星球的大部分地区都不适合建造，但按照科加的标准，南半球有一个相对稳定的区域，允许人们居住。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_61ad2e7c8d1ee105dc1e",
@@ -1608,8 +1448,7 @@
       "eval_reply": {
         "text": "从太空看，门德斯就像一个尘球。它的表面大部分是棕色的，唯一可见的云是沙尘暴。因此，索罗米德人将这颗行星用作主要的食物生产世界这一点令人相当惊讶。索罗米德人开发出一种作物，可以在门德斯恶劣的环境下生长。不幸的是，这种作物的叶子是棕色且坚韧的，虽然营养丰富，但味道并不好。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9e3cb28b379cc3722251",
@@ -1618,8 +1457,7 @@
       "eval_reply": {
         "text": "新欧洲曾经是一个繁荣的M级行星，位于西里尔人空间和太阳系之间的重要贸易路线上。由于丰富的农作物产量和稳定宜人的气候，许多人认为它非常接近旧时不太发达的地球。当事件发生时，新欧洲位于爆炸屏障之外，因此完好无损地幸存了下来。然而，随着时间的推移，星云开始侵入其领土，仅仅在20个周期内就足以阻挡大量光线，并开始剥离这颗行星的大气层。尽管这颗行星尚未完全荒芜无法居住，但似乎这一过程是不可逆的，导致人口试图撤离并离开这颗行星，前往更好的地区。虽然仍有不少人留在这里，但西里尔人所有重要人物早已离开，只剩下新的星云难民。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_1f977a12395e73b46c28",
@@ -1628,8 +1466,7 @@
       "eval_reply": {
         "text": "诺努里是一个经济欠发达的世界，即使按照边疆的标准来看也是如此。它勉强维持着自身不至破产。这里的人们主要出于归属感而留下，觉得诺努里是他们的应得之地。事实上，诺努里是由殖民飞船温迪戈号殖民的，这使诺努里成为最古老的外星人类定居点之一。不幸的是，对于当地人来说，银河系的大部分地区并不像他们那样关心这个地方。最近，诺努里的人口因无法抵达帝国或德瓦雷德领土的星云难民而有所增加。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9c9b62d083fe870a9788",
@@ -1638,8 +1475,7 @@
       "eval_reply": {
         "text": "如果你心情不错，可以把佩塔特称为一个民用德瓦雷德世界。事实上，这里有人居住，而且一个德瓦雷德军阀控制着当地政府。但也就仅此而已。佩塔特是一个非常令人不愉快的世界，其地表不断遭受沙尘暴的侵袭，土壤不适合种植作物。这里的人们之所以居住在这里，只是因为他们没有能力离开。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_be67c76d6a4709ea6ac9",
@@ -1648,8 +1484,7 @@
       "eval_reply": {
         "text": "拉切卡是一个相对较年轻的西里尔人殖民地。大多数西里尔人的星球都是曾经属于其他派系的改造星球，而拉切卡实际上是在Sirichana定居于Mutris之后相当长的一段时间，才由西里尔人殖民者建立的。也许正因如此，这里的西里尔人宗教氛围非常浓厚，因为当地居民的生活中没有其他文化的残余混杂。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_74bb15f1c53d328b6c96",
@@ -1658,8 +1493,7 @@
       "eval_reply": {
         "text": "据说当第一艘殖民飞船降落在这里时，船长向外看了一眼，自言自语道：“真是个废土般的星球。”他的船员听到了这句话，这个称呼便流传了下来。如今，这颗行星在所有公开出售的星图上都正式被称为“废土”。尽管自殖民以来这颗行星已经得到了显著的发展，但很难说它是一个有趣或令人兴奋的世界。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_54a6cd7bf37257ca0296",
@@ -1668,8 +1502,7 @@
       "eval_reply": {
         "text": "Rulk'ar 是一个采矿世界，由于其相对孤立的自然景观，这里有许多扎尔克大学。它是改造研究的中心，将原本可居住的行星转变为完整的 M 级世界。许多疲惫的扎尔克研究人员来到这里，以更贴近自然，并远离他们在研究中心紧张的研究日程，其中相当一部分人再也没有回去。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_6c03bb61b2c437f0b492",
@@ -1678,8 +1511,7 @@
       "eval_reply": {
         "text": "这个世界遍布火山和熔岩河流，经常发生地震和酸雨。它可能是太空中最恶劣的环境之一。因此，自然有许多科学家和地质学家在这里，他们认为这里是一个宝库。扎尔克当局也将其用作恶劣环境训练中心。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_a6d097f061d3fb6005d9",
@@ -1688,8 +1520,7 @@
       "eval_reply": {
         "text": "西里尔人修道院是西里尔人军队的主要军事中心。它作为艾西尔的守门人，确保没有任何威胁能够到达穆特里斯。这个站点有数百个大小不一的机库，随时可以部署完整的部队。大型冥想室也确保军队的精神力量随时可以投入使用。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_501fdb35c1e6c4cf0330",
@@ -1698,8 +1529,7 @@
       "eval_reply": {
         "text": "由于富裕的德瓦雷德人已经完全占据了瓦里亚的表面，所有工业和军事企业都被转移到了坚毅要塞。虽然该站点三分之二的甲板被主要的德瓦雷德公司使用，但仍留有足够的空间容纳一个相当规模的军事部门。事实上，坚毅要塞是周边系统大部分军事行动的基地。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_f84db60eb0371a98a80d",
@@ -1708,8 +1538,7 @@
       "eval_reply": {
         "text": "实验室的娱乐室里，角落里堆满了积灰的研究设备。似乎还有一些冷藏条件不佳的生物样本，你甚至不会惊讶它们会动起来。你能找到的唯一娱乐用品是一副缺少了大约十几块棋子的棋盘，以及一些你可能不应该饮用的乙醇瓶。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_36c25fdda5b71aaae838",
@@ -1718,8 +1547,7 @@
       "eval_reply": {
         "text": "与其说是一家酒吧，不如说是一个等候区，这个设施用于访客极少需要来到塔努尔瓦时的情况。由于塔努尔瓦不允许对囚犯进行私人探视，所有人员和物资的物流都由政府严格处理，因此往来于这颗行星的民用交通并不多。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_6ea451f98d17e6d21656",
@@ -1728,8 +1556,7 @@
       "eval_reply": {
         "text": "泰奥站是专门为开采泰奥原生藻类而建造的。作为一个完全由海洋组成、拥有高度腐蚀性大气层的世界，人们认为建造一个轨道站比在地表建造平台城市更有利可图。从站内的窗户可以看到，大量的藻类收集器在地表之间来回飞行，进行着它们无尽的藻类采集任务。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_fceecdf84c0724663747",
@@ -1738,8 +1565,7 @@
       "eval_reply": {
         "text": "托森基本上是一个普通的水世界，利用其丰富的水资源。然而，这个世界上一个小型的索罗米德社区却试图通过基因改造让自己进化成水生生物。到目前为止，他们并没有取得太大成功，他们在该星球上的地位也相当边缘化。总的来说，索罗米德人更相信太空，而不是海洋。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_ad3e230ebb4ef294c385",
@@ -1748,8 +1574,7 @@
       "eval_reply": {
         "text": "人们有时开玩笑说索罗米德人可以住在任何地方，就像害虫一样。这并不属实。但一个飞行员看着索罗米德殖民地在提莫星球上的情况，也许就能理解人们为什么会这么说。这颗行星从任何意义上来说都毫无吸引力，自然资源匮乏，而且完全没有大气层。但索罗米德人仍然住在这里，主要是因为他们可以。提莫被算作一个民用世界，尽管不是一个非常富裕的世界。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_d87cbf0b45a9773ad0f2",
@@ -1758,8 +1583,7 @@
       "eval_reply": {
         "text": "图马林是一家小型采矿公司的基地。其主要采矿地点“长弓三号”富含各种不寻常的物质。然而，这颗行星本身过于不稳定，无法维持常驻人口，因此所有的采矿作业都是由移动采集飞船进行的。这是一项危险的工作，但只要还有市场，就总会有人愿意去做。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_11694ce859a45f82e0c7",
@@ -1768,8 +1592,7 @@
       "eval_reply": {
         "text": "作为Unicorp公司的中心，70%的公司员工都位于Unicorp轨道站。虽然这个站点没有生产所有Unicorp产品的完整制造设施，但它有一个小型车间，主要专注于与位于同一站点的研究部门合作。一旦你离开太空港，就会看到公司的座右铭“全民品质”以及员工们来来往往的繁忙景象。这是一个相当热闹的站点。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_3227f4658a0b12cabb9e",
@@ -1778,8 +1601,7 @@
       "eval_reply": {
         "text": "这个寒冷、死寂、岩石遍布的世界是以在此地建立殖民地的人的名字命名的，这位名叫沙恩·瓦戈的商人坚信这颗行星的地表之下蕴藏着无数的贵重金属和矿物。他一直坚信这一点，直到在“事件”中去世，但这里的矿工们却什么都没有找到。他们找到的东西相当普通，不过至少还能卖个好价钱，使殖民地保持微薄的盈利。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9c71a6ee99239ad79571",
@@ -1788,8 +1610,7 @@
       "eval_reply": {
         "text": "伊丽娜是一颗资源星球，正在被西里尔人进行系统性开采。这里的气候恶劣，几乎整个星球表面都处于冻结状态，但在某些情况下，这种状态实际上是理想的，因为通常呈液态的物质现在变成了固态，因此更容易开采。伊丽娜主要提供阿斯克，但一些更为稀有的元素则被出口到西里尔人空间的其他地区，甚至更远的地方。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9f43e6e46a12f202d228",
@@ -1798,8 +1619,7 @@
       "eval_reply": {
         "text": "泽奥的大部分居住区都是最近才建造的。在“事件”之后，整个银河系的房地产价格都发生了重大变化，曾经被忽视的边远世界泽奥迅速成为帝国公民理想的定居之地。尽管与较早建立的民用世界相比，这里的人口数量仍然偏低，但居住在这里的人数却每天都在增加。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_7a00a266b9e70b2bdaac",
@@ -1808,8 +1628,7 @@
       "eval_reply": {
         "text": "太空港设施是更大结构的一部分，这个结构容纳了这颗行星上所有的人类居民。这个设施基本上漂浮在地表，并且与外部环境严密密封。此外，这个设施高度分隔，以防万一发生泄漏。一些太空人甚至坚持在太空港酒吧里也佩戴呼吸面罩，以确保安全。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c3062d91e066fe005d8d",
@@ -1818,8 +1637,7 @@
       "eval_reply": {
         "text": "阿姆穆是一颗总体上平静的行星，一旦习惯了熔岩流持续不断的轰鸣声。熔岩喷发经常在地下太空港被感受到，但当地人似乎对此毫不在意，这让你感到安心。熔岩确实有更积极的一面，即吸引那些需要高压和高温才能有效运作的工业，但气候使阿姆穆依赖于附近的行星，如里德，以获得食物供应。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_387bf01cef5ef06f5e0f",
@@ -1828,8 +1646,7 @@
       "eval_reply": {
         "text": "在这个不适合居住的世界建造栖息地时，人们几乎没有考虑过那些非必要的便利设施。这家酒吧是被嫁接在太空港一侧而建的。在银河系的其他地方，这种被忽视的设施很可能会导致一个狭小破旧的酒吧，但在索罗米德星域，它却赋予了酒吧一种更自然的感觉，以至于它几乎看起来像是在生长。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_84fbc313bcd6fb3b88a7",
@@ -1838,8 +1655,7 @@
       "eval_reply": {
         "text": "塞特拉特是一个以医疗藻类闻名的水行星。没有人能够完全在野外再现这种藻类，但由于整个星球巨大的海洋中这种藻类非常丰富，因此在这方面几乎没有进行过努力。\n塞特拉特是由第一次扩张期间发射的第八艘殖民飞船“布鲁克林号”进行殖民的。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_b1f009ac882d54b2bb73",
@@ -1848,8 +1664,7 @@
       "eval_reply": {
         "text": "吉尔利安之光是最早被选中进行殖民项目的系统之一。尽管派往这里的殖民飞船“秘银号”只是第五艘被发射的飞船，但黎明是人类首次在这片星域踏足的世界。然而，黎明被证明是第一次扩张中最富饶的探险之一，其发展速度超过了大多数其他世界。\n\n随着超空间旅行的出现，黎明发现自己成为了边境世界的地方首府，因此上方悬挂着边境理事会。这一地位仅仅是象征性的，但它解释了为什么FLF选择围绕吉尔利安之光集结。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_04cb3fda90395a07ad6d",
@@ -1858,8 +1673,7 @@
       "eval_reply": {
         "text": "多尤是一颗以臭名昭著的“多尤综合征”而闻名的行星，这是一种由于长期暴露于某些视觉波长下，患者会暂时出现歇斯底里症状的状况。起初这被归咎于一批受污染的食物，但后来发现阿佩兹星系的太阳发出异常波长，这些波长的效果被多尤大气层中的颗粒放大。不久之后，所有人员必须佩戴特殊护目镜，以过滤掉有害光线。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0075764370f432d57bc5",
@@ -1868,8 +1682,7 @@
       "eval_reply": {
         "text": "这是德瓦雷德高层指挥部，是德瓦雷德所有太空区域真正的权力中心，也是将军们聚集并决定德瓦雷德军队行动方针的地方。可以理解的是，德瓦雷德高层指挥部是一个军事要塞，是银河系中防卫最严密的地方之一。要被允许踏上这个站点，需要一定数量的德瓦雷德嘉奖令。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_a55a17fc2c31480209d9",
@@ -1878,8 +1691,7 @@
       "eval_reply": {
         "text": "地表超过80%被水覆盖，伊内里姆处于M类和O类星球的边缘。这里的人口分布在许多大小不一的岛屿上，这些岛屿均匀地散布在全球各地。西里尔政府将陆地分给了三个阶层，每个岛屿主要由谢拉、菲拉或塞拉人居住。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_20cc423a735f65d7832e",
@@ -1888,8 +1700,7 @@
       "eval_reply": {
         "text": "扎尔克家族臭名昭著的充满敌意的普罗西昂据点所在地，埃克塞利奥尔是扎尔克家族最富庶、最富生产力的世界之一，也是普罗西昂在扎尔克家族中拥有巨大影响力的原因。\n许多科学组织和大学都在这颗行星上运作，其类似地球的环境也使得埃克塞利奥尔成为退休人员和度假者的热门星球。得益于扎尔克的改造，埃克塞利奥尔也成为了退休人员和度假者的热门星球。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c99bb4025a7c0aa01453",
@@ -1898,8 +1709,7 @@
       "eval_reply": {
         "text": "Raelid酒吧很好地符合了德瓦雷德的刻板印象。一走出停泊区，它就是比较显眼的区域之一，而且，就像许多德瓦雷德的酒吧一样，它的规模远比实际需要的大得多。与波利aris原生地一尘不染的酒吧截然不同，这里布满了污垢，仅凭气味你就能感受到其他顾客的存在。真正意义上的德瓦雷德酒吧。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_1bd76fd4b578c86ef2c7",
@@ -1908,8 +1718,7 @@
       "eval_reply": {
         "text": "戈尔盖特是一个忠诚的西里尔人世界。当地流传着一个故事，说当殖民地刚刚建立时，西里奇娜曾亲自踏上这里的土地，向殖民者展示了光明。据说这件事发生在一百多个周期之前，但关于殖民地早期的记录稀少且不可靠。尽管如此，当地人却毫无怀疑地相信这个故事。\n尽管受到等离子风暴的摧残，这颗行星强大的电离层仍保护着当地居民的安全。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_520c9c1280a3fb3fb803",
@@ -1918,8 +1727,7 @@
       "eval_reply": {
         "text": "格里斯有一个传统，这个传统就是无论哪个军阀控制了这颗行星，都会将它改名为自己的名字。这常常让各地的太空人感到困惑，他们会用一些已经过时的名字来称呼这颗世界。目前的军阀是一位名叫哈姆施塔特·格里斯的人。他的统治并不特别仁慈，但至少看起来不像大多数德瓦雷德军阀那么糟糕。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0300394894e2cf9777ff",
@@ -1928,8 +1736,7 @@
       "eval_reply": {
         "text": "海伊是朱兰星球相当不吸引人的卫星。朱兰本身是一个天然的M类星球，因此第一次来访的游客常常会疑惑，为什么索罗米德人选择在这里定居，而不是在下方的星球。原因其实相当有趣。朱兰星球上栖息着许多惊人的生命形式，包括一些体型庞大的生物，与曾经在古代地球漫游的恐龙非常相似。在朱兰定居不仅危险，还会对自然生态系统造成干扰。因此，索罗米德人选择不居住在朱兰，而是利用其天然的动物生命，将标本作为异域宠物出售到整个银河系。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_a443a2e8087df14a2279",
@@ -1938,8 +1745,7 @@
       "eval_reply": {
         "text": "一家高档但看起来有些精神分裂的酒吧，由穿着各种令人印象深刻的服装的侍应生提供座位服务。看起来他们竞相创造最引人注目的外观，所服务的桌子风格也与他们的服装相匹配。结果呈现出的拼凑风格相当刺眼，但至少是新颖的，而且显然投入了大量努力去创造和维持每一个细节……可能是为了分散顾客对他们在这里所面临艰苦劳动和危险工作条件的注意力。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_e7adcf32bb28565f90ce",
@@ -1948,8 +1754,7 @@
       "eval_reply": {
         "text": "尽管最近进行了翻新，这家太空港酒吧仍让人回想起这颗行星的起源和过去。从早期移民者来到此地并建立第一座城市，到这座城市在一次大地震中被摧毁，再到伊内拉四号行星被确立为一个农业低人口密度的世界。当地的纪念品、小饰品和传统的农具装饰着墙壁，使这里呈现出一种乡村和温馨的氛围。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_948d292d130a34ca2ba5",
@@ -1958,8 +1763,7 @@
       "eval_reply": {
         "text": "贾安有一个大型太空港，为了方便经过这里的众多飞行员和船员，设有多个太空港酒吧。然而，每个太空港酒吧都和其他的完全一样。就连经常光顾贾安的人也无法将它们区分开来。这经常会给那些在太空港酒吧约定见面却毫不知情的人带来麻烦。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9f23883da7675f339e4b",
@@ -1968,8 +1772,7 @@
       "eval_reply": {
         "text": "尽管马苏的表面从未真正被驯服，但这里却有一个相当可观的人口。较大的人口中心通过局部天气控制系统保持气候中性，而一些较为偏远的地区则任由自然环境支配。这使马苏成为一些喜欢冒险的人的旅游胜地，他们喜欢到野外去探险。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_7b5eb658a2b626acd155",
@@ -1978,8 +1781,7 @@
       "eval_reply": {
         "text": "就像这颗行星上的大气层一样，太空港酒吧是一个非常阴郁的地方。这里的设施看起来是临时搭建的，但层层的灰尘表明已经经历了许多个周期而没有任何重大的改革。许多流浪者在这里消磨时间，试图找到一艘能带他们离开这个废土的飞船。这不是一个花时间的好地方。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_456d79e0bce19131e52e",
@@ -1988,8 +1790,7 @@
       "eval_reply": {
         "text": "梅杰斯特卡 Prime 是一颗被持续风暴困扰的艰难行星，这些风暴有时能覆盖整个半球。生存需要不断与自然元素搏斗，这就是为什么德瓦雷德将其设计为军事训练基地。许多新兵在这里度过周期，通过不断与自然元素的斗争而变得坚强。那些幸存下来的人往往后来在太空中取得了成功的军事生涯。除了异常狂暴的气候之外，这颗行星并没有太多有趣之处。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_761912d838d8c038665e",
@@ -1998,8 +1799,7 @@
       "eval_reply": {
         "text": "马尼斯是一个寒冷的世界，尽管它仍然属于类地行星。与银河系中许多其他M级行星不同，这里从未进行过改造，因此这个世界几乎保留了它在第二次扩张期间最初被定居时的生态系统。许多人被这颗行星这种“原生态”的感觉所吸引，这也是它受欢迎程度的重要原因。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_3597c5181586578cd561",
@@ -2008,8 +1808,7 @@
       "eval_reply": {
         "text": "马里乌斯据点曾经是旧帝国的一个海关站，负责检查前往太阳系和帝国核心系统的交通。如今，在“事件”之后的时代，这个据点首先被重新定位为处理那些逃离辐射星球的人，并作为来自太阳星云的任何威胁的第一道防线。但由于它一直处于人员和装备不足的状态，马里乌斯据点几乎无法在雷利德维持自身的存在，更不用说保护或管理其他任何东西了。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0849d769bd99e060f10e",
@@ -2018,8 +1817,7 @@
       "eval_reply": {
         "text": "尽管主要由一个造船厂组成，但涅克萨斯造船厂总部还拥有一座豪华的塔楼，供高管和市场部门使用，可以直接从太空港进入。大厅给人印象深刻，大理石地板和柱子让人难以相信这是一座如此浪费空间的站点。这里还有一个大型的等候区，以及似乎为来访者准备的一些 complimentary 茶，看起来很多人决定直接前往涅克萨斯造船厂总部购买他们的飞船。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_e94657ea1955f61a4629",
@@ -2028,8 +1826,7 @@
       "eval_reply": {
         "text": "尽管从任何标准来看都不是一个大型设施，尼福尔海姆据点是帝国空间西南象限的主要商业站点。虽然它的交通量不如位于中心位置的贸易枢纽那么多，但它为帝国、扎尔克和社团之间的商人提供了一个很好的会面机会。当然，帝国海军也将这个站点用作作战基地。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_cdadd7f864619c50ebd4",
@@ -2038,8 +1835,7 @@
       "eval_reply": {
         "text": "诺卡林对于人类居住来说是一个相当不错的星球，尤其是对于那些被称为索罗米德人的人类而言。地表稳定，原生大气为氮氧混合气。重力和轨道数据与地球标准相差不远。只存在一个问题：诺卡林完全而且彻底地干燥。在这个星球上，没有导入一个海洋量级的水，任何东西都无法生长，而按任何标准来看，这种操作都过于昂贵。因此，诺卡林完全依赖于食物进口。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9cc5000c059f70ad3769",
@@ -2048,8 +1844,7 @@
       "eval_reply": {
         "text": "第一次到访的客人进入这个太空港酒吧时总会感到惊讶。房间的中央摆放着一门真正的质量驱动炮，炮口正对着门口。当地的传闻说这门炮一直装填并处于待命状态，酒吧老板用它来阻止人们在他酒吧里行为不端。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_7986bfe00143de866323",
@@ -2058,8 +1853,7 @@
       "eval_reply": {
         "text": "任何人一踏入酒吧，首先注意到的就是天花板，它是一个以阿纳尔巴利斯为中心的银河系全息投影。尽管这是一项令人印象深刻的科技奇迹，但酒吧老板显然没有意识到，许多顾客整天都在看星星，因此在现实世界中对再看星星已经没什么兴趣了。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_94db59a50aa0a450207b",
@@ -2068,8 +1862,7 @@
       "eval_reply": {
         "text": "有些行星尽管拥有先进的作物种植技术，却仍无法养活自己的人口。里德并不是这样的行星。事实上，里德的轨道和轴倾角使它成为一个如此理想的农业世界，以至于它可以为邻近系统中的许多世界提供粮食供应。当地政府承认这一点，并将里德97%的土地面积用于农业活动。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_6462cb7f4ca552ecb126",
@@ -2078,8 +1871,7 @@
       "eval_reply": {
         "text": "在天燕座δ星系的边缘，除了少数人之外无人注意，Seanich这颗小世界正在轨道上运行。尽管从技术上讲它是一个注册的帝国殖民地，但这颗偏僻的行星并没有得到与其地位相符的关注。当地居民对此非常不满，以至于地方行政机构为了抗议而停止向中央帝国政府缴纳税款。帝国政府尚未注意到这一点。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_bcb5391e504fb0776ab0",
@@ -2088,8 +1880,7 @@
       "eval_reply": {
         "text": "滑板者对游客来说从来都不是什么有趣的地方，但如果你是索罗米德人，它却可能是一个出人意料的好住处。太空港酒吧充当着一个低调的旅游中心，为游客提供有关殖民地及其环境的信息。当地当局希望吸引更多人来到这颗行星，以促进当地经济的发展。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_014e85fe08b3c235ea4d",
@@ -2098,8 +1889,7 @@
       "eval_reply": {
         "text": "Tankard修道院是一个西里尔人经济太空设施。它处理了安库内所有贸易交易的大部分，同时也作为斯鲁卢生产材料的站点。这里还驻扎了一个小的安全小组，但这只是为了海关的目的，而不是为了抵御敌对势力。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_6880a77a1c4e4139a3aa",
@@ -2108,8 +1898,7 @@
       "eval_reply": {
         "text": "特斯拉站点是泽里克实验性武器测试站点的运营中心。许多高能物理研究人员纷纷前来，因为这里更容易获得资金，更重要的是，他们可以几乎不受伦理委员会监督地进行高能物理实验。结果是，这个基地与任何大型扎尔克研究中心或大学几乎没有区别。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_71519aae972f6ed290a1",
@@ -2118,8 +1907,7 @@
       "eval_reply": {
         "text": "塔尔是一个由德瓦雷德拥有的简单开采世界。它拥有一个非常变化多端的大气层，可以迅速在几公里宽和几乎不存在之间交替变化。这种压力变化对大多数生命形式有害，使得这颗行星几乎完全无生命。随着改造技术的出现，它最终被改造为适合人类居住，以便他们能够开采其中的许多资源。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_e60e6bfc45e633eefd2e",
@@ -2128,8 +1916,7 @@
       "eval_reply": {
         "text": "当然，这是一个绰号。怎么会不是呢？问题是，没有人记得这个名字的由来，而且，奇怪的是，没有任何关于这个站点原名的记录。这在赫卡拉斯和其他地方都是一个相当著名的故事。与此同时，所有相关人员都只是称它为“三个半国王”。看起来对他们来说这样称呼是可行的。尽管名字很奇特，“三个半国王”其实是一个相当普通的站点，为经过的飞船提供服务。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_613712bd1af3e4e554e6",
@@ -2138,8 +1925,7 @@
       "eval_reply": {
         "text": "酒吧有一扇窗户，可以俯瞰矿工们用来从下方行星采集资源的采集飞船的主要码头。这些飞船又丑又破旧，但它们总是被保持在最佳的工作状态。在长弓三号的地表发生故障，可能会迅速导致全体船员丧生。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_6286715835c642c32074",
@@ -2148,8 +1934,7 @@
       "eval_reply": {
         "text": "这是一个酒吧。它一定是，因为你通常不需要为浑浊的雨水付钱。这个地方似乎并不是为了娱乐而被常客光顾的，因为这里没有任何娱乐设施，甚至没有点唱机。少数几张桌子都焊在地板上，其他的一切要不就是由钢铁制成，要不就是被钢条覆盖着。显然，这是一个拳头与脸相撞的地方。也许你不应该在这里待太久……"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_5aaf4f62c722b56e6ae2",
@@ -2158,8 +1943,7 @@
       "eval_reply": {
         "text": "矿工酒吧遍布整个银河系，但西里尔人的矿工酒吧则以将典型的西里尔精神融入采矿殖民地朴实无华的特质中而与众不同。矿工们经常到地表来进行宗教仪式，因此不太容易受到长期在矿井中工作所导致的压力和心理创伤。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_94d7745dfb133ee22dfc",
@@ -2168,8 +1952,7 @@
       "eval_reply": {
         "text": "冰封世界通常不会被殖民，除非有充分的理由。维拉蒂·维拉塔也不例外。这个星球拥有丰富的自然资源，以及广阔的冰层下的洞穴系统，非常适合人类居住。德瓦雷德在此建立了他们最成功的工业分支之一，因此尽管没有人喜欢住在这里，这里却居住着相当数量的工作人员。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_504156311cdd76bbd65a",
@@ -2178,8 +1961,7 @@
       "eval_reply": {
         "text": "西里尔人太空边缘的一个小而贫穷的殖民地，瓦格尼是那些注定永远处于星际社会底层的地方之一。当地居民过着艰苦而报酬微薄的生活，这种生活在银河系其他地方曾引发过德瓦雷德起义。然而，这里却没有不满的迹象。西里尔人接受了他们的命运，并从他们的信仰中获得力量。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_bfa964e67952b72523f3",
@@ -2188,8 +1970,7 @@
       "eval_reply": {
         "text": "在旧帝国时期，水坑是帝国最远的前哨站。对帝国来说，它是文明的最后前哨，是在进入更远星系之前安全的最后堡垒。正因如此，水坑这个星系和星球才得名。如今，几个世纪之后，水坑仍然位于帝国空间的边境。虽然它不再是文明社会的边界，随着扎尔克家族和戈达德家族的建立，它仍然是那些离开帝国空间的商人的最后一站，以及那些进入帝国空间的第一站。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_b5f5381c37c4843e1e0f",
@@ -2198,8 +1979,7 @@
       "eval_reply": {
         "text": "祖纳的表面几乎完全用于作物种植。尽管世界上有一些分散的城市中心，但与人口更密集的世界的住宅超级综合体相比，它们的人口数量要少得多。虽然这个社区在很大程度上是农业的，但居民们与银河系的其他地方并没有脱节，事实上，由于祖纳选择的食物生产非常有利可图，他们相当富裕。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_94883f93bdb80f96b9e3",
@@ -2208,8 +1988,7 @@
       "eval_reply": {
         "text": "以埃及死神阿努比斯命名，阿努比斯在派系战争之前就由一个开采派系建立为一个开采基地。这颗行星富含放射性及重金属元素，使其成为生产武器的理想地点，而由于其相对接近太阳，这成为一项有利可图的生意。在派系战争期间，阿努比斯被帝国吞并，但当地居民随后加入了最终导致德瓦雷德家族建立的抗议运动。如今，德瓦雷德家族利用阿努比斯生产弹药和轻型战斗舰，这些产品被运回德瓦雷德的领地。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_106bb32fe7b3e79536c8",
@@ -2218,8 +1997,7 @@
       "eval_reply": {
         "text": "阿拉舒是一颗奇特的行星，它既是海洋行星，又高度火山活跃。这颗行星的海洋地壳容易发生地震，这导致海啸席卷那为数不多的陆地地区。一家西里尔人公司投资利用这一过程释放出的能量，将这颗行星变成了一座有利可图的武器生产厂。所有的制造工作都在浮动平台上进行，这样工作人员和设备就能免受持续不断的地震活动的影响。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9be0d4ca7fc88ca32101",
@@ -2228,8 +2006,7 @@
       "eval_reply": {
         "text": "太空港酒吧围绕着一个中央区域布置，该区域展示着在伯克赫尔沙漠下发现的、迄今为止最大的未切割宝石。这提醒着游客和当地居民，伯克赫尔仍然富有。只要展示的宝石不需要被出售，人们认为伯克赫尔的未来就不会陷入危险。不用说，这颗宝石受到安全系统的严密保护。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_dd7511e0852561ff8f29",
@@ -2238,8 +2015,7 @@
       "eval_reply": {
         "text": "鉴于这个世界的相对稳定，这家酒吧看起来比许多索罗米德世界上的酒吧更符合帝国标准。这里有桌椅、饮料机、酒吧招待，最重要的是，有各种饮品。虽然种类不多，毕竟这是一个较小的星球，但数量却相当丰富。不过，如果你要点一杯鸡尾酒，很可能会被建议去当地的硫磺热水喷泉。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_10df82a6a46f611ab3fc",
@@ -2248,8 +2024,7 @@
       "eval_reply": {
         "text": "在克里洛，捕鱼就是这里的主题，而太空港酒吧也完全符合这个主题。这里几乎所有东西都是以鱼类为主题的，包括酒吧本身，它就是用某种巨大水生生物的脊椎制成的。一些更富实验性的饮品，除非你喜欢非常新鲜的原料，否则最好还是避开。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_e24ee9eac11d6af2832b",
@@ -2258,8 +2033,7 @@
       "eval_reply": {
         "text": "这家酒吧位于海平面以下，可以俯瞰海洋深处。从窗户可以看到许多像灰尘一样小的动物和植物在周围漂浮。如果你非常幸运，可以看到一头巨大的水母鲸鱼经过。它们曾试图吞没并吞噬酒吧，造成相当壮观但无害的景象。大部分饮料都是当地的，以优质水母鲸鱼提取物为基底的饮品。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_47ea2c2fb5bbb5730b04",
@@ -2268,8 +2042,7 @@
       "eval_reply": {
         "text": "欧洲亚几乎完全被水覆盖，这在第二次扩张的早期被认为是不理想的。然而，不久之后人们发现欧洲亚的生物圈中包含了许多对生产高级药品有用的生物，因此破例允许其开发。这意味着欧洲亚是最早被殖民的O级行星之一。如今，这个星球仍然依靠其医药出口繁荣发展，尽管自第二次扩张时期以来制药技术的进步已使其中相当一部分变得过时。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_a0250c6dcb7bfeb77e8b",
@@ -2278,8 +2051,7 @@
       "eval_reply": {
         "text": "费伦吉尔是一个相对低调的工业星球。原材料在这里开采，然后要么立即运送到外星球，要么先加工成低级组件，再以同样的方式运走。这颗星球上没有太多其他有价值的东西。居住在这里的人大多是未能在其他地方找到工作的谢拉阶层的人。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_3f54f30a6a3fef7694d7",
@@ -2288,8 +2060,7 @@
       "eval_reply": {
         "text": "福尔卡是一个相当典型的帝国民用世界。它拥有良好的大气层、稳定的地壳结构和大量人口。这个世界生产大部分自身所需的食物，但仍需要进口以维持收支平衡。当地居民的富裕程度符合一个中产阶级帝国殖民地的预期。除此之外，福尔卡并没有太多值得注意的地方。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_3e344c4eaaa33887dfca",
@@ -2298,8 +2069,7 @@
       "eval_reply": {
         "text": "帝国所有的军事学员最终都必须在伽马据点进行强制性的停留。尽管按照任何标准来说都不豪华，但这里组织得井井有条，专为处理大量人员而设计。这个站点配备了完善的设施，可以组织系统内的演习，并对本地发生的一切进行深入的可视化展示。\n虽然太空码头的规模不足以进行飞船建造，但该站点也适合对帝国最大的舰船进行调整和维修。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_e507edc9b2ae231eb17d",
@@ -2308,8 +2078,7 @@
       "eval_reply": {
         "text": "Gerhart中央站是由扎尔克中央委员会建造的，作为对帝国建造外域据点的回应。扎尔克认为帝国插手他们认为属于自己的太空，感到不满，因此他们没有顺从地退让或冒险引发军事冲突，而是建造了一个更大、装备更好的站点。\n它同时也将是防御扎尔克免受帝国背叛，或向帝国发起攻击的理想地点，这一事实是公开的秘密。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_3e84a798d5f4564097ce",
@@ -2318,8 +2087,7 @@
       "eval_reply": {
         "text": "虽然酒吧位于站点的帝国区域，但它已被彻底翻新并重新命名为“枢纽远啤酒花园”。这里总是有各种欢乐的士兵们一边享用各种丰盛的食物，一边畅饮啤酒。如果你喜欢这种氛围，这里倒是个不错的地方。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_79216b26764159994df7",
@@ -2328,8 +2096,7 @@
       "eval_reply": {
         "text": "看起来曾经是一座庞大的超空间闸门的广阔结构，如今却已完全沦为废墟。大部分结构已无法辨认，布满了深深的伤痕和烧痕，不过有一个小区域似乎经过了轻微的翻新，你可以将你的飞船停靠在那里。令人惊讶的是，一些基本的电子设备仍然在运作，尽管看起来没有任何部件是来自原始结构的，而且有一个临时搭建的大气层生成器，使得你可以在不穿HEV防护服的情况下活动。这不是一个理想的降落地点，但至少你可以抽取燃料为你的飞船加油。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_54f0f96fce9962b0449f",
@@ -2338,8 +2105,7 @@
       "eval_reply": {
         "text": "这只是一个普通的酒吧，偶尔会在全息视频上播放公开审判。这里的安保措施比大多数地方更严格，但相当隐秘。大部分顾客都是来观看审判的人，因为法官和律师都在站内有自己的私人办公室，很少来这里。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_627276500a488ea2e13b",
@@ -2348,8 +2114,7 @@
       "eval_reply": {
         "text": "这个O级行星是扎尔克太空中的另一个纯粹居住行星，拥有相当大的人口和几所大学校园。生活水平相当高，寿命也长，使其成为人们安享晚年的热门之地。除此之外，对冒险者来说并没有太多可推荐的地方。这正是许多居民所喜欢的。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_14da62e13f68ec6905f2",
@@ -2358,8 +2123,7 @@
       "eval_reply": {
         "text": "拉尔斯是一个资源星球。在德瓦雷德家族成立之前，它曾以低价向帝国经济提供原材料。如今，其主要出口市场是艾斯特船坞，该船坞对造船资源的需求始终很大。尽管拉尔斯基本上还是以前的采矿殖民地，但由于其位于德瓦雷德境内，因此在德瓦雷德公民中，这里的工作被认为是一种特权。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0dba3103e3dff6557b66",
@@ -2368,8 +2132,7 @@
       "eval_reply": {
         "text": "尽管科里奥利斯号是第二艘殖民飞船，但由于旅途中遇到技术困难和意外事件，它比纽多特蒙德殖民地晚很多才抵达拉普拉。当它最终环绕拉普拉建立轨道时，发现这颗星球的生命潜力如此之低，以至于这次旅程几乎看起来像是一次失败。然而，殖民者在着陆后发现，星球表面之下隐藏着许多有用的矿物。拉普拉的殖民地得以生存，起初是出于纯粹的必要性，后来则凭借其出口产品。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_1dce5c6b7b9a34ed6607",
@@ -2378,8 +2141,7 @@
       "eval_reply": {
         "text": "鉴于很少有飞船愿意降落在马嫩的月亮上，再加上更少的飞船被允许降落，太空港酒吧的常客寥寥无几。他们大多是帝国的官僚和军方人员，被迫住在这里以试图控制当地人口；在这些人脸上，几乎都流露出一种想要离开这颗行星的绝望神情。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_05aaf54f65128c1f1cff",
@@ -2388,8 +2150,7 @@
       "eval_reply": {
         "text": "酒吧隐藏在军事复合体要塞的深处，这是徒劳地试图保护它免受恶劣环境的影响。地板上总是布满泥浆，从不真正干透。由于泥浆中包含的元素具有很强的磨损性，清洁机器人从不能存活太久，因此成为一种传统，新兵们被强迫徒劳地尝试拖地。饮品选择以一种用当地生长在持续风暴中的藻类酿造的浓啤酒为主。这种啤酒非常酸，喝后会留下苦涩的余味，但所有本地人都似乎已经完全习惯了它。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_417d6ed64c2234cd6014",
@@ -2398,8 +2159,7 @@
       "eval_reply": {
         "text": "对许多非索罗米德人来说，内里酒吧就像是家外的家。很多商人来到这颗行星，所以太空港酒吧里总是有很多常客。当然，他们并不介意和索罗米德人待在一起。索罗米德人都是很不错的人。只是待久了，他们会让人觉得有点毛骨悚然，你知道我的意思吧？"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_4c112e709869555e834a",
@@ -2408,8 +2168,7 @@
       "eval_reply": {
         "text": "纽多特蒙德是由离开地球的第一艘殖民飞船“创世纪号”建立的。这颗行星在很长一段时间内只以它的系统编号为人所知，纽多特蒙德只是定居点的名字。然而，由于定居点是殖民者多年间所知道的唯一事物，这个名字便与这颗世界同义了。卫星福列沃是以“创世纪”探险队的领导者命名的，这位领导者不幸在最初着陆后仅几年便去世了。\n纽多特蒙德在任何意义上都不曾非常成功，但它仍然在整体边疆经济中承担着应有的责任。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_98a5fb73577d9b38dc68",
@@ -2418,8 +2177,7 @@
       "eval_reply": {
         "text": "新的太空贸易中心聚集了太空贸易社团中不同组织的最庞大代表。最初被称为桑托罗斯分会站，由于最初的太空贸易中心在“事件”中被摧毁，它被重新启用作为替代，并更名为新的太空贸易中心。随着最近的扩建，它现在被认为是银河系中最大的自由漂浮站。\n\n该站分为四个不同的区域，容纳了属于太空贸易社团的各种行会和工会，甚至还有相当多不属于该社团的组织。大量在站内工作的人，加上不断涌入的商人和贸易者，使得这里非常热闹，甚至在走廊里也经常有贸易提议的讨论。安全由雇佣兵行会“天卫”提供，他们确保海盗和通缉人员不会登上该站，至少是那些最明显的家伙。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_130d430e868f6ae72607",
@@ -2428,8 +2186,7 @@
       "eval_reply": {
         "text": "新赞图西亚是“天卫”雇佣兵行会的总部，该行会是太空商人社团的重要成员之一。由于规模相当小，这里只有一座城市几乎占据了这颗行星冰封表面的三分之一。行会的格言“无法逃脱星辰的引力”在能容纳许多看似不匹配的战斗就绪舰船的大型太空港中十分显眼。太空港可以直接进入“天卫”行会会馆，而太空商人社团的行会大厅则毗邻其旁。尽管大多数组织都在这里设有机构，但来到这颗行星的大多数人都是为了与“天卫”成员进行交易。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_5735abc041f9e6f6c82b",
@@ -2438,8 +2195,7 @@
       "eval_reply": {
         "text": "涅克萨斯酒吧分为两个区域：一个服务于高管阶层和那些寻求价格不菲饮品的人，而另一个则更为简单，专门服务于工厂工人。厨房似乎对两个区域都是一样的，主要的不同之处在于展示方式和花费。两个区域都能很好地俯瞰飞船工厂，你可以看到装配线不断生产新的飞船以试图满足需求。看来涅克萨斯造船厂的生意非常兴隆。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_825da3ab61f85395062d",
@@ -2448,8 +2204,7 @@
       "eval_reply": {
         "text": "菲是有点热，但仍然适合居住。这里居住的人必须健康强壮才能适应这里的环境，这也是德瓦雷德高层指挥部喜欢从这个星球征召新士兵的原因。但与其对此感到不满，这里的居民反而以他们的军事服务历史为荣。这些人是真正的德瓦雷德人。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_b101e58c0e19de4e5268",
@@ -2458,8 +2213,7 @@
       "eval_reply": {
         "text": "罗斯特拉是另一个 enclave 核心世界。Straight Row 是 enclave 中最大的，但也是最弱的，有着分裂的议程，并且肩负着处理试图闯入扎尔克太空的海盗的重任。因此，罗斯特拉并没有其他 enclave 核心世界那样的便利设施，这里的知识精英主要居住在这里是为了避开其他 enclave 和首都的政治。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_abd75fd7cddc236d54cd",
@@ -2468,8 +2222,7 @@
       "eval_reply": {
         "text": "西莫恩是克拉夫特星系中唯一可居住的行星，而且仅仅勉强如此。这里的农作物生长并不好，生活远谈不上奢华，但人类仍然有理由在这里生活。和许多沙漠行星一样，西莫恩拥有大量空间用于太阳能发电，这使得这里的能源价格非常低廉。这使得这个世界对各种制造业操作都颇具吸引力。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_c6615aca4c2095f57fd5",
@@ -2478,8 +2231,7 @@
       "eval_reply": {
         "text": "尽管辛纳斯是一个相当典型的民用西里尔人世界，各阶层的西里尔人都在此居住，但它因拥有其中一些最好的民用学院而脱颖而出。对于受过良好教育的西里尔人来说，选择在苏格拉底学院修道院接受军事训练，或是在辛纳斯专注于民用领域学习，这是很常见的。此外，辛纳斯还为西里尔人修道院提供了大部分所需物资，确保了该系统的稳定。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_3b4549b098ffc3c5b189",
@@ -2488,8 +2240,7 @@
       "eval_reply": {
         "text": "西纳克是以德瓦雷德家族中一位更为著名的贵族戈德弗里德·西纳克命名的。和所有德瓦雷德贵族一样，他是一名军阀，他在战斗中的胜利以及赢得胜利的方式，使他在自己的家族以及整个帝国中赢得了尊重。以他的名字命名的这颗行星是他最后征服的地方，最终也成为了他的安息之地。这座陵墓是德瓦雷德朝圣者们热门的旅游目的地。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_aacdc4051e29f71fc669",
@@ -2498,8 +2249,7 @@
       "eval_reply": {
         "text": "从外面看，FLF站点辛德巴德看起来像一堆废铁。这正合FLF的意，因为他们的基地并不打算引人注目。旅行者越认为这个站点只是太空中又一堆漂浮的残骸，就越好。然而，内部的辛德巴德看起来……仍然像一堆废铁。FLF的资源有限，他们能拥有这样一个秘密的、自主的前哨站本身就必须被视为一项成就。尽管如此，辛德巴德不仅仅是一个象征性的抵抗据点。这个基地拥有与其规模相称的所有设施和防御能力，虽然隐形仍然是FLF免受德瓦雷德压迫者侵害的最佳保护，但必要时辛德巴德也能自我防卫。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_bfe6bd27a24dbd8a0da8",
@@ -2508,8 +2258,7 @@
       "eval_reply": {
         "text": "斯图蒂是旧帝国曾经的一颗监狱星球。由于它拥有可呼吸的大气层，而其他资源却很少，因此被认为是非常适合将罪犯丢弃后就彻底遗忘的地方。然而，随着下层阶级的工人反抗帝国，导致德瓦雷德家族的成立，斯图蒂便落入了这个新成立的大家族的管辖之下。德瓦雷德家族决定更永久地定居斯图蒂，将这些前犯人置于他们的统治之下并让他们开始工作。尽管斯图蒂的物质价值仍然很低，但其距离德瓦尔仅一步之遥，这弥补了它的不足。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_f4ac1df5b54fe0345cb8",
@@ -2518,8 +2267,7 @@
       "eval_reply": {
         "text": "酒吧非常热闹，充满了物理研究人员，他们正在讨论最新实验的结果和研究方向。从酒吧的拥挤程度来看，你会觉得大多数研究人员更愿意在这里交谈，而不是在狭窄的研究室里。所有的墙壁都是白板，这有助于保持紧张的氛围，比全息面板更加紧张。柜台后面有一个显眼的标志，上面写着“自上次事故以来已过去7个周期”，下面贴着一张便条，上面写着“谢谢弗雷德”。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_2ae1e03fb27fbc78b657",
@@ -2528,8 +2276,7 @@
       "eval_reply": {
         "text": "The Wringer 实际上叫做奥德赛前哨站，但除了几块磨损、生锈的铭牌外，船上的人们已没有什么能提醒他们这个名称了。曾经是旧帝国的一个边远科学设施，随着帝国黄金时代结束后的预算不断削减，维持其运转所需的资金枯竭，该设施被遗弃了。\n从那时起，这个空间站被小偷和独行者占据，这些人无论来自哪个地区都不受欢迎，但又不愿或无法成为海盗。不用说，The Wringer 并不是一个令人愉快的地方，很少有人会自愿来到这里。即使被标记的人也避免接近The Wringer，尽管Suna位于天狼星的边界内。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_53dc887460f92ea40735",
@@ -2538,8 +2285,7 @@
       "eval_reply": {
         "text": "这家酒吧总是挤满了人，一些人围在许多全息视频柱旁观看比赛，另一些人则在为他们不幸的参赛者饮酒解愁。空气中充满了兴奋的气氛，很难在嘈杂声中让别人听到自己的声音。因此，订单是通过投射在桌面的终端下达的，饮料则从桌子中央的小分配器中送出。显然，这家酒馆赚了很多钱。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_dd29dbbcd9e3e596252d",
@@ -2548,8 +2294,7 @@
       "eval_reply": {
         "text": "特雷维斯修道院是那些年轻军人被派驻的地方，让他们在被派往更危险的星系之前获得一些实战经验。他们中的许多人会在酒吧里互相抱怨自己有多无聊，以及希望尽快获得一个真正的职位，但更有经验的士兵知道，很少有职位比在特雷维斯的职位更令人羡慕。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_ef16419b4bf18519d25b",
@@ -2558,8 +2303,7 @@
       "eval_reply": {
         "text": "特伦切亚是德瓦雷德星域中人口最稠密的星球之一。因此，它成为军阀们争夺的热门目标，所以这颗星球的法律经常发生变化。不过，居民们已经习惯了这一点，把适应新法规视为理所当然的事情。按照德瓦雷德的标准来看，他们思维方式异常灵活。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0e6253bf869539949b9a",
@@ -2568,8 +2312,7 @@
       "eval_reply": {
         "text": "帝国中许多居住在那里的人都认为德瓦雷德人是粗俗、强壮、整天在矿井里工作，晚上则互相打架的家伙。这是一种刻板印象，而且远不能公正地描述整个德瓦雷德社会，但就乌苏瓦的德瓦雷德人而言，这却完全准确。这颗行星上的殖民地是一个全天候的采矿作业，所有在乌苏瓦生活的人都是从事采矿业或其相关行业。不用说，德瓦雷德家族从这里获取了大量原始资源。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_2655480593c2960c39ae",
@@ -2578,8 +2321,7 @@
       "eval_reply": {
         "text": "瓦里亚是一个德瓦雷德世界，因此不能称之为繁茂或宁静。但它几乎是最好的选择。瓦里亚的气候与旧地球几乎毫无二致，而这个星球的居民通常过着健康而长寿的生活。事实上，这个行星如此美好，以至于有些人觉得它被德瓦雷德浪费了，这些德瓦雷德将星球提供的丰富资源用于他们粗俗而具有破坏性的娱乐方式。\n Schafer & Kane 工业公司的总部及其主要制造工厂也位于瓦里亚，这极大地促进了当地居民的繁荣。按照传统的德瓦雷德设计，S&K 工业公司优先考虑功能而非形式，导致了非常实用的建筑，这些建筑进一步与星球的自然美景形成冲突。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_5e797f761f9fbba8d18d",
@@ -2588,8 +2330,7 @@
       "eval_reply": {
         "text": "维尼斯是一颗具有接近地球标准特性的行星。它的重力、表面积、昼夜周期和年度周期都与旧地球非常接近。如果它不是拥有高度酸性的大气层，它将是一个非常适合居住的行星。天狼星家族最近在这里建立了一个穹顶殖民地，意图最终将这颗行星改造为一个高级住宅世界。这个理想要实现还需要许多个周期，但维尼斯的居民们仍在坚持努力。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_2cf278cb263700d513b8",
@@ -2598,8 +2339,7 @@
       "eval_reply": {
         "text": "韦伦是帝国个别行星管理政策出错的一个好例子。最初这是一个声望很高的项目，这个星球本应成为一个完美的社会，为每个人提供良好的住房和设施，大量绿化和没有污染。然而，目标过于雄心勃勃，资金又不足，领导层也不称职。如今，韦伦已成为一个贫民窟，到处是破旧的、常常是半成品的建筑。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9e46cb2c8d02e4d0fc74",
@@ -2608,8 +2348,7 @@
       "eval_reply": {
         "text": "索罗米德人基本上已经作为人类基因改造的分支稳定下来，但这并不意味着对基因改造的研究已经停止。沃恩洛克是索罗米德星域最大的生物研究中心之一。许多商业出售的基因治疗药物都是在这里研发的，而在沃恩洛克从事研究人员在索罗米德人中享有很高的声望。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_442c7c1baec241de402a",
@@ -2618,8 +2357,7 @@
       "eval_reply": {
         "text": "Zaals 是一颗颇为奇特的行星，它的自转周期几乎（但不完全）与公转周期相同。 Zaals 上的一天持续许多许多周期。索罗米德人在这里的居住地建在朝向太阳的一侧，那里的条件仍然可以接受。实际上，这是该定居点的第二次建设，因为第一次建设已经开始滑向暗面。目前的定居点预计还能在光照下维持另外四十个周期。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_addf0c0130929c7b77b8",
@@ -2628,8 +2366,7 @@
       "eval_reply": {
         "text": "扎布ween前哨站是一个古老的站点。它最初是作为一个前哨站建立起来，用于对抗海盗，但随着天堂的毁灭，它逐渐转变为一个更传统的角色。目前，它主要作为一个商业站点运作，交易各种商品，同时也在监视索罗米德边境。它还保存着一个博物馆，展出了在最终对抗天堂的战斗中使用过的各种飞船和武器。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_f8475f3f5c44b08086a3",
@@ -2638,8 +2375,7 @@
       "eval_reply": {
         "text": "美丽的事物往往危险，但有时情况也会反过来。阿努比斯上的太空港酒吧可以俯瞰星球表面的一处峡谷，以及频繁肆虐其中的放射性风暴，那场面相当壮观。不过只有外星人才会欣赏这一点，大多数本地人都知道在这样狂暴的放射性条件下工作有多么令人不愉快。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_8ffc1572f72b2672000f",
@@ -2648,8 +2384,7 @@
       "eval_reply": {
         "text": "比尼富含各种常见的矿物，因此索罗米德人使用这颗世界的方式和其他人一样：作为原材料的来源。在这里开采的元素被加工成标准包装，供索罗米德的生物飞船使用。这种矿物供应使比尼成为索罗米德舰队相当重要的战略地点。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_cff7630c69cf5f21a2ae",
@@ -2658,8 +2393,7 @@
       "eval_reply": {
         "text": "波莱罗由于最近的增长，迅速成为帝国最成功的行星之一。这里的人口繁荣而成功，行星的条件也比较温和。尽管由于地理位置，它仍然被视为某种意义上的边远地区，但它在帝国政治中的重要性正日益增加。\n波莱罗的受欢迎程度很大程度上来自于其类似地球的气候，这给所有在“事件”之前能够访问过地球的人带来了一种令人安心的怀旧感。然而，有些人却正因为同样的原因而避开它……"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_86c23830065cfcf30ab3",
@@ -2668,8 +2402,7 @@
       "eval_reply": {
         "text": "黎明的酒吧有一种乡村气息；本地人刻意保持其风格接近早期扩张时代流行的款式。除此之外，这家酒吧并没有太多与众不同的地方。喧闹、气味和醉汉是银河系各地常见的特色。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_49abfd6448c34e2aec28",
@@ -2678,8 +2411,7 @@
       "eval_reply": {
         "text": "德瓦尔主星是德瓦雷德全境的首都星球，是旧帝国授予德瓦雷德家族大家族地位的星球，也是其创始人选择用来为他们的人民命名的星球。\n然而，尽管这颗星球具有标志性意义，但实际影响却微乎其微。最好的情况是，它被德瓦雷德军阀们嫉妒地争夺着，他们认为拥有这颗星球是极大的荣誉；否则，德瓦尔主星与其他星球并没有什么不同。毕竟，所有的决定都是在德瓦雷德高层指挥部做出的，而该指挥部则漂浮在德瓦尔主星的高轨道上。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9f17b12f7f9a952c2a52",
@@ -2688,8 +2420,7 @@
       "eval_reply": {
         "text": "这个酒吧充满了争吵和争论，偶尔还会爆发拳打脚踢的冲突，所有这些都基于一些大多数外行人觉得难以理解，更不用说选择立场的问题。由于这些情况，地板上洒满了大量的食物和饮料，当您确保不激怒任何人或与人对视时，忙碌的员工似乎松了一口气。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9d265e2c9a4c8a3a441d",
@@ -2698,8 +2429,7 @@
       "eval_reply": {
         "text": "伊诺斯修道院在天狼星和德瓦雷德控制的领土之间起到了类似边境守卫的作用。尽管官方上它不是一个军事设施，但伊诺斯驻扎的战斗能力飞船数量远超一个商业站点所能预期的。每当德瓦雷德派出小股舰队来试探天狼星的防御时，都是伊诺斯修道院将它们送回老家。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_22b2f6d345a025cf79cd",
@@ -2708,8 +2438,7 @@
       "eval_reply": {
         "text": "马德里亚是西里尔人空间中少数几个移民世界之一。来自边境的殖民者不断流入埃斯克尔，而他们最终都会来到这里。新来的移民会立即被转化并纳入谢拉阶层，这就是为什么这个群体在这个世界中人数过多。只有在经历了数个马德里亚上的生命周期后，这些移民才能获得前往其他西里尔人世界或在西里尔人军队中服役的许可。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_466abcc521a14940106c",
@@ -2718,8 +2447,7 @@
       "eval_reply": {
         "text": "通缉者小酒馆是新赞图西亚进行商务活动的地方。赏金和其他雇佣任务会实时显示在小酒馆中央的全息显示屏上。许多雇佣兵和赏金猎人花费时间享受美食饮品，同时留意着好的工作机会。每隔一段时间，一个热门任务会引起一阵活动热潮，人们争相在别人之前完成它。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_bf87aa7d42a62565302b",
@@ -2728,8 +2456,7 @@
       "eval_reply": {
         "text": "为了阻止集体组织对帝国的进攻而仓促建造的欧米伽据点，已经见证了其区域中无数场战斗。它的存在帮助遏制了集体组织无人机进入帝国空间的流动。由于持续受到攻击，基地的建造采用了强化板和回收的飞船零件，与大多数帝国站点标准化的设计形成鲜明对比。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_59696299db340549ebec",
@@ -2738,8 +2465,7 @@
       "eval_reply": {
         "text": "Phosarrus 是一个纯净的民用世界，由索罗米德人居住。即使按照未经过改造的标准来看，这里的生物圈也非常温和，因此对于索罗米德人来说，这是一颗稀有的瑰宝。估计人口达到令人印象深刻的十亿，但尽管如此，这颗行星的生态系统仍然保持平衡。这在很大程度上要归功于索罗米德的生物工程——经过改造的微生物和植物生命有助于维持这种平衡不被打破。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_4d34bb3303694ef02d48",
@@ -2748,8 +2474,7 @@
       "eval_reply": {
         "text": "萨贝和阿尼亚是一对相互潮汐锁定的行星，围绕着它们共同的引力中心旋转。萨贝是图里安政府的中心，居住着最多数量的上传型和生物型图里安人，是实际上的首都。这颗行星的大部分地表都未被开发，因为几乎所有的居民都居住在遍布地表的众多生态穹顶中。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_53ffd24c3c829d1f4967",
@@ -2758,8 +2483,7 @@
       "eval_reply": {
         "text": "酒吧提供多种本地饮品，并附有对其起源和历史的详细解释。你可能会觉得有几款饮品其实是同一种饮料，只是名字不同，但你确定如果你指出这一点，很可能会引发一场骚乱。看起来人们都很友好，但他们似乎都对新来者保持一定的距离。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0a17c719187e18856526",
@@ -2768,8 +2492,7 @@
       "eval_reply": {
         "text": "表面上这是一座“研究站”，但实际上它是一个赌博场所和走私前哨站，为扎尔克太空的犯罪地下世界服务。对于那些对货物来源谨慎地漠不关心的船长来说，这里提供了种类繁多的商品。研究非法项目（在扎尔克太空里，这类研究少之又少）的科学家、“私人军事承包商”、“自由商人”，这里应有尽有。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_f4d36f3faec03b3852a0",
@@ -2778,8 +2501,7 @@
       "eval_reply": {
         "text": "熔炉是一个罪犯和恶棍的聚集地。这里进行着各种非法活动，包括赌博、毒品交易和洗钱。尽管这个站点位于索罗米德控制的领土内，但海盗们有兴趣保持这个站点在线，因此他们确保当地的索罗米德部队有比关闭它更重要的事情要担心。索罗米德人似乎也乐于参与这场游戏，因为他们有兴趣集中这些邪恶行为，以免其扩散到附近的索罗米德行星。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_58b8db25c2176b987864",
@@ -2788,8 +2510,7 @@
       "eval_reply": {
         "text": "当第十三艘殖民飞船“山城波斯菊号”抵达托里时，这颗行星是荒芜的——尽管它拥有丰富的水和碳资源。但殖民者引入的地球植物却超出了预期的成功，一个世纪之内，这颗行星便形成了一个完整的生态系统；如今，这颗世界表面的大部分地区都被自然覆盖，托里的居民一直维持着这种状态。\n\n尽管托里的经济潜力尚未被充分开发，但蓬勃发展的旅游业在很大程度上弥补了这一点。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_816d143fdca87457068f",
@@ -2798,8 +2519,7 @@
       "eval_reply": {
         "text": "提莫和图拉韦之间简直有天壤之别。与它那荒芜的表亲图拉韦不同，图拉韦是一个繁茂舒适的星球，甚至在第三次扩张期间也从未被绘制过地图。索罗米德拥有的天然M类行星很少，因此他们非常珍惜这个世界。虽然其他大多数派系在繁荣与生态之间难以取舍，但索罗米德却成功地找到了完美的平衡。图拉韦可能是银河系中唯一一个居住者没有以任何方式显著改变其环境的星球。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0773cb1b32bdc75ebce4",
@@ -2808,8 +2528,7 @@
       "eval_reply": {
         "text": "建议飞行员在参观比尼的酒吧时穿戴气密服。这颗行星的大气层会对普通人类造成严重问题，而索罗米德人并未为当地居民安装净化过滤器。因此，在比尼的酒吧里喝一杯酒成了一种煎熬。这也是商人中不太受欢迎的饮酒场所之一。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_eb72cb8e5a3aa41d686e",
@@ -2818,8 +2537,7 @@
       "eval_reply": {
         "text": "德拉科尼奥米伽的居民一向乐观，他们用展示过去帝国势力的装饰品、前任皇帝的画像以及显示帝国鼎盛时期规模的图表来装饰他们的太空港酒吧。这无疑是一堂很好的历史课，很明显居民们真心相信好日子终将再次来临。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_b9b5a0d175ba8aaab272",
@@ -2828,8 +2546,7 @@
       "eval_reply": {
         "text": "哈尔的酒吧应有尽有，疲惫的旅行者所能期望的一切，从饮料到数据上行终端，再到每张桌子的隔音场和音乐发生器。简而言之，这是一个豪华的地方，这在很大程度上归功于哈尔长期的经济成功。在酒吧找不到的东西，你可以在娱乐区找到，娱乐区只隔着一个地铁站。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_8e54e8be87fba4a5c0ec",
@@ -2838,8 +2555,7 @@
       "eval_reply": {
         "text": "这个太空港酒吧有四个主要门户通往内外。第一个通往太空港设施。第二个通往这个都市群区域的中央公共交通枢纽，该都市群横跨整个大陆。第三个直接通往当地的商业节点，最后一个门户连接到紧急服务网络，这是一个完全独立、专门用于紧急车辆的基础设施。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0e8dd184b99e9ea7af26",
@@ -2848,8 +2564,7 @@
       "eval_reply": {
         "text": "和站内其他地方一样，这家酒吧直接建在赌博区里，各种老虎机和游戏桌发出持续不断的嘈杂声。站内工作人员在大厅里来回穿梭，向新来的客人和赌徒们赠送免费饮品。你能感受到整个氛围是如何经过精心设计，以一种非常机械的方式鼓励过度行为。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_a4d2ae02d2e1baa2b57f",
@@ -2858,8 +2573,7 @@
       "eval_reply": {
         "text": "酒吧连接并延伸穿过站内四个不同的区域，作为人们联络和会面的实际场所。最初名为桑托罗斯餐饮与饮品店，随着站点更名也更名为“论坛”，因其作为站点核心之一的重要功能。由许多行会提供，酒吧提供超过17,000种不同的饮品，使得真正找到自己喜欢的饮品几乎不可能，但这并没有阻止每个人继续尝试。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_6884a4d3749d53175ae9",
@@ -2868,8 +2582,7 @@
       "eval_reply": {
         "text": "对于像Phosarrus这样美好的星球来说，太空港酒吧却出人意料地简单。造成这种情况的原因是，这颗行星的民用外星球大规模交通是通过另一个终端处理的，因此唯一使用这个太空港区域的人只是商人和拥有自己飞船的平民。想必他们认为，豪华的娱乐设施对他们来说是浪费。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_37ffc473a7e006fbda46",
@@ -2878,8 +2591,7 @@
       "eval_reply": {
         "text": "虽然由于该地点进行的许多交易的性质，Shangris Station 并未广为人知，但它因是一个可以获取各种服装的地方而臭名昭著，只要你不去问或关心这些服装是从哪里来的。各种类型的飞船不断进出，形形色色的人来来往往。你可以看到一些老练的恶棍和罪犯，一些看起来相当普通的飞行员，甚至还有看起来像是伪装不佳的帝国官僚在站点内走动。只要你不引起太多注意或制造太多麻烦，似乎一切都能顺利进行。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_a08dc7e97999f386269d",
@@ -2888,8 +2600,7 @@
       "eval_reply": {
         "text": "正如你所料，酒吧是组织所有非法交易的核心。人们不断的流动和持续的环境噪音使得难以留意四周的情况，而你感觉这对你安全离开这里相当重要。每隔一段时间，就会有交易出错，导致争吵、斗殴，有时甚至更糟糕的结果。然而，不管有多大的骚动，老手和调酒师似乎都不为所动，看起来这种事情经常发生。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_a9b91a92566c954ea8e9",
@@ -2898,8 +2609,7 @@
       "eval_reply": {
         "text": "守卫者之末存在于此，作为非法商品买卖的场所。它被称为银河系中少数几个真正“自由”的市场之一，许多不太可靠的贸易者都来这里兜售他们的货物。许多贸易者在这里赚取并失去了巨额财富。这个站点本身是由那些变得一贫如洗的贸易者的飞船焊接而成的。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_e4cfd1c57268bc9ae945",
@@ -2908,8 +2618,7 @@
       "eval_reply": {
         "text": "充分利用波列罗与地球的相似之处，这里的酒吧是一家老式地球风格的酒吧，天花板低矮，啤酒醇厚，食物美味。氛围温暖而友好，顾客们都很有礼貌且兴高采烈，保安几乎不显眼。\n似乎本地人混在常客中的数量相对较少；大多数人看起来都是临时访客，要么是来度假，要么是出差。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_8faff7c445c5c30b50b9",
@@ -2918,8 +2627,7 @@
       "eval_reply": {
         "text": "Burnan不像许多其他世界那样拥有独立的太空港酒吧。相反，太空港酒吧和主太空港大厅其实是同一个地方。四周都有通往终端的出口，中央区域则由一个服务接口和柜台组成的岛屿占据主导。还有一个高处的区域设有供访客就坐的桌子，他们在那里不会妨碍主楼层的繁忙和交通。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_ae293988ee95ebc29ae1",
@@ -2928,8 +2636,7 @@
       "eval_reply": {
         "text": "新天堂是一颗位于法律和正义边界之外的行星。它由最成功的海盗之一巴塔克斯大帝在天堂被毁灭后创立。这颗行星的大气层高度有毒，在要塞之外还有高水平的辐射。这些特点使得帝国将其归类为不可居住的行星，因为它缺乏进行改造所需的必要战略资源。它与其他文明世界之间的距离使其免受窥视之眼的侵扰。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_602ce83f29801bcb6247",
@@ -2938,8 +2645,7 @@
       "eval_reply": {
         "text": "隐藏在P-8493的阴影中，海盗湾是来自天狼星太空南部地区的海盗和独立私掠者们的藏身之地。这个地方并不直接隶属于任何主要的海盗家族，这里是一片混乱之地，力量和狡诈就是这里的法律。居民们居住在一个从太空港延伸出去的广阔建筑群中，里面布满了蜿蜒的小路，更像是迷宫而不是城市。由于各种设备造成的持续电磁干扰，人们无法依赖先进的导航硬件，一切都取决于记忆和使用粗糙的地图。在那片广阔的城区之外，这颗行星繁茂而荒野，是数百甚至上千种非法获得的物种的家园，这些物种有的逃脱了，有的被释放了。据说一些食人野兽也潜伏在森林中，但人们因不幸和谋杀而失踪则更可能是解释。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_9fa77fa14254caa04701",
@@ -2948,8 +2654,7 @@
       "eval_reply": {
         "text": "尽管由于稀薄的大气层和大量有害的空间尘埃，使桑切斯的宜居指数非常低，但因为位于贸易航线上，它还是被殖民了。虽然并不十分繁荣，但随着时间的推移，它逐渐发展和扩大。当事件发生时，桑切斯幸运地被老国王科尔的阴影所保护，从而免受扩张中的星云侵袭。尽管没有被彻底摧毁，但辐射的严重程度最终导致几乎无法移民到更安全地区的人全部死亡。出于纯粹的必要性，少数幸存者通过挖掘月球核心来主要保护自己，并使用极端的药物治疗来度过他们的末日。最终，拾荒者和海盗再次发现了这个站点，并达成了独特的联盟，从而促成了梦者海盗家族的成立。\n通过海盗活动，桑切斯达到了事件之前从未有过的繁荣程度。尽管仍然远未成为富裕的行星，但它收容了许多来自邻近星系的难民和逃离更文明社会的罪犯。考虑到这种脆弱的平衡，人们可能会认为这将导致不可避免的毁灭，然而，大量使用毒品和一种集体主义心态避免了大多数严重冲突，使桑切斯的社会相对稳定。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_b41aa5a573ec3b877043",
@@ -2958,8 +2663,7 @@
       "eval_reply": {
         "text": "无论你是想喝得烂醉，与本地人打架，还是进行一些见不得光的生意，香格里拉酒吧都是你该去的地方。这里是个混乱的地方，你很难在任何时候都清楚地掌握发生的事情。到处都可以看到许多可疑的人物，时不时就会爆发一场斗殴，旁观者则在一旁欢呼。然而，似乎有一些不成文的规定，甚至打斗也会很快结束，清理得如此迅速，以至于你一开始会怀疑是否真的发生过打斗。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_5463671d8f813c620528",
@@ -2968,8 +2672,7 @@
       "eval_reply": {
         "text": "结节酒吧位于站内核心区域，原本这里是机库所在之处。随着太空站的发展，这些机库失去了直接进入太空的通道，也失去了原本的用途，最终被改造成你现在所看到的热闹氛围。大多数常客都是工程师，无论是扎尔克人还是社会成员，他们经常就一些极其技术性的细节进行热烈的交谈，而且很容易因此激动起来。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_96e31fab54b20ac99dcd",
@@ -2978,8 +2681,7 @@
       "eval_reply": {
         "text": "沃尔卡长期以来一直是小型帮派和罪犯的主要作战基地，但直到德瓦雷德起义时期，它才发展成为一个真正的海盗要塞。在那个紧张和纷争的时期，许多人决定彻底背弃帝国，另谋生路，通过从他人那里夺取财富来积累自己的财富。那些在这一行中幸存下来的人纷纷涌向沃尔卡。现在，这颗行星上驻扎着一支令人印象深刻的私人舰队，这些舰船大致上有着相似的立场。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_31ded37935ae99fabe63",
@@ -2988,8 +2690,7 @@
       "eval_reply": {
         "text": "Slop and Grill 是宇宙中最肮脏的酒馆之一。那里的食物和饮料更是雪上加霜。大部分都是在新天堂酿造的，根本无法通过任何最低限度的健康保险测试。有些酒精饮料甚至在急需时还能当作飞船燃料使用。顾客也都是些深空恶棍、海盗、黑市商人、雇佣兵和其他可疑人物，他们坚持让地面布满鲜血和破碎的牙齿。这不是一个带家人来的好地方。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     },
     {
       "source_id": "naev_0e11491675a7a5b00435",
@@ -2998,8 +2699,7 @@
       "eval_reply": {
         "text": "普通太空飞行员在走进海盗酒吧时，会期待看到彻底的混乱场面，充斥着酗酒、赌博、暴力和毒品。然而，沃尔卡的这家酒吧却并未达到这种预期。事实上，这家酒馆由氏族领袖的手下严密管控，因此是几个跳跃范围内最井然有序的地方之一。这家酒吧在海盗之间充当着中立地带，也是那些出于某种原因想要寻求他们帮助的人的会面场所。"
       },
-      "selector_status": "fixed",
-      "revised_hypothesis": false
+      "selector_status": "fixed"
     }
   ]
 }
