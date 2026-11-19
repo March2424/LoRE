@@ -1,0 +1,893 @@
+[
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00000",
+    "document_id": "gf_210_210",
+    "line": 1,
+    "hyp": "Chapter 210: The Grand Marshal and Empress Dowager's Matters 64",
+    "status": "complete",
+    "scomet": 0.7577793598175049,
+    "dcomet": 0.8329456448554993
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00001",
+    "document_id": "gf_210_210",
+    "line": 2,
+    "hyp": "Xiaomei had a moment of heartache, feeling sorrowful.",
+    "status": "complete",
+    "scomet": 0.7155686616897583,
+    "dcomet": 0.6416246891021729
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00002",
+    "document_id": "gf_210_210",
+    "line": 3,
+    "hyp": "The Grand Marshal is probably too scared to move.",
+    "status": "complete",
+    "scomet": 0.5065072774887085,
+    "dcomet": 0.45811977982521057
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00003",
+    "document_id": "gf_210_210",
+    "line": 4,
+    "hyp": "Once his body moves, his mind must start moving as well. How could he, who is so smart, not know that Bai Weiwei has already died?",
+    "status": "complete",
+    "scomet": 0.8442283272743225,
+    "dcomet": 0.8018481731414795
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00004",
+    "document_id": "gf_210_210",
+    "line": 5,
+    "hyp": "He didn't want to admit it and was too afraid to think about it deeply, so he could only force himself to sit there and convince himself that Bai Weiwei was just sleeping and would wake up soon.",
+    "status": "complete",
+    "scomet": 0.8332324624061584,
+    "dcomet": 0.8008719086647034
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00005",
+    "document_id": "gf_210_210",
+    "line": 6,
+    "hyp": "Xiaomei thought that only when Bai Weiwei's corpse started to rot would the Grand Marshal truly regain his sanity and realize that the person he was holding had been dead for a long time.",
+    "status": "complete",
+    "scomet": 0.773110568523407,
+    "dcomet": 0.773704469203949
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00006",
+    "document_id": "gf_210_210",
+    "line": 7,
+    "hyp": "But strangely, Bai Weiwei's body showed no signs of change at all.",
+    "status": "complete",
+    "scomet": 0.8804700970649719,
+    "dcomet": 0.8324734568595886
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00007",
+    "document_id": "gf_210_210",
+    "line": 8,
+    "hyp": "Even her pale complexion had improved somewhat, and although her body was cold, she looked like she was just asleep.",
+    "status": "complete",
+    "scomet": 0.7740927338600159,
+    "dcomet": 0.7270480394363403
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00008",
+    "document_id": "gf_210_210",
+    "line": 9,
+    "hyp": "No trace of a corpse's characteristics appeared.",
+    "status": "complete",
+    "scomet": 0.9371833801269531,
+    "dcomet": 0.8729982376098633
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00009",
+    "document_id": "gf_210_210",
+    "line": 10,
+    "hyp": "Mu Yankun watched over her, his eyes growing brighter.",
+    "status": "complete",
+    "scomet": 0.8017706871032715,
+    "dcomet": 0.7617596387863159
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00010",
+    "document_id": "gf_210_210",
+    "line": 11,
+    "hyp": "That old quack doctor was finally brought here. He was eating a heart-protecting pill and said, 'I reckon my old life is almost gone.'",
+    "status": "complete",
+    "scomet": 0.7133433818817139,
+    "dcomet": 0.6817277073860168
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00011",
+    "document_id": "gf_210_210",
+    "line": 12,
+    "hyp": "Mu Yankun hadn't slept for five days, and everyone could see how exhausted he was.",
+    "status": "complete",
+    "scomet": 0.8636787533760071,
+    "dcomet": 0.8326987624168396
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00012",
+    "document_id": "gf_210_210",
+    "line": 13,
+    "hyp": "But he was extremely alert, more than unnaturally so.",
+    "status": "complete",
+    "scomet": 0.6912049651145935,
+    "dcomet": 0.6634265184402466
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00013",
+    "document_id": "gf_210_210",
+    "line": 14,
+    "hyp": "\"Since she fell asleep after taking the medicine I gave her, I think you should come and check on her. When will she wake up?\"",
+    "status": "complete",
+    "scomet": 0.8634383082389832,
+    "dcomet": 0.8022233843803406
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00014",
+    "document_id": "gf_210_210",
+    "line": 15,
+    "hyp": "The old quack doctor sighed before walking to the bedside to take Bai Weiwei's pulse.",
+    "status": "complete",
+    "scomet": 0.7910532355308533,
+    "dcomet": 0.8142766952514648
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00015",
+    "document_id": "gf_210_210",
+    "line": 16,
+    "hyp": "\"This phenomenon is extremely rare. Treatment isn't necessary, but there's another very important thing that needs to be done...\"",
+    "status": "complete",
+    "scomet": 0.889299213886261,
+    "dcomet": 0.8376227021217346
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00016",
+    "document_id": "gf_210_210",
+    "line": 17,
+    "hyp": "Mu Yankun listened intently, his eyes burning with intensity, like a good student.",
+    "status": "complete",
+    "scomet": 0.8423378467559814,
+    "dcomet": 0.8038573861122131
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00017",
+    "document_id": "gf_210_210",
+    "line": 18,
+    "hyp": "The old quack doctor's voice lowered, saying, 'It's time for me to treat someone else again...'",
+    "status": "complete",
+    "scomet": 0.6430675983428955,
+    "dcomet": 0.5305384993553162
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00018",
+    "document_id": "gf_210_210",
+    "line": 19,
+    "hyp": "Mu Yankun leaned forward, unwilling to miss a word of what he was saying.",
+    "status": "complete",
+    "scomet": 0.8500828146934509,
+    "dcomet": 0.823630154132843
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00019",
+    "document_id": "gf_210_210",
+    "line": 20,
+    "hyp": "Resultantly, the old quack doctor's hand moved like lightning, and he instantly inserted a needle into Mu Yankun's neck.",
+    "status": "complete",
+    "scomet": 0.7283412218093872,
+    "dcomet": 0.7185599207878113
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00020",
+    "document_id": "gf_210_210",
+    "line": 21,
+    "hyp": "Mu Yankun's eyes suddenly widened, and his hand shot towards the old quack doctor's head.",
+    "status": "complete",
+    "scomet": 0.7748672366142273,
+    "dcomet": 0.7746166586875916
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00021",
+    "document_id": "gf_210_210",
+    "line": 22,
+    "hyp": "Xiaomei's hand extended and grabbed Mu Yankun's attack.",
+    "status": "complete",
+    "scomet": 0.7448746562004089,
+    "dcomet": 0.8058127760887146
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00022",
+    "document_id": "gf_210_210",
+    "line": 23,
+    "hyp": "In this exchange, Mu Yankun couldn't hold on and passed out from exhaustion.",
+    "status": "complete",
+    "scomet": 0.7204434275627136,
+    "dcomet": 0.6525478959083557
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00023",
+    "document_id": "gf_210_210",
+    "line": 24,
+    "hyp": "The old quack doctor rubbed his head, saying, 'I nearly died, but I reckon I won't live much longer either. If he wakes up without going mad, that'll be good.'",
+    "status": "complete",
+    "scomet": 0.7601887583732605,
+    "dcomet": 0.7167864441871643
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00024",
+    "document_id": "gf_210_210",
+    "line": 25,
+    "hyp": "Bai Weiwei couldn't be saved.",
+    "status": "complete",
+    "scomet": 0.6581557393074036,
+    "dcomet": 0.6759392023086548
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00025",
+    "document_id": "gf_210_210",
+    "line": 26,
+    "hyp": "And Mu Yankun's condition was simply tragic; his internal organs were all affected.",
+    "status": "complete",
+    "scomet": 0.6683351397514343,
+    "dcomet": 0.6590607166290283
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00026",
+    "document_id": "gf_210_210",
+    "line": 27,
+    "hyp": "Not eating, not sleeping, not thinking, not moving—like a living corpse. In two more days, he might as well join Bai Weiwei in death.",
+    "status": "complete",
+    "scomet": 0.5853831171989441,
+    "dcomet": 0.5603622794151306
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00027",
+    "document_id": "gf_210_210",
+    "line": 28,
+    "hyp": "Xiaomei looked at the old quack doctor and said, 'You protected my grand marshal's life. If you can't protect him again, I'll kill you myself.'",
+    "status": "complete",
+    "scomet": 0.7384569048881531,
+    "dcomet": 0.7064844369888306
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00028",
+    "document_id": "gf_210_210",
+    "line": 29,
+    "hyp": "After saying that, she turned around and left, heading to where they would receive their punishment, accepting her penalty silently.",
+    "status": "complete",
+    "scomet": 0.8431056141853333,
+    "dcomet": 0.811443030834198
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00029",
+    "document_id": "gf_210_210",
+    "line": 30,
+    "hyp": "The old quack doctor sighed, saying, 'No wonder my master said that selling sweet potatoes couldn't make me a god. Everyone treats me like a god, but even gods can't bring back someone who wants to die.'",
+    "status": "complete",
+    "scomet": 0.7647109031677246,
+    "dcomet": 0.7463712096214294
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00030",
+    "document_id": "gf_210_210",
+    "line": 31,
+    "hyp": "Mu Yankun only slept for two hours and then opened his eyes.",
+    "status": "complete",
+    "scomet": 0.9209094643592834,
+    "dcomet": 0.8925206065177917
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00031",
+    "document_id": "gf_210_210",
+    "line": 32,
+    "hyp": "He was startled, his eyes showing rare panic, yet he found himself unable to move.",
+    "status": "complete",
+    "scomet": 0.8722912669181824,
+    "dcomet": 0.8342478275299072
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00032",
+    "document_id": "gf_210_210",
+    "line": 33,
+    "hyp": "Seeing that he was awake, the old quack doctor said, 'I'm giving you an injection. Your spirit is weak, but if you rest, you'll meet King Yama.'",
+    "status": "complete",
+    "scomet": 0.695931077003479,
+    "dcomet": 0.652559757232666
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00033",
+    "document_id": "gf_210_210",
+    "line": 34,
+    "hyp": "Mu Yankun's eyes darkened, his face pale and haggard, but with a terrifying aura that made people shudder.",
+    "status": "complete",
+    "scomet": 0.8192265629768372,
+    "dcomet": 0.7682830691337585
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00034",
+    "document_id": "gf_210_210",
+    "line": 35,
+    "hyp": "The old quack doctor gave him another injection, saying, 'I didn't want to save you because you're such a heartless person. If I saved you, the world might fall into chaos.'",
+    "status": "complete",
+    "scomet": 0.7513362169265747,
+    "dcomet": 0.7156172394752502
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00035",
+    "document_id": "gf_210_210",
+    "line": 36,
+    "hyp": "Mu Yankun's voice was soft and eerie, saying, 'Let me go.'",
+    "status": "complete",
+    "scomet": 0.8537500500679016,
+    "dcomet": 0.8244056105613708
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00036",
+    "document_id": "gf_210_210",
+    "line": 37,
+    "hyp": "The old quack doctor shook his head, saying, 'That's not possible. I can't save your beloved, but saving you counts as compensation.'",
+    "status": "complete",
+    "scomet": 0.7489355802536011,
+    "dcomet": 0.6905280351638794
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00037",
+    "document_id": "gf_210_210",
+    "line": 38,
+    "hyp": "Suddenly, Mu Yankun laughed bitterly, saying, 'You can't compensate, how can you possibly compensate? Even if you save everyone in the world, you can't compensate for a single strand of her hair.'",
+    "status": "complete",
+    "scomet": 0.7512186169624329,
+    "dcomet": 0.6906027793884277
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00000",
+    "document_id": "gf_70_70",
+    "line": 1,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.4423876702785492,
+    "dcomet": 0.4690695106983185
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00001",
+    "document_id": "gf_70_70",
+    "line": 2,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.36344945430755615,
+    "dcomet": 0.31500494480133057
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00002",
+    "document_id": "gf_70_70",
+    "line": 3,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.2915153503417969,
+    "dcomet": 0.21731430292129517
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00003",
+    "document_id": "gf_70_70",
+    "line": 4,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.36926087737083435,
+    "dcomet": 0.25813618302345276
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00004",
+    "document_id": "gf_70_70",
+    "line": 5,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3075942099094391,
+    "dcomet": 0.22080643475055695
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00005",
+    "document_id": "gf_70_70",
+    "line": 6,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.2768007814884186,
+    "dcomet": 0.17205633223056793
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00006",
+    "document_id": "gf_70_70",
+    "line": 7,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3799390494823456,
+    "dcomet": 0.24184031784534454
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00007",
+    "document_id": "gf_70_70",
+    "line": 8,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.5448658466339111,
+    "dcomet": 0.35585281252861023
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00008",
+    "document_id": "gf_70_70",
+    "line": 9,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.33726760745048523,
+    "dcomet": 0.2712661921977997
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00009",
+    "document_id": "gf_70_70",
+    "line": 10,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.35168129205703735,
+    "dcomet": 0.25943300127983093
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00010",
+    "document_id": "gf_70_70",
+    "line": 11,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3490159213542938,
+    "dcomet": 0.29425325989723206
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00011",
+    "document_id": "gf_70_70",
+    "line": 12,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3307311236858368,
+    "dcomet": 0.23899151384830475
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00012",
+    "document_id": "gf_70_70",
+    "line": 13,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.5191264152526855,
+    "dcomet": 0.35889407992362976
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00013",
+    "document_id": "gf_70_70",
+    "line": 14,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.31556186079978943,
+    "dcomet": 0.21571509540081024
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00014",
+    "document_id": "gf_70_70",
+    "line": 15,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3909565806388855,
+    "dcomet": 0.22847947478294373
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00015",
+    "document_id": "gf_70_70",
+    "line": 16,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.5292556881904602,
+    "dcomet": 0.4140082895755768
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00016",
+    "document_id": "gf_70_70",
+    "line": 17,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3528316915035248,
+    "dcomet": 0.2997669279575348
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00017",
+    "document_id": "gf_70_70",
+    "line": 18,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.334123820066452,
+    "dcomet": 0.22603154182434082
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00018",
+    "document_id": "gf_70_70",
+    "line": 19,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.35451242327690125,
+    "dcomet": 0.2650124728679657
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00019",
+    "document_id": "gf_70_70",
+    "line": 20,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3135952055454254,
+    "dcomet": 0.2466273009777069
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00020",
+    "document_id": "gf_70_70",
+    "line": 21,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.32322150468826294,
+    "dcomet": 0.20719391107559204
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00021",
+    "document_id": "gf_70_70",
+    "line": 22,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.35086628794670105,
+    "dcomet": 0.20210134983062744
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00022",
+    "document_id": "gf_70_70",
+    "line": 23,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.30833831429481506,
+    "dcomet": 0.22366198897361755
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00023",
+    "document_id": "gf_70_70",
+    "line": 24,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3575765788555145,
+    "dcomet": 0.2461327314376831
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00024",
+    "document_id": "gf_70_70",
+    "line": 25,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3922087550163269,
+    "dcomet": 0.24564525485038757
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00025",
+    "document_id": "gf_70_70",
+    "line": 26,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3269277513027191,
+    "dcomet": 0.22032848000526428
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00026",
+    "document_id": "gf_70_70",
+    "line": 27,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.531844437122345,
+    "dcomet": 0.3443686068058014
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00027",
+    "document_id": "gf_70_70",
+    "line": 28,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3267528712749481,
+    "dcomet": 0.2302740514278412
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00028",
+    "document_id": "gf_70_70",
+    "line": 29,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.35564494132995605,
+    "dcomet": 0.2790546715259552
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00029",
+    "document_id": "gf_70_70",
+    "line": 30,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3655657470226288,
+    "dcomet": 0.2218853235244751
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00030",
+    "document_id": "gf_70_70",
+    "line": 31,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3177538216114044,
+    "dcomet": 0.2511613667011261
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00031",
+    "document_id": "gf_70_70",
+    "line": 32,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.33192506432533264,
+    "dcomet": 0.19381895661354065
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00032",
+    "document_id": "gf_70_70",
+    "line": 33,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3369438946247101,
+    "dcomet": 0.2406238317489624
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00033",
+    "document_id": "gf_70_70",
+    "line": 34,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3408028483390808,
+    "dcomet": 0.2261086106300354
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00034",
+    "document_id": "gf_70_70",
+    "line": 35,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3548986613750458,
+    "dcomet": 0.24290886521339417
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00035",
+    "document_id": "gf_70_70",
+    "line": 36,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.2916100025177002,
+    "dcomet": 0.17809805274009705
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00036",
+    "document_id": "gf_70_70",
+    "line": 37,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.32994168996810913,
+    "dcomet": 0.22983433306217194
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00037",
+    "document_id": "gf_70_70",
+    "line": 38,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3155706524848938,
+    "dcomet": 0.1795312464237213
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00038",
+    "document_id": "gf_70_70",
+    "line": 39,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3551517426967621,
+    "dcomet": 0.23053565621376038
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00039",
+    "document_id": "gf_70_70",
+    "line": 40,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.34891489148139954,
+    "dcomet": 0.25392475724220276
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00040",
+    "document_id": "gf_70_70",
+    "line": 41,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.30051738023757935,
+    "dcomet": 0.23788011074066162
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00041",
+    "document_id": "gf_70_70",
+    "line": 42,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.4296879470348358,
+    "dcomet": 0.334490031003952
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00042",
+    "document_id": "gf_70_70",
+    "line": 43,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3119082748889923,
+    "dcomet": 0.26442116498947144
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00043",
+    "document_id": "gf_70_70",
+    "line": 44,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.4535365402698517,
+    "dcomet": 0.261309951543808
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00044",
+    "document_id": "gf_70_70",
+    "line": 45,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.37700703740119934,
+    "dcomet": 0.2605184018611908
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00045",
+    "document_id": "gf_70_70",
+    "line": 46,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3565732538700104,
+    "dcomet": 0.287116140127182
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00046",
+    "document_id": "gf_70_70",
+    "line": 47,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.33038219809532166,
+    "dcomet": 0.2512136995792389
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00047",
+    "document_id": "gf_70_70",
+    "line": 48,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3367582857608795,
+    "dcomet": 0.22987616062164307
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00048",
+    "document_id": "gf_70_70",
+    "line": 49,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.37022864818573,
+    "dcomet": 0.26501765847206116
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00049",
+    "document_id": "gf_70_70",
+    "line": 50,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.31302767992019653,
+    "dcomet": 0.205267995595932
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00050",
+    "document_id": "gf_70_70",
+    "line": 51,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.33997854590415955,
+    "dcomet": 0.2553183138370514
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00051",
+    "document_id": "gf_70_70",
+    "line": 52,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.31815388798713684,
+    "dcomet": 0.21007177233695984
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00052",
+    "document_id": "gf_70_70",
+    "line": 53,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.29131844639778137,
+    "dcomet": 0.2038269340991974
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00053",
+    "document_id": "gf_70_70",
+    "line": 54,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.28043332695961,
+    "dcomet": 0.20938822627067566
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00054",
+    "document_id": "gf_70_70",
+    "line": 55,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3000521957874298,
+    "dcomet": 0.20291773974895477
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00055",
+    "document_id": "gf_70_70",
+    "line": 56,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.3124801218509674,
+    "dcomet": 0.23550251126289368
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00056",
+    "document_id": "gf_70_70",
+    "line": 57,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.4362594783306122,
+    "dcomet": 0.2753731608390808
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00057",
+    "document_id": "gf_70_70",
+    "line": 58,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.5345748066902161,
+    "dcomet": 0.41639217734336853
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00058",
+    "document_id": "gf_70_70",
+    "line": 59,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.27825257182121277,
+    "dcomet": 0.2047753781080246
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00059",
+    "document_id": "gf_70_70",
+    "line": 60,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.2693568170070648,
+    "dcomet": 0.18689237534999847
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00060",
+    "document_id": "gf_70_70",
+    "line": 61,
+    "hyp": "",
+    "status": "failed",
+    "scomet": 0.30363717675209045,
+    "dcomet": 0.20651498436927795
+  }
+]

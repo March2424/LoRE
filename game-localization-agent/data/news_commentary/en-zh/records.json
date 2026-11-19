@@ -1,0 +1,702 @@
+[
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00000",
+    "document_id": "nc_3",
+    "src": "Trump vs. the Economy",
+    "ref": "特朗普与经济",
+    "line": 1
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00001",
+    "document_id": "nc_3",
+    "src": "NEW YORK – Financial markets have finally awoken to the fact that Donald Trump is US president.",
+    "ref": "纽约—金融市场终于警醒，原来特朗普是美国总统。",
+    "line": 2
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00002",
+    "document_id": "nc_3",
+    "src": "Given that the world has endured two years of reckless tweets and public statements by the world’s most powerful man, the obvious question is, What took so long?",
+    "ref": "世界已经忍受这位全球最有权力的人物长达两年的口无遮拦的推特和公开言论，显而易见的问题是，是什么保持了这么长时间？",
+    "line": 3
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00003",
+    "document_id": "nc_3",
+    "src": "For one thing, until now, investors had bought into the argument that Trump is all bark and no bite.",
+    "ref": "一方面，直到目前，投资者都人为特朗普光打雷不下雨。",
+    "line": 4
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00004",
+    "document_id": "nc_3",
+    "src": "They were willing to give him the benefit of the doubt as long as he pursued tax cuts, deregulation, and other policies beneficial to the corporate sector and shareholders.",
+    "ref": "只要他采取减税、去监管化和其他有利于公司部门和股东的政策，他们就愿意给予他无罪推定。",
+    "line": 5
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00005",
+    "document_id": "nc_3",
+    "src": "And many trusted that, at the end of the day, the “adults in the room” would restrain Trump and ensure that the administration’s policies didn’t jump the guardrails of orthodoxy.",
+    "ref": "很多人相信，到最后 ， “ 房间里的成年人”会约束特朗普，保证政府政策不逾矩。",
+    "line": 6
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00006",
+    "document_id": "nc_3",
+    "src": "These assumptions were more or less vindicated during Trump’s first year in office, when economic growth and an expected increase in corporate profits – owing to forthcoming tax cuts and deregulation – resulted in strong stock-market performance.",
+    "ref": "这样的假定在特朗普执政的第一年种或多或少地得到了证实，这段时期，经济增长和公司利润预期增长 — — 拜即将到来的减税和去监管化所赐 — — 令股市表现抢眼。",
+    "line": 7
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00007",
+    "document_id": "nc_3",
+    "src": "In 2017, US stock indices rose more than 20%.",
+    "ref": "2017年，美国股票指数上涨超过20 % 。",
+    "line": 8
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00008",
+    "document_id": "nc_3",
+    "src": "But things changed radically in 2018, and especially in the last few months.",
+    "ref": "但在2018年，情况急转直下，特别是在最后几个月中。",
+    "line": 9
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00009",
+    "document_id": "nc_3",
+    "src": "Despite corporate earnings growing by over 20% (thanks to the tax cuts), US equity markets moved sideways for most of the year, and have now taken a sharp turn south.",
+    "ref": "尽管公司利润增加超过20 % （ 感谢减税 ） ， 美国股市在一整年的大部分时间里上下震荡，现在则猛烈下跌。",
+    "line": 10
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00010",
+    "document_id": "nc_3",
+    "src": "At this point, broad indices are in correction territory (meaning a 10% drop from the recent peak), and indices of tech stocks, such as the Nasdaq, are in bear-market territory (a drop of 20% or more).",
+    "ref": "目前，各种指数都位于修正区间（即较最近的高点下跌10 % ） ，科技股指数（如纳斯达克 ） ， 已跌入熊市（下跌20%或以上 ） 。",
+    "line": 11
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00011",
+    "document_id": "nc_3",
+    "src": "Though financial markets’ higher volatility reflects concerns about China, Italy and other eurozone economies, and key emerging economies, most of the recent turmoil is due to Trump.",
+    "ref": "尽管金融市场波动性的增加反映了对中国、意大利和其他欧元区经济体，以及关键新兴经济体的担忧，但最近的动荡是因为特朗普。",
+    "line": 12
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00012",
+    "document_id": "nc_3",
+    "src": "The year started with the enactment of a reckless tax cut that pushed up long-term interest rates and created a sugar high in an economy already close to full employment.",
+    "ref": "今年一开始，特朗普实施了鲁莽的减税，结果推高了长期利率，让已经接近充分就业的经济达到高潮。",
+    "line": 13
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00013",
+    "document_id": "nc_3",
+    "src": "As early as February, growing concerns about inflation rising above the US Federal Reserve’s 2% target led to the year’s first risk-off.",
+    "ref": "到了2月，对通胀升高到美联储的目标值2%以上的担忧导致了2018年的第一次避险潮。",
+    "line": 14
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00014",
+    "document_id": "nc_3",
+    "src": "Then came Trump’s trade wars with China and other key US trade partners.",
+    "ref": "接着，特朗普对中国和其他美国重要贸易伙伴发动了贸易战。",
+    "line": 15
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00015",
+    "document_id": "nc_3",
+    "src": "Market worries about the administration’s protectionist policies have waxed and waned throughout the year, but they are now reaching a new peak.",
+    "ref": "市场对政府保护主义政策的担忧在一整年中起起伏伏，但如今正在达到新的高峰。",
+    "line": 16
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00016",
+    "document_id": "nc_3",
+    "src": "The latest US actions against China seem to augur a broader trade, economic, and geopolitical cold war.",
+    "ref": "美国最近的对华动作似乎是准备掀起全面的贸易、经济和地缘政治冷战。",
+    "line": 17
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00017",
+    "document_id": "nc_3",
+    "src": "An additional worry is that Trump’s other policies will have stagflationary effects (reduced growth alongside higher inflation).",
+    "ref": "另一项担忧是特朗普的其他政策会带来滞涨效应（增长减弱，而通胀增加 ） 。",
+    "line": 18
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00018",
+    "document_id": "nc_3",
+    "src": "After all, Trump is planning to limit inward foreign direct investment, and has already implemented broad restrictions on immigration, which will reduce labor-supply growth at a time when workforce aging and skills mismatches are already a growing problem.",
+    "ref": "毕竟，特朗普准备限制外国直接投资流入，并实施了广泛的移民限制，这将在劳动力老化和技能错配问题日益严重的情况下，拖累劳动力供给的增长。",
+    "line": 19
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00019",
+    "document_id": "nc_3",
+    "src": "Moreover, the administration has yet to propose an infrastructure plan to spur private-sector productivity or hasten the transition to a green economy.",
+    "ref": "此外，特朗普政府仍未提出刺激私人部门生产率，或加速绿色经济转型的基础设施计划。",
+    "line": 20
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00020",
+    "document_id": "nc_3",
+    "src": "And on Twitter and elsewhere, Trump has continued to bash corporations for their hiring, production, investment, and pricing practices, singling out tech firms just when they are already facing a wider backlash and increased competition from their Chinese counterparts.",
+    "ref": "在推特和其他场合，特朗普不断地抨击企业的招聘、生产、投资和定价行为，尤其是科技企业，它们已经面临着广泛的反对和来自中国对手的日益激烈的竞争。",
+    "line": 21
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00021",
+    "document_id": "nc_3",
+    "src": "Emerging markets have also been shaken by US policies.",
+    "ref": "新兴市场也受到了美国政策的冲击。",
+    "line": 22
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00022",
+    "document_id": "nc_3",
+    "src": "Fiscal stimulus and monetary-policy tightening have pushed up short- and long-term interest rates and strengthened the US dollar.",
+    "ref": "财政刺激和货币政策紧缩推高了短期和长期利率，强化了美元。",
+    "line": 23
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00023",
+    "document_id": "nc_3",
+    "src": "As a result, emerging economies have experienced capital flight and rising dollar-denominated debt.",
+    "ref": "结果，新兴经济体遭遇到资本外逃和美元计价债务价值上涨。",
+    "line": 24
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00024",
+    "document_id": "nc_3",
+    "src": "Those that rely heavily on exports have suffered the effects of lower commodity prices, and all that trade even indirectly with China have felt the effects of the trade war.",
+    "ref": "严重依赖出口的新兴经济体则因为大宗商品价格下跌而蒙受损失，就连与中国只有间接贸易关系的国家，也感受到了贸易战的影响。",
+    "line": 25
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00025",
+    "document_id": "nc_3",
+    "src": "Even Trump’s oil policies have created volatility.",
+    "ref": "就连特朗普的石油政策也制造了波动性。",
+    "line": 26
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00026",
+    "document_id": "nc_3",
+    "src": "After the resumption of US sanctions against Iran pushed up oil prices, the administration’s efforts to carve out exemptions and bully Saudi Arabia into increasing its own production led to a sharp price drop.",
+    "ref": "美国重启对伊朗制裁推高了石油价格，此后，美国政府取消豁免、威吓沙特阿拉伯提高石油产量，导致石油价格暴跌。",
+    "line": 27
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00027",
+    "document_id": "nc_3",
+    "src": "Though US consumers benefit from lower oil prices, US energy firms’ stock prices do not.",
+    "ref": "尽管美国消费者因为低油价而收益，但美国能源企业的股价撑不住了。",
+    "line": 28
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00028",
+    "document_id": "nc_3",
+    "src": "Besides, excessive oil-price volatility is bad for producers and consumers alike, because it hinders sensible investment and consumption decisions.",
+    "ref": "除此之外，过度的石油价格波动对于生产者和消费者来说都不利，因为这阻挠了明智的投资和消费决策。",
+    "line": 29
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00029",
+    "document_id": "nc_3",
+    "src": "Making matters worse, it is now clear that the benefits of last year’s tax cuts have accrued almost entirely to the corporate sector, rather than to households in the form of higher real (inflation-adjusted) wages.",
+    "ref": "更糟糕的是，现在，显然去年减税的收益几乎全部都流向了公司部门，而没有以更高的真实（经通胀调整的）工资的形式流向家庭。",
+    "line": 30
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00030",
+    "document_id": "nc_3",
+    "src": "That means household consumption could soon slow down, further undercutting the economy.",
+    "ref": "这意味着家庭消费可能很快就将减速，进一步影响经济。",
+    "line": 31
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00031",
+    "document_id": "nc_3",
+    "src": "More than anything else, though, the sharp fall in US and global equities during the last quarter is a response to Trump’s own utterances and actions.",
+    "ref": "但是，最近一个季度美国和全球股市的暴跌的最主要原因是特朗普本人的言论和行为。",
+    "line": 32
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00032",
+    "document_id": "nc_3",
+    "src": "Even worse than the heightened risk of a full-scale trade war with China (despite the recent “truce” agreed with Chinese President Xi Jinping) are Trump’s public attacks on the Fed, which began as early as the spring of 2018, when the US economy was growing at more than 4%.",
+    "ref": "比爆发全面对华贸易战的突出风险（尽管他最近与中国国家主席西金品达成了“休战 ” ） 更糟糕的是特朗普对美联储的公开抨击。 他的抨击始于2018年春，当时美国经济增长率高于4 % 。",
+    "line": 33
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00033",
+    "document_id": "nc_3",
+    "src": "Given these earlier attacks, markets were spooked this month when the Fed correctly decided to hike interest rates while also signaling a more gradual pace of rate increases in 2019.",
+    "ref": "由于这些早前的抨击，市场在本月美联储正确地决定升息，同时暗示将在2019年更加缓慢地升息时，成了惊弓之鸟。",
+    "line": 34
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00034",
+    "document_id": "nc_3",
+    "src": "Most likely, the Fed’s relative hawkishness is a reaction to Trump’s threats against it.",
+    "ref": "更有可能的是，美联储的相对鹰派立场是对特朗普对它的抨击的反应。",
+    "line": 35
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00035",
+    "document_id": "nc_3",
+    "src": "In the face of hostile presidential tweets, Fed Chair Jerome Powell needed to signal that the central bank remains politically independent.",
+    "ref": "面对怀有敌意的总统推特，美联储主席杰罗姆·鲍威尔（Jerome Powell）需要释放出央行仍然保持政治独立的信号。",
+    "line": 36
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00036",
+    "document_id": "nc_3",
+    "src": "But then came Trump’s decision to shut down large segments of the federal government over Congress’s refusal to fund his useless Mexican border wall.",
+    "ref": "但接着，因为国会拒绝为他毫无用处的墨西哥边境墙拨款，特朗普决定让联邦政府部分关门。",
+    "line": 37
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00037",
+    "document_id": "nc_3",
+    "src": "That sent markets into a near-panic, and the government shutdown was soon followed by reports that Trump wants to fire Powell – a move that could turn a correction into a crash.",
+    "ref": "此举让市场进入了准恐慌状态，随着政府的关门，很快便有报道说特朗普想炒掉鲍威尔 — — 这可能让市场修正演变为崩盘。",
+    "line": 38
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00038",
+    "document_id": "nc_3",
+    "src": "Just before the Christmas holiday, US Treasury secretary Steven Mnuchin was forced to issue a public statement to placate the markets.",
+    "ref": "圣诞节假期前夕，美国财政部长史蒂文·努钦（Steven Mnuchin）被迫发表公开声明安抚市场。",
+    "line": 39
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00039",
+    "document_id": "nc_3",
+    "src": "He announced that Trump was not planning to fire Powell after all, and that US banks’ finances are sound, effectively highlighting the question of whether they really are.",
+    "ref": "他宣称，特朗普并没有炒掉鲍威尔的计划，美国财政状况良好，而这恰恰突出了状态是否真的良好的问题。",
+    "line": 40
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00040",
+    "document_id": "nc_3",
+    "src": "Recent changes within the administration that do not necessarily affect economic policymaking are also rattling the markets.",
+    "ref": "而未必会影响到经济决策的政府内部人事变动最近也让市场感到担忧。",
+    "line": 41
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00041",
+    "document_id": "nc_3",
+    "src": "The impending departure of White House Chief of Staff John Kelly and Secretary of Defense James Mattis will leave the room devoid of adults.",
+    "ref": "白宫幕僚长约翰·凯利（John Kelly）和国防部长詹姆斯·马蒂斯（James Mattis）即将离职，特朗普内阁将再无心智健全之士。",
+    "line": 42
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00042",
+    "document_id": "nc_3",
+    "src": "The coterie of economic nationalists and foreign-policy hawks who remain will cater to Trump’s every whim.",
+    "ref": "剩下的将全部是经济民族主义者和外交政策鹰派，唯特朗普之马首是瞻。",
+    "line": 43
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00043",
+    "document_id": "nc_3",
+    "src": "As matters stand, the risk of a full-scale geopolitical conflagration with China cannot be ruled out.",
+    "ref": "目前，全方位对华地缘政治冲突的可能性仍无法排除。",
+    "line": 44
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00044",
+    "document_id": "nc_3",
+    "src": "A new cold war would effectively lead to de-globalization, disrupting supply chains everywhere, but particularly in the tech sector, as the recent ZTE and Huawei cases signal.",
+    "ref": "新冷战极有可能导致去全球化，破坏全球供应链，但首当其冲的将是科技行业，最近的中兴案和华为案都是明证。",
+    "line": 45
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00045",
+    "document_id": "nc_3",
+    "src": "At the same time, Trump seems to be hell-bent on undermining the cohesion of the European Union and NATO at a time when Europe is economically and politically fragile.",
+    "ref": "与此同时，特朗普似乎铁了心要在欧洲经济和政治不稳的时候破坏欧盟和北约的凝聚力。",
+    "line": 46
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00046",
+    "document_id": "nc_3",
+    "src": "And Special Counsel Robert Mueller’s investigation into Trump’s 2016 election campaign’s ties to Russia hangs like a Sword of Damocles over his presidency.",
+    "ref": "特别检察官罗伯特·穆勒（Robert Mueller）对特朗普2016年选战与俄罗斯的关系的调查，则是特朗普总统生涯头上的达摩克利斯之剑。",
+    "line": 47
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00047",
+    "document_id": "nc_3",
+    "src": "Trump is now the Dr. Strangelove of financial markets.",
+    "ref": "特朗普现在就是金融市场的奇爱博士。",
+    "line": 48
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00048",
+    "document_id": "nc_3",
+    "src": "Like the paranoid madman in Stanley Kubrick’s classic film, he is flirting with mutually assured economic destruction.",
+    "ref": "和斯坦利·库布里克（Stanley Kubrick）经典影片中的偏执狂疯子一样，他深陷互相确保的经济毁灭无法自拔。",
+    "line": 49
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_3:en:00049",
+    "document_id": "nc_3",
+    "src": "Now that markets see the danger, the risk of a financial crisis and global recession has grown.",
+    "ref": "如今，市场看到了这个危险，金融危机和全球衰退的风险节节上升。",
+    "line": 50
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00000",
+    "document_id": "nc_6",
+    "src": "America’s War on Chinese Technology",
+    "ref": "美国的反中国科技战",
+    "line": 1
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00001",
+    "document_id": "nc_6",
+    "src": "NEW YORK – The worst foreign-policy decision by the United States of the last generation – and perhaps longer – was the “war of choice” that it launched in Iraq in 2003 for the stated purpose of eliminating weapons of mass destruction that did not, in fact, exist.",
+    "ref": "发自纽约 — — 美国上一代（甚至包括更前几代）人所做出的最糟糕外交政策决定是2003年对伊拉克发动的“选择之战 ” （ war of choice ） ， 其声称目的是消灭 — — 实际上不存在的 — — 大规模杀伤性武器。",
+    "line": 2
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00002",
+    "document_id": "nc_6",
+    "src": "Understanding the illogic behind that disastrous decision has never been more relevant, because it is being used to justify a similarly misguided US policy today.",
+    "ref": "而理解这一灾难性决策背后错误逻辑的必要性也变得前所未有地重大，因为眼下同样的逻辑又被拿来为类似的美国误导政策辩护。",
+    "line": 3
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00003",
+    "document_id": "nc_6",
+    "src": "The decision to invade Iraq followed the illogic of then-US Vice President Richard Cheney, who declared that even if the risk of WMDs falling into terrorist hands was tiny – say, 1% – we should act as if that scenario would certainly occur.",
+    "ref": "入侵伊拉克的决定是在时任美国副总统理查德·切尼（Richard Cheney）的错误逻辑下做出的，他声称即便大规模杀伤性武器落入恐怖分子之手的风险很小（比如1 ％ ） ，我们也应按照这种情况必将发生的状况去采取行动。",
+    "line": 4
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00004",
+    "document_id": "nc_6",
+    "src": "Such reasoning is guaranteed to lead to wrong decisions more often than not.",
+    "ref": "但这种推理方式几乎总会导致错误决策。",
+    "line": 5
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00005",
+    "document_id": "nc_6",
+    "src": "Yet the US and some of its allies are now using the Cheney Doctrine to attack Chinese technology.",
+    "ref": "然而美国及其某些盟国现正使用切尼主义来攻击中国科技。",
+    "line": 6
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00006",
+    "document_id": "nc_6",
+    "src": "The US government argues that because we can’t know with certainty that Chinese technologies are safe, we should act as if they are certainly dangerous and bar them.",
+    "ref": "按照美国政府的说法，既然我们无法确信中国科技是安全的，所以我们应该按照将其定义为必定有害的理解去应对并予以封杀。",
+    "line": 7
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00007",
+    "document_id": "nc_6",
+    "src": "Proper decision-making applies probability estimates to alternative actions.",
+    "ref": "正确的决策会将概率估计应用于各项替代措施。",
+    "line": 8
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00008",
+    "document_id": "nc_6",
+    "src": "A generation ago, US policymakers should have considered not only the (alleged) 1% risk of WMDs falling into terrorist hands, but also the 99% risk of a war based on flawed premises.",
+    "ref": "一代人以前，美国的政策制定者不仅应该考虑大规模杀伤性武器落入恐怖分子之手的那（声称的）1%风险，而且还应考虑基于多个有缺陷的前提发动一场战争的99％风险。",
+    "line": 9
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00009",
+    "document_id": "nc_6",
+    "src": "By focusing only on the 1% risk, Cheney (and many others) distracted the public’s attention from the much greater likelihood that the Iraq War lacked justification and that it would gravely destabilize the Middle East and global politics.",
+    "ref": "通过单纯强调那1%风险，切尼（以及其他许多人）分散了公众的注意力，让人们忽视了伊拉克战争其实缺乏正当性且将严重破坏中东和全球政治的稳定。",
+    "line": 10
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00010",
+    "document_id": "nc_6",
+    "src": "The problem with the Cheney Doctrine is not only that it dictates taking actions predicated on small risks without considering the potentially very high costs. Politicians are tempted to whip up fears for ulterior purposes.",
+    "ref": "但切尼主义的问题不仅在于它仅凭微小风险就强行行动而未能考虑极高的潜在成本，而是政客们总会出于某些不可告人的目的去煽动恐惧。",
+    "line": 11
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00011",
+    "document_id": "nc_6",
+    "src": "That is what US leaders are doing again: creating a panic over Chinese technology companies by raising, and exaggerating, tiny risks.",
+    "ref": "这就是美国领导人又一次在做的事情：通过指出和夸大某些微小风险来激起对中国科技企业的恐慌。",
+    "line": 12
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00012",
+    "document_id": "nc_6",
+    "src": "The most pertinent case (but not the only one) is the US government attack on the wireless broadband company Huawei.",
+    "ref": "与此最为相关（但不是唯一）的案例是美国政府对通讯科技企业华为的攻击。",
+    "line": 13
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00013",
+    "document_id": "nc_6",
+    "src": "The US is closing its markets to the company and trying hard to shut down its business around the world.",
+    "ref": "美国正在逐步对该公司关闭其国内市场，并努力扼杀其全球业务。",
+    "line": 14
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00014",
+    "document_id": "nc_6",
+    "src": "As with Iraq, the US could end up creating a geopolitical disaster for no reason.",
+    "ref": "与伊拉克一样，美国可能最终会造成一场毫无来由的地缘政治灾难。",
+    "line": 15
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00015",
+    "document_id": "nc_6",
+    "src": "I have followed Huawei’s technological advances and work in developing countries, as I believe that 5G and other digital technologies offer a huge boost to ending poverty and other SDGs.",
+    "ref": "我在发展中国家工作过，也一直在关注华为所取得的技术进步，因为我相信5G以及其他数字技术能为消除贫困以及其他联合国可持续发展目标的实现提供巨大推动力。",
+    "line": 16
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00016",
+    "document_id": "nc_6",
+    "src": "I have similarly interacted with other telecoms companies and encouraged the industry to step up actions for the SDGs.",
+    "ref": "我也与其他电信企业进行了类似的互动，并鼓励业界去提升针对可持续发展目标的行动。",
+    "line": 17
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00017",
+    "document_id": "nc_6",
+    "src": "When I wrote a short foreword (without compensation) for a Huawei report on the topic, and was criticized by foes of China, I asked top industry and government officials for evidence of wayward activities by Huawei. I heard repeatedly that Huawei behaves no differently than trusted industry leaders.",
+    "ref": "我曾为华为围绕该主题所做的一份报告撰写过一篇简短的前言（无报酬）因此遭到了敌视中国者的批评，为此我向行业高层和政府官员询问是否有证据证明华为有任何出格行为，而反复得到的答案是华为的操行与其他值得信赖的行业领导者别无二致。",
+    "line": 18
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00018",
+    "document_id": "nc_6",
+    "src": "The US government nonetheless argues that Huawei’s 5G equipment could undermine global security.",
+    "ref": "尽管如此，美国政府仍认为华为的5G设备可能损害全球安全。",
+    "line": 19
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00019",
+    "document_id": "nc_6",
+    "src": "A “backdoor” in Huawei’s software or hardware, US officials claim, could enable the Chinese government to engage in surveillance around the world.",
+    "ref": "美国官员声称，华为软件或硬件所保留的“后门”可能使中国政府能够在全球范围内进行监视。",
+    "line": 20
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00020",
+    "document_id": "nc_6",
+    "src": "After all, US officials note, China’s laws require Chinese companies to cooperate with the government for purposes of national security.",
+    "ref": "他们指出中国的法律要求中国企业出于国家安全理由而与政府合作。",
+    "line": 21
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00021",
+    "document_id": "nc_6",
+    "src": "Now, the facts are these.",
+    "ref": "但现在事实就摆在这里。",
+    "line": 22
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00022",
+    "document_id": "nc_6",
+    "src": "Huawei’s 5G equipment is low cost and high quality, currently ahead of many competitors, and already rolling out.",
+    "ref": "华为的5G设备价格低廉品质优良，目前领先于许多竞争对手并且已经开始推广。",
+    "line": 23
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00023",
+    "document_id": "nc_6",
+    "src": "Its high performance results from years of substantial spending on research and development, scale economies, and learning by doing in the Chinese digital marketplace.",
+    "ref": "它的高性能源自多年在研发上的巨额投入，规模经济效应以及在中国数字市场上的摸爬滚打。",
+    "line": 24
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00024",
+    "document_id": "nc_6",
+    "src": "Given the technology’s importance for their sustainable development, low-income economies around the world would be foolhardy to reject an early 5G rollout.",
+    "ref": "考虑到该技术对其可持续发展的重要性，世界各地的低收入经济体如果拒绝早日推出5G就显然太过不智了。",
+    "line": 25
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00025",
+    "document_id": "nc_6",
+    "src": "Yet, despite providing no evidence of backdoors, the US is telling the world to stay away from Huawei.",
+    "ref": "然而尽管拿不出任何后门存在的证据，但美国仍在游说世界远离华为。",
+    "line": 26
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00026",
+    "document_id": "nc_6",
+    "src": "The US claims are generic.",
+    "ref": "美国的说法是普适性的。",
+    "line": 27
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00027",
+    "document_id": "nc_6",
+    "src": "As a US Federal Communications Commissioner put it, “The country that owns 5G will own innovations and set the standards for the rest of the world and that country is currently not likely to be the United States.”",
+    "ref": "正如一位美国联邦通信专员所言 ： “ 拥有5G的国家将拥有相关创新并为世界其他地区设定标准，而这个国家目前不太可能是美国 。 ”",
+    "line": 28
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00028",
+    "document_id": "nc_6",
+    "src": "Other countries, most notably the United Kingdom, have found no backdoors in Huawei’s hardware and software.",
+    "ref": "其他国家 — — 尤其是英国 — — 尚未在华为的软硬件中找到任何后门。",
+    "line": 29
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00029",
+    "document_id": "nc_6",
+    "src": "Even if backdoors were discovered later, they could almost surely be closed at that point.",
+    "ref": "即便将来发现后门，也几乎肯定可以在那时将其关闭。",
+    "line": 30
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00030",
+    "document_id": "nc_6",
+    "src": "The debate over Huawei rages in Germany, where the US government threatens to curtail intelligence cooperation unless the authorities exclude Huawei’s 5G technology.",
+    "ref": "关于华为的辩论在德国也甚嚣尘上，因为美国政府威胁除非当局将华为的5G技术挡在门外，否则要削减情报合作。",
+    "line": 31
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00031",
+    "document_id": "nc_6",
+    "src": "Perhaps as a result of the US pressure, Germany’s spy chief recently made a claim tantamount to the Cheney Doctrine: “Infrastructure is not a suitable area for a group that cannot be trusted fully.”",
+    "ref": "或许是迫于美国的压力，德国联邦情报局长最近发表了一个类似切尼主义的声明 ： “ 基础设施不是一个适合让一个无法被完全信任的群体涉足的领域 。 ”",
+    "line": 32
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00032",
+    "document_id": "nc_6",
+    "src": "He offered no evidence of specific misdeeds.",
+    "ref": "而他也没能拿出任何具体罪行的证据。",
+    "line": 33
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00033",
+    "document_id": "nc_6",
+    "src": "Chancellor Angela Merkel, by contrast, is fighting behind the scenes to leave the market open for Huawei.",
+    "ref": "相比之下，总理默克尔则在幕后进行抗争以对华为开放市场。",
+    "line": 34
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00034",
+    "document_id": "nc_6",
+    "src": "Ironically, though predictably, the US complaints partly reflect America’s own surveillance activities at home and abroad.",
+    "ref": "但讽刺的是，美国的抱怨其实部分反映了美国自己在国内外的监视活动 — — 虽然这早已不是新闻。",
+    "line": 35
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00035",
+    "document_id": "nc_6",
+    "src": "Chinese equipment might make secret surveillance by the US government more difficult.",
+    "ref": "中国设备可能会使美国政府更加难以实施秘密监视。",
+    "line": 36
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00036",
+    "document_id": "nc_6",
+    "src": "But unwarranted surveillance by any government should be ended.",
+    "ref": "但是任何政府的非正当监视行为都应该停止。",
+    "line": 37
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00037",
+    "document_id": "nc_6",
+    "src": "Independent United Nations monitoring to curtail such activities should become part of the global telecoms system.",
+    "ref": "联合国为减少此类活动而进行的独立监督应成为全球电信体系的一部分。",
+    "line": 38
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00038",
+    "document_id": "nc_6",
+    "src": "In short, we should choose diplomacy and institutional safeguards, not a technology war.",
+    "ref": "简而言之，我们应该选择外交和体制保障，而不是去打技术战。",
+    "line": 39
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00039",
+    "document_id": "nc_6",
+    "src": "The threat of US demands to blockade Huawei concerns more than the early rollout of the 5G network. The risks to the rules-based trading system are profound.",
+    "ref": "美国要求封杀华为的威胁性影响并不仅限于5G网络的早期推出，也对基于规则的交易系统所造成了巨大风险。",
+    "line": 40
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00040",
+    "document_id": "nc_6",
+    "src": "Now that the US is no longer the world’s undisputed technology leader, US President Donald Trump and his advisers don’t want to compete according to a rules-based system.",
+    "ref": "如今美国已不再是全球无可争议的技术领导者，美国总统特朗普和他的顾问们都不想按照基于规则的体系去展开竞争。",
+    "line": 41
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00041",
+    "document_id": "nc_6",
+    "src": "Their goal is to contain China’s technological rise.",
+    "ref": "他们的目标是遏制中国的技术性崛起。",
+    "line": 42
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00042",
+    "document_id": "nc_6",
+    "src": "Their simultaneous attempt to neutralize the World Trade Organization by disabling its dispute settlement system shows the same disdain for global rules.",
+    "ref": "他们同时还试图通过瘫痪世界贸易组织的争端解决机制来抹杀该组织，而此举同样体现出了他们对全球规则的模式。",
+    "line": 43
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00043",
+    "document_id": "nc_6",
+    "src": "If the Trump administration “succeeds” in dividing the world into separate technology camps, the risks of future conflicts will multiply.",
+    "ref": "如果特朗普政府能“成功”将世界分割为不同的技术阵营，则未来爆发冲突的风险将成倍增加。",
+    "line": 44
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00044",
+    "document_id": "nc_6",
+    "src": "The US championed open trade after World War II not only to boost global efficiency and expand markets for American technology, but also to reverse the collapse of international trade in the 1930s.",
+    "ref": "二战后美国推崇开放贸易，不仅可以提高全球效率，扩大美国技术市场，还可以扭转1930年代国际贸易的崩溃状态。",
+    "line": 45
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00045",
+    "document_id": "nc_6",
+    "src": "That collapse stemmed in part from protectionist tariffs imposed by the US under the 1930 Smoot-Hawley Act, which amplified the Great Depression, in turn contributing to the rise of Hitler and, ultimately, the outbreak of World War II.",
+    "ref": "而崩溃的部分原因则是美国根据1930年《斯穆特-霍利法案》征收的保护主义关税，该关税加剧了大萧条，进而促成了希特勒的崛起，并最终推动了第二次世界大战的爆发。",
+    "line": 46
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00046",
+    "document_id": "nc_6",
+    "src": "In international affairs, no less than in other domains, stoking fears and acting on them, rather than on the evidence, is the path to ruin.",
+    "ref": "正如其他领域一样，在国际事务领域激发恐惧并借以采取行动 — — 而不是遵循证据行事 — — 是条迈向毁灭之路。",
+    "line": 47
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00047",
+    "document_id": "nc_6",
+    "src": "Let’s stick to rationality, evidence, and rules as the safest course of action.",
+    "ref": "让我们坚持理性，证据和规则，这是最安全的做法。",
+    "line": 48
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00048",
+    "document_id": "nc_6",
+    "src": "And let us create independent monitors to curtail the threat of any country using global networks for surveillance of or cyberwarfare on others.",
+    "ref": "让我们设立独立监控机构以减少任何国家利用全球网络监视其他国家或发动网络战的威胁。",
+    "line": 49
+  },
+  {
+    "source_id": "news_commentary_v18.1:nc_6:en:00049",
+    "document_id": "nc_6",
+    "src": "That way, the world can get on with the urgent task of harnessing breakthrough digital technologies for the global good.",
+    "ref": "这样一来，世界就可以赶紧利用突破性数字技术来实现全球福祉。",
+    "line": 50
+  }
+]

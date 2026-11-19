@@ -1,0 +1,893 @@
+[
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00000",
+    "document_id": "gf_210_210",
+    "line": 1,
+    "hyp": "Chapter 210: The Affairs Between the Supervisor and the Empress 64",
+    "status": "complete",
+    "scomet": 0.7485488057136536,
+    "dcomet": 0.8160779476165771
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00001",
+    "document_id": "gf_210_210",
+    "line": 2,
+    "hyp": "At one moment, Xiaomo's mind and spirit were deeply moved, and she became overwhelmed with sorrow.",
+    "status": "complete",
+    "scomet": 0.8128332495689392,
+    "dcomet": 0.7484740018844604
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00002",
+    "document_id": "gf_210_210",
+    "line": 3,
+    "hyp": "Supervisor, this... dare not move.",
+    "status": "complete",
+    "scomet": 0.45774006843566895,
+    "dcomet": 0.4787454307079315
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00003",
+    "document_id": "gf_210_210",
+    "line": 4,
+    "hyp": "Once the body moves, the mind must also start moving. How could he, so smart, not know that Bai Weiwei is already dead.",
+    "status": "complete",
+    "scomet": 0.858138382434845,
+    "dcomet": 0.8268367648124695
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00004",
+    "document_id": "gf_210_210",
+    "line": 5,
+    "hyp": "He didn't want to admit it, and dared not think deeply about it, so he forced himself to sit like that, convincing himself that Bai Weiwei was just asleep and would wake up.",
+    "status": "complete",
+    "scomet": 0.8197570443153381,
+    "dcomet": 0.7909952402114868
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00005",
+    "document_id": "gf_210_210",
+    "line": 6,
+    "hyp": "Xiaomo thought that only when Bai Weiwei's body started to rot would the supervisor truly regain his sanity and realize that the person he was holding hands with had been dead for a long time.",
+    "status": "complete",
+    "scomet": 0.7788516879081726,
+    "dcomet": 0.7884474396705627
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00006",
+    "document_id": "gf_210_210",
+    "line": 7,
+    "hyp": "But strangely, Bai Weiwei's body showed no changes at all.",
+    "status": "complete",
+    "scomet": 0.8965825438499451,
+    "dcomet": 0.8599656820297241
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00007",
+    "document_id": "gf_210_210",
+    "line": 8,
+    "hyp": "Even her pale complexion had improved somewhat, though her body was still cold, it was undoubtedly as if she were asleep.",
+    "status": "complete",
+    "scomet": 0.7505089640617371,
+    "dcomet": 0.7280853390693665
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00008",
+    "document_id": "gf_210_210",
+    "line": 9,
+    "hyp": "No trace of the characteristics of a corpse appeared.",
+    "status": "complete",
+    "scomet": 0.9711889624595642,
+    "dcomet": 0.9456830024719238
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00009",
+    "document_id": "gf_210_210",
+    "line": 10,
+    "hyp": "Mu Yanjun kept watching her, his eyes growing brighter and brighter.",
+    "status": "complete",
+    "scomet": 0.872458279132843,
+    "dcomet": 0.8397952318191528
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00010",
+    "document_id": "gf_210_210",
+    "line": 11,
+    "hyp": "That old doctor finally arrived, taking a pill, \"I guess my old life is already half gone.\"",
+    "status": "complete",
+    "scomet": 0.6559064388275146,
+    "dcomet": 0.5937945246696472
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00011",
+    "document_id": "gf_210_210",
+    "line": 12,
+    "hyp": "Mu Yanjun has been awake for five days, and everyone can see how exhausted his body is.",
+    "status": "complete",
+    "scomet": 0.7592018842697144,
+    "dcomet": 0.7120724320411682
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00012",
+    "document_id": "gf_210_210",
+    "line": 13,
+    "hyp": "But he was unusually alert, alert in a terrifying and abnormal way.",
+    "status": "complete",
+    "scomet": 0.7912092804908752,
+    "dcomet": 0.7916208505630493
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00013",
+    "document_id": "gf_210_210",
+    "line": 14,
+    "hyp": "\"After she took the medicine, she fell asleep like that. I think you should come and take a look. When will she wake up?\"",
+    "status": "complete",
+    "scomet": 0.8712196350097656,
+    "dcomet": 0.8185303807258606
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00014",
+    "document_id": "gf_210_210",
+    "line": 15,
+    "hyp": "The old doctor sighed, then walked to the bedside and took Bai Weiwei's pulse.",
+    "status": "complete",
+    "scomet": 0.8524020910263062,
+    "dcomet": 0.8386991620063782
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00015",
+    "document_id": "gf_210_210",
+    "line": 16,
+    "hyp": "\"In fact, this phenomenon is extremely rare, and treatment is not needed anymore. However, there is one particularly important thing that needs to be done...\"",
+    "status": "complete",
+    "scomet": 0.9038301110267639,
+    "dcomet": 0.8652331233024597
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00016",
+    "document_id": "gf_210_210",
+    "line": 17,
+    "hyp": "Mu Yanjun listens attentively, as if he were a good student, with a fire burning in his eyes.",
+    "status": "complete",
+    "scomet": 0.8659054636955261,
+    "dcomet": 0.8296923041343689
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00017",
+    "document_id": "gf_210_210",
+    "line": 18,
+    "hyp": "The old doctor's voice lowered, \"It's me again, who should treat another person...\"",
+    "status": "complete",
+    "scomet": 0.6633766889572144,
+    "dcomet": 0.5763133764266968
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00018",
+    "document_id": "gf_210_210",
+    "line": 19,
+    "hyp": "Mu Yanjun leaned forward, unwilling to miss his words.",
+    "status": "complete",
+    "scomet": 0.939990222454071,
+    "dcomet": 0.9369962811470032
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00019",
+    "document_id": "gf_210_210",
+    "line": 20,
+    "hyp": "The old doctor's hands moved as fast as lightning, instantly driving a needle into his neck.",
+    "status": "complete",
+    "scomet": 0.680918276309967,
+    "dcomet": 0.6434201598167419
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00020",
+    "document_id": "gf_210_210",
+    "line": 21,
+    "hyp": "Mu Yanjun's eyes suddenly widened, and his hand already struck toward the old doctor's skull.",
+    "status": "complete",
+    "scomet": 0.7872993350028992,
+    "dcomet": 0.776899516582489
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00021",
+    "document_id": "gf_210_210",
+    "line": 22,
+    "hyp": "Xiaomo's hand shot out, grabbing Mu Yanjun's attack.",
+    "status": "complete",
+    "scomet": 0.7838590741157532,
+    "dcomet": 0.8524934649467468
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00022",
+    "document_id": "gf_210_210",
+    "line": 23,
+    "hyp": "This back and forth has left Mu Yanjun unable to hold on, and he fell into a deep sleep.",
+    "status": "complete",
+    "scomet": 0.68413907289505,
+    "dcomet": 0.6186713576316833
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00023",
+    "document_id": "gf_210_210",
+    "line": 24,
+    "hyp": "The old doctor scratched his head, \"I almost died, but I guess I won't live much longer either. If he wakes up and isn't crazy, that's already good.\"",
+    "status": "complete",
+    "scomet": 0.8146373629570007,
+    "dcomet": 0.7502395510673523
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00024",
+    "document_id": "gf_210_210",
+    "line": 25,
+    "hyp": "Bai Weiwei was not going to come back.",
+    "status": "complete",
+    "scomet": 0.9720293283462524,
+    "dcomet": 0.9664027690887451
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00025",
+    "document_id": "gf_210_210",
+    "line": 26,
+    "hyp": "And Mu Yanjun's condition was truly heartbreaking, with problems arising in all his internal organs.",
+    "status": "complete",
+    "scomet": 0.6685885787010193,
+    "dcomet": 0.6436699032783508
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00026",
+    "document_id": "gf_210_210",
+    "line": 27,
+    "hyp": "Not eating, not sleeping, not thinking, not moving, he is no different from a living corpse. If he endures for another two days, he will probably be gone along with Bai Weiwei.",
+    "status": "complete",
+    "scomet": 0.6898530721664429,
+    "dcomet": 0.6568048000335693
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00027",
+    "document_id": "gf_210_210",
+    "line": 28,
+    "hyp": "Xiaomo looked at the old doctor, \"You protected my supervisor's life before. This time, if you can't protect him again, I'll kill you myself.\"",
+    "status": "complete",
+    "scomet": 0.7699800133705139,
+    "dcomet": 0.7502787709236145
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00028",
+    "document_id": "gf_210_210",
+    "line": 29,
+    "hyp": "After that, she turned around and left, heading toward the place where they were to be executed, silently enduring the punishment.",
+    "status": "complete",
+    "scomet": 0.829082190990448,
+    "dcomet": 0.800838053226471
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00029",
+    "document_id": "gf_210_210",
+    "line": 30,
+    "hyp": "The old doctor sighed, \"That's why my master said, selling sweet potatoes can't make one a divine doctor. Everyone treats me as a god, but even if I were a god, I couldn't make a person who wants to die alive again.\"",
+    "status": "complete",
+    "scomet": 0.7777189612388611,
+    "dcomet": 0.7573024034500122
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00030",
+    "document_id": "gf_210_210",
+    "line": 31,
+    "hyp": "Mu Yanjun had only slept for two hours, and his eyes opened.",
+    "status": "complete",
+    "scomet": 0.8785509467124939,
+    "dcomet": 0.8580106496810913
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00031",
+    "document_id": "gf_210_210",
+    "line": 32,
+    "hyp": "He was startled, his eyes rarely showing panic, but found himself unable to move.",
+    "status": "complete",
+    "scomet": 0.8210766315460205,
+    "dcomet": 0.7895686030387878
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00032",
+    "document_id": "gf_210_210",
+    "line": 33,
+    "hyp": "The old doctor saw that he had awakened, \"I'm giving you acupuncture, your mind and spirit have both declined. But if you take care of yourself, you'll soon meet the阎王.\"",
+    "status": "complete",
+    "scomet": 0.6912025213241577,
+    "dcomet": 0.6592094898223877
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00033",
+    "document_id": "gf_210_210",
+    "line": 34,
+    "hyp": "Mu Yanjun's eyes darkened, his face pale and exhausted, yet full of malevolence, making people feel a chill.",
+    "status": "complete",
+    "scomet": 0.815812885761261,
+    "dcomet": 0.7833364605903625
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00034",
+    "document_id": "gf_210_210",
+    "line": 35,
+    "hyp": "The old doctor gave him another needle, \"I didn't want to save you at all, after all, someone as wicked-hearted as you could cause chaos throughout the world if revived.\"",
+    "status": "complete",
+    "scomet": 0.7735385298728943,
+    "dcomet": 0.7283634543418884
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00035",
+    "document_id": "gf_210_210",
+    "line": 36,
+    "hyp": "Mu Yanjun's voice was soft yet eerie, \"Let go of me.\"",
+    "status": "complete",
+    "scomet": 0.8685654401779175,
+    "dcomet": 0.8376346230506897
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00036",
+    "document_id": "gf_210_210",
+    "line": 37,
+    "hyp": "The old doctor shook his head, \"That won't do. I can't save your heart's person, and even if I did, it would be considered compensation.\"",
+    "status": "complete",
+    "scomet": 0.690409243106842,
+    "dcomet": 0.6150757074356079
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_210_210:zh:00037",
+    "document_id": "gf_210_210",
+    "line": 38,
+    "hyp": "Mu Yanjun suddenly laughed in a piercing manner, \"You can't repay it, how could you ever repay it? Even if you saved everyone in the world, you still couldn't repay a single strand of her hair.\"",
+    "status": "complete",
+    "scomet": 0.7915587425231934,
+    "dcomet": 0.7409047484397888
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00000",
+    "document_id": "gf_70_70",
+    "line": 1,
+    "hyp": "Chapter 70: Master of the East Coming Cave (Eight)",
+    "status": "complete",
+    "scomet": 0.8006483912467957,
+    "dcomet": 0.8532810211181641
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00001",
+    "document_id": "gf_70_70",
+    "line": 2,
+    "hyp": "This is exactly what Song Fu and others wanted to ask, but someone asked it first. You look at me, I look at you, not knowing what's going on, where would you come up with an answer.",
+    "status": "complete",
+    "scomet": 0.7607770562171936,
+    "dcomet": 0.7689483761787415
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00002",
+    "document_id": "gf_70_70",
+    "line": 3,
+    "hyp": "Miao Yi immediately flew toward the location where the loud noise came from, and Yan Xiu and the other two followed right away.",
+    "status": "complete",
+    "scomet": 0.840688169002533,
+    "dcomet": 0.8411743640899658
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00003",
+    "document_id": "gf_70_70",
+    "line": 4,
+    "hyp": "Song Fu and others exchanged a glance and followed to see what was going on.",
+    "status": "complete",
+    "scomet": 0.8113406896591187,
+    "dcomet": 0.7773082852363586
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00004",
+    "document_id": "gf_70_70",
+    "line": 5,
+    "hyp": "Everyone gathered at the mountain gate, only to see that under the moonlight, the stone carving archway inscribed with the three characters \"East Coming Cave\" had been shattered on the ground, causing everyone to be shocked. Someone had destroyed the mountain gate of the East Coming Cave.",
+    "status": "complete",
+    "scomet": 0.7619001269340515,
+    "dcomet": 0.7666349411010742
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00005",
+    "document_id": "gf_70_70",
+    "line": 6,
+    "hyp": "Miao Yi turned his head sharply, glared fiercely at Song Fu and others, and coldly laughed, \"Good! Well then!\"",
+    "status": "complete",
+    "scomet": 0.811445415019989,
+    "dcomet": 0.8093091249465942
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00006",
+    "document_id": "gf_70_70",
+    "line": 7,
+    "hyp": "\"I just arrived today, and it seems someone is eager to give me a warning right away!\"",
+    "status": "complete",
+    "scomet": 0.7284440398216248,
+    "dcomet": 0.7440666556358337
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00007",
+    "document_id": "gf_70_70",
+    "line": 8,
+    "hyp": "\"Good!\"",
+    "status": "complete",
+    "scomet": 0.9511899948120117,
+    "dcomet": 0.7552599310874939
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00008",
+    "document_id": "gf_70_70",
+    "line": 9,
+    "hyp": "Song Fu and others were taken aback, they understood the meaning of the other's words, but this thing definitely wasn't something they did, because they had just been sitting together having a small gathering, and were also discussing how to give Miao Yi a hard time in the future. It was the abnormal loud noise that made them run out.",
+    "status": "complete",
+    "scomet": 0.7740413546562195,
+    "dcomet": 0.778870165348053
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00009",
+    "document_id": "gf_70_70",
+    "line": 10,
+    "hyp": "A few of them still doubted whether it was Miao Yi who did it, but seeing Miao Yi in this condition, they thought Miao Yi had no need to smash his own mountain gate to show him a warning. After all, Miao Yi was the chief of the East Coming Cave, and having his sign smashed upon taking office was a very embarrassing thing.",
+    "status": "complete",
+    "scomet": 0.7961461544036865,
+    "dcomet": 0.8061791062355042
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00010",
+    "document_id": "gf_70_70",
+    "line": 11,
+    "hyp": "This kind of thing must be clarified, otherwise once it gets reported, the responsibility would be too heavy to bear. Song Fu straightened his posture, bowed with his hands together, and said, \"Chief, this thing definitely wasn't done by us!\"",
+    "status": "complete",
+    "scomet": 0.767781138420105,
+    "dcomet": 0.8246776461601257
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00011",
+    "document_id": "gf_70_70",
+    "line": 12,
+    "hyp": "The others also joined in by bowing with their fists to assure, apparently it was the first time they had seriously treated Miao Yi as the chief.",
+    "status": "complete",
+    "scomet": 0.7401285767555237,
+    "dcomet": 0.8053458333015442
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00012",
+    "document_id": "gf_70_70",
+    "line": 13,
+    "hyp": "\"Excuses!\"",
+    "status": "complete",
+    "scomet": 0.7281785607337952,
+    "dcomet": 0.6504188179969788
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00013",
+    "document_id": "gf_70_70",
+    "line": 14,
+    "hyp": "Miao Yi glared at Song Fu and shouted, “I’ve only just assigned you to watch the mountain gates today, how could you not be aware if someone had destroyed it?” ",
+    "status": "complete",
+    "scomet": 0.924466073513031,
+    "dcomet": 0.9062695503234863
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00014",
+    "document_id": "gf_70_70",
+    "line": 15,
+    "hyp": "\"Is it you who intentionally let them in!\"",
+    "status": "complete",
+    "scomet": 0.7513648867607117,
+    "dcomet": 0.6325358748435974
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00015",
+    "document_id": "gf_70_70",
+    "line": 16,
+    "hyp": "“This……”",
+    "status": "complete",
+    "scomet": 0.9625602960586548,
+    "dcomet": 0.9066928029060364
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00016",
+    "document_id": "gf_70_70",
+    "line": 17,
+    "hyp": "Song Fu's words came to an end, he had never been here at all, and now it was not appropriate to say he had never regarded this chief as someone to be taken seriously, so he could only bow with his hands together and honestly explain, \"The chief has just arrived and may not be aware of the situation. The laborers from Donglai City have not been assigned yet, and we have been taking care of our own food and drink. In order to satisfy our hunger, I temporarily left for a while, not expecting such an incident to occur.\"",
+    "status": "complete",
+    "scomet": 0.7435365319252014,
+    "dcomet": 0.7491690516471863
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00017",
+    "document_id": "gf_70_70",
+    "line": 18,
+    "hyp": "Wang Zifang and others also successively bowed with their fists to prove, \"Chief, we can prove that Song Fu senior brother was just having a meal with us earlier.\"",
+    "status": "complete",
+    "scomet": 0.7420243620872498,
+    "dcomet": 0.7819032073020935
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00018",
+    "document_id": "gf_70_70",
+    "line": 19,
+    "hyp": "Miao Yi pointed at the fallen archway and said sternly, \"Is this fallen by itself? You mustn't tell me it was blown down by the wind!\"",
+    "status": "complete",
+    "scomet": 0.7851477265357971,
+    "dcomet": 0.8575045466423035
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00019",
+    "document_id": "gf_70_70",
+    "line": 20,
+    "hyp": "Song Fu had a bitter taste in his mouth, and had to raise his hand and say, \"Chief, I swear to the ancestors of my Blue Jade Gate, this was not done by us. If there is even a single word of falsehood, may Song Fu die a miserable death!\"",
+    "status": "complete",
+    "scomet": 0.7496009469032288,
+    "dcomet": 0.7558528184890747
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00020",
+    "document_id": "gf_70_70",
+    "line": 21,
+    "hyp": "Miao Yi's gaze flickered uncertainly as he scanned the crowd, his tone dark and ominous: \"Is there someone causing trouble at my East Coming Cave?\"",
+    "status": "complete",
+    "scomet": 0.8082318902015686,
+    "dcomet": 0.8073658347129822
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00021",
+    "document_id": "gf_70_70",
+    "line": 22,
+    "hyp": "Everyone's hearts sank with shock, realizing there was indeed a possibility, and they quickly looked around.",
+    "status": "complete",
+    "scomet": 0.8168076872825623,
+    "dcomet": 0.7926143407821655
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00022",
+    "document_id": "gf_70_70",
+    "line": 23,
+    "hyp": "\"What are you still waiting for here? Are you hoping to be strangled in your sleep?\"",
+    "status": "complete",
+    "scomet": 0.6839545965194702,
+    "dcomet": 0.6162654757499695
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00023",
+    "document_id": "gf_70_70",
+    "line": 24,
+    "hyp": "\"Get out of the way and start searching right now!\"",
+    "status": "complete",
+    "scomet": 0.5829898118972778,
+    "dcomet": 0.5392022132873535
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00024",
+    "document_id": "gf_70_70",
+    "line": 25,
+    "hyp": "Miao Yi shouted angrily.",
+    "status": "complete",
+    "scomet": 0.9009512066841125,
+    "dcomet": 0.8466601371765137
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00025",
+    "document_id": "gf_70_70",
+    "line": 26,
+    "hyp": "Yan Xiu and the other two bowed with their fists in response, then quickly dispersed into the surrounding mountains and forests.",
+    "status": "complete",
+    "scomet": 0.786253035068512,
+    "dcomet": 0.7667955756187439
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00026",
+    "document_id": "gf_70_70",
+    "line": 27,
+    "hyp": "“Hmm?”",
+    "status": "complete",
+    "scomet": 0.9948201775550842,
+    "dcomet": 0.9866682887077332
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00027",
+    "document_id": "gf_70_70",
+    "line": 28,
+    "hyp": "Miao Yi snorted heavily from his nose, his gaze fixed on Song Fu and others, as if questioning why they weren't searching if it wasn't them who did it, implying they must know something.",
+    "status": "complete",
+    "scomet": 0.7239519953727722,
+    "dcomet": 0.6646564602851868
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00028",
+    "document_id": "gf_70_70",
+    "line": 29,
+    "hyp": "At this moment, one had to make a statement to prove that they had nothing to do with him, Song Fu immediately turned his head left and right, and shouted, \"Don't you dare disobey the chief's orders and go search!\"",
+    "status": "complete",
+    "scomet": 0.7615674138069153,
+    "dcomet": 0.729948103427887
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00029",
+    "document_id": "gf_70_70",
+    "line": 30,
+    "hyp": "Everyone bowed to Miao Yi and then immediately dispersed.",
+    "status": "complete",
+    "scomet": 0.7204245924949646,
+    "dcomet": 0.72007817029953
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00030",
+    "document_id": "gf_70_70",
+    "line": 31,
+    "hyp": "But Song Fu was called back by Miao Yi, \"Song Fu, come with me!\"",
+    "status": "complete",
+    "scomet": 0.8126150965690613,
+    "dcomet": 0.8470256328582764
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00031",
+    "document_id": "gf_70_70",
+    "line": 32,
+    "hyp": "Song Fu paused, bowed with his fists and agreed, following behind Miao Yi.",
+    "status": "complete",
+    "scomet": 0.7266032099723816,
+    "dcomet": 0.7196090221405029
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00032",
+    "document_id": "gf_70_70",
+    "line": 33,
+    "hyp": "Right after everyone had left, a hazy silhouette, like a watery reflection, appeared out of thin air. It was none other than the figure of the ever-graceful old Bai.",
+    "status": "complete",
+    "scomet": 0.8851125836372375,
+    "dcomet": 0.8697202205657959
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00033",
+    "document_id": "gf_70_70",
+    "line": 34,
+    "hyp": "Old Bai stared at the fallen stone archway, slightly shook his head and smiled lightly, \"The world is like a chess game; how could a man of passion only have the courage of a commoner!\"",
+    "status": "complete",
+    "scomet": 0.7162205576896667,
+    "dcomet": 0.7257277369499207
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00034",
+    "document_id": "gf_70_70",
+    "line": 35,
+    "hyp": "\"I've always been worried about you, this kid, your nature is too kind, easy to be taken advantage of... A man who wants to be strong must have a strategy, a mere fool cannot reach the heavens, but now I feel much more at ease.\"",
+    "status": "complete",
+    "scomet": 0.7811469435691833,
+    "dcomet": 0.8105383515357971
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00035",
+    "document_id": "gf_70_70",
+    "line": 36,
+    "hyp": "The moment the words were spoken, the entire figure once again swayed like water ripples, quietly disappearing without a trace.",
+    "status": "complete",
+    "scomet": 0.7748191356658936,
+    "dcomet": 0.7308867573738098
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00036",
+    "document_id": "gf_70_70",
+    "line": 37,
+    "hyp": "The candle flames in the Donglai Hall flickered, Song Fu stood behind Miao Yi, standing in front and behind respectively in the hall. ",
+    "status": "complete",
+    "scomet": 0.5635156035423279,
+    "dcomet": 0.5730572938919067
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00037",
+    "document_id": "gf_70_70",
+    "line": 38,
+    "hyp": "Miao Yi stared expressionlessly at his own throne, with his hands behind his back facing Song Fu, remaining silent.",
+    "status": "complete",
+    "scomet": 0.8014474511146545,
+    "dcomet": 0.8008427619934082
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00038",
+    "document_id": "gf_70_70",
+    "line": 39,
+    "hyp": "The atmosphere between the two was a bit tense. Song Fu waited for a while, and finally couldn't help asking, \"What did the Chief summon me for?\"",
+    "status": "complete",
+    "scomet": 0.809526264667511,
+    "dcomet": 0.7996468544006348
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00039",
+    "document_id": "gf_70_70",
+    "line": 40,
+    "hyp": "Miao Yi's tone was dark as he said, \"Song Fu, do you know your guilt?\"",
+    "status": "complete",
+    "scomet": 0.8047706484794617,
+    "dcomet": 0.7459735870361328
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00040",
+    "document_id": "gf_70_70",
+    "line": 41,
+    "hyp": "Song Fu smirked, glanced at the food on the low table beside him, and said indifferently, \"This matter has nothing to do with us. What crime has Song Fu committed?\"",
+    "status": "complete",
+    "scomet": 0.7349644303321838,
+    "dcomet": 0.7299604415893555
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00041",
+    "document_id": "gf_70_70",
+    "line": 42,
+    "hyp": "\"I'm not asking about this!\"",
+    "status": "complete",
+    "scomet": 0.965533971786499,
+    "dcomet": 0.9044783711433411
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00042",
+    "document_id": "gf_70_70",
+    "line": 43,
+    "hyp": "Miao Yi turned around sharply, stared at him, and coldly asked word by word: \"I entrusted you to guard the mountain gate, why did you leave your post without permission?\"",
+    "status": "complete",
+    "scomet": 0.8080509305000305,
+    "dcomet": 0.7815821170806885
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00043",
+    "document_id": "gf_70_70",
+    "line": 44,
+    "hyp": "Song Fu thought, do you think so?",
+    "status": "complete",
+    "scomet": 0.6676720976829529,
+    "dcomet": 0.7471710443496704
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00044",
+    "document_id": "gf_70_70",
+    "line": 45,
+    "hyp": "I never held it in any regard in the first place.",
+    "status": "complete",
+    "scomet": 0.9634787440299988,
+    "dcomet": 0.9597362875938416
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00045",
+    "document_id": "gf_70_70",
+    "line": 46,
+    "hyp": "Of course he wouldn't say that aloud, \"Song Fu has already reported to the chief, I am indeed helpless, and I temporarily left just to satisfy my hunger. I didn't want such an incident to happen.\"",
+    "status": "complete",
+    "scomet": 0.7870034575462341,
+    "dcomet": 0.7787420153617859
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00046",
+    "document_id": "gf_70_70",
+    "line": 47,
+    "hyp": "Miao Yi asked, \"Do you think after I report this matter, the chief of the sect and the mountain chief will believe your explanation?\"",
+    "status": "complete",
+    "scomet": 0.8521846532821655,
+    "dcomet": 0.7892190217971802
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00047",
+    "document_id": "gf_70_70",
+    "line": 48,
+    "hyp": "Song Fu chuckled and said, \"People's mouths are two different things. If the Chief insists on falsely accusing Song Fu, then please go ahead. However, the Chief should not forget that Song Fu also has a mouth to defend himself, and he is not a mute.\"",
+    "status": "complete",
+    "scomet": 0.7324897646903992,
+    "dcomet": 0.7923540472984314
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00048",
+    "document_id": "gf_70_70",
+    "line": 49,
+    "hyp": "Miao Yi chuckled, \"It seems you are really unwilling to repent!\"",
+    "status": "complete",
+    "scomet": 0.7920947074890137,
+    "dcomet": 0.7990013360977173
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00049",
+    "document_id": "gf_70_70",
+    "line": 50,
+    "hyp": "After these words, Yan Xiu, Dan Biaoyi, and Qiu Shaoqun appeared together at the door and entered, bowing to Miao Yi and saying, \"Chief, we haven't found any suspicious individuals yet.\"",
+    "status": "complete",
+    "scomet": 0.7867844104766846,
+    "dcomet": 0.7924827933311462
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00050",
+    "document_id": "gf_70_70",
+    "line": 51,
+    "hyp": "Miao Yi said, \"The suspicious person is right in front of us, how can there be no discovery!\"",
+    "status": "complete",
+    "scomet": 0.822509765625,
+    "dcomet": 0.7813878655433655
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00051",
+    "document_id": "gf_70_70",
+    "line": 52,
+    "hyp": "Single-table Dan Biaoyi and Qiu Shaoqun seemed to have received a signal, quickly darted forward and shut the hall door.",
+    "status": "complete",
+    "scomet": 0.6751489043235779,
+    "dcomet": 0.7293482422828674
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00052",
+    "document_id": "gf_70_70",
+    "line": 53,
+    "hyp": "Song Fu was startled by the sound and quickly turned around, only to see Yan Xiu wielding a pair of broad axes ready to劈 come down fiercely.",
+    "status": "complete",
+    "scomet": 0.7689521908760071,
+    "dcomet": 0.7337658405303955
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00053",
+    "document_id": "gf_70_70",
+    "line": 54,
+    "hyp": "Song Fu quickly drew out his sword, a cold gleam flashing as it came out of the sheath, and swiftly clinked to block.",
+    "status": "complete",
+    "scomet": 0.7903451323509216,
+    "dcomet": 0.7586501240730286
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00054",
+    "document_id": "gf_70_70",
+    "line": 55,
+    "hyp": "Dan Biaoyi and Qiu Shaoqun also immediately thrust their spears out, attacking Song Fu in unison.",
+    "status": "complete",
+    "scomet": 0.9312855005264282,
+    "dcomet": 0.9286661744117737
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00055",
+    "document_id": "gf_70_70",
+    "line": 56,
+    "hyp": "Yan Xiu and Song Fu's cultivation was about the same, and they had always been evenly matched. With Dan Biaoyi and Qiu Shaoqun joining forces, Song Fu's situation became extremely dangerous all at once.",
+    "status": "complete",
+    "scomet": 0.8010040521621704,
+    "dcomet": 0.8251289129257202
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00056",
+    "document_id": "gf_70_70",
+    "line": 57,
+    "hyp": "\"Shameless thief!\"",
+    "status": "complete",
+    "scomet": 0.9823764562606812,
+    "dcomet": 0.9454573392868042
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00057",
+    "document_id": "gf_70_70",
+    "line": 58,
+    "hyp": "“To dare frame—”",
+    "status": "complete",
+    "scomet": 0.9696152806282043,
+    "dcomet": 0.9653222560882568
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00058",
+    "document_id": "gf_70_70",
+    "line": 59,
+    "hyp": "Surrounded and unable to escape, Song Fu was barely able to hold his own against Yan Xiu with his sword, when his cry of anguish was cut short as two spears pierced through his spiritual defense, driving deeply into his chest.",
+    "status": "complete",
+    "scomet": 0.7120787501335144,
+    "dcomet": 0.7282891869544983
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00059",
+    "document_id": "gf_70_70",
+    "line": 60,
+    "hyp": "Song Fu widened his eyes and made an effort to turn his head back to look at Miao Yi, his lips trembling, with anger in his eyes that was indescribable.",
+    "status": "complete",
+    "scomet": 0.8592289090156555,
+    "dcomet": 0.8198314309120178
+  },
+  {
+    "source_id": "guofeng_v1_test2:gf_70_70:zh:00060",
+    "document_id": "gf_70_70",
+    "line": 61,
+    "hyp": "He finally realized it was a trap. The collapse of the mountain gate was not only to frame him but also to have his fellow disciples removed, in order to prevent him from uniting with his fellow disciples to resist. ",
+    "status": "complete",
+    "scomet": 0.6864559054374695,
+    "dcomet": 0.7484386563301086
+  }
+]

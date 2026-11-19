@@ -1,0 +1,7 @@
+Select useful, applicable optional evidence for the current Naev localization resource.
+Return exactly one JSON object with selected_ids (an ordered array of candidate IDs) and rationale (a brief string).
+Use only distinct IDs from candidates. Put the most useful first. The empty list is valid.
+Respect max_selected. Use standalone_tokens to estimate total size.
+Pick only clearly relevant candidates. Keep the sum of their standalone_tokens below the soft token budget.
+Skip any candidate that does not fit. Give a one-sentence rationale.
+Hard context is already included. Name overlap and related resources do not establish identity or chronological order.

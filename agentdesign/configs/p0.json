@@ -1,0 +1,9 @@
+{
+  "base_url": "https://tokendance.space/gateway/v1",
+  "model": "deepseek-v4.1-flash-1017",
+  "timeout_seconds": 75,
+  "max_output_tokens": {"selector": 4096, "translator": 2048, "reviewer_source": 4096, "reviewer": 2048, "repairer": 2048, "probe": 512},
+  "max_revisions": 1,
+  "max_calls": 24,
+  "retrieval": {"max_candidates": 16, "max_selected": 8, "max_soft_tokens": 1024, "max_characters": 6000}
+}

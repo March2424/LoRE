@@ -1,0 +1,77 @@
+{
+  "status": "stopped_by_user_partial_collection_exported",
+  "sampler_status": "stopped",
+  "rows": 3165,
+  "existing_game_rows": 1966,
+  "new_public_rows": 1199,
+  "existing_games": {
+    "flare": 1169,
+    "shattered": 797
+  },
+  "new_groups": {
+    "guofeng_v1_test2:zh->en": {
+      "planned_warmup": 120,
+      "finished_warmup": 120,
+      "planned_target": 700,
+      "finished_target": 700,
+      "valid_sft_rows": 509,
+      "failed": 191
+    },
+    "news_commentary_v18.1:en->zh": {
+      "planned_warmup": 200,
+      "finished_warmup": 200,
+      "planned_target": 600,
+      "finished_target": 600,
+      "valid_sft_rows": 450,
+      "failed": 150
+    },
+    "news_commentary_v18.1:zh->en": {
+      "planned_warmup": 200,
+      "finished_warmup": 90,
+      "planned_target": 600,
+      "finished_target": 240,
+      "valid_sft_rows": 240,
+      "pending_target": 360,
+      "pending_warmup": 110
+    }
+  },
+  "jobs": {
+    "complete": 1609,
+    "failed": 341,
+    "pending": 470
+  },
+  "budget": {
+    "max_calls": 1000000,
+    "max_tokens": 1000000000000,
+    "max_cost": null,
+    "calls": 5436,
+    "tokens": 7784492,
+    "cost": 2.980560300000012,
+    "estimated_usage_calls": 23,
+    "unpriced_calls": 0
+  },
+  "sequence_check": {
+    "rows": 3165,
+    "common_prompt_schema_verified": true,
+    "max_sequence_tokens": 5142,
+    "max_completion_tokens": 367,
+    "recommended_cutoff_len": 8192,
+    "observed_soft_token_budgets": {
+      "1024": 2726,
+      "2048": 439
+    },
+    "template": "qwen3_nothink",
+    "train_on_prompt": false,
+    "mask_history": false,
+    "packing": false,
+    "loss_mask_contract": "all prompt tokens -100; full rationale+IDs and assistant terminator supervised",
+    "framework_loss_mask_verified": false,
+    "silent_truncation_allowed": false
+  },
+  "source_run": "/Users/march/Desktop/LLM Project/LLM_Project_main/outputs/teacher_multidomain_2026-11-03",
+  "dataset_dir": "/Users/march/Desktop/LLM Project/LLM_Project_main/outputs/selector_training/multidomain_2026-11-03",
+  "automatic_resume": false,
+  "training_started": false,
+  "assessment": "sufficient for initial mixed-domain selector SFT; direction imbalance and semantic review remain",
+  "stopped_at_unix": 1793697579.4176629
+}

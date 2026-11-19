@@ -1,0 +1,902 @@
+[
+  {
+    "source_id": "naev_f4719424261158f6dc95",
+    "document_id": "0",
+    "src": "As you step off the landing deck with a couple dozen children in tow, the two parents you spoke with over the comm run up to you. From behind you hear a few children yelling, \"Mom! Dad!\" Three children shove their way out to the front and the parents and children meet in a big group of hugs, kisses, tears, and smiles from ear to ear.",
+    "ref": "当你带着几十个孩子走下登机坪时，通过通讯与你交谈的两位父母向你跑来。从后面你听到几个孩子在大喊:\"妈妈！爸爸！\"三个孩子挤到了前面，父母和孩子们聚集在一起，拥抱、亲吻、泪水和微笑合二为一。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 1
+  },
+  {
+    "source_id": "naev_68d795897fb43da453f2",
+    "document_id": "0",
+    "src": "\"I see. I knew the day would come. Can't have a bunch of low-lives making a decent living, now, can we?\"\nThey take a sip from their drink.",
+    "ref": "我明白了。我就知道这一天会到来的。不能让一群下层生活的人过上体面的生活，现在，我们能吗？\n他们喝了一口饮料。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 2
+  },
+  {
+    "source_id": "naev_d3e4ad8888a3540ee15e",
+    "document_id": "0",
+    "src": "You and the other children stand-off to the side and watch one of the most beautiful reunions you have ever seen. After a little while the father approaches you, wiping a tear from his cheek, and takes you in an embrace. Releasing you and drying his eyes, he says, \"Thank you so much, {player}. You have no idea what this means to us. I would love to be able to repay you somehow, but I just have no idea how I can do so right now. You have rescued my children and brought them back to me. Thank you isn't enough, but I'm afraid for now it's the best I can do. If there is anything I can ever do for you, feel free to ask me, my friend.\"",
+    "ref": "你和其他孩子站在一边，观看你见过的最美丽的团聚之一。过了一会儿，父亲走到你跟前，擦去脸颊上的泪水，拥抱了你。他释放了你，擦干了眼睛，说:\"非常感谢你，{player}。你不知道这对我们意味着什么。我很想以某种方式报答你，但我只是不知道我现在怎么做。你救了我的孩子，把他们带回了我身边。谢谢你还不够，但我恐怕现在已经是我能做的最好的了。如果有什么我能为你做的，请尽管问我，我的朋友。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 3
+  },
+  {
+    "source_id": "naev_579f8ff1cd60f0032b5f",
+    "document_id": "0",
+    "src": "\"I know right! It cost me a lot to find it. It was sold out all over! But it was all worth it in the end.\"",
+    "ref": "\"我知道！我花了很多钱才找到的。到处都卖光了！但最终这一切都是值得的。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 4
+  },
+  {
+    "source_id": "naev_5c03897e2317bc870601",
+    "document_id": "0",
+    "src": "\"Me and the guy you call the Minerva CEO, we were born here in Jorlan. Not sure if we were orphaned or abandoned, but since a young age this world has offered us nothing but cruelty and suffering. Forced to work in the ore mines to survive.\"",
+    "ref": "我和你称之为密涅瓦(Minerva)首席执行官的那个人，我们出生在乔兰。不确定我们是孤儿还是被遗弃的人，但从很小的时候起，这个世界就给了我们除了残酷和痛苦之外什么都没有。被迫在矿场工作才能生存。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 5
+  },
+  {
+    "source_id": "naev_316c18becd6597aa7e56",
+    "document_id": "0",
+    "src": "\"Phhhsssh. You can't appreciate this beauty. Look at the curves! The shining lights! It's a fully anatomically correct 1/128 scale model! You can even see the pilots through the cockpit.\"\nYou look closely and indeed are able to see the pilots. The level of detail is fairly ridiculous.",
+    "ref": "\"呵呵。你无法欣赏这种美丽。看看曲线！闪亮的灯光！这是一个解剖学上完全正确的1/128比例模型！您甚至可以透过驾驶舱看到飞行员。\"\n你仔细观察，确实可以看到飞行员。细节的程度相当荒谬。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 6
+  },
+  {
+    "source_id": "naev_92300ae509f39d65b5b3",
+    "document_id": "0",
+    "src": "\"This shithole taught us that nothing is given for free. You have to fight with tooth and nail to get what you want! No that's not it, what we deserve!\"\nThey hit the table for emphasis.",
+    "ref": "这个狗屎教会了我们，没有什么是免费的。你必须全力以赴才能得到你想要的东西！不，不是这样的，这是我们应得的！\n他们敲打桌子是为了强调。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 7
+  },
+  {
+    "source_id": "naev_1b0bee9d31cd44c20bce",
+    "document_id": "0",
+    "src": "The inside of the ship is in horrible shape. There is junk and dirt everywhere. You can see clear damage on the walls, and most of the airlocks seem to be jammed open. While gliding through the hallway, something grabs your foot, and you instinctively draw your weapon and fire. Once the sound of your ricocheting noise diminishes, you are left with the sound of your accelerated heartbeat.",
+    "ref": "这艘船的内部状况很糟糕。到处都是垃圾和泥土。你可以在墙上看到明显的损坏，大多数气闸似乎都被卡住了。当滑行穿过走廊时，有东西抓住了你的脚，你本能地拔出武器并开火。一旦你弹跳的声音减弱，你就会听到心跳加速的声音。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 8
+  },
+  {
+    "source_id": "naev_43a8c21be0fe58dad520",
+    "document_id": "0",
+    "src": "You assure him that it is alright, and you will not hesitate to take him up on his offer. After a while the smile fades from his face. \"You see how happy my family is? Well, look at all these other children here who are still separated from their parents. I want to return them all home. I'd also like to fight against all this human trafficking, but that will take a lot of planning. For now, I want to be with my family. Come back soon though if you're willing. I would like to get something organized.\"",
+    "ref": "你向他保证，这是好的，你会毫不犹豫地接受他的提议。过了一会儿，他脸上的笑容消失了。你看到我的家人有多幸福了吗？看看这里所有其他与父母分离的孩子。我想把他们都送回家。我也想打击所有这些人口贩运，但这需要很多计划。目前，我想和我的家人在一起。如果你愿意的话，尽快回来。我想要有组织的东西。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 9
+  },
+  {
+    "source_id": "naev_72002de8421b6a5c79f6",
+    "document_id": "0",
+    "src": "\"I don't think a hired gun like you would truly understand the kind of suffering of nearly working to death in the ore mines. You're just here to do your master's bidding, like the loyal dog you are.\"\nThey give a small chuckle and lean forward.",
+    "ref": "我不认为像你这样的受雇人员会真正理解在矿场几乎工作到死的痛苦。你来这里只是为了服从你主人的命令，就像你是一只忠诚的狗一样。\n他们轻轻地笑了笑，身体前倾。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 10
+  },
+  {
+    "source_id": "naev_3000f6751276d238779c",
+    "document_id": "0",
+    "src": "\"Really? Is it a Sigma-5 squadron Golden Efreeti model too?! You don't know what that is? Stop messing with me, it's probably just another mass-produced Lancelot without any history behind it. This is a masterpiece!\"\nThey lift up their toy Lancelot. You can barely make out a golden Efreeti etched on the side.",
+    "ref": "\"真的吗？这也是Sigma-5中队Golden Efreeti型号吗？！你不知道那是什么？别再惹我了，这可能只是另一部批量生产的兰斯洛特，没有任何历史。这是一部杰作！\"\n他们举起玩具兰斯洛特。你几乎看不清侧面刻着金色的Efreeti。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 11
+  },
+  {
+    "source_id": "naev_cedc7795e78138792fe4",
+    "document_id": "0",
+    "src": "\"Well honestly, I don't give a shit who your master is. The result is the same, you are trying to take what we worked hard for with our blood, sweat, and tears.\"",
+    "ref": "\"老实说，我他妈的不在乎你的主人是谁。结果是一样的，你正试图用我们的鲜血、汗水和泪水夺走我们努力争取的东西。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 12
+  },
+  {
+    "source_id": "naev_f5b5a395fe01fd914b85",
+    "document_id": "0",
+    "src": "You tap Harja on the shoulder. He irritably turns to you, no doubt with the intention to tell you to go away in no uncertain terms, but then he recognizes you. His face goes pale, and he starts shouting at you to leave him alone, even threatening you. He is clearly very nervous though, and he fails to make much of an impression on you. It takes a little time and an offer to get him a drink, but you manage to convince him that you're not here to cause trouble for him.",
+    "ref": "你拍拍哈贾的肩膀。他焦躁地转向你，无疑是想毫不含糊地告诉你走开，但随后他认出了你。他脸色苍白，开始对你大喊大叫，让你离他远点，甚至还威胁你。不过，他显然非常紧张，也没能给你留下多大印象。这需要一点时间和主动提出给他拿一杯饮料，但你设法让他相信你不是来给他制造麻烦的。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 13
+  },
+  {
+    "source_id": "naev_7e33395219de61b2a115",
+    "document_id": "0",
+    "src": "They clench their teeth.\n\"I won't let you! Minerva Station is OURS! You have no idea of the hell we went through to get here, and I'll be damned if I let that get taken away from us!\"",
+    "ref": "他们咬紧牙关。\n\"我不会让你得逞的！密涅瓦(Minerva)空间站是我们的！你不知道我们经历了多大的地狱才来到这里，如果我让它从我们手中夺走，我会被诅咒的！\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 14
+  },
+  {
+    "source_id": "naev_6fc9e1d9448ffc241d07",
+    "document_id": "0",
+    "src": "\"You know what, let's play a game. I know ALL the facts of all the ships. I'll ask you a question and if you get it right, I'll give you a nice reward. What do you say?\"",
+    "ref": "\"你知道吗，我们玩个游戏吧。我知道所有船只的所有事实。我会问你一个问题，如果你答对了，我会给你一个很好的奖励。你说什么？\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 15
+  },
+  {
+    "source_id": "naev_bbfd73cc11bbd515b6e1",
+    "document_id": "0",
+    "src": "The father goes back to his children, and as you start walking back to your ship you notice the father and mother lavishing their children in love. You look over to the other children now sitting around, gazing at the loving family with envy. Sighing, you begin climbing into your ship as the mother runs up to you, \"{player}, wait a second! We know your name, but you don't know ours. I'm Janice.\" As she looks to her husband, who's talking animatedly with the children, she smiles. \"My husband's name is Andrew. Thank you for everything.\" A tear rolls down her face as she looks at you with her bright hazel eyes and she kisses you on the cheek.\nYou watch her return to her family. A child jumps into her arms, and you climb up into your ship.",
+    "ref": "父亲回到孩子们身边，当你开始走回自己的船时，你注意到父亲和母亲正在深情地爱抚他们的孩子。你环顾四周，看到其他孩子们坐着，羡慕地看着这个幸福的家庭。叹了口气，你开始爬进自己的船，这时母亲跑过来，\"{player}，等一下！我们知道你的名字，但你不知道我们的。我是Janice。\"她看着正在与孩子们热烈交谈的丈夫，微笑着说。\"我丈夫叫Andrew。谢谢你所做的一切。\"一滴泪水顺着她明亮的淡褐色眼睛流下，她亲吻了你的脸颊。\n你看着她回到家人身边。一个孩子跳进她的怀里，你爬上了自己的船。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 16
+  },
+  {
+    "source_id": "naev_3212dd2de1010b3113cb",
+    "document_id": "0",
+    "src": "You make your way to the institute where you are supposed to give the talk, following the signs. On arriving you ask around where you should head to for your talk. Apparently you were already awaited. You are led to a rather small seminar room. Finally, you are ready to give your talk and a few scientists take seats. Actually you expected more than 17 listeners. Maybe this talk is not such a big deal as you expected. They wouldn't just send you to an important presentation, right?",
+    "ref": "你走到你应该在那里做演讲的研究所，按照标志走。到达后，你打听周围的人，问你应该去哪里演讲。显然你已经在等人了。你被带到一个相当小的会议室。最后，你准备好演讲了，几位科学家就座了。实际上，你预计会有17个以上的听众。也许这场演讲并不像你想象的那么重要。他们不会只派你去看一个重要的演讲，对吧？",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 17
+  },
+  {
+    "source_id": "naev_0ed62e766a51c2c08782",
+    "document_id": "0",
+    "src": "It's clear to you that you're not going to get anything else out of him. You don't know what to make of this. Both Harja and Joanne seem convinced that the other hacked the academy's computer, and neither of them has any evidence to prove their claim. This whole matter doesn't seem any closer to a conclusion than before, but you have little choice other than to report your findings to Joanne at this point.",
+    "ref": "你很清楚，你不会从他那里得到任何其他东西。你不知道这是怎么回事。哈贾和乔安妮似乎都确信对方入侵了学院的电脑，而且他们都没有任何证据来证明他们的说法。整件事似乎并没有比以前更接近结论，但你别无选择，只能在这一点上向乔安妮报告你的发现。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 18
+  },
+  {
+    "source_id": "naev_8cfd2aea9f3577fd447c",
+    "document_id": "0",
+    "src": "\"Oh, yes. Yes! That is me! I'm Flintley,\" the man responds. \"And you must be {player}. I know what's going on, the people from the Pinnacle have informed me. Oh, but where are my manners. Let me properly introduce myself. My name is Flintley, and I'm an archaeologist and historian. The best in the galaxy, some might say, ha-ha!\"",
+    "ref": "\"哦，是的。是的！就是我！我是弗林特利，\"男人回答说。\"你一定是{player}。尖峰的人告诉我了，我知道是怎么回事。哦，但我的举止哪里去了。让我正式地自我介绍一下。我叫弗林特利，我是一名考古学家和历史学家。有人可能会说，哈哈，银河系最好的！\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 19
+  },
+  {
+    "source_id": "naev_ea8e3571fbe8aa00f181",
+    "document_id": "0",
+    "src": "As it turns out, they didn't. They have only just reached the docking bridge leading into your ship when several armed Dvaered security forces come bursting into the docking hangar. They spot the three agents and immediately open fire. One of them goes down, the others hurriedly push the crate over the bridge towards your ship. Despite the drastic change in the situation, you have time to note that the Dvaered seem more interested in punishing the criminals than retrieving their possession intact.",
+    "ref": "事实证明，他们没有。他们刚刚到达通往您船的对接桥时，几名武装的戴瓦德(Dvaered)安全部队就冲进了对接机库。他们发现了三名特工并立即开枪。其中一个掉了下来，其他人赶紧把板条箱推过桥，推向你的船。尽管情况发生了巨大的变化，但你有时间注意到，戴瓦德(Dvaered)家族似乎更感兴趣的是惩罚罪犯，而不是完整地收回他们的财产。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 20
+  },
+  {
+    "source_id": "naev_6e1a2ea3c82f0daf7eed",
+    "document_id": "0",
+    "src": "\"Kex was a great guy. He used to hang out here before venturing into the nebula, spending his time with the useless lot of us. Shame that he went missing.\"",
+    "ref": "\"科克斯(Kex)是个很棒的人。在冒险进入星云之前，他经常在这里消磨时间，和我们这些没用的人在一起。可惜他失踪了。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 21
+  },
+  {
+    "source_id": "naev_d4b66500536942b7d050",
+    "document_id": "0",
+    "src": "\"Since they never found his ship, I like to think that he made it to the other side of the nebula, if there is one.\"\nHe takes a long swig from his drink.",
+    "ref": "\"因为他们一直没有找到他的飞船，我认为他已经到达了星云的另一边，如果有的话。 \"\n他大口大口地喝着饮料。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 22
+  },
+  {
+    "source_id": "naev_78524818c4d8cbe9e550",
+    "document_id": "0",
+    "src": "The second agent is caught by a Dvaered bullet, and topples off the docking bridge and into the abyss below. The third manages to get the cart with the chest into your airlock before catching a round with his chest as well. As the Dvaered near your ship, you seal the airlock, fire up your engines and punch it out of the docking hangar.",
+    "ref": "第二名特工被戴瓦德(Dvaered)的子弹击中，从对接桥上摔了下来，掉进了下面的深渊。第三个人设法将装有胸部的手推车放入你的气锁，然后也用胸部接住一发子弹。当戴瓦德(Dvaered)号靠近你的船时，你密封了气锁，启动你的发动机，然后把它从对接机库中击出。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 23
+  },
+  {
+    "source_id": "naev_c0d39b5589f4a28350d1",
+    "document_id": "0",
+    "src": "\"It used to be a more popular place, but with most of the easy pickings getting scavenged out of the nebula, not many people come here any more. Especially not after the disappearance of famous scavengers like Kex and Mireia.\"\nHe muses thoughtfully.",
+    "ref": "这里曾经是一个更受欢迎的地方，但随着大多数容易捡到的东西都被从星云中捡出来，现在来这里的人不多了。特别是在科克斯(Kex)和Mireia等著名清道夫消失后。\n他沉思着。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 24
+  },
+  {
+    "source_id": "naev_b17e3a012a13b7053160",
+    "document_id": "0",
+    "src": "\"Let's see what we have here,\" Flintley says as you hand him the artefact you bought on {pnt}. \"Ah, I know what this is without even looking anything up. It's a piece of an old-fashioned airlock mechanism, as used on most ships during the Faction Wars. That makes it rather old, but that also makes it worthless, I'm afraid. This is just old scrap.\" He gives you an apologetic look. \"Don't let it get you down. Not many people would know this on first sight. Those scammers can be pretty clever.\"",
+    "ref": "\"让我们看看这里有什么，\"当你把你在{pnt}上购买的文物递给他时，弗林特利说道。\"啊，我什至不查就知道这是什么了。这是老式气锁装置的一部分，派系战争期间大多数船只都使用过这种装置。恐怕这使得它相当古老，但这也使它毫无价值。这只是旧废品。\"他带着歉意地看了你一眼。\"不要让它让你失望。没有多少人第一眼就知道这一点。那些骗子可能非常聪明。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 25
+  },
+  {
+    "source_id": "naev_89f6b3bce047ce663937",
+    "document_id": "0",
+    "src": "You enter the derelict ship which is eerily silent. A large hole in the engine room indicates that likely the core engine blew out, forcing the ship crew to abandon ship. Although you don't find anything of significant value, there is still lots of ore cargo available on the ship. You quickly load as much as you can onto your ship before you depart.",
+    "ref": "你走进一艘被遗弃的船，那艘船出奇地寂静。机舱上的一个大洞表明，核心发动机很可能爆炸了，迫使船员弃船。尽管你没有发现任何有重要价值的东西，但船上仍然有大量的矿石货物。出发前，你要尽快把尽可能多的东西装上你的船。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 26
+  },
+  {
+    "source_id": "naev_a53d988f1b89b83f6281",
+    "document_id": "0",
+    "src": "He whistles casually.\n\"The nebula's a real piece of work. It's almost mesmerizing to fly through it, however, it do got quite a character. If you try to go too deep into 'er you can't easily get back. Many a soul has been lost in there.\"",
+    "ref": "他不经意地吹着口哨。\n\"星云是一个真正的作品。飞越它几乎是令人着迷的，然而，它确实有相当的角色。如果你试图深入到呃，你很难轻易找回。许多灵魂已经在那里迷失了。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 27
+  },
+  {
+    "source_id": "naev_f664faf678aab62972c0",
+    "document_id": "0",
+    "src": "You hand Flintley the artefact you procured on {pnt}. He examines it for a few moments, then enters a few queries in the info terminal in his table. Once he has found what he was looking for, he heaves a sigh. \"I'm sorry, {player}. It seems you've been had. What you've got here is little more than a trinket. It's a piece of 'art' created by a third-rank sculptress named Biena Gharibri who lives on Lapra. She's not very talented, I'm afraid. Her creations have been called 'worse than Dvaered opera' by a leading art critic. I really don't think you want to present his lordship with this.\"",
+    "ref": "您将您在{pnt}购买的文物交给Flintley。他检查了一会儿，然后在表格中的信息终端中输入了一些查询。一旦他找到了他要寻找的东西，他叹了口气。\"对不起，{player}。看来你被骗了。你在这里得到的只不过是一个小饰品。这是一件 \"艺术品\"，由居住在拉普拉的三级雕塑女演员比埃娜·加里布里创作。\n恐怕她不是很有才华。她的作品被一位著名艺术评论家称为\"比戴瓦德(Dvaered)歌剧还糟糕\"。我真的不认为你想向老爷展示这个。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 28
+  },
+  {
+    "source_id": "naev_c7288e5738eed1f9ab12",
+    "document_id": "0",
+    "src": "Staring out of the window, you see the shadows swirling around your ship. They became numerous by now, but you do not know how many there are. They just vanish as fast as they appear out of nowhere. \"It's no surprise that so many pilots are afraid of those ghost stories\" you think, but you have no reason to fear them. You know it is the nebula that will destroy your ship.",
+    "ref": "凝视窗外，你看到阴影在你的船周围旋转。现在他们已经很多了，但你不知道有多少。它们消失的速度和突然出现的速度一样快。\"这么多飞行员害怕这些鬼故事并不奇怪\"你想，但你没有理由害怕它们。你知道这是云层会摧毁你的船。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 29
+  },
+  {
+    "source_id": "naev_9a119bd89a0ae12815a1",
+    "document_id": "0",
+    "src": "You catch nothing else move as the ship is silent. With your adrenaline fading, you poke at the object you shot with your foot, revealing a dirty corpse. Seeing the state of mummification, you can only guess it was long dead before you got here. The body is wearing what seems to be a bunch of rags from some old space suit, you take a closer look when you notice the eyes seem to be a faded shade of purple. Strange, maybe some Soromid biotech?",
+    "ref": "飞船死寂无声,你确定没有其他动静。随着肾上腺素消退,你用脚拨动刚才射击的物体,露出一具肮脏的干尸。从木乃伊化程度判断,显然在你到达前就已死亡多时。尸体穿着看似旧太空服碎片的破布,仔细查看时注意到其眼睛呈现褪色的紫色。奇怪,难道是索洛米德(Soromid)生物科技产物?",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 30
+  },
+  {
+    "source_id": "naev_ef497ee153911b882fad",
+    "document_id": "0",
+    "src": "\"If you plan to go, you should bring your best sensors. It's very hard to see anything due to the density of the nebula there.\"",
+    "ref": "\"如果你打算去的话，你应该带上你最好的传感器。由于那里的星云密度很大，很难看到任何东西。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 31
+  },
+  {
+    "source_id": "naev_c19e3417a5fb1d27894f",
+    "document_id": "0",
+    "src": "Flintley studies the object on the table for a while, checking the online database a number of times in the process. Then, finally, he turns to you. \"I hate to say this, but it seems you've bought a counterfeit. It's a good one, though! That seller on {pnt} must have known his stuff. You see, this is very similar to a number plate used by hovercars on Mars at the time of the Second Growth. However, it's missing a number of vital characteristics, and some details betray its recent manufacture. Close, {player}, close. But no cigar.\"",
+    "ref": "Flintley研究了桌子上的对象一段时间，并在此过程中多次检查在线数据库。然后，最后，他转向你。\"我不想这么说，但看来你买了假货。不过，这是一个好主意！{pnt}上的那个卖家一定知道他的东西。你看，这与第二次成长时火星上的气垫车使用的车牌非常相似。然而，它缺少一些重要特征，而且一些细节暴露了它最近的制造过程。关闭，{player}，关闭。但没有雪茄。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 32
+  },
+  {
+    "source_id": "naev_7ac920244644e5cd2b79",
+    "document_id": "0",
+    "src": "\"It's called a skate-board,\" Flintley continues. \"The records about it are a bit sketchy and a lot is nothing but conjecture, but it appears it was once used in primitive communal rituals. The exact nature of these rituals is unknown, but they may have been tribal initiations or even mating rituals. The patterns in the board itself are thought to have a spiritual or mystical meaning. Also, according to some theories, people used to stand on top of the skate-board, with the cylinder wheels facing the ground. This has led some historians to believe that the feet were once central to human psychology.\"",
+    "ref": "\"它被称为滑板，\"弗林特利继续说道。\"关于它的记录有点粗略，很多都只是猜测，但它似乎曾经被用于原始的公共仪式。这些仪式的确切性质尚不清楚，但它们可能是氏族仪式，甚至是交配仪式。棋盘本身的图案被认为具有精神或神秘的意义。此外，根据一些理论，人们过去常常站在滑板顶部，圆柱轮面向地面。这使得一些历史学家相信脚曾经是人类心理的核心。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 33
+  },
+  {
+    "source_id": "naev_bdbd725f101efdb0498b",
+    "document_id": "0",
+    "src": "\"Ahah! Of course, it is! Nothing enters nor gets out of that warehouse! I have information that suggests that Tricon is already lobbying for Nexus docks to accept our claims because they cannot afford that strike!\"",
+    "ref": "“哈哈！当然会！那个仓库现在完全停滞！我掌握的情报显示特瑞康(Tricon)已经在游说纳克西斯(Nexus)空间站接受我们的诉求，因为他们承受不起罢工损失！”",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 34
+  },
+  {
+    "source_id": "naev_26e3a648360e0fa88253",
+    "document_id": "0",
+    "src": "\"Ah! I knew it! You refuse because I said it is dangerous! You're a coward, as shown by the disturbing absence of bruises on your face!\"",
+    "ref": "啊！我就知道！你拒绝是因为我说这很危险！你是个胆小鬼，从你脸上令人不安的没有瘀伤就可以看出！",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 35
+  },
+  {
+    "source_id": "naev_f0793a3f8912c1aad5e3",
+    "document_id": "0",
+    "src": "\"Please sit in that terminal over there, I'll be at the one here. You know how this works right? Just connect yourself, and I'll set up the server details.\"",
+    "ref": "请坐在那边的终端，我就在这里。你知道这是怎么回事吗？你只需连接你自己，我就会设置服务器的细节。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 36
+  },
+  {
+    "source_id": "naev_08b205fc6177a2b8cd0c",
+    "document_id": "0",
+    "src": "You complete docking operations with the {plt}, well aware that your ship isn't carrying the man they were expecting. At the airlock, you are greeted by a pair of crewmen in grey uniforms. You explain to them that you were unable to bring Jorek to them, and they receive your report in a dry, businesslike manner. The meeting is short. The crewmen disappear back into their ship, closing the airlock behind them, and you return to your bridge.",
+    "ref": "你完成了与{plt}的对接操作，清楚地知道你的船并没有携带他们期待的那个人。在气闸处，你被两名穿着灰色制服的船员迎接。你向他们解释你未能将乔雷克带到他们面前，他们以一种干练、公事公办的态度接受了你的报告。会面很简短。船员们消失回他们的船中，关闭了气闸，你返回了你的舰桥。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 37
+  },
+  {
+    "source_id": "naev_890ad565f43ffcf02dde",
+    "document_id": "0",
+    "src": "The drone flickers once more and everything goes dark. It seems like that was the last of the life that was in it. You run a last routine scan to see if there is anything you can do. While it seems like the drone is sadly out of order permanently, you find what seems to be an experimental piece of hardware of Za'lek make attached to it. Seeing as it is no longer of use to the drone, you take it with you.",
+    "ref": "无人机再次闪烁，随后一切陷入黑暗。看来这是它体内最后的生命迹象。你运行了最后一次常规扫描，看看是否还能做些什么。虽然很遗憾，这架无人机似乎已经永久性损坏，但你发现上面附着一个似乎是扎列克(Za'lek)制造的实验性硬件。既然它对无人机已无用处，你便将其带走。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 38
+  },
+  {
+    "source_id": "naev_8e5ea07e8523e7923b03",
+    "document_id": "0",
+    "src": "He leads you to the largest room at the base, which is the not very elegant cafeteria. He opens the door, and you are greeted by a myriad of faces, some which you recognize as colonists you helped bring over to Antlejos V from different parts of the galaxy. A cheer erupt from the crowd as you go to the centre of the room.",
+    "ref": "他带你去基地最大的房间，那是不太优雅的自助餐厅。他打开门，迎接你的是无数的面孔，其中一些你认出是你帮助从银河系不同地区带到安特勒霍斯五号的殖民者。当你走到房间中央时，人群中爆发出一阵欢呼声。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 39
+  },
+  {
+    "source_id": "naev_063129115c2202bbd234",
+    "document_id": "0",
+    "src": "She takes you to an impromptu installation on her ship, the Pink Demon. There you give Maikki the holodrives that she promptly passes off to her engineers to inspect the contents, while you explain to her the ordeal you went through. She shows sorrow when you explain the fates of Marley and Sage, the two pirates you met, but such is the way of pirates.",
+    "ref": "她带你到她的船上的一个即兴装置，粉色恶魔。在那里，你给Maikki全息驱动器，她很快就把它交给她的工程师检查里面的东西，同时你向她解释你经历的磨难。当你解释你遇到的两个海盗Marley和Sage的命运时，她表现出悲伤，但这就是海盗的方式。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 40
+  },
+  {
+    "source_id": "naev_ee11c0efdec96704beac",
+    "document_id": "0",
+    "src": "Eventually an engineer comes back to report on the situation. It seems like some schematics of Kex's design were recovered, along with some other blueprints that could prove to be useful, or at least in the worst case, worth a pretty penny on the black market. Maikki looks ecstatic at the possibility, albeit remote, of being able to repair her father.",
+    "ref": "最终，一名工程师回来报告了情况。科克斯(Kex)的一些设计图似乎被找回了，还有一些其他蓝图可能被证明是有用的，或者至少在最坏的情况下，在黑市上价值不菲。Maikki看起来欣喜若狂，尽管可能性很小，但能够修复她的父亲。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 41
+  },
+  {
+    "source_id": "naev_f973e3b0211a41f23186",
+    "document_id": "0",
+    "src": "They lean forward and talk in a hushed voice.\n\"Ya see, soul, it's them lost systems. Eaten by thee Neb'la. Full of all them rich's and stuff left 'hind. One 'tch though, soul, many souls go in, none come out! Like one of dem one-way doors.\"",
+    "ref": "他们身体前倾，用低沉的声音说话。\n\"你看，灵魂，这是那些迷失的系统。被你吃掉了，内布拉。里面装满了他们所有的财富和东西。尽管如此，灵魂，许多灵魂进去了，却没有一个出来！就像一扇DEM的单行门。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 42
+  },
+  {
+    "source_id": "naev_e115725d7ba02da19966",
+    "document_id": "0",
+    "src": "\"Warlords, as you know, are successful generals who have been entrusted with regalian sovereignty on Dvaered planets. Warlords are allowed to declare war to their rivals if they were offended or in order to conquer their planets.\"",
+    "ref": "\"如你所知，军阀是被授予戴瓦德(Dvaered)行星主权的成功将领。若受冒犯或为征服行星，军阀有权向对手宣战。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 43
+  },
+  {
+    "source_id": "naev_f9e54854e7831a259990",
+    "document_id": "0",
+    "src": "After what seems to be an eternity of a staring contest between you and the shrimp, you hear a loud beep and the shrimp's speaker begins to make a noise.\n\"PERSON. PERSON.\"",
+    "ref": "在你和虾之间似乎进行了一场永恒的凝视竞赛之后，你听到一声响亮的哔声，虾的扬声器开始发出声音。\n\"人。人. \"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 44
+  },
+  {
+    "source_id": "naev_e99ce5c69fdd68a912bd",
+    "document_id": "0",
+    "src": "\"Ah, good. You're the real deal then. Can't be too careful in times like these, you know. Anyway, old Jorek was here, but he couldn't stay. He told me to keep an eye out for you, said you'd be coming to look for him.\" The barman glances around to make sure nobody is within earshot, even though the bar's music makes it difficult to overhear anyone who isn't standing right next to you. \"I have a message for you. Go to the {sys} system and land on {pnt}. Jorek will be waiting for you there. But you better be ready for some trouble. I don't know what kind of trouble it is, but Jorek is never in any kind of minor trouble. Don't say I didn't warn you.\"",
+    "ref": "啊，太好了。你真是个好人。你知道，在这种时候怎么小心都不为过。不管怎么说，老约雷克来过这里，但他不能留下来。他让我看着你，说你会来找他的。酒吧服务员环顾四周，确保没有人在听得见的范围内，尽管酒吧的音乐让人很难无意中听到不是站在你旁边的人。我有个消息给你。去{sys}系统，降落在{pnt}上。约雷克会在那里等你。但你最好准备好遇到一些麻烦。我不知道是什么样的麻烦，但乔雷克从来没有遇到过任何小麻烦。别说我没有警告你。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 45
+  },
+  {
+    "source_id": "naev_e63515340f373752a48f",
+    "document_id": "0",
+    "src": "You try to open the box by hand, but find out it's too hard to open. Looks like whoever packed it really did not want it to be opened. You try to use several utensils to open it, but figure there's no easy way to open it without damaging it. It may be best to just get this over with. Time to head to {spb2} to finish the job.",
+    "ref": "你试图用手打开盒子，但发现太难打开了。看来包装它的人真的不想让它被打开。你尝试用几种工具打开它，但发现没有简单的方法可以在不损坏它的情况下打开它。也许最好还是快点把它解决掉。是时候前往 {spb2} 完成任务了。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 46
+  },
+  {
+    "source_id": "naev_89d9557544e0e749fc2d",
+    "document_id": "0",
+    "src": "\"To tell the truth, I don't actually know,\" the man says. \"The Baron wants you to meet him so he can brief you in person. You will find his ship in the {sys} system. Shall I inform his lordship that you will be paying him a visit?\"",
+    "ref": "\"说实话，我实际上不知道，\"这名男子说。\"男爵希望你见见他，这样他就可以亲自向你通报情况。您会在{sys}系统中找到他的船。我应该通知老爷您要去拜访他吗？\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 47
+  },
+  {
+    "source_id": "naev_879fb471c01cfcbd8d84",
+    "document_id": "0",
+    "src": "They never stop to seem amazed.\n\"You truly are clueless. I'm not sure where you got your psychic powers, but it seems like you don't either.\"",
+    "ref": "他们从未停下来看起来很惊讶。\n\"你真的是一无所知。我不知道你的通灵能力是从哪里来的，但看起来你也不知道。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 48
+  },
+  {
+    "source_id": "naev_c3f23ce51ac39e90a50c",
+    "document_id": "0",
+    "src": "Without the niceties of a proper landing area, you try to find a clearing, but at the end, have to make do with precariously setting your ship on the rubble of a once majestic building. A bit more visible than what you were hoping for. Checking with the coordinates you were given, it doesn't seem like you are too far. Now to make haste.",
+    "ref": "如果没有合适的着陆区的细节，你会试图找到一片空地，但最终，你不得不将你的船危险地放在一座曾经雄伟建筑的废墟上。比您希望的更明显一点。检查一下给你的坐标，你似乎并不太远。现在要快点了。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 49
+  },
+  {
+    "source_id": "naev_d7e7a7a260f823699dea",
+    "document_id": "0",
+    "src": "Eventually, you find the hidden away room labelled \"Particle Physics Experiments Registration Department\", and enter to meet an unenthusiastic academic secretary. You hand them the package, and, after sighing, they proceed to inspect the contents. They mention something about Dr. Sanderaite being at it again, and hand you an envelope that was in the package mentioning that it is not part of the report.",
+    "ref": "最后，你找到了一间隐蔽的房间，上面贴着\"粒子物理实验注册部\"的标签，进入房间后，你遇到了一位冷淡的学术秘书。你把包裹递给他们，他们叹了口气，然后开始检查里面的东西。他们提到了桑德莱特博士又在做这件事，并递给你一个包裹里的信封，上面提到这不是报告的一部分。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 50
+  },
+  {
+    "source_id": "naev_cf3be59989c43c6e7bc5",
+    "document_id": "0",
+    "src": "After managing to bypass the ship's security system, you enter the cockpit and notice that the fighter has been sabotaged and might soon explode: you have little time to find and capture the pilot. You head to the living cabin. As you cross the access hatch, you see him, floating weightlessly close to the floor. As he turns his livid face towards yours, you find yourself horrified by the awful mask of pain on his face. His bulging, bloodshot eyes stare at you, as if they wanted to pierce your skin.",
+    "ref": "在设法绕过船的安全系统后，你进入驾驶舱，注意到战斗机已经遭到破坏，可能很快就会爆炸:你几乎没有时间找到并抓获飞行员。你去起居室。当你穿过通道舱门时，你会看到他，失重地漂浮在靠近地板的地方。当他把他苍白的脸转向你时，你会发现自己被他脸上可怕的痛苦面具吓坏了。他那鼓起的充血的眼睛盯着你，好像要刺穿你的皮肤。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 51
+  },
+  {
+    "source_id": "naev_fb2fe5d66ce5f4b84b0b",
+    "document_id": "0",
+    "src": "\"Splendid. Please go see his lordship at the earliest opportunity. He doesn't like to be kept waiting. I will send word that you will be coming, so contact the Pinnacle when you arrive at {sys}, and they will allow you to board.\"",
+    "ref": "\"太棒了。请尽早去见老爷。他不喜欢让人等待。我会发送您即将到来的消息，因此当您到达{sys}时请联系Pinnacle，他们会允许您登机。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 52
+  },
+  {
+    "source_id": "naev_bb5e445f9df919f43aa6",
+    "document_id": "0",
+    "src": "His twisted mouth splits a repugnant creamy fluid as he starts to speak, in a groan:\n\"Good job out there. Hum. But, you see? You won't catch me alive. Oh, no. The pill of silence will make sure of that. Hmf. It looks painful, doesn't it? You know what? It's even worse than it looks. I guarantee it. Gbf. Oh, it makes me throw up... I'm sorry about that.\"",
+    "ref": "他开始说话时，扭曲的嘴巴发出令人作呕的奶油状液体，发出一声叹息:\n\"干得好。嗯。但是，你看？你不会活着抓住我的。哦，不。沉默药丸会确保这一点的。HMF。看起来很痛苦，不是吗？你知道吗？它比看起来更糟。我保证。GBF。哦，它让我呕吐……我很抱歉。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 53
+  },
+  {
+    "source_id": "naev_2c64c1de7e7c85e3df17",
+    "document_id": "0",
+    "src": "\"However, you have to be aware that after that, the rival of the Warlord who ordered the operation, and maybe also their allies will probably send ships after you. So you have to be ready to dodge Vendettas attacks if you take one of these missions. What is more, landing on the planet where you just dropped your posters is not an option.\"",
+    "ref": "然而，你必须意识到，在那之后，下令执行任务的军阀的竞争对手，以及他们的盟友可能会派遣船只追捕你。因此，如果你执行其中一项任务，你必须准备好躲避复仇攻击。更重要的是，降落在你刚刚投递海报的星球上不是一种选择。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 54
+  },
+  {
+    "source_id": "naev_a4e1187aba800d20ec6e",
+    "document_id": "0",
+    "src": "They take a good look at you first before deciding you must be the person they are waiting for.\n\"Maikki sent you right? I've been expecting you.\"",
+    "ref": "他们会先好好看看你，然后再决定你一定就是他们在等的人。\n\"Maikki派你来的对吗？我一直在等你。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 55
+  },
+  {
+    "source_id": "naev_dcec954e24037d1d0bbf",
+    "document_id": "0",
+    "src": "\"You may not be aware of it, but House Sirius is famous for our psychic prowess. We are able to project our psyche to manipulate the Flow around us perform all sorts of tasks without moving a muscle!\"",
+    "ref": "你可能没有意识到，但天狼星家族以我们的通灵能力而闻名。我们能够投射我们的灵魂来操纵我们周围的流动，执行各种任务，而不需要动一动肌肉！",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 56
+  },
+  {
+    "source_id": "naev_a3670a5f5026ebea5e07",
+    "document_id": "0",
+    "src": "The other pirate sitting there replies with a glint in his eye, \"Actually, I heard in the bar over on {pnt} that you can make fat stacks doing a little more risky work. You just gotta nab some brats, and you can sell 'em for 15 big ones a pop!\"",
+    "ref": "坐在那里的另一个海盗眼睛里闪烁着光芒回答道:\"事实上，我在{pnt}那边的酒吧里听说，你可以让胖子堆做风险更大的工作。你只需要抓几个小鬼，然后你就可以以15个大的价格卖掉它们！\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 57
+  },
+  {
+    "source_id": "naev_7706721e7e1c2e0e26ff",
+    "document_id": "0",
+    "src": "\"Of course it's easier said than done. Psychic powers vary greatly by individual and even then, amplifiers are necessary to show the true powers. Good thing House Sirius ships all have amplifiers builtin.\"",
+    "ref": "\"当然说来容易做来难。灵能力量因人而异，即使如此也需要增幅器才能展现真正威力。好在所有天狼星家族飞船都内置增幅器。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 58
+  },
+  {
+    "source_id": "naev_dfd727b11380c659ad64",
+    "document_id": "0",
+    "src": "You land and are promptly greeted by the captain of the core miner \"GE Talpini\". After an exchange of some pleasantries, they show you around their ship. It is in an impressive behemoth loaded with an array of fearsome looking drills. However, you can see that the heavy modifications on the ship make it much less suited for movement in space than underground or underwater. Looks like it will be mainly up to you to keep it in one piece on the way to {pnt}.",
+    "ref": "你着陆后，核心矿工\"GE Talpini\"的船长立即向你打招呼。在寒暄了几句之后，他们带你参观了他们的船。它是一个令人印象深刻的庞然大物，装载着一系列看起来可怕的钻头。然而，你可以看到，飞船上的大量改装使其不太适合在太空中移动，而不是在地下或水下。看起来这将主要取决于你在去{pnt}的路上要完好无损地保存它。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 59
+  },
+  {
+    "source_id": "naev_acca84f74169dd7d4b63",
+    "document_id": "0",
+    "src": "As you approach the station you can make out clear plasma blast craters on the outer hull. Your ship has to push away floating debris as you make a landing approach at the space docks while Zach is silent the entire time with a dumbfounded look on his face. You don't think this is what he was expecting. After what seems like an eternity, the ship's magnetic docking clamps make contact with the station.",
+    "ref": "当你接近空间站时，你可以清楚地看到外层船体上的等离子爆炸坑。当你在太空码头着陆时，你的飞船必须推开漂浮的碎片，而扎克却一直面无表情地保持沉默。你不会认为这是他所期待的吧。在似乎漫长的时间之后，这艘船的磁性对接夹子与空间站取得了联系。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 60
+  },
+  {
+    "source_id": "naev_a5e2f12d370929b031a9",
+    "document_id": "0",
+    "src": "\"Also note that only the ships of the 'wrong' Warlords will be chasing you, and only in the system where you executed the mission. What is more, it is totally allowed to destroy those ships as it is done in the framework of a loyal war between honourable Warlords.\n\"Once you get out of the system, you have nothing to fear from Dvaered patrol ships anymore, even if you go back to the afterwards.\"",
+    "ref": "\"注意仅'敌对'军阀的舰船会在执行任务的星系追击你。此外，在光荣军阀间的合法战争中摧毁这些舰船完全被允许。脱离该星系后，即使返回也不会再受戴瓦德(Dvaered)巡逻舰威胁。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 61
+  },
+  {
+    "source_id": "naev_c6cdedf028174895cd06",
+    "document_id": "0",
+    "src": "You look around and try to make sense of the prototype. It's highly connected to the laboratory so it does not look like you would be able to remove it easily. Furthermore, it's not even clear if it is truly functional or just a heap of scrap metal. Sadly, you lack the expertise to do a full proper evaluation. The only thing you know is that it looks pretty damn cool.",
+    "ref": "你环顾四周，试着理解原型。它与实验室高度相连，所以看起来你不能轻易地将其移除。此外，甚至还不清楚它是真正起作用的，还是只是一堆废金属。遗憾的是，你缺乏专业知识来进行全面、恰当的评估。你唯一知道的就是它看起来很酷。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 62
+  },
+  {
+    "source_id": "naev_00ffab1c74e6fd2e194c",
+    "document_id": "0",
+    "src": "A quick exploration of the ship reveals that most of its systems are completely dead, only the lights and basic life support remaining online after all this time. You eventually reach the crew quarters, but find nothing besides an age-weathered notebook. You flip carefully through it on your way towards the cargo hold, and a few entries catch your interest in particular.",
+    "ref": "对这艘船进行快速探测后会发现，它的大部分系统都完全死机了，只有灯和基本的生命维持系统在这么长时间后仍然在线。你最终到达了船员宿舍，但除了一本老化的笔记本外，什么也没有找到。在前往货舱的路上，你仔细地翻阅着它，有几个条目特别吸引了你的兴趣。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 63
+  },
+  {
+    "source_id": "naev_7004b6329ff97eb8833f",
+    "document_id": "0",
+    "src": "Request: For accomplishing its mission, Task force 5613 requires the extra amount of 10M credits.\n\nIn behalf of all the personal detached to Task force 5613, who work day after day to make House Dvaered closer to its goals, I thank you for your time and consideration, and wish you to remain right, loyal and #obfsrthgb#0.\n\nMajor General Klank",
+    "ref": "请求:为了完成任务，5613特遣部队需要额外的1000万信用点。\n\n我代表所有独立于5613特别工作组的人员，他们日复一日地工作，让戴瓦德(Dvaered)家族更接近其目标，感谢你们的时间和考虑，并希望你们保持正确、忠诚和#obfsrthgb#0。\n\n克兰克少将",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 64
+  },
+  {
+    "source_id": "naev_0376f33f5dd8c4eb796f",
+    "document_id": "0",
+    "src": "As you land, you notice the starport has been emptied. You also notice explosives rigged on some of the columns. This doesn't look good. The marines tell you to sit still while they go out to try to complete the prisoner exchange.\nFrom the cockpit you see the marines lead the prisoners in front of them with guns to their backs. You see figures step out of the shadows with weapons too; most likely the FLF.",
+    "ref": "当你着陆时，你会注意到星际机场已经空了。你还注意到一些柱子上安装了炸药。这看起来不太好。海军陆战队告诉你，当他们出去试图完成战俘交换时，你要坐着别动。\n从驾驶舱里，你可以看到海军陆战队用枪指着他们前面的囚犯。你也可以看到一些人带着武器走出阴影；最有可能的是民族解放阵线。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 65
+  },
+  {
+    "source_id": "naev_358e7845410ecf8720e6",
+    "document_id": "0",
+    "src": "You meet up with a trader who is surprised you aren't Verner, but quickly adjusts to the situation. They discuss trivial topics with you at first before entering the trade details. They seem to be all in order, and you sign as a representative of {pnt}. After shaking hands, you are sent on your way. Dealing with traders is much more efficient than the Empire bureaucracy.",
+    "ref": "你遇到了一位商人，他对你不是弗纳感到惊讶，但很快就适应了这种情况。他们首先与你讨论琐碎的话题，然后再输入交易细节。他们看起来都井然有序，你以{pnt}代表的身份签名。握手之后，你就被打发上路了。与商人打交道比与帝国官僚机构打交道效率高得多。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 66
+  },
+  {
+    "source_id": "naev_3fb2fd8dcb6ea1b43bc9",
+    "document_id": "0",
+    "src": "The airlock opens, and you are greeted by a nervous-looking man, a shy woman, and three neurotic children.\n\"Thank god you are here,\" the man says. \"I don't know how much longer we could've held out. They left us for dead, you know. No fuel, no food, and only auxiliary power to sustain us.\" He then begins to incoherently tell you how much his family has suffered in the past few periods, but you cut him short, not willing to put up with his endless babbling.\"",
+    "ref": "气闸打开了，迎接你的是一个神情紧张的男人、一个害羞的女人和三个神经质的孩子。\n\"谢天谢地，你来了，\"这名男子说。我不知道我们还能坚持多久。你知道，他们让我们等死。没有燃料，没有食物，只有辅助动力来维持我们的生命。然后，他开始语无伦次地告诉你，他的家人在过去的几个时期里遭受了多么大的痛苦，但你打断了他，不愿意忍受他没完没了的唠叨。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 67
+  },
+  {
+    "source_id": "naev_7eb70acb80e8f9438510",
+    "document_id": "0",
+    "src": "You and Harja finish the post-landing protocol and meet up at the terminal. Harja seems a little apprehensive - he clearly doesn't like the idea of meeting Joanne face to face much. But he doesn't complain. In this, he really does appear to be a man of his word. Together, you make your way to a small conference room Joanne booked for the occasion.",
+    "ref": "你和哈贾完成着陆后的协议，在航站楼会合。哈贾似乎有点担心--他显然不太喜欢与乔安妮面对面的想法。但他并不抱怨。在这一点上，他确实看起来是一个信守诺言的人。你们一起前往乔安妮为这个场合预订的一间小会议室。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 68
+  },
+  {
+    "source_id": "naev_f4ae3814c3154149f08e",
+    "document_id": "0",
+    "src": "You and Zach don your space suits and begin to search the atmosphere-less breached station in eerie silence. A floating spoon, some dirty boots… It seems like the station had inhabitants in it until quite recently. Although the base is quite a mess, knowing the Za'lek, chances are that was the usual state of affairs at the station. As you go through all the rooms one by one, but are unable to find any signs of life. During the whole ordeal, Zach remains silent and concentrated.",
+    "ref": "你和扎克穿上宇航服，在无大气层的破损空间站内展开诡异寂静的搜索。漂浮的汤匙、脏污的靴子...种种迹象表明不久前这里还有住民。尽管基地凌乱不堪，但以扎列克(Za'lek)人的作风，这很可能就是空间站的日常状态。逐室搜查后仍未发现生命迹象，整个过程中扎克始终保持着沉默与专注。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 69
+  },
+  {
+    "source_id": "naev_08c86ee907712f0d2f3d",
+    "document_id": "0",
+    "src": "\"You jest, but a clear and calm mental state is fundamental for Flow manipulation. Without a sound state of mind, you'll just give yourself headaches, or worse!\"",
+    "ref": "你是在开玩笑，但清晰冷静的心态是流量操纵的根本。没有健全的心态，你只会让自己头疼，甚至更糟！",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 70
+  },
+  {
+    "source_id": "naev_bfdef9c1012d185dbb72",
+    "document_id": "0",
+    "src": "\"Hi, pilot. I have the location and security codes of an unattended {fct} {class}. Maybe it interests you, who knows?\n\"However, I'm going to sell that information only. It'd cost you {credits}, but the ship is probably worth much more if you can get to it.\"\nDo you want to pay to know where that ship is?",
+    "ref": "\"嗨，飞行员。我有一个无人值守的{fct}{class}的位置和安全代码。也许你会感兴趣，谁知道呢？\n然而，我只会出售这些信息。这会花费你{credits}，但如果你能得到它，这艘船可能值更多的钱。\n你想花钱知道那艘船在哪里吗？",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 71
+  },
+  {
+    "source_id": "naev_5dd65c7a705060113b95",
+    "document_id": "0",
+    "src": "You survey the room one last time before you leave. You notice that the chassis covering some of the terminal has been pried open, exposing some internal connections. There is no doubt that someone jacked into your Crimson Gauntlet session. However, given the dead body in the room, you decide to take your leave before it attracts attention.",
+    "ref": "离开前，你最后一次检查房间。您注意到覆盖部分终端的底盘已被撬开，暴露了一些内部连接。毫无疑问，有人闯入了您的Crimson Gauntlet课程。然而，考虑到房间里的尸体，你决定在它引起注意之前离开。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 72
+  },
+  {
+    "source_id": "naev_4ede2f7908f783ce83fd",
+    "document_id": "0",
+    "src": "They start to grin and begin to speak with an almost serpent-like accent.\n\"Ah, pleasure to meet you. You must be the one in charge of the delivery. Your friend has quite a refined taste, too. It's not often we get a sample as good as this one.\"\nThey lick their lips.",
+    "ref": "他们开始咧着嘴笑，并开始用几乎蛇般的口音说话。\n\"啊，很高兴见到你。你必须是负责送货的人。你朋友的品味也很高雅。我们很少能得到像这个这样好的样本。\"\n他们舔嘴唇。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 73
+  },
+  {
+    "source_id": "naev_ea12e1fa347b0f493aea",
+    "document_id": "0",
+    "src": "You grab the satchel and turn a corner, face to face with another two Lost, they hiss and you don't hesitate to drop them both with a couple of well-placed shots. Maybe you'll pull it off. You run towards your ship location, as you notice it seems to be on the move. You pick up the pace when you are suddenly thrown into the air... what the hell was that?",
+    "ref": "你抓起书包，拐了一个拐角，与另外两个迷失的人面对面，他们嘶嘶作响，你毫不犹豫地用几枪将他们俩摔倒。也许你会成功的。你跑向你的船所在地，因为你注意到它似乎在移动。当你突然被抛向空中时，你加快了步伐……那到底是什么？",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 74
+  },
+  {
+    "source_id": "naev_b697ce32fd328f93c49b",
+    "document_id": "0",
+    "src": "Harrus is about to launch into another anecdote about his life as a trader, but you manage to forestall him. You soon learn that his family's lifestyle has come to an abrupt change at the hands of a minor gang of pirates. Though the {plt} had some weaponry and shielding systems, the attackers were too much for a single cargo ship.\n\"I never thought it would end like this,\" Harrus sighs. \"I mean, I knew space was dangerous, but I stayed clear of the unsafe areas. Stuck to the patrolled lanes. Didn't take any risks. I've got a family, you know.\"",
+    "ref": "哈鲁斯正要开始讲述他作为商人生活的另一个轶事，但你设法阻止了他。你很快得知，他的家庭生活方式因为一小撮海盗的介入而发生了突变。尽管{plt}号配备了一些武器和防护系统，但对于一艘货船来说，袭击者实在太强大了。\n\"我从没想到会这样结束，\"哈鲁斯叹道。\"我的意思是，我知道太空很危险，但我一直避开那些不安全的区域。我只走巡逻过的航道。从不冒险。我有家庭，你知道的。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 75
+  },
+  {
+    "source_id": "naev_1c36d4b5f5c321d7f772",
+    "document_id": "0",
+    "src": "The muttering goes on for quite a long time, until he suddenly slams the enter key, You can see a brief flicker around the drones as the station's holographic project starts to overlay a hologram of cute cats on them. However, given the size of the drones, they seem to be more like large tigers that are rather quite intimidating. The cat hologram drones fly once again out into space, and while staying near the station begin to broadcast a message towards the feral bioship. ",
+    "ref": "窃窃私语持续了很长一段时间，直到他突然按下Enter键，当空间站的全息项目开始在无人机上覆盖可爱猫的全息图时，你可以看到无人机周围短暂的闪烁。然而，考虑到无人机的大小，它们似乎更像是相当吓人的大型老虎。猫全息无人机再次飞向太空，在空间站附近停留期间，开始向这艘野生生物飞船广播信息。 ",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 76
+  },
+  {
+    "source_id": "naev_cc4307f9d2fc889ae4c2",
+    "document_id": "0",
+    "src": "You pay the informer, who tells you the ship in currently on {pnt}, in the {sys} system. He also gives you its security codes and warns you about patrols.\nThe pile of information he gives you also contains a way to land on the planet and to dissimulate your ship there.",
+    "ref": "您在{sys}系统中向告密者支付费用，告密者会告诉您当前在{pnt}上的船只。他还会给你安全代码，并警告你巡逻的事。\n他给你的一堆信息也包含了一种登陆地球的方法，并在那里伪装你的飞船。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 77
+  },
+  {
+    "source_id": "naev_9dcf6712138215b87373",
+    "document_id": "0",
+    "src": "\"The arrangements have all been made, and you'll soon have it aboard your ship. If I were you, I would put it as far away from any personnel as possible.\"\nThey then lean it to whisper to you.\n\"You might want to watch your back, your friend is not the only one that wants it.\"",
+    "ref": "\"一切都安排好了，你很快就会把它送到你的船上。如果我是你，我会把它放在尽可能远离任何人员的地方。\"\n然后他们靠着它对你耳语。\n\"你可能想小心点，你的朋友并不是唯一想要的人。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 78
+  },
+  {
+    "source_id": "naev_8d3780fc944bcc2b6300",
+    "document_id": "0",
+    "src": "\"I tried to look at it myself, but wasn't able to figure out a damn thing, and since my post-doc eloped to Rulk'ar, I don't have anyone to deal with this sort of inconvenience. If you could give it a shot and get it apart, you should be able to take the controllers with you. All you have to do is align the memory by pushing the data boxes into data sockets. Please take a shot at it.\"",
+    "ref": "\"我试着自己去看，但什么都想不出来，因为我的博士后私奔到了Rulk‘ar，我没有人来处理这种不便。如果你能试一试，把它拆开，你应该能把控制器带走。你所要做的就是把数据盒子推入数据插座，把内存对准。请试一试。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 79
+  },
+  {
+    "source_id": "naev_aca37f07fd32ce7089d0",
+    "document_id": "0",
+    "src": "Then Harrus brightens up, apparently putting his recent misfortune behind him in the blink of an eye. \"Everything's going to be fine now,\" he says cheerfully. \"We've been rescued, and all we need now is for you to take us to a suitable world where we can build a new life.\"\nWithout further ado, and without so much as formally asking for the favour, Harrus and his family proceed onto your ship and install themselves into your living quarters. They do not seem about to leave.",
+    "ref": "然后，哈勒斯高兴起来，显然在一眨眼之间就把最近的不幸抛在脑后。\"现在一切都会好起来的，\"他兴高采烈地说。\"我们获救了，现在我们所需要的就是你们带我们去一个合适的世界，在那里我们可以建立新的生活。\"\n哈勒斯和他的家人毫不犹豫地登上你的船，安顿在你的住处，甚至连正式的请求都没有。他们似乎不会离开。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 80
+  },
+  {
+    "source_id": "naev_dcfa5629402db70e71e8",
+    "document_id": "0",
+    "src": "You get to your ship and the first thing you immediately notice is that someone taped an enormous drill onto your ship that has 'DRILLMASTER 5000' written on the side in permanent marker. It also has some crude flames drawn on it. You're amazed it doesn't fall off and turn to Nelly to ask for an explanation, only to find her beaming radiantly, likely very proud of her modification. You give up scolding and gesture towards the 'Drillmaster'.",
+    "ref": "你到了你的船上，你立刻注意到的第一件事是有人在你的船上贴了一个巨大的钻头，在船侧用永久记号写着‘Drillmaster 5000’。上面还画着一些粗糙的火焰。你很惊讶它没有掉下来，然后转向奈莉要求解释，结果发现她容光焕发，很可能对自己的修改非常自豪。你不再责骂，也不再对\"教官\"做手势。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 81
+  },
+  {
+    "source_id": "naev_5f3a52da6cb8b1a2ea5b",
+    "document_id": "0",
+    "src": "Your ship lands on the station. The moment you and Zach get out of the ship, you hear a loud groan and amidst a shower of sparks, half the engine sputters and falls down onto the ground. As you take cover, your now imbalanced ship falls off to the side and slides on the metal floor in a cacophony of clangs and groans.",
+    "ref": "你的船降落在空间站上。当你和扎克下船的那一刻，你听到一声响亮的呻吟，在一阵火花中，一半的发动机发出劈啪声，掉到了地上。当你寻找掩护时，你现在不平衡的船就会倾斜，在金属地板上滑行，发出刺耳的叮当声和叹息声。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 82
+  },
+  {
+    "source_id": "naev_61d3180bdd81272a0708",
+    "document_id": "0",
+    "src": "You rush to the command chair and take control, pushing a sharp atmospheric ascent. The ship rattling as it tries to break free from the gravitational pull. As you climb, you hear an unwelcome lock-on warning. Your ship is rocked by some sort of ground-to-air missile. That's going to leave a blemish. You pull the throttle harder and eventually manage to break free.",
+    "ref": "你冲到指挥椅上并控制局面，推动大气急剧上升。当船试图摆脱重力时，它发出嘎嘎作响的声音。当您攀登时，您会听到不受欢迎的锁定警告。你的船被某种地对空导弹摇晃了。这会留下瑕疵。你更用力地拉油门，最终设法挣脱束缚。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 83
+  },
+  {
+    "source_id": "naev_90449806746f6e5a86a0",
+    "document_id": "0",
+    "src": "When nobody is nearby you force a grate open. It seems to be just enough for you to squeeze through. You take a deep breath and start making your way through the vents. You end up getting lost and having to backtrack several times. After a long trip, you end up finding an exit grate to a quiet area.",
+    "ref": "当附近没有人的时候，你就强行打开栅栏。它似乎正好够你挤过去的。你深吸一口气，开始穿过通风口。你最终迷路了，不得不多次走回头路。长途旅行后，你最终会找到一个通往安静区域的出口栅栏。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 84
+  },
+  {
+    "source_id": "naev_8fece4c9bd975b774acb",
+    "document_id": "0",
+    "src": "You are swiftly escorted back to your ship. You didn't really get the chance to ask the Baron any questions, such as whom these potential attackers are, how you're supposed to pay for the artefacts once you locate the sellers, or what you will get out of all this. You do, however, find an update to your galaxy map that shows the location of the sellers, as well as a list of names and portraits. It would seem that the only way to find out what you're dealing with is the hard way.",
+    "ref": "你很快就会被护送回你的船上。你没有机会问男爵任何问题，比如这些潜在的袭击者是谁，一旦你找到卖家，你应该如何支付文物的费用，或者你会从这一切中得到什么。然而，你确实找到了你的银河系星图的更新，显示了卖家的位置，以及名字和肖像的列表。看来，找出你正在处理的事情的唯一方法是艰难的方式。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 85
+  },
+  {
+    "source_id": "naev_d2b59e7e910ebc4c0c05",
+    "document_id": "0",
+    "src": "You fumble the controls of the ship a bit, just enough to make it barely scratch the inner hull of the space dock. Although you expected it to make some noise, you didn't foresee the ear-splitting screech caused by the metal on metal interaction. With all the heads of everyone at the spacedocks turned your way, it seems like you managed to get the attention of the inter spacedock.",
+    "ref": "你稍微摸索了一下飞船的控制，足以让它几乎不会刮伤太空码头的内壳。尽管您预计它会发出一些噪音，但您没有预见到金属与金属的相互作用引起的震耳欲聋的尖叫声。随着太空码头上所有人的头都转向了你的方向，你似乎设法引起了国际太空码头的注意。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 86
+  },
+  {
+    "source_id": "naev_7a5eb5f382f8d9cdafa8",
+    "document_id": "0",
+    "src": "As you explore the dimly lit interior of the ship, you quickly realize that the crew clearly never escaped. The withered skeletons make for a haunting experience as you wander the halls of the floating graveyard. Despite the chills creeping up your spine however you note that, scattered among the plain grey uniforms of the crew, there are more than a few skeletons with the skull-and-crossbones on their jackets.",
+    "ref": "当你探索这艘船灯光昏暗的内部时，你很快就会意识到船员显然从未逃脱。当你在漂浮的墓地的大厅里漫步时，枯萎的骨骼构成了一种令人难以忘怀的体验。尽管你的脊椎不寒而栗，但你注意到，散落在船员朴素的灰色制服中，夹克上有不少骷髅和交叉骨骼。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 87
+  },
+  {
+    "source_id": "naev_1a507a9035900a53e799",
+    "document_id": "0",
+    "src": "Suddenly, you are awoken by the buzz, whirs, and groans of a station coming back to life. Alarms blaze as the station begins to generate a breathable atmosphere and weak gravitational field. While you are distracted by all the commotion, you feel a tap on your shoulder and turn around to see a grinning Zach, helmet in hand.",
+    "ref": "突然，你被空间站恢复生机的嗡嗡声、呼呼声和叹息声惊醒。当空间站开始产生可呼吸的大气和弱引力场时，警报就会发出。当你被所有的骚动分心时，你感觉到有人轻拍你的肩膀，转过身来，你看到扎克咧嘴笑着，手里拿着头盔。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 88
+  },
+  {
+    "source_id": "naev_ba4e6c20106e64c1409b",
+    "document_id": "0",
+    "src": "You wait to one side as the cargo is hauled off your ship at breakneck speed and wonder if you should have just dumped the stuff in space. Just as the last of the cargo is taken off your ship, the inspector, who has clearly cooled off a bit, comes up to you and says \"Look, I know you were trying to do us a favour, but next time don't bother if you can't make it on time. I'm glad you didn't just dump it all into space like some people have done, but I can't pay you for this.\" He shakes his head and walks away. \"That pilot is so fired…\"",
+    "ref": "当货物以惊人的速度被从船上拖走时，你在一边等待，想知道你是否应该把这些东西扔到太空中。就在最后一批货物从你的船上卸下来的时候，检查员走过来对你说，我知道你是想帮我们一个忙，但下次如果你不能按时到达，别麻烦了。我很高兴你没有像其他人那样把货物全部倾倒到太空中，但我不能付钱给你。他摇摇头，走开了。\"那个飞行员被解雇了，…\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 89
+  },
+  {
+    "source_id": "naev_fb600e4f19de0b0b7efe",
+    "document_id": "0",
+    "src": "You struggle to stand groggily as your eyes start recovering and colour returns to the world. You find yourself amidst a flurry of drones led by Zach who have quickly started to perform the surgery. Given that you are still completely useless in your current state, you drag yourself out of the way and lean against a wall. Time seems to fly by without you noticing, and you close your eyes.",
+    "ref": "当你的眼睛开始恢复，颜色回到世界时，你挣扎着摇摇晃晃地站着。你发现自己身处扎克领导的一群无人机中，他们迅速开始进行手术。鉴于你在目前的状态下仍然完全无用，你把自己拖到一边，靠在墙上。时间似乎在不知不觉中溜走，你闭上了眼睛。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 90
+  },
+  {
+    "source_id": "naev_a283b3dc0ad793496bbc",
+    "document_id": "0",
+    "src": "You expect a Za'lek party to be much different from a regular party. In fact, the first two things you notice are the classical music and the absence of any alcoholic drinks. There is, however, a buffet. In particular, there is a small fridge with ice cream. You spot a fair amount of people eating ice cream. Is this the Za'lek equivalent of beer?",
+    "ref": "你本以为扎列克(Za'lek)派对会与普通派对大不相同。事实上，最先引起你注意的两件事是古典音乐和完全不含酒精的饮品。不过这里倒是有自助餐，特别是还有个装满冰淇淋的小冰箱。你看到不少人都在吃冰淇淋，这就是扎列克(Za'lek)人用来替代啤酒的东西吗？",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 91
+  },
+  {
+    "source_id": "naev_9bb5b0e9995904f0b460",
+    "document_id": "0",
+    "src": "Before you know it, you've engaged in a conversation with one of the scientists; He saw you enter with Dr. Mensing, which motivates him to ask the question of the hour… whether you and her are dating. In an attempt to clear his misgivings about the situation you tell him that she hired you. Hopefully he believes you…",
+    "ref": "在你意识到这一点之前，你已经与其中一位科学家进行了交谈；他看到你和门辛博士一起进入，这促使他提出了The Query of the Hour…你和她是不是在约会。为了消除他对情况的疑虑，你告诉他是她雇了你。希望他相信你…",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 92
+  },
+  {
+    "source_id": "naev_072a985c35060ac45ad1",
+    "document_id": "0",
+    "src": "You quickly search the room, and discover evidence of a fight between the captain and the pirate. Blaster burns pockmark the walls, and the captain's uniform is covered in bloodstained slashes. You note with some curiosity that the pirate seemed to have been using a curved, nanosteel sabre instead of a blaster. You pick up the dusty blade and note its excellent craftsmanship. With the ornate engravings covering the blade, the sword is as much a work of art as it is a weapon.",
+    "ref": "你迅速搜查了房间，发现了船长和海盗打架的证据。雷管烧毁了墙壁上的麻点，船长的制服上布满了血迹斑斑的伤痕。你好奇地注意到，海盗似乎一直在使用一把弯曲的纳米钢军刀，而不是爆破器。你捡起那把落满灰尘的刀片，注意到它的精湛工艺。由于剑上有华丽的雕刻，剑既是一件艺术品，也是一件武器。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 93
+  },
+  {
+    "source_id": "naev_d7be66815f330e0b89fc",
+    "document_id": "0",
+    "src": "You enter a shop that sells only lab coats. The assortment of lab coats is impressive: lab coats of all colours, different materials, and cuts. There are distinct sections for casual and working lab coats. Whatever the difference is, it is too subtle for you to grasp. You settle on a \"business\" lab coat because something formal is probably suitable for your talk. The price tag reads {credits}.",
+    "ref": "你走进一家只卖实验室大衣的商店。各式各样的实验室大衣令人印象深刻:各种颜色、不同材料和款式的实验室大衣。实验室休闲服和工作服有不同的部分。无论有什么不同，它都太微妙了，你无法理解。你决定穿一件\"商务\"的实验室大衣，因为正式的衣服可能适合你的谈话。价格标签上写着{credits}。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 94
+  },
+  {
+    "source_id": "naev_96aca51cee38cff9e77f",
+    "document_id": "0",
+    "src": "After landing, Okran tells you and the rest of the escort pilots to wait for him at the spaceport's bar. As a member of his crew, you are granted access to the special VIP customers restricted bar.\nThe walls are covered with pictures of different versions of the Goddard battlecruiser, each of which is accompanied by a small explicative text and a series of important facts: \"Did you know that 365 Goddards Mk VII-DM were constructed between UST-510 and UST-567? This model is the most successful ever, and about 120 of them are reportedly still in use at date of UST-601.\"",
+    "ref": "着陆后，奥克兰告诉你和其他护航飞行员在航天港的酒吧等他。作为他的机组成员，您可以进入特殊的VIP客户限制酒吧。\n墙上挂满了戈达德(Goddard)战舰的不同版本的图片，每一张图片都附有一小段解释性文字和一系列重要事实:\"你知道365辆戈达德(Goddard)Mk VII-DM是在UST-510和UST-567之间建造的吗？这是有史以来最成功的型号，据报道，其中约120架在UST-601年代仍在使用。\"",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 95
+  },
+  {
+    "source_id": "naev_0d21aad916263d0a2f7c",
+    "document_id": "0",
+    "src": "You reach the cargo holds but don't find anything out of the ordinary. You carefully open the hatch and find a big thank-you note written on the wall with some sort of crayon or chalk. It reads \"thank you for everything\". While taking the orphans to a safe home may have not meant too much trouble for you, it meant an entire life to them.",
+    "ref": "你到达货舱，但没有发现任何异常。你小心翼翼地打开舱门，发现墙上写着一张很大的感谢信，上面写着某种蜡笔或粉笔。上面写着\"谢谢你所做的一切\"。虽然把孤儿带到一个安全的家对你来说可能不会有太大的麻烦，但这对他们来说意味着一生。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 96
+  },
+  {
+    "source_id": "naev_c37b84b5f0f8061f0c68",
+    "document_id": "0",
+    "src": "Despite the seemingly imbalanced weaponry at play, you can't tell for certain who won the duel. Judging by the result it might be fair to say they both lost. One thing is for certain though, a few blaster shots aren't enough to explain the explosion which clearly took place here. You do find a singed journal in the captain's pocket however, and start leafing through the most recent entries.",
+    "ref": "尽管看起来不平衡的武器在发挥作用，但你不能肯定地说谁赢了这场决斗。从结果来看，或许可以公平地说，他们都输了。但有一件事是肯定的，几次爆炸并不足以解释清楚地发生在这里的爆炸。然而，你确实在船长的口袋里找到了一本烧焦的日记，并开始翻阅最新的条目。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 97
+  },
+  {
+    "source_id": "naev_255f6162f1becc7e9faf",
+    "document_id": "0",
+    "src": "You follow the crewmen as they push the cart through the main corridor of the ship. Soon you arrive at a door leading to a large, luxurious compartment. You can tell at a glance that these are Baron Sauterfeldt's personal quarters. The Baron himself is present. He is a large man, wearing a tailored suit that manages to make him look stately rather than pompous, a monocle, and several rings on each finger. In a word, the Baron has a taste for the extravagant.",
+    "ref": "当船员推着手推车穿过船的主走廊时，你跟着他们。很快，你就来到了一扇门前，这扇门通向一个大而豪华的隔间。你一看就知道这是索特费尔特男爵的私人住处。男爵本人也在场。他身材魁梧，穿着一套定制的西装，让他看起来很庄重而不是浮夸，戴着一副单片眼镜，每根手指上都戴着几个戒指。总而言之，这位男爵喜欢奢侈。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 98
+  },
+  {
+    "source_id": "naev_9a3aa476ec03bcfc03b7",
+    "document_id": "0",
+    "src": "You consider ordering Harrus off your bridge, but he doesn't seem the kind of man to back off, so the only thing you would accomplish is to sour the mood on your ship. You inform Harrus that you're making every effort to get his family to a safe haven, which seems to satisfy him. Finally alone again, you take a moment to subside before completing that check.",
+    "ref": "你考虑命令哈勒斯离开你的舰桥，但他似乎不是那种会退缩的人，所以你唯一能做的就是破坏你船上的情绪。你告诉哈勒斯，你正在尽一切努力把他的家人带到一个安全的避风港，这似乎让他满意了。终于又一次孤身一人，在完成检查之前，你花了片刻的时间平静下来。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 99
+  },
+  {
+    "source_id": "naev_170af821b6f4728e2b60",
+    "document_id": "0",
+    "src": "You are seen out of the Baron's quarters, so you head back through the airlock and back into your own ship. The first thing you do is check your balance, and to your relief, it has indeed been upgraded by a substantial amount. You also seem to have received a statue of dubious taste. As you undock, you wonder what kind of wild goose chase the man will send you on next time.",
+    "ref": "你被看到走出了男爵的住处，所以你通过气闸回到了你自己的船上。你要做的第一件事是检查你的余额，让你松了一口气的是，它确实已经升级了相当多的金额。你似乎还收到了一尊品味可疑的雕像。当你离开码头时，你想知道下一次那个人会让你进行什么样的徒劳追逐。",
+    "reference_status": "translated",
+    "fuzzy": false,
+    "line": 100
+  }
+]

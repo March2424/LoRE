@@ -1,0 +1,24 @@
+{
+  "version": "delta-adapted-v1",
+  "upstream_commit": "6dde70acc9e60fd2533c2ca467eb327884d20dab",
+  "upstream": "third_party/DocMTAgent",
+  "output": "outputs/delta_comparison_20261116",
+  "naev_prior": "outputs/naev_ablation_300_20261109_manual",
+  "naev_raw_prior": "outputs/naev_ablation_raw_selector_300_20261116",
+  "naev_compare_prior": "outputs/naev_model_compare_100_20261110",
+  "general_prior": "outputs/general_eval_comet_20261116",
+  "naev_graph": "outputs/naev_full_2026-11-01/graph.sqlite",
+  "models": {
+    "7b": "/root/autodl-tmp/Qwen2.5-7B-Instruct",
+    "8b": "/root/autodl-tmp/Qwen3-8B",
+    "14b": "/root/autodl-tmp/Qwen3-14B/Qwen3-14B"
+  },
+  "summary_step": 20,
+  "long_window": 20,
+  "top_k": 2,
+  "context_window": 3,
+  "translation_max_new_tokens": 768,
+  "memory_max_new_tokens": 2048,
+  "max_context_tokens": 32768,
+  "gpu_lock": "outputs/naev_model_compare_100_20261110/.gpu.lock"
+}

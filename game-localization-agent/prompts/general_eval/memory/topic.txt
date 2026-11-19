@@ -1,0 +1,3 @@
+Summarize the {side} material for topic {topic} in short factual bullets. Preserve explicit uncertainty, conditions, and disagreements. Do not invent facts or chronology. For translated material, summarize established terminology and expression only. Use the language of the supplied material.
+Material:
+{texts}

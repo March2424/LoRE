@@ -1,0 +1,4 @@
+Translate the complete source text from {source_lang} to {target_lang}. Preserve all information, names, numbers, punctuation and placeholders. Do not add or omit content. Output only the translation.
+
+Source:
+{source}

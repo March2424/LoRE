@@ -1,0 +1,86 @@
+{
+  "models": {
+    "7b": "/root/autodl-tmp/Qwen2.5-7B-Instruct",
+    "8b": "/root/autodl-tmp/Qwen3-8B",
+    "14b": "/root/autodl-tmp/Qwen3-14B/Qwen3-14B"
+  },
+  "model_assets": {
+    "7b": {
+      "config_sha256": "7463bb0ea78315365e6c6b74de4e73bbcc8359dfb0c5a737584e077d42c0b03c",
+      "tokenizer_config_sha256": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+      "weight_shards": {
+        "model-00001-of-00004.safetensors": 3945441440,
+        "model-00002-of-00004.safetensors": 3864726352,
+        "model-00003-of-00004.safetensors": 3864726424,
+        "model-00004-of-00004.safetensors": 3556377672
+      }
+    },
+    "8b": {
+      "config_sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+      "tokenizer_config_sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+      "weight_shards": {
+        "model-00001-of-00005.safetensors": 3996250744,
+        "model-00002-of-00005.safetensors": 3993160032,
+        "model-00003-of-00005.safetensors": 3959604768,
+        "model-00004-of-00005.safetensors": 3187841392,
+        "model-00005-of-00005.safetensors": 1244659840
+      }
+    },
+    "14b": {
+      "config_sha256": "e73c3664ca09b10a673fef0c22e8a6b456201d49bd4713c9691f775720e8857a",
+      "tokenizer_config_sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+      "weight_shards": {
+        "model-00001-of-00008.safetensors": 3841788544,
+        "model-00002-of-00008.safetensors": 3963750816,
+        "model-00003-of-00008.safetensors": 3963750880,
+        "model-00004-of-00008.safetensors": 3963750880,
+        "model-00005-of-00008.safetensors": 3963750880,
+        "model-00006-of-00008.safetensors": 3963750880,
+        "model-00007-of-00008.safetensors": 3963750880,
+        "model-00008-of-00008.safetensors": 1912371880
+      }
+    },
+    "selector": {
+      "sft_config_sha256": "866a78ff05a5dcaf2d2f7ceec23277e59b4443d70f3c3b0d1a73444d88df389b",
+      "dpo_adapter_sha256": "21c3d89a8b71419fac1e155020c8517893bb057739dc9bb03231f4e29d916ad2"
+    }
+  },
+  "prompts": {
+    "prompts/general_eval/delta_draft.txt": "50ca71b4b13366934fd457495c05a276bf146d2ca76f1e04f7c694de709533a0",
+    "prompts/general_eval/doc2doc.txt": "3cc00d21a8b7ee9bd1486095633eba2253362400601d54d72c067f2377b347e0",
+    "prompts/general_eval/framework.txt": "e9c9eee2ac7e74a7b2be42d65fcc9269cc33ec165d5c3c00f4c6e60c7267f93c",
+    "prompts/general_eval/memory/en-zh/src_merge_prompt.txt": "ded2ad3f91a02d43d26cd1bbd7c7ed8f736b42ba264e2daccb7182329a685136",
+    "prompts/general_eval/memory/en-zh/src_summary_prompt.txt": "c1f555df7328ffca6c5bbf75a752ff2a379265ffb79405852614432526039370",
+    "prompts/general_eval/memory/en-zh/tgt_merge_prompt.txt": "01305521405e16bba0170546543e782dc4bcc35f7217db7b1e8a5a467713de47",
+    "prompts/general_eval/memory/en-zh/tgt_summary_prompt.txt": "d22698ff461cb41acbd880dca5a0af4e309c1f0fb3e5fd8e8478a474b8550666",
+    "prompts/general_eval/memory/retrieve.txt": "8fa28419fc12a0e6878f3e20ae42706eff55d45286c7ebf8853827c4a4ec5ba2",
+    "prompts/general_eval/memory/review_memory.txt": "4f943b2982f893bd3dd81f4ce6b6650cac7c4c741927c71c468ad5ebf17b3d41",
+    "prompts/general_eval/memory/review_style.txt": "4d7a57b28b197573b89a0c1070a8d22f7ccafb2773a96660a346d8fd0e4e3800",
+    "prompts/general_eval/memory/style.txt": "c3c3406e55db5c0819d3653482f230f37ca5c9e62c217be927801b43ddb67e7c",
+    "prompts/general_eval/memory/terms.txt": "af79b00265ed3df51db580f9203e40166c1e022418caf3e7f99f5320928e7fab",
+    "prompts/general_eval/memory/topic.txt": "cbc9c7abc3a2fdf27b6b25c7e996c85506d994d133cfc15196152e9685899be2",
+    "prompts/general_eval/memory/translate_game.txt": "e9c9eee2ac7e74a7b2be42d65fcc9269cc33ec165d5c3c00f4c6e60c7267f93c",
+    "prompts/general_eval/memory/zh-en/src_merge_prompt.txt": "8d7db79509d11bb8eedf9d72699cea9e63defae45422088f6a88adf34d9b091d",
+    "prompts/general_eval/memory/zh-en/src_summary_prompt.txt": "73eb2755e60686cbc4e5bd1583a3dfca41f868292642288d17ac2abb07f7e4f8",
+    "prompts/general_eval/memory/zh-en/tgt_merge_prompt.txt": "200ed877e93a611d04411b66b9c6745c612d20bba6d910cbf34aa40a05a20f39",
+    "prompts/general_eval/memory/zh-en/tgt_summary_prompt.txt": "095341603cc9d35d1914d9ad91ace18e2860a1ae4305e84c897aa685348f7d73",
+    "prompts/general_eval/selector.txt": "5ec8f3eecf25c2d1b69034238ae4f9f257dce3f19d1e06b6f758b8ee0767937f",
+    "prompts/general_eval/sentence.txt": "4fc8ee72e7b4670052aab5f0c3149c6bbc220ffbbf88c52f95341128ef6e12f7"
+  },
+  "code_sha256": {
+    "scripts/run_general_comet_eval.py": "60f0d5602ffcacc8f881caacdcb9232c07d59d3fb588d8920bd7bd18f567bc17",
+    "scripts/run_naev_scomet.py": "b5f3025c7dc28d9830c90a9bbd66c1de644fd4fb5c400ed383d1e5925115bb7f",
+    "src/localization_agent/selection/collector.py": "e432ca513e26c9d87a9d3a3b22e7f9917f48a39a4d8edb3e210a69953457f82f",
+    "src/localization_agent/memory/service.py": "b1d03cb8c4ae6eec276e849a1142c72f7b53e9f60cb0e7f65c960a03216d129a",
+    "src/localization_agent/retrieval/service.py": "dc944f2750bed2c0e854b5f52d544c59f8879401c7e3e95902110bb3ce4bcfb4",
+    "scripts/score_general_comet_all.py": "05d6071ffc0ad34265bb87cfabc55fccad3e373441c4d3979b195103aa4c48e8",
+    "scripts/score_general_comet_scomet.py": "b64c4f976c8ba43b5af24af54b8dd38e11da73bc5978dd91b86aac466352729a",
+    "scripts/score_general_comet_dcomet.py": "cd97b058e74770113298077578f16e08524ea30e6b7a6e07b0a7e1f35b7f1c19"
+  },
+  "manifest_sha256": "0b77cb59c85d1e6feb705213fec9aa2f7102019ecd1f27e90966b19994dab3a5",
+  "doc2doc": "whole contiguous chapters; split only when the common model window requires it; reserve 8192 output tokens",
+  "translator_decoding": "greedy; Qwen thinking disabled",
+  "selector": "SFT merged + DPO adapter; generic selection prompt",
+  "seen": "guofeng is selector-training seen",
+  "news": "Loong per-document IDs, original publication identity unverified"
+}

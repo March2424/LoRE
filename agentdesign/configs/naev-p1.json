@@ -1,0 +1,33 @@
+{
+  "project": "naev",
+  "source_revision": "123fdc1be96d350fdff04cd2f61e2c66c99badd5",
+  "graph_snapshot": "graph",
+  "source_db_sha256": "51c774cd54c195d9c6995291ef8fc7899d6d96df5bcea497efce490d841695b3",
+  "review_lookup": {"max_results": 2, "max_result_bytes": 1024},
+  "cases": [
+    {
+      "case": "same_name_source_hit",
+      "id": "naev_b4f6f496fb782035fac1",
+      "version": 1,
+      "injected_draft": "皇帝之拳工程",
+      "editor_requirement": "这是需确认指代的 Naev 标签。请使用英文实体名 Emperor's Fist 查找独立源证据，确定它在本任务的资源范围内指天体还是同名工程。若核实是行星，地图导览译名按编辑约定写为「皇帝之拳星」。",
+      "require_source_lookup": true,
+      "expected_lookup_status": "found",
+      "expected_first_review": "repair",
+      "expected_status": "committed",
+      "initial_evidence_ids": ["naev_b4f6f496fb782035fac1"],
+      "allowed_evidence_ids": ["naev_b4f6f496fb782035fac1", "naev_2e54989ac7194e593066"]
+    },
+    {
+      "case": "scoped_source_miss",
+      "id": "naev_0c16ee4efca1905b14d8",
+      "version": 1,
+      "editor_requirement": "以英文实体名 Inios Monastery 查询独立源证据。编辑需要确认其创办者后才批准定稿。若授权资料不足，保留中性草稿并交给人工核对。",
+      "require_source_lookup": true,
+      "expected_lookup_status": "out_of_scope",
+      "expected_first_review": "needs_human",
+      "expected_status": "needs_human",
+      "allowed_evidence_ids": ["naev_0c16ee4efca1905b14d8"]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+Extract recurring names, entities and useful terminology from this translation. Return a JSON array of objects with exactly "source" and "target" strings. Each source must appear verbatim in the source text and each target verbatim in the translation. Return [] if none. Do not invent terms.
+Source language: {source_lang}
+Target language: {target_lang}
+Text type: {text_type}
+Source: {source}
+Translation: {target}

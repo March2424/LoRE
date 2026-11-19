@@ -1,0 +1,30 @@
+{
+  "normal": {
+    "selector": "{\"selected_ids\":[],\"rationale\":\"Source is clear.\"}",
+    "translator": "准许降落。",
+    "reviewer": [{"verdict":"pass","reason":"The draft conveys permission to land."}]
+  },
+  "placeholder_error": {
+    "selector": "{\"selected_ids\":[\"outside-pool\"],\"rationale\":\"Exercise fixed fallback.\"}",
+    "translator": "“信用点也行。我可以把它卖给你，价格正好是 {credits}。”",
+    "repairer": "“信用点也行。我可以把它卖给你，价格正好是 {credits}。”",
+    "reviewer": [
+      {"verdict":"repair","reason":"Restore {credits}."},
+      {"verdict":"pass","reason":"The draft now preserves {credits}."}
+    ]
+  },
+  "same_name": {
+    "selector": "{\"selected_ids\":[],\"rationale\":\"Source distinguishes the two referents.\"}",
+    "translator": "阿塔兰塔行星得名于在此定居的同名殖民船。尽管这颗行星冷到几乎没有开发价值，当地人仍靠冰层下的重元素矿藏维持体面的生活。",
+    "repairer": "阿塔兰塔行星得名于在此定居的同名殖民船。尽管这颗行星冷到几乎没有开发价值，当地人仍靠冰层下的重元素矿藏维持体面的生活。",
+    "reviewer": [
+      {"verdict":"repair","reason":"The namesake is the colony ship."},
+      {"verdict":"pass","reason":"The namesake is now described as a colony ship."}
+    ]
+  },
+  "missing_evidence": {
+    "selector": "{\"selected_ids\":[],\"rationale\":\"No source evidence is visible.\"}",
+    "translator": "皇帝之拳",
+    "reviewer": [{"verdict":"needs_human","reason":"The relationship between the place and the project is unsupported."}]
+  }
+}

@@ -1,0 +1,7 @@
+/.venv/
+/pi/node_modules/
+/web/node_modules/
+/web/dist/
+/runs/
+__pycache__/
+.env

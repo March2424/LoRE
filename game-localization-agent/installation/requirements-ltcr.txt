@@ -1,0 +1,3 @@
+# Install awesome-align separately from the pinned checkout in evaluate/README.md.
+jieba==0.42.1
+spacy==3.8.7

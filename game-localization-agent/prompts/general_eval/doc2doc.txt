@@ -1,0 +1,6 @@
+Translate the following continuous document segment from {source_lang} to {target_lang}. Translate every item completely and in order. Use the surrounding source sentences to resolve references and keep names and terminology consistent. Preserve numbers and placeholders. Do not add or omit content.
+
+Return one JSON object whose keys are exactly the provided IDs and whose values are the corresponding translations. Do not merge items or add commentary.
+
+Source items:
+{items}

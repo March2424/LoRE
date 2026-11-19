@@ -1,0 +1,1005 @@
+{
+  "status": "complete",
+  "jobs": [
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00000",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "特朗普 vs. 经济"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00001",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "纽约——金融市场终于意识到唐纳德·特朗普是美国总统这一事实。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00002",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "鉴于世界已经经历了两年由世界上最强大的人所发出的鲁莽推文和公开言论，显而易见的问题是，为什么这么久才发生？"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00003",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "首先，直到现在，投资者们都接受了这样一个论点，即特朗普只是虚张声势，没有实际行动。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00004",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "只要他推行减税、放松管制和其他有利于企业部门和股东的政策，他们就愿意相信他。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00005",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "而且许多人相信，最终“房间里成年人”会约束特朗普，确保政府的政策不会逾越正统观念的界限。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00006",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "这些假设在特朗普上任的第一年或多或少得到了验证，当时经济增长和预期的企业利润增加——由于即将实施的减税和放松监管——导致股市表现强劲。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00007",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "2017年，美国股市指数上涨了20%以上。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00008",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "但是事情在2018年发生了根本性的变化，尤其是在最近几个月。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00009",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "尽管企业盈利增长超过20%，但美国股市全年大部分时间走势平淡，现在却突然大幅下跌。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": true
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00010",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "在这一点上，广义指数已进入修正区域（即从近期高点下跌10%），而科技股指数，如纳斯达克指数，已进入熊市区域。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": true
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00011",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "尽管金融市场更高的波动性反映了对中国、意大利和其他欧元区经济体以及关键新兴经济体的担忧，但最近的大部分动荡是由于特朗普造成的。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00012",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "这一年以一项鲁莽的减税政策开始，该政策推高了长期利率，并在一个已接近充分就业的经济中制造了虚假的繁荣。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00013",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "早在2月，对通胀超过美国联邦储备委员会2%目标的担忧加剧，导致了今年首次风险规避。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00014",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "随后，特朗普对中国及其他主要美国贸易伙伴发动了贸易战。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00015",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "市场对政府保护主义政策的担忧全年起伏不定，但现在已达到新的高峰。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00016",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "美国针对中国的最新举措似乎预示着一场更广泛的贸易、经济和地缘政治冷战。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00017",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "另一个担忧是，特朗普的其他政策将产生滞胀效应（增长放缓伴随通胀上升）。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00018",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "毕竟，特朗普正计划限制外资流入，并已实施广泛的移民限制，这将在劳动力老龄化和技能错配问题日益严重的时期，进一步减少劳动力供应增长。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00019",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "此外，该政府尚未提出一项基础设施计划，以促进私营部门的生产率或加快向绿色经济的转型。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00020",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "并且在推特和其他地方，特朗普继续批评企业的雇佣、生产、投资和定价行为，特别点名科技公司，而这些公司正面临更广泛的反对意见以及来自中国同行的日益加剧的竞争。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00021",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "新兴市场也受到了美国政策的冲击。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00022",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "财政刺激和货币政策紧缩推高了短期和长期利率，并增强了美元。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00023",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "因此，新兴经济体经历了资本外逃和以美元计价的债务上升。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00024",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "那些严重依赖出口的国家受到了商品价格下降的影响，所有甚至间接与中国进行贸易的国家都感受到了贸易战的影响。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00025",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "甚至特朗普的石油政策也造成了波动。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00026",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "在美对伊朗制裁恢复推高油价后，政府努力争取豁免并胁迫沙特增产，导致油价大幅下跌。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00027",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "尽管美国消费者从较低的油价中受益，但美国能源公司的股价却并非如此。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00028",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "此外，油价过度波动对生产者和消费者都不利，因为它阻碍了合理的投资和消费决策。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00029",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "更糟糕的是，现在很明显，去年减税的好处几乎完全被企业部门获得，而不是以更高的实际（经通胀调整后）工资形式惠及家庭。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00030",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "这意味着家庭消费可能很快会放缓，进一步削弱经济。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00031",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "不过，最重要的是，上个季度美国和全球股市的急剧下跌是对特朗普本人言论和行动的回应。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00032",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "与中美之间全面贸易战风险的加剧（尽管最近与习近平主席达成“休战”协议）相比，更糟糕的是特朗普对美联储的公开攻击，这种攻击早在2018年春天就开始了，当时美国经济正以超过4%的速度增长。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00033",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "鉴于此前的几次攻击，本月当美联储正确决定加息的同时也暗示2019年加息步伐将更加缓慢时，市场受到了惊吓。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00034",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "很可能，美联储相对鹰派的立场是对特朗普对其威胁的反应。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00035",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "面对总统充满敌意的推文，美联储主席杰罗姆·鲍威尔需要表明央行仍保持政治独立性。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00036",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "但随后特朗普决定因国会拒绝资助他无用的美墨边境墙而关闭联邦政府的大部分机构。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00037",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "这使市场陷入近乎恐慌的状态，政府停摆不久后便有报道称特朗普想解雇鲍威尔——这一举动可能使市场调整演变为崩盘。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00038",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "圣诞节假期前夕，美国财政部长史蒂文·努钦被迫发表公开声明以安抚市场。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00039",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "他宣布，特朗普最终并不打算解雇鲍威尔，并表示美国银行的财务状况稳健，实际上突出了一个问题，即它们是否真的稳健。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00040",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "行政机构内最近发生的一些变化，尽管不一定影响经济政策制定，但也令市场感到不安。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00041",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "白宫幕僚长约翰·凯利和国防部长詹姆斯·马蒂斯即将离职，这将使房间里没有成年人。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00042",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "那些仍然留在身边的经济民族主义者和外交政策鹰派集团将迎合特朗普的每一个心愿。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00043",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "目前形势下，不能排除与中华人民共和国发生全面地缘政治冲突的风险。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00044",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "新的冷战将有效导致去全球化，扰乱全球供应链，尤其是在科技行业。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": true
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00045",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "与此同时，特朗普似乎正不遗余力地在欧洲经济和政治脆弱之际破坏欧盟和北约的凝聚力。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00046",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "而特别检察官罗伯特·穆勒对特朗普2016年竞选团队与俄罗斯关系的调查，如同达摩克利斯之剑般悬在他的总统任期之上。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00047",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "特朗普现在是金融市场的“德鲁·斯特兰格洛夫”。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00048",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "就像斯坦利·库布里克经典电影中的偏执狂人一样，他正在与相互确保的经济毁灭进行危险的周旋。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_3:en:00049",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "现在市场已经看到危险，金融危机和全球衰退的风险已经增加。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00000",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "美国对华技术战争"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00001",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "纽约——过去一代人中（或许更久）美国最糟糕的外交政策决定，就是它于2003年为所谓消除实际上并不存在的大规模杀伤性武器而发动的“选择性战争”。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00002",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "理解那个灾难性决定背后的荒谬逻辑现在比以往任何时候都更加相关，因为它正被用来为今天同样错误的美国政策辩护。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00003",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "入侵伊拉克的决定遵循了时任美国副总统理查德·切尼的不合逻辑的言论，他宣称，即使大规模杀伤性武器落入恐怖分子手中的风险微乎其微——比如说，只有1%——我们也应该像那个场景肯定会发生一样采取行动。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00004",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "这种推理往往会导致错误的决定。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00005",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "然而，美国及其一些盟友现在正利用切尼主义来攻击中国技术。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00006",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "美国政府认为，由于我们无法确定中国技术是否安全，因此应假设它们肯定存在危险并予以禁止。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00007",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "正确的决策制定将概率估计应用于替代行动。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00008",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "一代人之前，美国政策制定者本应不仅考虑（所谓的）1%的可能性，即大规模杀伤性武器落入恐怖分子之手，还应考虑基于错误前提的战争的99%的可能性。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00009",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "通过只关注1%的风险，切尼（以及许多人）转移了公众的注意力，使他们忽视了伊拉克战争缺乏正当性，且会严重破坏中东和全球政治这一可能性要大得多。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00010",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "切尼主义的问题不仅在于它规定在不考虑潜在极高代价的情况下，依据小风险采取行动。政治家们往往受诱惑，为了其他目的而煽动恐惧。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00011",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "这就是美国领导人正在做的事情：通过夸大和渲染微小风险，制造对中国科技公司的恐慌。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00012",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "最相关的情况（但不是唯一的情况）是美国政府对无线宽带公司华为的攻击。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00013",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "美国正在关闭其市场，对该公司的业务进行全球性打压。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00014",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "与伊拉克一样，美国可能毫无理由地最终造成一场地缘政治灾难。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00015",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "我一直在关注华为的技术进步及其在发展中国家的工作，因为我相信5G及其他数字技术为消除贫困和其他可持续发展目标提供了巨大的推动力。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00016",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "我同样与其他电信公司进行了互动，并鼓励行业加大实现可持续发展目标的行动力度。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00017",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "当我为华为的一份有关该主题的报告撰写了一篇简短的前言（无报酬）后，遭到中国反对者批评时，我向顶级行业和政府官员寻求华为存在不当行为的证据。我反复听到的说法是，华为的行为与这些受信任的行业领袖并无不同。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": true
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00018",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "然而，美国政府认为，华为的5G设备可能会破坏全球安全。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00019",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "美国官员声称，华为软件或硬件中的一个“后门”可能使中国政府能够在全球范围内进行监视。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00020",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "毕竟，美国官员指出，中国的法律要求中国公司为了国家安全目的与政府合作。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00021",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "现在，事实是这样的。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00022",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "华为的5G设备成本低、质量高，目前领先于许多竞争对手，并已开始部署。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00023",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "其高性能源于多年来在中国数字市场中对研发的大量投入、规模经济以及通过实践学习所获得的经验。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00024",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "鉴于这项技术对其可持续发展的重要性，全球低收入经济体拒绝尽早推出5G将是鲁莽的。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00025",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "然而，尽管没有提供任何后门的证据，美国却告诉世界要远离华为。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00026",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "美国的主张是通用的。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00027",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "正如一位美国联邦通信委员会委员所说：“拥有5G的国家将拥有创新并为世界其他国家设定标准，而目前这个国家很可能不是美国。”"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00028",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "其他一些国家，尤其是英国，发现华为的硬件和软件中没有后门。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00029",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "即使后来发现了后门，那时几乎可以肯定能够将其关闭。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00030",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "关于华为的争论在德国持续发酵，美国政府威胁称，除非德国当局排除华为的5G技术，否则将限制情报合作。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00031",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "也许由于美国的压力，德国情报首脑最近发表了一项相当于切尼主义的言论：“基础设施不适合由一个无法完全信任的组织来负责。”"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00032",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "他没有提供任何具体不当行为的证据。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00033",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "相比之下，默克尔总理则在幕后努力保持市场对华为开放。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00034",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "讽刺的是，尽管可以预见，美国的投诉部分反映了美国自身在国内和国外的监控活动。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00035",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "中国设备可能会使美国政府的秘密监视变得更加困难。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00036",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "但任何政府的无端监视都应结束。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00037",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "独立的联合国监测应成为全球电信系统的一部分，以遏制此类活动。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00038",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "简而言之，我们应该选择外交和制度保障，而不是一场科技战。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00039",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "美国要求封锁华为的威胁所涉及的不仅仅是5G网络的早期部署。对基于规则的贸易体系的风险是深远的。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00040",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "现在美国不再是世界公认的科技领导者之后，美国总统唐纳德·特朗普和他的顾问们不想按照基于规则的体系进行竞争。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00041",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "他们的目标是遏制中国的科技崛起。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00042",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "他们同时试图通过瘫痪世界贸易组织的争端解决机制来中和世界贸易组织，显示出对全球规则同样的蔑视。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00043",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "如果特朗普政府成功地将世界划分为不同的技术阵营，未来冲突的风险将成倍增加。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00044",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "第二次世界大战后，美国倡导自由贸易，不仅是为了提高全球效率和扩大美国技术的市场，也是为了扭转20世纪30年代国际贸易崩溃的局面。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00045",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "那次崩溃部分源于美国根据1930年斯穆特-霍利法案实施的保护性关税，这加剧了大萧条，进而助长了希特勒的崛起，最终导致了第二次世界大战的爆发。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00046",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "在国际事务中，正如在其他领域一样，煽动恐惧并据此行事，而非依据证据行事，必将导致毁灭。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00047",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "让我们坚持理性、证据和规则，这是最安全的做法。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00048",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "并让我们创建独立的监督机构，以遏制任何国家利用全球网络对他国进行监视或网络战的威胁。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "news_commentary_v18.1:nc_6:en:00049",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "这样，世界就能着手完成紧迫的任务，即利用突破性的数字技术造福全球。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": false
+    }
+  ]
+}

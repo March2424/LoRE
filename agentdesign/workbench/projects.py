@@ -1,0 +1,563 @@
+"""Versioned resource imports, durable graph builds and project memory."""
+
+from contextlib import closing
+from dataclasses import asdict, replace
+from hashlib import sha256
+import json
+import os
+from pathlib import Path
+from urllib.parse import urlsplit
+from uuid import uuid4
+
+from localization_agent.memory import MemoryService
+from localization_agent.models.chat_completions import estimate_tokens
+from localization_agent.models.structured import parse_json_reply
+from localization_agent.retrieval.builder import AutoGraphBuilder
+from localization_agent.retrieval.graph import GraphStore
+from localization_agent.schemas.graph import GraphNode, GraphRef, GraphSnapshot
+from localization_agent.schemas.memory import Evidence, MemoryRecord, MemoryRef, Occurrence, is_mandatory, scope_match, text_hash
+
+from run_p0 import PI
+from .job_models import JobModels
+from .job_store import JobError, encode
+from .models import ModelFailure, Responses, SELECTION_SCHEMA
+from .project_files import parse, project_po, render_project_po, render_table
+
+ROLES = {"extractor", "selector", "translator", "reviewer", "repairer", "intent"}
+
+SCHEMA = """
+CREATE TABLE IF NOT EXISTS p6_projects (id TEXT PRIMARY KEY, data TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS p6_imports (
+    id TEXT PRIMARY KEY, project TEXT NOT NULL, filename TEXT NOT NULL, content BLOB NOT NULL, data TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS p6_files (
+    project TEXT NOT NULL, filename TEXT NOT NULL, import_id TEXT NOT NULL, PRIMARY KEY(project,filename));
+CREATE TABLE IF NOT EXISTS p6_resources (
+    import_id TEXT NOT NULL, occurrence TEXT NOT NULL, version INTEGER NOT NULL, data TEXT NOT NULL,
+    PRIMARY KEY(import_id,occurrence));
+CREATE INDEX IF NOT EXISTS p6_resource_history ON p6_resources(occurrence,version);
+CREATE TABLE IF NOT EXISTS p6_models (id TEXT PRIMARY KEY, data TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS p6_pause (job TEXT PRIMARY KEY);
+CREATE TABLE IF NOT EXISTS p6_extracted (
+    project TEXT NOT NULL, occurrence TEXT NOT NULL, version INTEGER NOT NULL,
+    PRIMARY KEY(project,occurrence,version));
+"""
+
+
+class ProjectMemory(MemoryService):
+    def __init__(self, store, current_tm):
+        super().__init__(store)
+        self.current_tm = current_tm
+
+    def eligible(self, occurrence, view):
+        return [record for record in super().eligible(occurrence, view)
+                if record.kind != "translation" or self.current_tm(record)]
+
+
+class ExtractionMemory(MemoryService):
+    def __init__(self, store, models, prompt_limit):
+        super().__init__(store)
+        self.models, self.prompt_limit = models, prompt_limit
+
+    def _call(self, task, template, *, _reuse_logged=False, **values):
+        prompt = (self.config.prompt_dir / template).read_text(encoding="utf-8").format(**values)
+        if estimate_tokens(prompt) > self.prompt_limit:
+            raise ModelFailure("graph_input_token_limit")
+        fixture = '{"entities":[],"relations":[]}'
+        output, call = self.models.ask("extractor", prompt, fixture=fixture)
+        return json.dumps(parse_json_reply(output), ensure_ascii=False), call
+
+
+class Projects:
+    def __init__(self, workbench):
+        self.workbench = workbench
+
+    @staticmethod
+    def get(repo, project):
+        row = repo.db.execute("SELECT data FROM p6_projects WHERE id=?", (project,)).fetchone()
+        if row is None:
+            raise JobError(404, "project_not_found")
+        return json.loads(row[0])
+
+    @staticmethod
+    def save(repo, project):
+        repo.db.execute("INSERT INTO p6_projects VALUES (?,?) ON CONFLICT(id) DO UPDATE SET data=excluded.data",
+                        (project["project_id"], encode(project)))
+
+    def create(self, spec, key):
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            scope = "p6-project-create"
+            if receipt := repo.action(scope, key, spec):
+                return receipt
+            project = {"project_id": uuid4().hex, **spec, "revision": 0, "knowledge_epoch": 0,
+                       "graph_snapshot": None, "graph_revision": None, "build_job_id": None, "models": {}}
+            self.save(repo, project)
+            repo.save_action(scope, key, spec, project)
+            return project
+
+    @staticmethod
+    def profile(repo, profile_id):
+        row = repo.db.execute("SELECT data FROM p6_models WHERE id=?", (profile_id,)).fetchone()
+        if not row:
+            raise JobError(404, "model_profile_not_found")
+        return json.loads(row[0])
+
+    def register_model(self, spec, key):
+        endpoint = urlsplit(spec["base_url"])
+        local = endpoint.hostname in {"localhost", "127.0.0.1", "::1"}
+        if endpoint.username or endpoint.password or endpoint.fragment or endpoint.query or not endpoint.hostname:
+            raise JobError(422, "invalid_model_base_url")
+        if endpoint.scheme != "https" and not (endpoint.scheme == "http" and local):
+            raise JobError(422, "model_requires_https_or_loopback")
+        credential = spec.get("api_key_env")
+        if credential == "DEEPSEEK_API_KEY":
+            trusted = self.workbench.config["base_url"]
+        elif credential and credential.startswith("WORKBENCH_MODEL_") and credential.endswith("_KEY"):
+            trusted = os.environ.get(credential.removesuffix("_KEY") + "_URL", "")
+        else:
+            trusted = spec["base_url"] if local and not credential else ""
+        if trusted.rstrip("/") != spec["base_url"].rstrip("/"):
+            raise JobError(422, "model_credential_endpoint_not_configured")
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            if receipt := repo.action("p6-model-create", key, spec):
+                return receipt
+            profile = {**spec, "profile_id": uuid4().hex}
+            repo.db.execute("INSERT INTO p6_models VALUES (?,?)", (profile["profile_id"], encode(profile)))
+            repo.save_action("p6-model-create", key, spec, profile)
+            return profile
+
+    def model_roles(self, repo, project):
+        return {role: self.profile(repo, profile) for role, profile in project["models"].items()}
+
+    def bind_models(self, project_id, bindings, key):
+        if set(bindings) - ROLES:
+            raise JobError(422, "unknown_model_role")
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            scope = "p6-model-roles:" + project_id
+            if result := repo.action(scope, key, bindings):
+                return result
+            project = self.get(repo, project_id)
+            for profile in bindings.values():
+                self.profile(repo, profile)
+            project["models"] = bindings
+            self.save(repo, project)
+            repo.save_action(scope, key, bindings, project)
+            return project
+
+    def probe(self, profile_id, role):
+        if self.workbench.offline:
+            raise JobError(409, "model_probe_requires_live_workspace")
+        with closing(self.workbench.open()) as repo:
+            profile = self.profile(repo, profile_id)
+        config = {**self.workbench.config, "max_calls": 2, "roles": {"probe": profile, "pi_probe": profile}}
+        models = Responses(config, lambda *args, **kwargs: None, PI)
+        try:
+            if role == "reviewer":
+                receipt, _ = models.pi("Call p0_echo, then return its token exactly.", mode="tools",
+                                       challenge="workbench-probe", schema=None)
+                ok = "workbench-probe" in receipt["text"] and any(
+                    event["type"] == "tool_execution_end" and not event["error"] for event in receipt["events"])
+            elif role in {"extractor", "selector", "intent"}:
+                answer, _ = models.ask("probe", 'Return JSON {"selected_ids":[],"rationale":"ok"}.',
+                                       schema=SELECTION_SCHEMA)
+                result = parse_json_reply(answer)
+                ok = isinstance(result, dict) and result.get("selected_ids") == []
+            else:
+                answer, _ = models.ask("probe", "Return only WORKBENCH_OK.")
+                ok = "WORKBENCH_OK" in answer
+        except (ValueError, ModelFailure) as error:
+            return {"passed": False, "model": profile["model"], "calls": models.calls,
+                    "reason": getattr(error, "code", "invalid_probe_reply")}
+        return {"passed": ok, "model": profile["model"], "calls": models.calls,
+                "reason": None if ok else "model_capability_not_confirmed"}
+
+    def translation_batches(self, project_id, options, key):
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            project = self.get(repo, project_id)
+            scope = "p6-translation-batches:" + project_id
+            if receipt := repo.action(scope, key, options):
+                return receipt
+            if not self.ready(project):
+                raise JobError(409, "project_graph_not_current")
+            active = self.resources(repo, project_id, options.get("file"))
+            targets = list(dict.fromkeys(options.get("targets") or active))
+            if not targets or any(item not in active for item in targets):
+                raise JobError(422, "batch_targets_outside_project_scope")
+            jobs, previous = [], None
+            size = options["batch_size"]
+            bulk_id = uuid4().hex
+            for offset in range(0, len(targets), size):
+                batch = targets[offset:offset + size]
+                request = {"selection": {"project": project_id}, "targets": batch, "intents": ["translate", "export"],
+                           "requirements": options.get("requirements"), "max_calls": options["max_calls_per_batch"]}
+                job = self.workbench._new_job(repo, request)
+                job.update(prerequisite=previous, scheduled_project_revision=project["revision"], bulk_id=bulk_id)
+                repo.put(job, event="job")
+                previous = job["job_id"]
+                jobs.append({"job_id": previous, "targets": len(batch)})
+            result = {"bulk_id": bulk_id, "project_id": project_id, "rows": len(targets), "jobs": jobs}
+            repo.save_action(scope, key, options, result)
+            return result
+
+    @staticmethod
+    def resources(repo, project, filename=None, *, import_id=None):
+        if import_id:
+            result = repo.db.execute("SELECT data FROM p6_resources WHERE import_id=? ORDER BY rowid", (import_id,))
+        else:
+            result = repo.db.execute("""
+                SELECT r.data FROM p6_resources r JOIN p6_files f ON f.import_id=r.import_id
+                WHERE f.project=? AND (? IS NULL OR f.filename=?) ORDER BY f.filename,r.rowid
+                """, (project, filename, filename))
+        return {row["occurrence_id"]: row for (data,) in result for row in (json.loads(data),)}
+
+    @staticmethod
+    def resource(repo, project, item, version):
+        row = repo.db.execute("""
+            SELECT r.data FROM p6_resources r JOIN p6_imports i ON i.id=r.import_id
+            WHERE i.project=? AND r.occurrence=? AND r.version=? ORDER BY r.rowid DESC LIMIT 1
+            """, (project, item, version)).fetchone()
+        if row is None:
+            raise JobError(404, "resource_not_found")
+        return json.loads(row[0])
+
+    @staticmethod
+    def ready(project):
+        return bool(project["graph_snapshot"] and project["graph_revision"] == project["revision"])
+
+    def import_file(self, project_id, filename, content, options, key, *, preview=False):
+        parsed, skipped, target_column = parse(filename, content, options)
+        if not parsed:
+            raise JobError(422, "no_source_rows")
+        signature = {"filename": filename, "sha256": sha256(content).hexdigest(), "options": options}
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            project = self.get(repo, project_id)
+            if filename.lower().endswith(".po"):
+                po = project_po(content)
+                language = po.metadata.get("Language", "").replace("_", "-").split("-", 1)[0].lower()
+                if language and language != project["target_lang"] and any(
+                        entry.msgstr or any(entry.msgstr_plural.values()) for entry in po if not entry.obsolete):
+                    raise JobError(422, "existing_po_translations_use_another_target_language")
+            scope = "p6-import:" + project_id
+            if not preview and (receipt := repo.action(scope, key, signature)):
+                return receipt
+            previous = repo.db.execute("""
+                SELECT i.data FROM p6_files f JOIN p6_imports i ON f.import_id=i.id
+                WHERE f.project=? AND f.filename=?
+                """, (project_id, filename)).fetchone()
+            if not preview and previous and all(json.loads(previous[0]).get(k) == v for k, v in signature.items()):
+                result = json.loads(previous[0])
+                repo.save_action(scope, key, signature, result)
+                return result
+
+            old = self.resources(repo, project_id, filename)
+            prepared, changed = [], {}
+            counts = dict(added=0, changed=0, unchanged=0, removed=0)
+            for row in parsed:
+                item = "resource:" + text_hash(encode([project_id, filename, row["key"]]))
+                previous_row = old.get(item)
+                if previous_row and (previous_row["label"], previous_row["metadata"]) == (row["source"], row["metadata"]):
+                    version = previous_row["source_version"]
+                    counts["unchanged"] += 1
+                else:
+                    latest = repo.db.execute("SELECT MAX(version) FROM sources WHERE project=? AND id=?",
+                                             (project_id, item)).fetchone()[0]
+                    version = (latest or 0) + 1
+                    counts["changed" if previous_row else "added"] += 1
+                    if latest:
+                        changed[item] = version
+                prepared.append({"occurrence_id": item, "source_version": version, "label": row["source"],
+                                 "branch_id": row["metadata"].get("branch_id"), "file": filename, **row})
+            removed = set(old) - {row["occurrence_id"] for row in prepared}
+            counts["removed"] = len(removed)
+            result = {**signature, "project_id": project_id, "format": Path(filename).suffix.lower()[1:],
+                      "rows": len(prepared), "skipped": skipped, "changes": counts, "target_column": target_column}
+            if preview:
+                return result
+            if project["build_job_id"] and repo.get(project["build_job_id"])["status"] in {"queued", "running", "paused"}:
+                raise JobError(409, "project_graph_build_active")
+
+            import_id = uuid4().hex
+            for number, row in enumerate(prepared):
+                item, version = row["occurrence_id"], row["source_version"]
+                occurrence = Occurrence(project_id, f"{project_id}:{filename}", item, number, row["label"], version,
+                                        row["metadata"], project["source_lang"], project["target_lang"])
+                node = GraphNode(item, "occurrence", repo.memory.game_scope(occurrence), {"occurrence_id": item},
+                                 (Evidence(item, version, occurrence.source),), version=version)
+                repo.db.execute("INSERT OR IGNORE INTO sources VALUES (?,?,?,?)",
+                                (project_id, item, version, encode(asdict(occurrence))))
+                repo.db.execute("INSERT OR IGNORE INTO graph_items VALUES (?,?,?,?,?)",
+                                ("node", item, version, project_id, encode(asdict(node))))
+                repo.db.execute("INSERT INTO p6_resources VALUES (?,?,?,?)", (import_id, item, version, encode(row)))
+            self.invalidate(repo, project_id, {**changed, **dict.fromkeys(removed)})
+            if any(counts[k] for k in ("added", "changed", "removed")):
+                project["revision"] += 1
+            result.update(import_id=import_id, project_revision=project["revision"])
+            repo.db.execute("INSERT INTO p6_imports VALUES (?,?,?,?,?)",
+                            (import_id, project_id, filename, content, encode(result)))
+            repo.db.execute("""
+                INSERT INTO p6_files VALUES (?,?,?) ON CONFLICT(project,filename) DO UPDATE SET import_id=excluded.import_id
+                """, (project_id, filename, import_id))
+            self.save(repo, project)
+            repo.save_action(scope, key, signature, result)
+            return result
+
+    @staticmethod
+    def invalidate(repo, project, affected):
+        if not affected:
+            return
+        for table, select in (("records", "id,version,payload"), ("graph_items", "kind,id,version,payload")):
+            for row in repo.db.execute(f"SELECT {select} FROM {table} WHERE project=?", (project,)).fetchall():
+                sources = json.loads(row["payload"])["evidence"]
+                if not any(ref["occurrence_id"] in affected for ref in sources):
+                    continue
+                if table == "records":
+                    repo.memory._invalidate(MemoryRef(row["id"], row["version"]), "project_source_changed")
+                else:
+                    if row["kind"] == "node" and affected.get(row["id"]) == row["version"]:
+                        continue
+                    repo.db.execute("INSERT OR IGNORE INTO graph_invalidations VALUES (?,?,?,?)",
+                                    (row["kind"], row["id"], row["version"], "project_source_changed"))
+
+    def graph_job(self, project_id, options, key):
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            project = self.get(repo, project_id)
+            scope = "p6-graph:" + project_id
+            if receipt := repo.action(scope, key, options):
+                return receipt
+            if project["build_job_id"] and repo.get(project["build_job_id"])["status"] in {"queued", "running", "paused"}:
+                raise JobError(409, "project_graph_build_active")
+            resources = self.resources(repo, project_id)
+            if not resources:
+                raise JobError(409, "import_project_sources_first")
+            batches, batch, size, context = [], [], 0, None
+            coverage = set() if options["rebuild"] else {tuple(row) for row in repo.db.execute(
+                "SELECT occurrence,version FROM p6_extracted WHERE project=?", (project_id,))}
+            for row in resources.values():
+                if (row["occurrence_id"], row["source_version"]) in coverage:
+                    continue
+                units = estimate_tokens(row["label"] + row["metadata"].get("native_context", ""))
+                grouping = tuple(row["metadata"].get(field) for field in ("branch_id", "phase_id", "requirements"))
+                if batch and (len(batch) >= options["batch_size"] or size + units > 2000 or grouping != context):
+                    batches.append(batch)
+                    batch, size = [], 0
+                batch.append(["node", row["occurrence_id"], row["source_version"]])
+                size, context = size + units, grouping
+            if batch:
+                batches.append(batch)
+            if not options["extract"]:
+                batches = []
+            if options["extract"] and len(batches) > options["max_calls"]:
+                raise JobError(422, f"graph_calls_required:{len(batches)}")
+            request = {"selection": {"project": project_id}, "intents": []}
+            job = self.workbench._new_job(repo, request)
+            job.update(source_kind="graph_build", project_id=project_id,
+                       build={**options, "revision": project["revision"], "batches": batches, "completed": []})
+            settings = job["config"]
+            job["config"] = {**settings, "max_calls": options["max_calls"],
+                             "max_output_tokens": {**settings["max_output_tokens"], "extractor": options["max_output_tokens"]}}
+            project["build_job_id"] = job["job_id"]
+            self.save(repo, project)
+            repo.put(job, event="job")
+            result = {"job_id": job["job_id"], "status": "queued", "project_id": project_id,
+                      "rows": len(resources), "batches": len(batches), "max_calls": options["max_calls"]}
+            repo.save_action(scope, key, options, result)
+            return result
+
+    def advance(self, repo, job):
+        build, project_id = job["build"], job["project_id"]
+        graph = GraphStore(repo.memory)
+        index = len(build["completed"])
+        if build["extract"] and index < len(build["batches"]):
+            trace = self.workbench._trace(repo, job["job_id"], lane=f"graph:{index}")
+            models = JobModels(Responses(job["config"], trace, PI, offline=self.workbench.offline),
+                               repo, job["job_id"], f"graph:{index}")
+            memory = ExtractionMemory(repo.memory, models, build["max_input_tokens"])
+            try:
+                with graph.atomic():
+                    result = AutoGraphBuilder(graph, memory, keep_valid_items=True).build(
+                        tuple(GraphRef(*ref) for ref in build["batches"][index]))
+                    if repo.get(job["job_id"])["status"] != "running":
+                        raise JobError(409, "graph_build_interrupted")
+                    build["completed"].append({"entities": len(result.entities), "relations": len(result.edges),
+                                               "model_call": result.extraction_call, "rejected": list(result.rejected)})
+                    repo.db.executemany("INSERT OR IGNORE INTO p6_extracted VALUES (?,?,?)",
+                                        ((project_id, ref[1], ref[2]) for ref in build["batches"][index]))
+                    repo.put(job, event="graph_batch")
+            except (ValueError, ModelFailure) as error:
+                with repo.transaction():
+                    self.workbench._update_running(repo, job, "failed", getattr(error, "code", str(error)))
+            return
+
+        with repo.transaction():
+            current = repo.get(job["job_id"])
+            if current["status"] != "running":
+                return
+            project = self.get(repo, project_id)
+            active = self.resources(repo, project_id)
+            refs = []
+            for row in repo.db.execute("""
+                SELECT kind,id,MAX(version) AS version FROM graph_items WHERE project=? GROUP BY kind,id ORDER BY kind,id
+                """, (project_id,)):
+                ref = GraphRef(row["kind"], row["id"], row["version"])
+                obj = graph.get(ref)
+                if all(e.occurrence_id in active for e in obj.evidence) and graph.valid(ref):
+                    refs.append(ref)
+            nodes = {ref for ref in refs if ref.kind == "node"}
+            refs = tuple(ref for ref in refs if ref.kind == "node" or
+                         (graph.get(ref).source in nodes and graph.get(ref).target in nodes))
+            snapshot = GraphSnapshot(job["job_id"] + ":graph", project_id, refs)
+            repo.db.execute("INSERT INTO graph_snapshots VALUES (?,?)", (snapshot.id, encode(asdict(snapshot))))
+            project.update(graph_snapshot=snapshot.id, graph_revision=build["revision"])
+            self.save(repo, project)
+            job.update(status="completed", reason=None)
+            job["results"].append({"intent": "build_graph", "graph_snapshot": snapshot.id,
+                                   "nodes": len(nodes), "edges": len(refs) - len(nodes)})
+            repo.put(job, event="job")
+
+    def graph_view(self, project_id, snapshot_id, query, node_id, branch_id, offset, limit):
+        with closing(self.workbench.open()) as repo:
+            project = self.get(repo, project_id)
+            snapshot_id = snapshot_id or project["graph_snapshot"]
+            if not snapshot_id:
+                raise JobError(404, "project_graph_not_built")
+            graph = GraphStore(repo.memory)
+            try:
+                snapshot = graph.snapshot(snapshot_id)
+            except KeyError:
+                raise JobError(404, "graph_snapshot_not_found") from None
+            if snapshot.project_id != project_id:
+                raise JobError(404, "graph_snapshot_not_found")
+            objects = {ref: graph.get(ref) for ref in snapshot.refs}
+            location_cache = {}
+
+            def row_for(evidence):
+                key = (evidence.occurrence_id, evidence.source_version)
+                if key not in location_cache:
+                    location_cache[key] = self.resource(repo, project_id, *key)
+                return location_cache[key]
+
+            if branch_id is not None:
+                objects = {ref: obj for ref, obj in objects.items()
+                           if all(row_for(evidence)["branch_id"] == branch_id for evidence in obj.evidence)}
+            nodes = {ref for ref in objects if ref.kind == "node"}
+            if node_id or query:
+                nodes = {ref for ref in nodes if (ref.id == node_id if node_id else
+                         query.casefold() in str(objects[ref].attributes.get("name") or
+                                                 objects[ref].evidence[0].quote).casefold())}
+            ordered = sorted(nodes, key=lambda ref: ref.id)
+            anchors = set(ordered[offset:offset + limit])
+            edges = [ref for ref, edge in objects.items() if ref.kind == "edge"
+                     and edge.source in objects and edge.target in objects
+                     and (edge.source in anchors or edge.target in anchors)][:limit * 3]
+            nearby = {end for ref in edges for end in (objects[ref].source, objects[ref].target)}
+
+            def item(ref):
+                obj = objects[ref]
+                return {**asdict(obj), "valid": graph.valid(ref),
+                        "evidence": [{**asdict(e), "location": row_for(e)["location"]}
+                                     for e in obj.evidence]}
+            return {"project_id": project_id, "graph_snapshot": snapshot.id, "total": len(ordered),
+                    "nodes": [item(ref) for ref in sorted(anchors | nearby, key=lambda ref: ref.id)],
+                    "edges": [item(ref) for ref in edges]}
+
+    def memory(self, repo, project_id):
+        resources = self.resources(repo, project_id)
+        approved = list(repo.memory._approved(project=project_id))
+        for item in resources:
+            version, _ = repo.head(item)
+            if self.workbench._eligible(repo, item, version):
+                approved.append(repo.memory.get(MemoryRef(**repo.version(item, version)["memory_ref"])))
+        return approved
+
+    def stage_memory(self, project_id, spec, key):
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            self.get(repo, project_id)
+            scope_key = "p6-memory-draft:" + project_id
+            if receipt := repo.action(scope_key, key, spec):
+                return receipt
+            source_id = spec["occurrence_id"]
+            row = self.resources(repo, project_id).get(source_id)
+            if not row or row["source_version"] != spec["source_version"]:
+                raise JobError(409, "memory_requires_current_source")
+            evidence = Evidence(source_id, spec["source_version"], spec["quote"])
+            source = repo.memory.source(project_id, evidence)
+            if evidence.quote not in source.source:
+                raise JobError(422, "memory_quote_not_in_source")
+            scope = repo.memory.game_scope(source)
+            if spec["kind"] == "term":
+                if not spec.get("source") or not spec.get("target") or spec["source"] not in evidence.quote:
+                    raise JobError(422, "memory_term_requires_source_quote_and_target")
+                content = {"source": spec["source"], "target": spec["target"], "mandatory": spec["mandatory"]}
+            else:
+                speaker = source.metadata.get("speaker_id")
+                if not speaker or not spec.get("note"):
+                    raise JobError(422, "memory_note_requires_known_speaker")
+                scope = replace(scope, conditions={**scope.conditions, "speaker_id": (speaker,)})
+                content = {"speaker_id": speaker, "note": spec["note"]}
+            record = MemoryRecord("project-memory:" + uuid4().hex, 0, spec["kind"], scope, content, (evidence,))
+            result = asdict(repo.memory._insert(record, 0))
+            repo.save_action(scope_key, key, spec, result)
+            return result
+
+    def decide_memory(self, project_id, ref, action, reason, key):
+        payload = {"action": action, "reason": reason}
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            scope_key = f"p6-memory:{project_id}:{ref.record_id}:{ref.version}"
+            if receipt := repo.action(scope_key, key, payload):
+                return receipt
+            project = self.get(repo, project_id)
+            try:
+                record = repo.memory.get(ref)
+            except KeyError:
+                raise JobError(404, "memory_not_found") from None
+            if record.scope.project_id != project_id or record.kind not in {"term", "style"}:
+                raise JobError(404, "memory_not_found")
+            latest = repo.memory.latest_version(record.record_id)
+            if latest != ref.version or not repo.memory.is_valid(ref):
+                raise JobError(409, "memory_version_changed")
+            if action == "approve" and record.status == "draft":
+                saved = repo.memory._insert(replace(record, status="approved", reviewer="human:editor"), latest)
+                result = asdict(saved)
+            elif action == "retire" and record.status == "approved":
+                repo.memory._invalidate(ref, reason)
+                result = {"ref": asdict(ref), "status": "retired"}
+            else:
+                raise JobError(409, "memory_action_does_not_match_status")
+            project["knowledge_epoch"] += 1
+            self.save(repo, project)
+            repo.save_action(scope_key, key, payload, result)
+            return result
+
+    @staticmethod
+    def term_problems(repo, project, release, record):
+        source = repo.memory.source(project, record.evidence[0])
+        effective = replace(source, metadata={**source.metadata, **record.content.get("metadata", {})})
+        return [term.content["source"] for term in repo.memory._approved(project=project)
+                if term.kind == "term" and is_mandatory(term) and scope_match(term.scope, effective) == "match"
+                and term.content["source"] in source.source and term.content["target"] not in release["target"]]
+
+    def export(self, project_id, import_id):
+        with closing(self.workbench.open()) as repo:
+            self.get(repo, project_id)
+            record = repo.db.execute("SELECT * FROM p6_imports WHERE project=? AND id=?", (project_id, import_id)).fetchone()
+            if not record:
+                raise JobError(404, "import_not_found")
+            rows = list(self.resources(repo, project_id, import_id=import_id).values())
+            targets, skipped = {}, []
+            for row in rows:
+                item = row["occurrence_id"]
+                current, _ = repo.head(item)
+                release = repo.version(item, current)
+                if release and release["source_version"] == row["source_version"] and self.workbench._eligible(repo, item, current):
+                    targets[item] = release["target"]
+                else:
+                    skipped.append(item)
+            info = json.loads(record["data"])
+            validation = None
+            if info["format"] == "po":
+                project = self.get(repo, project_id)
+                payload, plural_skipped, validation = render_project_po(record["content"], rows, targets, project["target_lang"])
+                skipped.extend(plural_skipped)
+            else:
+                payload = render_table(record["content"], record["filename"], rows, targets, info["target_column"])
+            return record["filename"], payload, {"translated": len(rows) - len(skipped), "excluded": skipped,
+                                                 "validation": validation}

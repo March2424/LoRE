@@ -1,0 +1,2 @@
+# Optional enhanced terminal libraries; the CLI also runs cleanly with stdlib + httpx.
+httpx>=0.27

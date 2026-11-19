@@ -1,0 +1,8 @@
+Draft only; do not execute until the original DelTA workflow and its memory protocol have been implemented and verified.
+Translate the complete current source text from {source_lang} to {target_lang}, using only applicable evidence supplied by the DelTA workflow. Preserve names, numbers, punctuation and placeholders. Do not add or omit content. Output only the translation.
+
+Current source:
+{source}
+
+DelTA evidence:
+{contexts}

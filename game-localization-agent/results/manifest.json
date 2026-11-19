@@ -1,0 +1,460 @@
+{
+  "inputs": {
+    "general": {
+      "manifest_sha256": "0b77cb59c85d1e6feb705213fec9aa2f7102019ecd1f27e90966b19994dab3a5",
+      "scores_sha256": "fa1269e0c555aba65b3291dd2cf65eb86ee9e53105bfd066b2e0805261e1b83a"
+    },
+    "naev100": {
+      "manifest_sha256": "cc12c805646044af1f6b42b0ba84ce8cbb5ef804bcb17c319fade9ef14796a1c",
+      "scores_sha256": "c1a437fcbf58fdaded1e17b19bdb64b2dd104b2a385f26b043350006b612c96f"
+    },
+    "ablation300": {
+      "manifest_sha256": "8c22925cd08e1ca1944a1bc60a1cbb37a1c7c12fb52053c00317e0ca64c43c4a",
+      "scores_sha256": "4055f30a76885d943ed75b603a9cdedf39131bc0de0cbce2a9e05bac00fdd342"
+    }
+  },
+  "conditions": [
+    {
+      "experiment": "general",
+      "condition": "7b/news/sentence",
+      "direction": "en-zh",
+      "path": "news_commentary/qwen2.5-7B-Instruct/sentence/en-zh",
+      "documents": {
+        "nc_3": 50,
+        "nc_6": 50
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "7b/news/doc2doc",
+      "direction": "en-zh",
+      "path": "news_commentary/qwen2.5-7B-Instruct/doc2doc/en-zh",
+      "documents": {
+        "nc_3": 50,
+        "nc_6": 50
+      },
+      "n": 100,
+      "failed": 50
+    },
+    {
+      "experiment": "general",
+      "condition": "7b/news/delta",
+      "direction": "en-zh",
+      "path": "news_commentary/qwen2.5-7B-Instruct/delta/en-zh",
+      "documents": {
+        "nc_3": 50,
+        "nc_6": 50
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "7b/news/framework",
+      "direction": "en-zh",
+      "path": "news_commentary/qwen2.5-7B-Instruct/framework/en-zh",
+      "documents": {
+        "nc_3": 50,
+        "nc_6": 50
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "8b/news/sentence",
+      "direction": "en-zh",
+      "path": "news_commentary/qwen3-8B/sentence/en-zh",
+      "documents": {
+        "nc_3": 50,
+        "nc_6": 50
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "8b/news/doc2doc",
+      "direction": "en-zh",
+      "path": "news_commentary/qwen3-8B/doc2doc/en-zh",
+      "documents": {
+        "nc_3": 50,
+        "nc_6": 50
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "8b/news/delta",
+      "direction": "en-zh",
+      "path": "news_commentary/qwen3-8B/delta/en-zh",
+      "documents": {
+        "nc_3": 50,
+        "nc_6": 50
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "8b/news/framework",
+      "direction": "en-zh",
+      "path": "news_commentary/qwen3-8B/framework/en-zh",
+      "documents": {
+        "nc_3": 50,
+        "nc_6": 50
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "14b/news/sentence",
+      "direction": "en-zh",
+      "path": "news_commentary/qwen3-14B/sentence/en-zh",
+      "documents": {
+        "nc_3": 50,
+        "nc_6": 50
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "14b/news/doc2doc",
+      "direction": "en-zh",
+      "path": "news_commentary/qwen3-14B/doc2doc/en-zh",
+      "documents": {
+        "nc_3": 50,
+        "nc_6": 50
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "14b/news/delta",
+      "direction": "en-zh",
+      "path": "news_commentary/qwen3-14B/delta/en-zh",
+      "documents": {
+        "nc_3": 50,
+        "nc_6": 50
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "14b/news/framework",
+      "direction": "en-zh",
+      "path": "news_commentary/qwen3-14B/framework/en-zh",
+      "documents": {
+        "nc_3": 50,
+        "nc_6": 50
+      },
+      "n": 100,
+      "failed": 3
+    },
+    {
+      "experiment": "general",
+      "condition": "7b/guofeng/sentence",
+      "direction": "zh-en",
+      "path": "guofeng/qwen2.5-7B-Instruct/sentence/zh-en",
+      "documents": {
+        "gf_210_210": 38,
+        "gf_70_70": 61
+      },
+      "n": 99,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "7b/guofeng/doc2doc",
+      "direction": "zh-en",
+      "path": "guofeng/qwen2.5-7B-Instruct/doc2doc/zh-en",
+      "documents": {
+        "gf_210_210": 38,
+        "gf_70_70": 61
+      },
+      "n": 99,
+      "failed": 61
+    },
+    {
+      "experiment": "general",
+      "condition": "7b/guofeng/delta",
+      "direction": "zh-en",
+      "path": "guofeng/qwen2.5-7B-Instruct/delta/zh-en",
+      "documents": {
+        "gf_210_210": 38,
+        "gf_70_70": 61
+      },
+      "n": 99,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "7b/guofeng/framework",
+      "direction": "zh-en",
+      "path": "guofeng/qwen2.5-7B-Instruct/framework/zh-en",
+      "documents": {
+        "gf_210_210": 38,
+        "gf_70_70": 61
+      },
+      "n": 99,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "8b/guofeng/sentence",
+      "direction": "zh-en",
+      "path": "guofeng/qwen3-8B/sentence/zh-en",
+      "documents": {
+        "gf_210_210": 38,
+        "gf_70_70": 61
+      },
+      "n": 99,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "8b/guofeng/doc2doc",
+      "direction": "zh-en",
+      "path": "guofeng/qwen3-8B/doc2doc/zh-en",
+      "documents": {
+        "gf_210_210": 38,
+        "gf_70_70": 61
+      },
+      "n": 99,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "8b/guofeng/delta",
+      "direction": "zh-en",
+      "path": "guofeng/qwen3-8B/delta/zh-en",
+      "documents": {
+        "gf_210_210": 38,
+        "gf_70_70": 61
+      },
+      "n": 99,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "8b/guofeng/framework",
+      "direction": "zh-en",
+      "path": "guofeng/qwen3-8B/framework/zh-en",
+      "documents": {
+        "gf_210_210": 38,
+        "gf_70_70": 61
+      },
+      "n": 99,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "14b/guofeng/sentence",
+      "direction": "zh-en",
+      "path": "guofeng/qwen3-14B/sentence/zh-en",
+      "documents": {
+        "gf_210_210": 38,
+        "gf_70_70": 61
+      },
+      "n": 99,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "14b/guofeng/doc2doc",
+      "direction": "zh-en",
+      "path": "guofeng/qwen3-14B/doc2doc/zh-en",
+      "documents": {
+        "gf_210_210": 38,
+        "gf_70_70": 61
+      },
+      "n": 99,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "14b/guofeng/delta",
+      "direction": "zh-en",
+      "path": "guofeng/qwen3-14B/delta/zh-en",
+      "documents": {
+        "gf_210_210": 38,
+        "gf_70_70": 61
+      },
+      "n": 99,
+      "failed": 0
+    },
+    {
+      "experiment": "general",
+      "condition": "14b/guofeng/framework",
+      "direction": "zh-en",
+      "path": "guofeng/qwen3-14B/framework/zh-en",
+      "documents": {
+        "gf_210_210": 38,
+        "gf_70_70": 61
+      },
+      "n": 99,
+      "failed": 0
+    },
+    {
+      "experiment": "naev100",
+      "condition": "7b_baseline",
+      "direction": "en-zh",
+      "path": "naev/qwen2.5-7B-Instruct/sentence/en-zh",
+      "documents": {
+        "0": 100
+      },
+      "n": 100,
+      "failed": 1
+    },
+    {
+      "experiment": "naev100",
+      "condition": "7b_delta",
+      "direction": "en-zh",
+      "path": "naev/qwen2.5-7B-Instruct/delta/en-zh",
+      "documents": {
+        "0": 100
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "naev100",
+      "condition": "7b_selector",
+      "direction": "en-zh",
+      "path": "naev/qwen2.5-7B-Instruct/framework/en-zh",
+      "documents": {
+        "0": 100
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "naev100",
+      "condition": "8b_baseline",
+      "direction": "en-zh",
+      "path": "naev/qwen3-8B/sentence/en-zh",
+      "documents": {
+        "0": 100
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "naev100",
+      "condition": "8b_delta",
+      "direction": "en-zh",
+      "path": "naev/qwen3-8B/delta/en-zh",
+      "documents": {
+        "0": 100
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "naev100",
+      "condition": "8b_selector",
+      "direction": "en-zh",
+      "path": "naev/qwen3-8B/framework/en-zh",
+      "documents": {
+        "0": 100
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "naev100",
+      "condition": "14b_baseline",
+      "direction": "en-zh",
+      "path": "naev/qwen3-14B/sentence/en-zh",
+      "documents": {
+        "0": 100
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "naev100",
+      "condition": "14b_delta",
+      "direction": "en-zh",
+      "path": "naev/qwen3-14B/delta/en-zh",
+      "documents": {
+        "0": 100
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "naev100",
+      "condition": "14b_selector",
+      "direction": "en-zh",
+      "path": "naev/qwen3-14B/framework/en-zh",
+      "documents": {
+        "0": 100
+      },
+      "n": 100,
+      "failed": 0
+    },
+    {
+      "experiment": "ablation300",
+      "condition": "baseline",
+      "direction": "en-zh",
+      "path": "naev_ablation_300/qwen3-14B/baseline/en-zh",
+      "documents": {
+        "0": 300
+      },
+      "n": 300,
+      "failed": 0
+    },
+    {
+      "experiment": "ablation300",
+      "condition": "memory",
+      "direction": "en-zh",
+      "path": "naev_ablation_300/qwen3-14B/memory/en-zh",
+      "documents": {
+        "0": 300
+      },
+      "n": 300,
+      "failed": 0
+    },
+    {
+      "experiment": "ablation300",
+      "condition": "graph",
+      "direction": "en-zh",
+      "path": "naev_ablation_300/qwen3-14B/memory_graph/en-zh",
+      "documents": {
+        "0": 300
+      },
+      "n": 300,
+      "failed": 0
+    },
+    {
+      "experiment": "ablation300",
+      "condition": "base_selector",
+      "direction": "en-zh",
+      "path": "naev_ablation_300/qwen3-14B/memory_graph_base_selector/en-zh",
+      "documents": {
+        "0": 300
+      },
+      "n": 300,
+      "failed": 0
+    },
+    {
+      "experiment": "ablation300",
+      "condition": "selector",
+      "direction": "en-zh",
+      "path": "naev_ablation_300/qwen3-14B/memory_graph_sft_dpo_selector/en-zh",
+      "documents": {
+        "0": 300
+      },
+      "n": 300,
+      "failed": 0
+    }
+  ]
+}

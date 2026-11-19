@@ -1,0 +1,3 @@
+类型,英文原文,中文参考译文,本地化上下文
+item_name,Emberblade,余烬剑,Inventory name of the Emberblade weapon.
+dialogue,"Take Emberblade, {player}.","拿上余烬剑，{player}。",Dialogue referring to the same weapon.

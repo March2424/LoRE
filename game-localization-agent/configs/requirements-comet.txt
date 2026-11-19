@@ -1,0 +1,2 @@
+# Isolated scoring environment; install and validate separately from SFT.
+unbabel-comet==2.2.7

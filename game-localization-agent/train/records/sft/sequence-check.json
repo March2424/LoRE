@@ -1,0 +1,18 @@
+{
+  "rows": 3165,
+  "common_prompt_schema_verified": true,
+  "max_sequence_tokens": 5142,
+  "max_completion_tokens": 367,
+  "recommended_cutoff_len": 8192,
+  "observed_soft_token_budgets": {
+    "1024": 2726,
+    "2048": 439
+  },
+  "template": "qwen3_nothink",
+  "train_on_prompt": false,
+  "mask_history": false,
+  "packing": false,
+  "loss_mask_contract": "all prompt tokens -100; full rationale+IDs and assistant terminator supervised",
+  "framework_loss_mask_verified": false,
+  "silent_truncation_allowed": false
+}

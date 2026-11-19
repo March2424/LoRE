@@ -1,0 +1,13 @@
+{
+  "conditions": [
+    "7b_baseline",
+    "7b_delta",
+    "7b_selector",
+    "8b_baseline",
+    "8b_delta",
+    "8b_selector",
+    "14b_baseline",
+    "14b_delta",
+    "14b_selector"
+  ]
+}

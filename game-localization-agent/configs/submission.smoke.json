@@ -1,0 +1,15 @@
+{
+  "model": {
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "model": "deepseek-flash",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "temperature": 0,
+    "timeout": 45,
+    "max_output_tokens": 2048,
+    "extra_body": {"thinking": {"type": "disabled"}}
+  },
+  "budget": {"max_calls": 10, "max_tokens": 30000},
+  "batch": {"max_rows": 2, "input_tokens": 1500, "output_tokens": 2048},
+  "max_batches": 1,
+  "keep_valid_items": true
+}

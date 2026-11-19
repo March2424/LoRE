@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    "7b/news/sentence",
+    "7b/news/doc2doc",
+    "7b/news/delta",
+    "7b/news/framework",
+    "8b/news/sentence",
+    "8b/news/doc2doc",
+    "8b/news/delta",
+    "8b/news/framework",
+    "14b/news/sentence",
+    "14b/news/doc2doc",
+    "14b/news/delta",
+    "14b/news/framework",
+    "7b/guofeng/sentence",
+    "7b/guofeng/doc2doc",
+    "7b/guofeng/delta",
+    "7b/guofeng/framework",
+    "8b/guofeng/sentence",
+    "8b/guofeng/doc2doc",
+    "8b/guofeng/delta",
+    "8b/guofeng/framework",
+    "14b/guofeng/sentence",
+    "14b/guofeng/doc2doc",
+    "14b/guofeng/delta",
+    "14b/guofeng/framework"
+  ]
+}

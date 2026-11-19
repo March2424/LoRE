@@ -1,0 +1,24 @@
+{
+  "same_name_source_hit": {
+    "selector": "{\"selected_ids\":[],\"rationale\":\"No initial source evidence.\"}",
+    "translator": "皇帝之拳",
+    "repairer": "皇帝之拳星",
+    "reviewer": [
+      {
+        "lookup": {"issue": "ambiguity", "kind": "entity", "query": "Emperor's Fist"},
+        "result": {"verdict": "repair", "reason": "The native description identifies a C-class planet and the future imperial homeworld."}
+      },
+      {"verdict": "pass", "reason": "The repaired label preserves the name and identifies the verified object as a planet."}
+    ]
+  },
+  "scoped_source_miss": {
+    "selector": "{\"selected_ids\":[],\"rationale\":\"No initial source evidence.\"}",
+    "translator": "伊尼奥斯修道院",
+    "reviewer": [
+      {
+        "lookup": {"issue": "missing_evidence", "kind": "entity", "query": "Inios Monastery"},
+        "result": {"verdict": "needs_human", "reason": "No authorized independent source verifies the founder."}
+      }
+    ]
+  }
+}

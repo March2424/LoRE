@@ -1,0 +1,101 @@
+{
+  "project": "naev",
+  "source_revision": "123fdc1be96d350fdff04cd2f61e2c66c99badd5",
+  "graph_snapshot": "graph",
+  "cases": [
+    {
+      "case": "normal",
+      "id": "naev_df1b7434b65015d2499f",
+      "version": 1,
+      "expected_first_review": "pass",
+      "expected_status": "committed",
+      "allowed_evidence_ids": [
+        "naev_1a34af09a68494e4e002",
+        "naev_218b9fa5718fe5491229",
+        "naev_34a4603196226334cf50",
+        "naev_350c335379642004e5fd",
+        "naev_5da71b4ed2f4a24a2f7b",
+        "naev_5f83b29723bcb1ba2fce",
+        "naev_680883a98fbe7f1be6f9",
+        "naev_88f46190cf83a6c42cf5",
+        "naev_9d6a268c9e4d22b1fe10",
+        "naev_9d73a8a0226dd4866195",
+        "naev_a0532302e85a94ecbcaa",
+        "naev_a5eec17250ba503e2b51",
+        "naev_b4f9ec985b0c45a00ffd",
+        "naev_b95cd16c4766eb434996",
+        "naev_b9874253ea915894aff6",
+        "naev_d5359ab4954e8aba22b9",
+        "naev_df1b7434b65015d2499f"
+      ]
+    },
+    {
+      "case": "placeholder_error",
+      "id": "naev_3d06247b787ae70eb060",
+      "version": 1,
+      "fault": "remove_first_placeholder",
+      "expected_first_review": "repair",
+      "expected_status": "committed",
+      "allowed_evidence_ids": [
+        "naev_035f37e7ae216af15b54",
+        "naev_067b9601d22ad9d7c993",
+        "naev_1301b36fda192e9a78cd",
+        "naev_1bbe1dee9b99ab5979f0",
+        "naev_20de7d2b07a455e96f8d",
+        "naev_3d06247b787ae70eb060",
+        "naev_425702832529bf7727a2",
+        "naev_65cb5345768e6ee1ff20",
+        "naev_672718e5e12b94d4eb61",
+        "naev_70a89333344fd5088793",
+        "naev_89b804728e1a20c123b6",
+        "naev_99a630c52ec0fe6c87ac",
+        "naev_9fca1eff6ae273133396",
+        "naev_a447b65e3f5c4958cefa",
+        "naev_b193f0940d7682809d67",
+        "naev_bc4bd3e5dd41760dac12",
+        "naev_bdb43dedef37b7fc9244",
+        "naev_c4135457e441d9c10283",
+        "naev_c4eecddb65807d86d16e",
+        "naev_c5cc76f95c464d2db065",
+        "naev_d52ced8ce44c511d09df"
+      ]
+    },
+    {
+      "case": "same_name",
+      "id": "naev_50baac43e8f90a4ccf08",
+      "version": 1,
+      "injected_draft": "阿塔兰塔行星以登陆此地的另一颗阿塔兰塔行星命名。尽管这颗行星冷到几乎没有开发价值，当地人仍靠冰层下的重元素矿藏维持体面的生活。",
+      "expected_first_review": "repair",
+      "expected_status": "committed",
+      "allowed_evidence_ids": [
+        "naev_0f18215ed30f1ee0b6f7",
+        "naev_4543371e2be4310ac407",
+        "naev_50baac43e8f90a4ccf08",
+        "naev_71da9856da1167cb5303",
+        "naev_88a718459538f1d9d283",
+        "naev_906d28836a11fe3ffa26",
+        "naev_a3653f6782ee9a2949de",
+        "naev_b1788530935538bb9b2e",
+        "naev_b2316b9e9596303c00ca",
+        "naev_c300a66b566b9ad5a431",
+        "naev_c56be15c023d45033b29",
+        "naev_ccb061d680106ee7f1a6",
+        "naev_d8a021738df1064ed590",
+        "naev_f2781dd36e1d5a0fa41c"
+      ]
+    },
+    {
+      "case": "missing_evidence",
+      "id": "naev_b4f6f496fb782035fac1",
+      "version": 1,
+      "require_evidence": true,
+      "editor_requirement": "编辑发现游戏同时有同名地点和工程。定稿前必须用独立源证据确认该键具体指哪个地点、以及与同名工程的关系。缺乏证据时转人工，保留中性译名作为草稿。",
+      "expected_first_review": "needs_human",
+      "expected_status": "needs_human",
+      "allowed_evidence_ids": [
+        "naev_b4f6f496fb782035fac1"
+      ]
+    }
+  ],
+  "source_db_sha256": "51c774cd54c195d9c6995291ef8fc7899d6d96df5bcea497efce490d841695b3"
+}

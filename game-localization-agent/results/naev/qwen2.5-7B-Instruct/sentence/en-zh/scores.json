@@ -1,0 +1,33 @@
+{
+  "scomet": {
+    "scomet": 0.8232958692312241,
+    "n": 100,
+    "oversize_as_empty": 0,
+    "failed": 1,
+    "selector_fallback": 0
+  },
+  "bleu": {
+    "bleu4": 39.92963353475834,
+    "n": 100,
+    "failed": 1,
+    "empty_hypotheses": 0,
+    "precisions": [
+      71.16693834499952,
+      47.410204279213865,
+      33.62009971649233,
+      24.73097048079771
+    ],
+    "brevity_penalty": 0.9756583326167899,
+    "hypothesis_tokens": 10429,
+    "reference_tokens": 10686
+  },
+  "sacrebleu_signature": "nrefs:1|case:mixed|eff:no|tok:zh|smooth:exp|version:2.6.0",
+  "ltcr_common": {
+    "ltcr_1": 0.5833333333333334,
+    "ltcr_1f": 0.6666666666666666,
+    "exact_matches": 14,
+    "fuzzy_matches": 16,
+    "aligned": 24,
+    "total": 38
+  }
+}

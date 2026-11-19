@@ -1,0 +1,18 @@
+{
+  "scomet": {
+    "scomet": 0.5154845371390834,
+    "n": 99,
+    "failed": 61,
+    "empty": 61,
+    "oversize_as_empty": 0,
+    "selector_fallback": 0
+  },
+  "dcomet": {
+    "dcomet": 0.44050487138406197,
+    "scored": 99,
+    "total": 99,
+    "context_reductions": 0,
+    "oversize_unscored": 0,
+    "failed": 61
+  }
+}

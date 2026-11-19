@@ -1,0 +1,9 @@
+{
+  "conditions": [
+    "baseline",
+    "memory",
+    "graph",
+    "base_selector",
+    "selector"
+  ]
+}

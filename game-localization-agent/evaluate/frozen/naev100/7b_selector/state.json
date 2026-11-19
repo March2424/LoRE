@@ -1,0 +1,1005 @@
+{
+  "status": "complete",
+  "jobs": [
+    {
+      "source_id": "naev_f4719424261158f6dc95",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "随着你带着几十个被解救的孩子从着陆平台下来，之前通过通讯器交谈的那对父母跑过来迎接你。你身后传来几个孩子的喊声：“妈妈！爸爸！”三个孩子挤到前面，父母和孩子们围成一团，拥抱、亲吻、泪水和满脸的笑容交织在一起。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_68d795897fb43da453f2",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“我明白了。这一天迟早会来的。不能让一帮混蛋过上体面的生活，不是吗？”\n\n他们喝了一口饮料。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_d3e4ad8888a3540ee15e",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你和其他孩子们站在一旁，见证了一幕你有生以来见过最美妙的重逢之一。过了一会儿，父亲走近你，擦去脸颊上的泪水，然后把你拥入怀中。释放了你并擦干眼泪后，他说：“谢谢你，{player}。你对我们来说意义重大。我真希望能以某种方式报答你，但现在我真的不知道该怎么做。你救回了我的孩子们，我无法用‘谢谢’来表达我的感激之情，但目前只能做到这样。如果你将来有任何我能帮上忙的事情，请随时告诉我，我的朋友。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_579f8ff1cd60f0032b5f",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "\"对吧！我花了很大功夫才找到它。到处都卖完了！但最后还是值得的。\""
+      },
+      "selector_status": "fallback",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_5c03897e2317bc870601",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“我和你叫的那个明尔瓦CEO，我们都是在约兰出生的。说不清是被遗弃还是被抛弃，但从小到大，这个世界对我们只有残忍和苦难。被迫在矿井里劳作以求生存。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_316c18becd6597aa7e56",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“噗嗤。你不懂欣赏这种美。看看这些曲线！还有闪烁的灯光！这可是全比例解剖学准确的1/128缩放模型！甚至还能透过驾驶舱看到飞行员呢。”\n\n你仔细看了看，果然能看到飞行员。细节做得真是令人惊讶。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_92300ae509f39d65b5b3",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“你知道这个宇宙腐朽到了骨子里。如果你不想成为别人的工具，一辈子为别人劳作，那你必须不惜一切代价去争取你想要的一切。我可不想成为地下深处又一个无人问津的尸体。”\n\n他们重重地拍了一下桌子，以示强调。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_1b0bee9d31cd44c20bce",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "飞船内部状况糟糕透了。到处都是垃圾和污垢。你可以看到墙壁上有明显的损坏，大多数空气锁似乎都卡开了。在滑行通过走廊时，什么东西抓住了你的脚，你本能地拔出武器并开火。等回声消失后，你只听到了自己加速的心跳声。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_43a8c21be0fe58dad520",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你向他保证一切都没问题，并且不会犹豫接受他的提议。过了一会儿，他的笑容从脸上淡去了。“你看我家人的幸福？但是你看这里还有这么多孩子与父母分离。我想把他们全都送回家。我也想对抗所有的人口贩卖，但这需要很多计划。现在，我只想和家人在一起。不过如果你愿意的话，尽快回来吧。我想安排点事情。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_72002de8421b6a5c79f6",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“像你这样的雇佣兵，大概不会真正理解几乎在矿井里累死累活的那种痛苦吧。你来这里只是为了完成主人的命令，就像你忠实的狗一样。”\n\n他们轻笑一声，微微向前倾身。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_3000f6751276d238779c",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“真的吗？这也是一款Sigma-5中队的金 Efreeti模型吗？！你不知道那是什么吗？别逗我了，这大概就是一款普通的量产版Lancelot，没有任何历史背景。这可是杰作啊！”\n他们举起手中的玩具Lancelot，侧面勉强能看见刻着金色Efreeti的图案。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_cedc7795e78138792fe4",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“老实说，我根本不在乎你的主人是谁。结果都一样，你是在试图夺取我们用鲜血、汗水和眼泪换来的成果。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_f5b5a395fe01fd914b85",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你拍了拍哈尔加的肩膀。他不耐烦地转过身来看着你，毫无疑问是打算用不容置疑的语气告诉你离开。但他认出了你。他的脸色变得苍白，开始大声让你别管他，甚至威胁你。尽管他显然非常紧张，但你对他并没有留下什么印象。花了点时间和承诺给他买饮料，你最终说服了他，让他相信你不是来给他添麻烦的。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_7e33395219de61b2a115",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "他们咬紧牙关。\n“我不让你！米涅瓦站是我们的！你根本不知道为了来到这里我们经历了什么地狱，我绝不会让这一切从我们手中夺走！”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_6fc9e1d9448ffc241d07",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "\"你知道吗，我们来玩个游戏。我知道所有飞船的所有事实。我问你一个问题，如果你答对了，我会给你一个不错的奖励。你觉得怎么样？\""
+      },
+      "selector_status": "fallback",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_bbfd73cc11bbd515b6e1",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "父亲回到孩子们身边，你们开始往你的飞船走去时，注意到这对父母正充满爱意地拥抱自己的孩子。你转头看向其他孩子们，他们现在围坐在一起，羡慕地看着这个幸福的家庭。叹了口气，你开始爬进你的飞船，这时母亲跑到你面前，“等等，{player}！我们知道你的名字，但你不认识我们。我是简妮丝。”她看向正在与孩子们热烈交谈的丈夫，脸上露出了微笑。“我丈夫的名字叫安德鲁。谢谢你所做的一切。”她的眼里滚下一颗泪珠，看着你明亮的褐色眼睛，亲了亲你的脸颊。\n\n你看着她回到家人身边，一个孩子跳进她的怀抱，你爬上了你的飞船。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_3212dd2de1010b3113cb",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你按照指示牌走向演讲地点——研究所。到了之后，你四处打听应该去哪里进行演讲。显然，你已经被期待很久了。你被领进了一个相当小的研讨室。终于，你准备好了要开始演讲，几位科学家坐了下来。实际上，你本以为会有超过17位听众。也许这场演讲并没有你想象中的那么重要。他们不会只是让你去参加一个重要的展示吧？"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_0ed62e766a51c2c08782",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你很清楚，从他那里再也得不到任何其他信息了。你对这种情况感到困惑。哈贾和乔安娜似乎都坚信对方黑客院系的电脑，并且两人都拿不出任何证据来证明自己的说法。整个事件似乎并没有比之前更接近一个结论，但此时你别无选择，只能将你的发现报告给乔安娜。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_8cfd2aea9f3577fd447c",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“哦，是的。是的！就是我！”那人回答，“你是{player}吧。 尖峰的人已经告诉我了。哦，但我怎么这么没礼貌呢。让我正式介绍一下自己。我叫 Flintley，是一名考古学家和历史学家。有些人可能会说我是银河系里最好的，哈哈！”"
+      },
+      "selector_status": null,
+      "revised_hypothesis": true
+    },
+    {
+      "source_id": "naev_ea8e3571fbe8aa00f181",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "原来他们没有。当他们刚到达通向你飞船的停泊桥时，几队武装的Dvaered安全人员突然冲入停泊 hangar。他们发现了那三名特工并立刻开火。其中一人倒下了，其他人急忙将箱子推过桥梁朝你的飞船而去。尽管情况发生了急剧变化，你还是注意到Dvaered人似乎更关心惩罚罪犯而不是完好无损地找回他们的财物。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_6e1a2ea3c82f0daf7eed",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“凯克斯是个很好的家伙。他以前经常来这里，在星云中探险之前，会和我们这些无用的人一起消磨时间。真可惜他失踪了。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_d4b66500536942b7d050",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“既然他们没有找到他的飞船，我就希望他成功穿越了星云的另一边，如果有的话。”\n他长饮了一口酒。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_78524818c4d8cbe9e550",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "第二个特工被Dvaered的子弹击中，从停泊桥上跌落到了下方的深渊。第三个特工在胸部中弹之前，成功将装有箱子的手推车推进了你的空气锁。当Dvaered人接近你的飞船时，你封闭了空气锁，启动引擎，将飞船从停泊 hangar 中冲了出去。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_c0d39b5589f4a28350d1",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“这里以前更受欢迎，但随着星云中容易获取的资源被搜刮一空，现在来这儿的人已经不多了。尤其是像凯克斯和米雷亚这样的著名 scavenger 消失之后。”\n\n他沉思着说道。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_b17e3a012a13b7053160",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "\"让我们看看这里有什么东西，\"弗林特利接过你在{pnt}购买的文物说道。\"啊，不用查资料我也知道这是什么。这是一个旧式的空气锁机制部件，就像在内战期间大多数飞船使用的那样。这使得它相当古老，但这也使得它毫无价值，我恐怕只能这么说。这只是些旧废料。”他给了你一个抱歉的眼神。“别让它让你失望。不是很多人能在第一时间认出这是什么。那些骗子可够聪明的。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_89f6b3bce047ce663937",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你进入这艘幽灵般的废弃飞船，里面出奇的寂静。引擎室有一个巨大的缺口，表明核心引擎很可能爆炸了，迫使船员弃船逃生。尽管你没有找到任何有价值的物品，但船上仍有大量的矿石货物可供取用。你迅速将能装的货物都装载到自己的飞船上，然后离开了。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_a53d988f1b89b83f6281",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "他随意地吹了一声口哨。\n“星云真是个奇妙的地方。虽然飞过它时会让人感到有些着迷，但它确实有自己的个性。如果你深入其中太远，就很难再轻易返回。那里曾吞噬了许多灵魂。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_f664faf678aab62972c0",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你把在{pnt}采购的文物递给弗林特利。他仔细检查了几分钟，然后在他的桌上信息终端中输入了一些查询。找到所需的信息后，他叹了口气。“抱歉，{player}。看来你被骗了。你手里的东西不过是个小饰品。这是一件‘艺术’作品，是由生活在拉普拉的三级雕塑家比尼亚·加里布里创作的。她的技艺并不高超，我恐怕。一位著名艺术评论家曾称她的作品为‘比达瓦尔歌剧还要糟糕’。我真的不认为你想要把这件东西送给他的大人。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_c7288e5738eed1f9ab12",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "望着窗外，你看到你的飞船周围有阴影在旋转。现在它们变得越来越多，但你不知道具体有多少。它们就像凭空出现一样迅速消失。“难怪这么多飞行员害怕那些鬼故事，”你心想，但你没有理由害怕它们。你知道是星云会摧毁你的飞船。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_9a119bd89a0ae12815a1",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你什么也捕捉不到，只感觉飞船异常安静。随着肾上腺素逐渐消退，你用脚踢了踢刚才射击的那个物体，露出了一具肮脏的尸体。看到这种木乃伊化的状态，你只能猜测它在你到达之前就已经死了很久。尸体穿着似乎是某种旧太空服的破烂衣物，你注意到眼睛呈现出一种褪色的紫色，很奇怪，也许是索罗米德生物技术？"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_ef497ee153911b882fad",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“如果你打算去，最好带上你最好的传感器。那里的星云密度很大，几乎什么都看不清。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_c19e3417a5fb1d27894f",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "弗林特利仔细研究桌上的物体，过程中多次查阅在线数据库。然后，终于，他转向你。“我不得不这么说，但看来你买的是个假货。不过是个不错的假货！那个在{pnt}的卖家显然很懂行。你看，这东西和火星第二次增长时期使用的悬浮汽车车牌非常相似。然而，它缺少了一些重要的特征，还有一些细节暴露了它的近期制造。接近了，{player}，接近了。但可惜没有成功。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_7ac920244644e5cd2b79",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "\"它被称为滑板，\"弗林特利继续说道。\"关于它的记录有点粗略，很多都只是猜测，但它似乎曾经被用于原始的公共仪式。这些仪式的确切性质尚不清楚，但它们可能是氏族仪式，甚至是交配仪式。棋盘本身的图案被认为具有精神或神秘的意义。此外，根据一些理论，人们过去常常站在滑板顶部，圆柱轮面向地面。这使得一些历史学家相信脚曾经是人类心理的核心。\""
+      },
+      "selector_status": null,
+      "revised_hypothesis": true
+    },
+    {
+      "source_id": "naev_bdbd725f101efdb0498b",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“啊哈！当然了，就是！那仓库里什么东西都不进不出！我有消息说，Tricon已经开始游说Nexus码头接受我们的索赔请求了，因为他们负担不起那场罢工！”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_26e3a648360e0fa88253",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“啊！我知道了！你拒绝是因为我说危险！你是个胆小鬼，脸上连一点伤痕都没有！”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_f0793a3f8912c1aad5e3",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“请坐在那边的终端上，我这边就坐这个。你知道怎么操作吧？你自己连接一下，然后我会设置好服务器详情。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_08b205fc6177a2b8cd0c",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你完成了与{plt}的对接操作，清楚地知道你的飞船并没有携带他们所期望的人。在空气锁处，你被一对穿着灰色制服的船员迎接。你向他们解释无法将Jore克带到他们那里，他们以干练、公事公办的态度接受了你的报告。会面很短暂。船员们消失回他们的飞船，关闭了空气锁，然后你返回到你的驾驶舱。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_890ad565f43ffcf02dde",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "无人机再次闪烁，然后一切变得漆黑一片。看来那已经是它最后的生命了。你运行了一次最后的例行扫描，看看是否还有办法可以做些什么。虽然似乎这架无人机永久性地无法修复了，但你发现上面似乎连接着一块扎雷克制造的实验性硬件。既然对这架无人机来说它已经没有用了，你就把它带走了。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_8e5ea07e8523e7923b03",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "他带你来到基地最大的房间，那是一个不太优雅的自助餐厅。他推开房门，你被众多面孔所迎接，其中有些是你从银河系各地带到安特莱乔斯V的殖民者。人群发出欢呼声，你走到房间中央。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_063129115c2202bbd234",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "她带你来到她的飞船“粉恶魔”上临时搭建的一个安装间。你把随身携带的holodrive交给玛ikki，她立即将这些drive转交给工程师们检查内容，然后你向她解释了自己所经历的一切。当你讲述遇到的海盗马利和萨格的遭遇时，她流露出悲伤之情，这便是海盗的生活方式。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_ee11c0efdec96704beac",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "最终，一名工程师回来报告情况。看来他们找回了一些凯克斯设计的图纸，还有一些其他可能有用的蓝图，最坏的情况下，这些图纸在黑市上也能卖个好价钱。玛ikki对能够修复她父亲的可能性——尽管这种可能性很小——显得非常兴奋。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_f973e3b0211a41f23186",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "他们向前倾了倾身子，小声说道：“你看，灵魂，就是那些迷失的系统。被那片迷雾吞噬了。里面充满了各种财富和遗物。不过，灵魂，有一点需要注意，进去的人很多，但没有人能出来！就像一个单向门。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_e115725d7ba02da19966",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "\"如你所知，军阀是被授予戴瓦德行星主权的成功将领。若受冒犯或为征服行星，军阀有权向对手宣战。\""
+      },
+      "selector_status": null,
+      "revised_hypothesis": true
+    },
+    {
+      "source_id": "naev_f9e54854e7831a259990",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "在你和虾之间似乎进行了一段时间的对视之后，你听到一声响亮的蜂鸣声，虾的发声器开始发出声音。\n\"人啊. 人啊.\""
+      },
+      "selector_status": null,
+      "revised_hypothesis": true
+    },
+    {
+      "source_id": "naev_e99ce5c69fdd68a912bd",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“啊，很好。你就是我要找的人了。现在可不能太马虎，你知道的。话说老约克刚才在这里，但他不能待太久。他让我留意一下你，说你会来找他。”\n\n酒吧老板环视四周，确保没有人能听到，尽管酒吧里的音乐使得旁人难以偷听。“我有话要告诉你。去{sys}系统，在{pnt}降落。约克会在那里等你。不过你最好做好准备，可能会遇到麻烦。我不知道是什么样的麻烦，但约克从来不会陷入任何小麻烦。别说我没提醒你。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_e63515340f373752a48f",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你试着用手打开盒子，但发现太难打开了。看来打包的人真的不想让人打开它。你试着用几种工具打开，但觉得没有不损坏盒子的好方法来打开它。最好还是尽快搞定这件事。现在该去{spb2}完成任务了。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_89d9557544e0e749fc2d",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“老实说，我其实也不知道,”那个男人说道。“伯爵想见你一面亲自给你做个简报。你的飞船会停泊在{sys}系统里。我可以通知他的大人你将前去拜访吗?”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_879fb471c01cfcbd8d84",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "他们从不显得惊讶。\n“你真的是一点头绪都没有。我不知道你是怎么获得心灵能力的，但看来你并不了解。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_c3f23ce51ac39e90a50c",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "没有合适的着陆区域的礼节，你试图找到一片空地，但最终还是不得不将飞船停在一座曾经宏伟的建筑的废墟上。比你希望的稍微显眼一些。检查一下给你提供的坐标，似乎还不算太远。现在得赶紧了。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_d7e7a7a260f823699dea",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "最终，你找到了一个标有“粒子物理实验注册部”的隐蔽房间，并进入其中与一位缺乏热情的学术秘书见面。你递给他们那个包裹，他们叹了口气后开始检查里面的内容。他们提到了沙德莱特博士又在搞什么名堂，并递给你一个包裹里的信封，说这不属于报告的一部分。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_cf3be59989c43c6e7bc5",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "在成功绕过飞船的安全系统后，你进入驾驶舱，注意到这架战斗机已经被破坏，随时可能爆炸：你几乎没有时间去找到并控制飞行员。你走向生活舱。当你穿过通道时，你看到他，漂浮在地板附近。当他转过那张扭曲的脸看向你时，你被他脸上可怕的痛苦表情吓到了。他突出的、充血的眼睛盯着你，仿佛想要穿透你的皮肤。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_fb2fe5d66ce5f4b84b0b",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "\"太棒了。请尽早去见老爷。他不喜欢让人等待。我会发送您即将到来的消息，因此当您到达{sys}时请联系Pinnacle，他们会允许您登机。\""
+      },
+      "selector_status": null,
+      "revised_hypothesis": true
+    },
+    {
+      "source_id": "naev_bb5e445f9df919f43aa6",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "在他扭曲的嘴巴裂开，流出一种令人作呕的奶油状液体时，他开始呻吟着说话：\n“外面做得很好。嗯。但你看？你抓不到我活口的。哦，不。沉默之药丸会确保这一点。嗯哼。看起来很疼，对吧？你知道吗？实际上比看上去还要糟糕得多。我敢保证。呃，它让我想呕吐……对不起。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_2c64c1de7e7c85e3df17",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "然而，你必须意识到，在那之后，下令执行此操作的战领主的对手，以及可能还有他们的盟友，可能会派飞船追击你。所以如果你接了这样的任务，就必须准备好躲避 Vendetta 的攻击。更重要的是，在你刚刚分发传单的星球上着陆并不是一个选项。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_a4e1187aba800d20ec6e",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "他们先仔细打量了你一番，才决定你一定是他们等的人。\n“Mikki让你来的吧？我一直都在等着你。”"
+      },
+      "selector_status": null,
+      "revised_hypothesis": true
+    },
+    {
+      "source_id": "naev_dcec954e24037d1d0bbf",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你可能不知道，[黑斯提斯家族]以我们的心灵能力著称。我们能够将心灵投射出去操控周围的流动，无需做出任何动作就能完成各种任务！"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_a3670a5f5026ebea5e07",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "坐在那里的另一个海盗眼中闪过一丝光芒，回答说：“实际上，在{pnt}那边的酒吧里听说，做一些稍微风险更高的工作就能赚大钱。你只需要抓一些孩子，每个就能卖15大金币！”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_7706721e7e1c2e0e26ff",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "当然说起来容易做起来难。心灵感应的能力因人而异，即便如此，也需要放大器来展现其真正的力量。还好，Sirius 家族的飞船都内置了放大器。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_dfd727b11380c659ad64",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你降落后，立刻被“GE Talpini”号核心矿工船的船长迎接。在一番客套话之后，他们带你参观了他们的飞船。这艘飞船是一艘令人印象深刻的庞然大物，装满了各种看起来十分凶猛的钻机。然而，你可以看出，飞船上的重型改装使其在太空中的移动能力远不如在地下或水下。看来，这艘飞船主要依靠你来保证它在前往{pnt}的路上不要出问题。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_acca84f74169dd7d4b63",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "当你走近站台时，你能清楚地看到外层船体上有明显的等离子爆裂坑洞。你的飞船不得不推开漂浮的碎片，才得以在太空码头进行着陆接近，而整个过程中扎克都一脸困惑，一言不发。你认为这并不是他所期望的场景。似乎过了一个世纪那么久，飞船的磁性对接爪终于接触到了站台。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_a5e2f12d370929b031a9",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“另外请注意，只有下令执行此任务的‘错误’战领主的飞船才会追击你，而且只会在你执行任务的那个星系中。更重要的是，你可以合法地摧毁这些飞船，这符合荣誉战领主之间忠诚战争的框架。\n\n一旦你离开那个星系，就再也不用担心达瓦尔巡逻飞船的威胁了，即使你回到事后也是如此。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_c6cdedf028174895cd06",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你环顾四周，试图弄明白这个原型机。它与实验室高度相连，看起来不容易移除。此外，甚至不清楚它是否真正具备功能，只是一堆废金属。遗憾的是，你缺乏足够的专业知识来进行全面评估。唯一确定的是，它看起来非常酷炫。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_00ffab1c74e6fd2e194c",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "快速探索飞船后，发现其大部分系统已经完全失效，只有灯光和基本的生命支持系统在这么长时间后仍然在线。最终你到达了船员宿舍，但除了一个年代久远的笔记本外一无所获。你在前往货舱的路上小心地翻阅着这本笔记本，其中几条记录特别引起了你的注意。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_7004b6329ff97eb8833f",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "为了完成其任务，第5613特遣队需要额外的1000万克里特。\n\n谨代表所有分配到第5613特遣队的人员，他们日复一日地工作，使达瓦尔之家更接近其目标，我感谢您抽出时间并给予考虑，并希望您保持正确、忠诚和#obfsrthgb#0。\n\n卡利伯特·克拉克上将"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_0376f33f5dd8c4eb796f",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你降落时注意到星际港已经被清空了，还有一些柱子上绑着炸药。这看起来不太妙。海军陆战队让你待在原地，他们出去尝试完成俘虏交换。\n\n从驾驶舱里你可以看到海军陆战队用枪顶着俘虏的后背将他们带到前面。你看到一些人从阴影中走出来，手里拿着武器；很可能是FLF。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_358e7845410ecf8720e6",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你在一个太空港酒吧遇到了一位商人，他惊讶地发现你不是维纳尔，但很快调整了状态。他们先和你聊了一些琐事，然后才进入贸易细节。看起来一切都准备好了，你代表{pnt}签了字。握手之后，你就被送上了路。与商人的交易比帝国官僚机构要高效得多。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_3fb2fd8dcb6ea1b43bc9",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "气闸打开，迎接你的是一个看起来很紧张的男人、一个羞涩的女人以及三个神经兮兮的孩子。\n“谢天谢地你终于来了，”那个男人说道，“我不知道还能撑多久。他们早就把我们当作死人了，你知道的。没有燃料，没有食物，只有辅助电源勉强维持着我们。”然后他开始无条理地向你诉说他家人在这段时间里所遭受的苦难，但你打断了他，不愿意忍受他无休止的唠叨。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_7eb70acb80e8f9438510",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你和哈贾完成了着陆后的程序，并在终端会合。哈贾看起来有些紧张——他显然不喜欢面对面见乔安娜这个想法。但他没有抱怨。在这方面，他确实是一个说到做到的人。你们一起前往乔安娜为此场合预订的小型会议室。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_f4ae3814c3154149f08e",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你和扎克穿上太空服，开始在毫无大气的破败站台中搜寻，气氛异常寂静。漂浮的汤匙、一些脏靴子……看来直到最近这里还有人居住。尽管基地一片狼藉，但考虑到扎雷克，这种情况可能就是常态。你们一间间地检查所有房间，却未能发现任何生命迹象。在整个过程中，扎克一直沉默且专注。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_08c86ee907712f0d2f3d",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你 jest，但一个清晰和平静的精神状态是 Flow 操控的基础。如果没有一个稳定的精神状态，你只会给自己带来头痛，或者更糟！"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_bfdef9c1012d185dbb72",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“你好，飞行员。我有某艘无人看管的{fct} {class}飞船的位置和安全代码。也许这对你有兴趣，谁知道呢？\n“不过，我只会出售这些信息。这需要你支付{credits}，但如果你能到达那艘飞船的话，它可能值更多钱。”\n你想付钱知道那艘飞船的位置吗？"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_5dd65c7a705060113b95",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你最后一次环顾房间，然后离开。你注意到覆盖在终端上的一些机壳被撬开了，暴露了一些内部连接。毫无疑问，有人侵入了你的赤色拳套会话。然而，考虑到房间里有一具尸体，你决定在它引起注意之前先行离开。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_4ede2f7908f783ce83fd",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "他们开始露出笑容，用几乎蛇一般的口音开始说话。\n“啊，很高兴见到你。你一定是负责这次交付的人。你的朋友品味也很高，我们难得能得到这么好的样品。”\n他们舔了舔嘴唇。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_ea12e1fa347b0f493aea",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你抓起手提包转了个弯，正面对上另外两个Lost，它们嘶嘶作响，你毫不迟疑地用几枪解决了它们。也许你能成功。你朝着你的飞船位置跑去，注意到它似乎在移动。就在你加快步伐的时候，突然被抛向空中……天哪，那是什么？"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_b697ce32fd328f93c49b",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "哈鲁斯正要讲述另一个关于他作为商人生活的趣事，但你设法打断了他。很快你得知，他的家庭生活方式因为一个小团伙海盗的袭击而突然改变。尽管{plt}有一些武器和防护系统，但攻击者还是太多了，单艘货船无法应对。\n“我从没想到会是这样的结局，”哈鲁斯叹了口气，“我是知道太空很危险，但我尽量避开不安全的区域。只在巡逻航线上活动。从不冒险。我有一个家庭，你知道的。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_1c36d4b5f5c321d7f772",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "咕哝声持续了好一会儿，直到他突然敲下了回车键。你可以看到无人机周围有一闪而过的光芒，因为站上的全息投影开始在它们上面叠加出可爱猫咪的全息图。然而，考虑到无人机的大小，这些全息猫看起来更像是体型庞大的老虎，显得相当威猛。带有猫全息图的无人机再次飞向太空，在靠近站点的位置开始向野兽飞船广播信息。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_cc4307f9d2fc889ae4c2",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你付给情报员，情报员告诉你那艘飞船目前位于{pnt}，在{sys}系统中。他还给你提供了飞船的安全代码，并警告你要注意巡逻。\n他提供的信息堆里还包含了一种着陆行星的方法以及如何在那里隐藏你的飞船。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_9dcf6712138215b87373",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“所有的安排都已经做好了，很快你就会把它装上你的飞船。如果你是我，我会尽可能把它远离任何人员。”\n\n然后他们凑近你耳边低语。\n“你最好小心点，你的朋友并不是唯一一个想要它的人。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_8d3780fc944bcc2b6300",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "“我自己试着看了一下，但是一点头绪也没有，而且自从我的博士后跑到鲁克’卡尔去了之后，我就没有人可以处理这种麻烦事了。如果你能试试把它拆开，应该可以把控制器带走。你只需要把数据盒推入数据插槽对齐记忆就可以了。请试一试。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_aca37f07fd32ce7089d0",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "然后哈鲁斯显得精神起来，仿佛眨眼间就把最近的不幸抛到了脑后。“现在一切都好起来了，”他愉快地说，“我们已经被救了，现在只需要你带我们去一个适合重建新生活的世界。”\n\n毫不耽搁，也不曾正式请求帮助，哈鲁斯和他的家人便上了你的飞船，并安顿在你的住舱里。他们似乎没有打算离开。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_dcfa5629402db70e71e8",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你来到你的飞船，立刻注意到有人在你的飞船上贴了一个巨大的钻头，上面用记号笔写着“DRILLMASTER 5000”，还画了一些粗糙的火焰图案。你惊讶于它竟然没有掉下来，转而向奈莉询问解释，却发现她满脸笑容，很可能对自己的改装非常自豪。你不再责骂，也不再对\"教官\"做手势。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": true
+    },
+    {
+      "source_id": "naev_5f3a52da6cb8b1a2ea5b",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "您的飞船降落在了站点。您和扎克刚一走出飞船，就听到一声响亮的呻吟，伴随着火花四溅，引擎的一半突然熄火并坠落到地上。你们赶紧趴下，现在失去平衡的飞船向一侧倾斜，并在金属地板上发出一片嘈杂的碰撞声和呻吟声，滑行而去。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_61d3180bdd81272a0708",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你冲到指挥椅前，接管控制权，推动一个尖锐的气动上升。飞船在试图摆脱重力拉扯时发出摇晃声。随着你攀升，听到一个不受欢迎的锁定警告声。你的飞船被某种地对空导弹震了一下。这肯定会留下痕迹。你加大油门，最终设法摆脱了。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_90449806746f6e5a86a0",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "当附近没有人时，你强迫打开一个铁栅。看来刚好够你挤过去。你深吸一口气，开始沿着通风管道前进。你迷路了，不得不多次返回。经过漫长的旅程，你最终找到了一个通往安静区域的出口栅栏。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_8fece4c9bd975b774acb",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你被迅速护送回你的飞船。你根本没有机会问伯爵任何问题，比如这些潜在攻击者是谁，一旦找到卖家后如何支付这些文物的费用，或者你从这一切中能得到什么。不过，你确实收到了银河系地图的更新，显示了卖家的位置，以及一串名字和肖像。看来唯一的方法就是硬着头皮去探个究竟。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_d2b59e7e910ebc4c0c05",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你勉强操控着飞船，让其轻微地刮擦了一下太空码头的内壁。虽然你预料到会有声响，但没想到金属摩擦产生的尖锐刺耳的叫声会如此之大。所有人都把头转向了你，看来你确实吸引了整个太空码头的关注。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_7a5eb5f382f8d9cdafa8",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "在昏暗的船舱内部探索时，你很快意识到船员们显然从未逃脱。干枯的骨架令人毛骨悚然，你在漂浮的墓地般的走廊中漫步。尽管寒意沿着你的脊柱升起，但你注意到，在船员们单调的灰色制服中，有不少骷髅头和交叉bones标志的骨架。\n\n你继续前行，穿过一个又一个走廊，直到你来到一个宽敞的房间。房间中央摆放着一张桌子，上面放着一台古老的计算机终端。两个穿着灰色制服的船员站在旁边，其中一个似乎在操作终端，而另一个则显得有些紧张地看着你。\n\n“欢迎来到Seiryuu号，”操作终端的船员用平静的声音说道，“我们是来接你的。”\n\n你点了点头，心中充满了疑惑。这个船员的声音听起来并不像你之前遇到的那些人。你环顾四周，试图寻找更多的线索。\n\n“请问，这是怎么回事？”你问道。\n\n“我们接到任务，需要将你安全送到目的地，”紧张的船员回答道，“关于具体情况，我们需要等到船长回来才能告诉你。”\n\n就在这时，门被推开，一位身穿灰色制服、气质威严的女性走了进来。她的眼神锐利，给人一种不容置疑的感觉。\n\n“我是Rebina，Seiryuu号的船长，”她用坚定的声音说道，“我听说你们遇到了一些问题，现在你需要我们的帮助。”\n\n你点了点头，心中虽然疑惑重重，但也感到了一丝安心。显然，Seiryuu号与普通的Kestrel有所不同，这里隐藏着许多秘密。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_1a507a9035900a53e799",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "突然，你被站台重新启动时发出的嗡嗡声、吱吱声和呻吟声唤醒。警报灯闪烁，站台开始生成可供呼吸的大气和微弱的重力场。正当你被这一切混乱吸引时，你感觉到有人拍了拍你的肩膀，转过身来，看见满脸笑容的扎克，手里拿着头盔。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_ba4e6c20106e64c1409b",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你站在一旁，看着货物以极快的速度被一群闷闷不乐的工人从你的飞船上搬走，心想自己是不是本该把这些东西直接丢到太空中。就在最后一部分货物被搬下飞船时，那位显然已经冷静下来的检查员走到你面前说：“听着，我知道你是想帮我们一个忙，但下次如果你不能按时完成任务，就别来了。我很高兴你没有像有些人那样把东西直接丢到太空中，但我不能为此付你报酬。”他摇了摇头，然后走开了。“那个飞行员肯定会被解雇……”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_fb600e4f19de0b0b7efe",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你迷迷糊糊地试图站起来，眼睛逐渐恢复，世界也重新恢复色彩。你发现自己置身于一群由扎克带领的无人机之中，它们迅速开始了手术。由于你现在完全无用，你拖着自己挪到一边，靠在墙上。时间仿佛在你不注意的时候飞逝而过，你闭上了眼睛。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_a283b3dc0ad793496bbc",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你本以为扎雷克的聚会会和普通的聚会大不相同。实际上，你首先注意到的是古典音乐和完全没有酒精饮料。不过，这里有一个自助餐。特别是，有一个装有冰淇淋的小冰箱。你看到很多人在吃冰淇淋。这是否就是扎雷克的啤酒替代品？"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_9bb5b0e9995904f0b460",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "在不知不觉中，你与一位科学家进行了交谈；他看到你是和梅辛博士一起进来的，于是便提出了当下的热门问题——你们俩是不是在交往。为了消除他对这种情况的疑虑，你告诉他她是雇用你的。希望他能相信你。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_072a985c35060ac45ad1",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你迅速搜查房间，发现船长和海盗之间发生过打斗的证据。爆能枪留下的烧灼痕迹遍布墙壁，而船长的制服上则布满了血迹斑斑的刀口。你有些好奇地注意到，海盗似乎使用了一把弯曲的纳米钢剑而不是爆能枪。你拿起那把蒙尘的剑，注意到它的工艺非常精湛。剑身上的精美雕刻使其不仅是一件武器，更是一件艺术品。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_d7be66815f330e0b89fc",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "您走进了一家只卖实验室外套的商店。实验室外套种类繁多：有各种颜色、材质和剪裁的实验服。这里明显区分了休闲用和工作用的实验服。不过这些区别的细微之处你并未察觉。您最终选择了一件“商务”款的实验服，因为正式一点可能更适合您的演讲。价格标签上写着{credits}。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_96aca51cee38cff9e77f",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "着陆后，奥克拉恩让你和其他随行飞行员在太空港的酒吧等待他。作为他的船员成员，你被授予进入仅供特殊VIP客户使用的酒吧的权限。\n墙壁上挂满了不同版本的戈达德战列巡洋舰的照片，每张照片旁边都有一段简短的说明文字和一系列重要事实：“你知道吗？从UST-510到UST-567年间共建造了365艘戈达德Mk VII-DM型。这种型号是最成功的，据UST-601年时的记录，仍有约120艘仍在服役。”"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_0d21aad916263d0a2f7c",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "您到达货舱，但没有发现任何异常。您小心翼翼地打开舱门，在墙上发现了一张用某种蜡笔或粉笔写的感谢信，上面写着“谢谢一切”。虽然将孤儿们送到安全的家可能并没有给您带来太多的麻烦，但这却是他们一生的意义。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_c37b84b5f0f8061f0c68",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "尽管使用的武器看似不平衡，你无法确定谁在这场决斗中获胜。根据结果来看，他们俩可能都输了。有一件事可以肯定的是，几发爆能枪子弹不足以解释这里明显发生的爆炸。你确实找到了船长口袋里的一本烧焦的日志，并开始翻阅最近的记录。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_255f6162f1becc7e9faf",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你跟着船员们将手推车推过飞船的主要走廊。很快你们来到了一扇通往宽敞豪华舱室的大门面前。一眼就能看出这是伯爵萨特费尔德的私人舱室。伯爵本人也在场。他身材魁梧，穿着一件剪裁合体的西装，显得庄重而不失风度，还戴着一只单眼眼镜和每根手指上都戴着好几枚戒指。总之，伯爵对奢华有着独到的品味。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_9a3aa476ec03bcfc03b7",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你考虑命令哈鲁斯离开你的驾驶舱，但他看起来不是那种会退缩的人，所以你唯一能做的就是让船上的气氛变得糟糕。你告诉哈鲁斯你正在尽一切努力将他的家人送到安全的地方，这似乎让他满意了。终于再次独处，你花了一刻时间平复心情，然后继续完成那项检查。"
+      },
+      "selector_status": "dpo",
+      "revised_hypothesis": false
+    },
+    {
+      "source_id": "naev_170af821b6f4728e2b60",
+      "phase": "target",
+      "status": "complete",
+      "eval_reply": {
+        "text": "你从伯爵的住处出来，于是返回气闸，再回到自己的飞船上。你首先检查了自己的账户余额，令你欣慰的是，确实被大幅升级了。你还似乎收到了一个品味可疑的雕像。当你准备脱离飞船时，不禁猜测下次那个人会给你布置什么样的疯狂任务。"
+      },
+      "selector_status": null,
+      "revised_hypothesis": true
+    }
+  ]
+}

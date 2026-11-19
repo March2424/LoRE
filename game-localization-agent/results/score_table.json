@@ -1,0 +1,1725 @@
+{
+  "judge_model": "deepseek-v4.1-flash-1017",
+  "response_models": {
+    "deepseek-v4-1-flash-261017": 288
+  },
+  "judge_completed": 288,
+  "source_note": "latest supplied revised hypotheses, not a fresh translation run",
+  "judge_summary_path": "/root/autodl-tmp/test/projectdata_newversion_llm_judge_20261117/summary.json",
+  "judge_summary_sha256": "a2967bded3285b35c5f4f22ca89ab88e5e68b2bf496d9ee38ffcd7d7736b2c69",
+  "average": {
+    "general": [
+      "sCMT",
+      "dCMT",
+      "LLM"
+    ],
+    "naev": [
+      "sCMT",
+      "BLEU-4",
+      "LTCR-1",
+      "LTCR-1f",
+      "LLM"
+    ],
+    "method": "equal-weight arithmetic mean of unrounded scores on the 0–100 display scale"
+  },
+  "rows": [
+    {
+      "path": "news_commentary/qwen2.5-7B-Instruct/sentence/en-zh",
+      "dataset": "news_commentary",
+      "model": "qwen2.5-7B-Instruct",
+      "method": "sentence",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 88.37442570924759,
+        "dCMT": 84.51905068086118,
+        "LLM": 67.69999999999999,
+        "Avg": 80.19782546336958
+      },
+      "judge": {
+        "llm": 67.69999999999999,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 64,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 72,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 69,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 67,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 66.5,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "news_commentary/qwen2.5-7B-Instruct/doc2doc/en-zh",
+      "dataset": "news_commentary",
+      "model": "qwen2.5-7B-Instruct",
+      "method": "doc2doc",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 61.79245123267174,
+        "dCMT": 53.4459011895316,
+        "LLM": 41.3,
+        "Avg": 52.17945080740111
+      },
+      "judge": {
+        "llm": 41.3,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 39,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 42,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 40,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 41.5,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 44,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "news_commentary/qwen2.5-7B-Instruct/delta/en-zh",
+      "dataset": "news_commentary",
+      "model": "qwen2.5-7B-Instruct",
+      "method": "delta",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 88.96998804807663,
+        "dCMT": 84.81349957232572,
+        "LLM": 73.6,
+        "Avg": 82.46116254013411
+      },
+      "judge": {
+        "llm": 73.6,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 69,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 80,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 80,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 66,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 73,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "news_commentary/qwen2.5-7B-Instruct/framework/en-zh",
+      "dataset": "news_commentary",
+      "model": "qwen2.5-7B-Instruct",
+      "method": "framework",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 88.46731960773468,
+        "dCMT": 84.67151659483812,
+        "LLM": 79.0,
+        "Avg": 84.04627873419093
+      },
+      "judge": {
+        "llm": 79.0,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 75.5,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 80.5,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 77.5,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 77.5,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 84,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "news_commentary/qwen3-8B/sentence/en-zh",
+      "dataset": "news_commentary",
+      "model": "qwen3-8B",
+      "method": "sentence",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 89.24360257387161,
+        "dCMT": 85.45060200350625,
+        "LLM": 85.4,
+        "Avg": 86.69806819245929
+      },
+      "judge": {
+        "llm": 85.4,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 84.5,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 85,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 86.5,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 84.5,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 86.5,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "news_commentary/qwen3-8B/doc2doc/en-zh",
+      "dataset": "news_commentary",
+      "model": "qwen3-8B",
+      "method": "doc2doc",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 88.92861020565033,
+        "dCMT": 84.93926403473834,
+        "LLM": 86.7,
+        "Avg": 86.85595808012955
+      },
+      "judge": {
+        "llm": 86.7,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 82,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 87.5,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 86,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 86.5,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 91.5,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "news_commentary/qwen3-8B/delta/en-zh",
+      "dataset": "news_commentary",
+      "model": "qwen3-8B",
+      "method": "delta",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 89.14556127786636,
+        "dCMT": 85.33622780624701,
+        "LLM": 84.6,
+        "Avg": 86.36059636137112
+      },
+      "judge": {
+        "llm": 84.6,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 82,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 84,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 85.5,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 82,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 89.5,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "news_commentary/qwen3-8B/framework/en-zh",
+      "dataset": "news_commentary",
+      "model": "qwen3-8B",
+      "method": "framework",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 89.27289867401123,
+        "dCMT": 85.8495895959893,
+        "LLM": 74.6,
+        "Avg": 83.24082942333351
+      },
+      "judge": {
+        "llm": 74.6,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 70,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 75,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 70,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 74,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 84,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "news_commentary/qwen3-14B/sentence/en-zh",
+      "dataset": "news_commentary",
+      "model": "qwen3-14B",
+      "method": "sentence",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 89.14425897598267,
+        "dCMT": 85.18946073493179,
+        "LLM": 88.6,
+        "Avg": 87.64457323697148
+      },
+      "judge": {
+        "llm": 88.6,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 85,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 90,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 89,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 88,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 91,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "news_commentary/qwen3-14B/doc2doc/en-zh",
+      "dataset": "news_commentary",
+      "model": "qwen3-14B",
+      "method": "doc2doc",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 89.4212965965271,
+        "dCMT": 85.42059854585298,
+        "LLM": 88.1,
+        "Avg": 87.64729838079336
+      },
+      "judge": {
+        "llm": 88.1,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 85.5,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 86.5,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 90,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 88,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 90.5,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "news_commentary/qwen3-14B/delta/en-zh",
+      "dataset": "news_commentary",
+      "model": "qwen3-14B",
+      "method": "delta",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 89.25526922941208,
+        "dCMT": 85.43417088839472,
+        "LLM": 86.9,
+        "Avg": 87.19648003926893
+      },
+      "judge": {
+        "llm": 86.9,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 83,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 89.5,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 86.5,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 87.5,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 88,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "news_commentary/qwen3-14B/framework/en-zh",
+      "dataset": "news_commentary",
+      "model": "qwen3-14B",
+      "method": "framework",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 88.49296572804451,
+        "dCMT": 85.40849217346737,
+        "LLM": 80.1,
+        "Avg": 84.66715263383729
+      },
+      "judge": {
+        "llm": 80.1,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 75,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 77.5,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 80,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 77,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 91,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "guofeng/qwen2.5-7B-Instruct/sentence/zh-en",
+      "dataset": "guofeng",
+      "model": "qwen2.5-7B-Instruct",
+      "method": "sentence",
+      "direction": "zh-en",
+      "n": 99,
+      "metrics": {
+        "sCMT": 74.94987086816268,
+        "dCMT": 72.28778079904691,
+        "LLM": 48.0,
+        "Avg": 65.0792172224032
+      },
+      "judge": {
+        "llm": 48.0,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 49,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 54,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 54,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 46.5,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 36.5,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "guofeng/qwen2.5-7B-Instruct/doc2doc/zh-en",
+      "dataset": "guofeng",
+      "model": "qwen2.5-7B-Instruct",
+      "method": "doc2doc",
+      "direction": "zh-en",
+      "n": 99,
+      "metrics": {
+        "sCMT": 51.54845371390834,
+        "dCMT": 44.0504871384062,
+        "LLM": 37.2,
+        "Avg": 44.26631361743818
+      },
+      "judge": {
+        "llm": 37.2,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 36,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 42.5,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 39,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 41,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 27.5,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "guofeng/qwen2.5-7B-Instruct/delta/zh-en",
+      "dataset": "guofeng",
+      "model": "qwen2.5-7B-Instruct",
+      "method": "delta",
+      "direction": "zh-en",
+      "n": 99,
+      "metrics": {
+        "sCMT": 76.69024106227991,
+        "dCMT": 73.92625722921255,
+        "LLM": 62.5,
+        "Avg": 71.03883276383083
+      },
+      "judge": {
+        "llm": 62.5,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 62,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 65.5,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 66,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 64.5,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 54.5,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "guofeng/qwen2.5-7B-Instruct/framework/zh-en",
+      "dataset": "guofeng",
+      "model": "qwen2.5-7B-Instruct",
+      "method": "framework",
+      "direction": "zh-en",
+      "n": 99,
+      "metrics": {
+        "sCMT": 78.41974662409889,
+        "dCMT": 75.58850116199918,
+        "LLM": 69.6,
+        "Avg": 74.53608259536603
+      },
+      "judge": {
+        "llm": 69.6,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 68.5,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 74,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 74,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 71.5,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 60,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "guofeng/qwen3-8B/sentence/zh-en",
+      "dataset": "guofeng",
+      "model": "qwen3-8B",
+      "method": "sentence",
+      "direction": "zh-en",
+      "n": 99,
+      "metrics": {
+        "sCMT": 77.0261697696917,
+        "dCMT": 74.90641941325833,
+        "LLM": 58.8,
+        "Avg": 70.24419639431667
+      },
+      "judge": {
+        "llm": 58.8,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 60,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 63,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 59.5,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 62.5,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 49,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "guofeng/qwen3-8B/doc2doc/zh-en",
+      "dataset": "guofeng",
+      "model": "qwen3-8B",
+      "method": "doc2doc",
+      "direction": "zh-en",
+      "n": 99,
+      "metrics": {
+        "sCMT": 78.38622804241952,
+        "dCMT": 75.76384457072827,
+        "LLM": 78.19999999999999,
+        "Avg": 77.45002420438259
+      },
+      "judge": {
+        "llm": 78.19999999999999,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 77,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 81.5,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 79,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 80.5,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 73,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "guofeng/qwen3-8B/delta/zh-en",
+      "dataset": "guofeng",
+      "model": "qwen3-8B",
+      "method": "delta",
+      "direction": "zh-en",
+      "n": 99,
+      "metrics": {
+        "sCMT": 78.06380800526551,
+        "dCMT": 75.15412724078304,
+        "LLM": 70.4,
+        "Avg": 74.53931174868285
+      },
+      "judge": {
+        "llm": 70.4,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 71,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 74,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 71,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 72.5,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 63.5,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "guofeng/qwen3-8B/framework/zh-en",
+      "dataset": "guofeng",
+      "model": "qwen3-8B",
+      "method": "framework",
+      "direction": "zh-en",
+      "n": 99,
+      "metrics": {
+        "sCMT": 79.32814991835392,
+        "dCMT": 77.69583984456881,
+        "LLM": 69.4,
+        "Avg": 75.47466325430757
+      },
+      "judge": {
+        "llm": 69.4,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 67,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 73.5,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 67.5,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 70,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 69,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "guofeng/qwen3-14B/sentence/zh-en",
+      "dataset": "guofeng",
+      "model": "qwen3-14B",
+      "method": "sentence",
+      "direction": "zh-en",
+      "n": 99,
+      "metrics": {
+        "sCMT": 78.2373921437697,
+        "dCMT": 76.24405667637333,
+        "LLM": 72.1,
+        "Avg": 75.52714960671435
+      },
+      "judge": {
+        "llm": 72.1,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 71,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 77,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 75.5,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 75,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 62,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "guofeng/qwen3-14B/doc2doc/zh-en",
+      "dataset": "guofeng",
+      "model": "qwen3-14B",
+      "method": "doc2doc",
+      "direction": "zh-en",
+      "n": 99,
+      "metrics": {
+        "sCMT": 78.62450272747965,
+        "dCMT": 76.0226158180622,
+        "LLM": 81.0,
+        "Avg": 78.54903951518062
+      },
+      "judge": {
+        "llm": 81.0,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 79,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 85,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 81.5,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 80.5,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 79,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "guofeng/qwen3-14B/delta/zh-en",
+      "dataset": "guofeng",
+      "model": "qwen3-14B",
+      "method": "delta",
+      "direction": "zh-en",
+      "n": 99,
+      "metrics": {
+        "sCMT": 77.95743924198729,
+        "dCMT": 75.5391589318863,
+        "LLM": 74.0,
+        "Avg": 75.8321993912912
+      },
+      "judge": {
+        "llm": 74.0,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 70.5,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 74.5,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 73.5,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 77.5,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 74,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "guofeng/qwen3-14B/framework/zh-en",
+      "dataset": "guofeng",
+      "model": "qwen3-14B",
+      "method": "framework",
+      "direction": "zh-en",
+      "n": 99,
+      "metrics": {
+        "sCMT": 78.55782755697616,
+        "dCMT": 76.76342418699554,
+        "LLM": 78,
+        "Avg": 77.7737505813239
+      },
+      "judge": {
+        "llm": 78,
+        "completed": 2,
+        "expected": 2,
+        "dimensions": {
+          "general_quality": {
+            "mean": 76,
+            "applicable": 2
+          },
+          "cohesion": {
+            "mean": 80.5,
+            "applicable": 2
+          },
+          "coherence": {
+            "mean": 77.5,
+            "applicable": 2
+          },
+          "style_consistency": {
+            "mean": 77,
+            "applicable": 2
+          },
+          "terminology_consistency": {
+            "mean": 79,
+            "applicable": 2
+          }
+        }
+      }
+    },
+    {
+      "path": "naev/qwen2.5-7B-Instruct/sentence/en-zh",
+      "dataset": "naev",
+      "model": "qwen2.5-7B-Instruct",
+      "method": "sentence",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 82.3295869231224,
+        "BLEU-4": 39.92963353475834,
+        "LTCR-1": 58.333333333333336,
+        "LTCR-1f": 66.66666666666666,
+        "LLM": 77.62,
+        "Avg": 64.97584409157615
+      },
+      "judge": {
+        "llm": 77.62,
+        "completed": 10,
+        "expected": 10,
+        "dimensions": {
+          "general_quality": {
+            "mean": 76.1,
+            "applicable": 10
+          },
+          "cohesion": {
+            "mean": 82,
+            "applicable": 10
+          },
+          "coherence": {
+            "mean": 79.5,
+            "applicable": 10
+          },
+          "style_consistency": {
+            "mean": 78.5,
+            "applicable": 10
+          },
+          "terminology_consistency": {
+            "mean": 72,
+            "applicable": 10
+          },
+          "character_relations": {
+            "mean": 81.2,
+            "applicable": 10
+          },
+          "localization_constraints": {
+            "mean": 92.66666666666667,
+            "applicable": 9
+          }
+        }
+      }
+    },
+    {
+      "path": "naev/qwen2.5-7B-Instruct/delta/en-zh",
+      "dataset": "naev",
+      "model": "qwen2.5-7B-Instruct",
+      "method": "delta",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 79.31514137983322,
+        "BLEU-4": 36.13683935117244,
+        "LTCR-1": 58.333333333333336,
+        "LTCR-1f": 66.66666666666666,
+        "LLM": 70.76,
+        "Avg": 62.24239614620113
+      },
+      "judge": {
+        "llm": 70.76,
+        "completed": 10,
+        "expected": 10,
+        "dimensions": {
+          "general_quality": {
+            "mean": 68.3,
+            "applicable": 10
+          },
+          "cohesion": {
+            "mean": 76,
+            "applicable": 10
+          },
+          "coherence": {
+            "mean": 75.2,
+            "applicable": 10
+          },
+          "style_consistency": {
+            "mean": 69.2,
+            "applicable": 10
+          },
+          "terminology_consistency": {
+            "mean": 65.1,
+            "applicable": 10
+          },
+          "character_relations": {
+            "mean": 71.9,
+            "applicable": 10
+          },
+          "localization_constraints": {
+            "mean": 93.44444444444444,
+            "applicable": 9
+          }
+        }
+      }
+    },
+    {
+      "path": "naev/qwen2.5-7B-Instruct/framework/en-zh",
+      "dataset": "naev",
+      "model": "qwen2.5-7B-Instruct",
+      "method": "framework",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 83.13239735364914,
+        "BLEU-4": 40.042971901554985,
+        "LTCR-1": 62.5,
+        "LTCR-1f": 75.0,
+        "LLM": 78.42,
+        "Avg": 67.81907385104083
+      },
+      "judge": {
+        "llm": 78.42,
+        "completed": 10,
+        "expected": 10,
+        "dimensions": {
+          "general_quality": {
+            "mean": 77.4,
+            "applicable": 10
+          },
+          "cohesion": {
+            "mean": 84.8,
+            "applicable": 10
+          },
+          "coherence": {
+            "mean": 80.2,
+            "applicable": 10
+          },
+          "style_consistency": {
+            "mean": 80.2,
+            "applicable": 10
+          },
+          "terminology_consistency": {
+            "mean": 69.5,
+            "applicable": 10
+          },
+          "character_relations": {
+            "mean": 80.5,
+            "applicable": 10
+          },
+          "localization_constraints": {
+            "mean": 93.4,
+            "applicable": 10
+          }
+        }
+      }
+    },
+    {
+      "path": "naev/qwen3-8B/sentence/en-zh",
+      "dataset": "naev",
+      "model": "qwen3-8B",
+      "method": "sentence",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 83.47202527523041,
+        "BLEU-4": 42.15689250604999,
+        "LTCR-1": 37.5,
+        "LTCR-1f": 54.166666666666664,
+        "LLM": 83.60000000000001,
+        "Avg": 60.179116889589416
+      },
+      "judge": {
+        "llm": 83.60000000000001,
+        "completed": 10,
+        "expected": 10,
+        "dimensions": {
+          "general_quality": {
+            "mean": 81.3,
+            "applicable": 10
+          },
+          "cohesion": {
+            "mean": 88,
+            "applicable": 10
+          },
+          "coherence": {
+            "mean": 85.8,
+            "applicable": 10
+          },
+          "style_consistency": {
+            "mean": 83.5,
+            "applicable": 10
+          },
+          "terminology_consistency": {
+            "mean": 79.4,
+            "applicable": 10
+          },
+          "character_relations": {
+            "mean": 84.8,
+            "applicable": 10
+          },
+          "localization_constraints": {
+            "mean": 95.3,
+            "applicable": 10
+          }
+        }
+      }
+    },
+    {
+      "path": "naev/qwen3-8B/delta/en-zh",
+      "dataset": "naev",
+      "model": "qwen3-8B",
+      "method": "delta",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 83.45675426721573,
+        "BLEU-4": 41.72676012191229,
+        "LTCR-1": 50.0,
+        "LTCR-1f": 83.33333333333334,
+        "LLM": 82.96,
+        "Avg": 68.29536954449227
+      },
+      "judge": {
+        "llm": 82.96,
+        "completed": 10,
+        "expected": 10,
+        "dimensions": {
+          "general_quality": {
+            "mean": 82.1,
+            "applicable": 10
+          },
+          "cohesion": {
+            "mean": 87.1,
+            "applicable": 10
+          },
+          "coherence": {
+            "mean": 85.4,
+            "applicable": 10
+          },
+          "style_consistency": {
+            "mean": 84.5,
+            "applicable": 10
+          },
+          "terminology_consistency": {
+            "mean": 75.7,
+            "applicable": 10
+          },
+          "character_relations": {
+            "mean": 85.4,
+            "applicable": 10
+          },
+          "localization_constraints": {
+            "mean": 95.6,
+            "applicable": 10
+          }
+        }
+      }
+    },
+    {
+      "path": "naev/qwen3-8B/framework/en-zh",
+      "dataset": "naev",
+      "model": "qwen3-8B",
+      "method": "framework",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 83.9297444820404,
+        "BLEU-4": 42.29865224334385,
+        "LTCR-1": 54.166666666666664,
+        "LTCR-1f": 75.0,
+        "LLM": 83.98,
+        "Avg": 67.87501267841019
+      },
+      "judge": {
+        "llm": 83.98,
+        "completed": 10,
+        "expected": 10,
+        "dimensions": {
+          "general_quality": {
+            "mean": 82.9,
+            "applicable": 10
+          },
+          "cohesion": {
+            "mean": 87.1,
+            "applicable": 10
+          },
+          "coherence": {
+            "mean": 86.4,
+            "applicable": 10
+          },
+          "style_consistency": {
+            "mean": 84.7,
+            "applicable": 10
+          },
+          "terminology_consistency": {
+            "mean": 78.8,
+            "applicable": 10
+          },
+          "character_relations": {
+            "mean": 86.9,
+            "applicable": 10
+          },
+          "localization_constraints": {
+            "mean": 94.3,
+            "applicable": 10
+          }
+        }
+      }
+    },
+    {
+      "path": "naev/qwen3-14B/sentence/en-zh",
+      "dataset": "naev",
+      "model": "qwen3-14B",
+      "method": "sentence",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 84.13985067605972,
+        "BLEU-4": 44.48099444661338,
+        "LTCR-1": 58.333333333333336,
+        "LTCR-1f": 70.83333333333334,
+        "LLM": 86.53999999999999,
+        "Avg": 68.86550235786795
+      },
+      "judge": {
+        "llm": 86.53999999999999,
+        "completed": 10,
+        "expected": 10,
+        "dimensions": {
+          "general_quality": {
+            "mean": 85.4,
+            "applicable": 10
+          },
+          "cohesion": {
+            "mean": 90.6,
+            "applicable": 10
+          },
+          "coherence": {
+            "mean": 89.3,
+            "applicable": 10
+          },
+          "style_consistency": {
+            "mean": 86.5,
+            "applicable": 10
+          },
+          "terminology_consistency": {
+            "mean": 80.9,
+            "applicable": 10
+          },
+          "character_relations": {
+            "mean": 87.2,
+            "applicable": 10
+          },
+          "localization_constraints": {
+            "mean": 97.4,
+            "applicable": 10
+          }
+        }
+      }
+    },
+    {
+      "path": "naev/qwen3-14B/delta/en-zh",
+      "dataset": "naev",
+      "model": "qwen3-14B",
+      "method": "delta",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 83.96051347255707,
+        "BLEU-4": 44.41028004443837,
+        "LTCR-1": 75.0,
+        "LTCR-1f": 95.83333333333334,
+        "LLM": 85.36,
+        "Avg": 76.91282537006576
+      },
+      "judge": {
+        "llm": 85.36,
+        "completed": 10,
+        "expected": 10,
+        "dimensions": {
+          "general_quality": {
+            "mean": 83.7,
+            "applicable": 10
+          },
+          "cohesion": {
+            "mean": 89.1,
+            "applicable": 10
+          },
+          "coherence": {
+            "mean": 87.8,
+            "applicable": 10
+          },
+          "style_consistency": {
+            "mean": 85.3,
+            "applicable": 10
+          },
+          "terminology_consistency": {
+            "mean": 80.9,
+            "applicable": 10
+          },
+          "character_relations": {
+            "mean": 86.8,
+            "applicable": 10
+          },
+          "localization_constraints": {
+            "mean": 97.9,
+            "applicable": 10
+          }
+        }
+      }
+    },
+    {
+      "path": "naev/qwen3-14B/framework/en-zh",
+      "dataset": "naev",
+      "model": "qwen3-14B",
+      "method": "framework",
+      "direction": "en-zh",
+      "n": 100,
+      "metrics": {
+        "sCMT": 84.20057266950607,
+        "BLEU-4": 44.67197991398831,
+        "LTCR-1": 62.5,
+        "LTCR-1f": 79.16666666666666,
+        "LLM": 86.52,
+        "Avg": 71.41184385003221
+      },
+      "judge": {
+        "llm": 86.52,
+        "completed": 10,
+        "expected": 10,
+        "dimensions": {
+          "general_quality": {
+            "mean": 85.6,
+            "applicable": 10
+          },
+          "cohesion": {
+            "mean": 90.5,
+            "applicable": 10
+          },
+          "coherence": {
+            "mean": 89.4,
+            "applicable": 10
+          },
+          "style_consistency": {
+            "mean": 86.7,
+            "applicable": 10
+          },
+          "terminology_consistency": {
+            "mean": 80.4,
+            "applicable": 10
+          },
+          "character_relations": {
+            "mean": 88.4,
+            "applicable": 10
+          },
+          "localization_constraints": {
+            "mean": 96.55555555555556,
+            "applicable": 9
+          }
+        }
+      }
+    },
+    {
+      "path": "naev_ablation_300/qwen3-14B/baseline/en-zh",
+      "dataset": "naev_ablation_300",
+      "model": "qwen3-14B",
+      "method": "baseline",
+      "direction": "en-zh",
+      "n": 300,
+      "metrics": {
+        "sCMT": 84.89640220006306,
+        "BLEU-4": 41.50905651563313,
+        "LTCR-1": 64.18338108882521,
+        "LTCR-1f": 75.93123209169055,
+        "LLM": 83.50666666666666,
+        "Avg": 70.00534771257573
+      },
+      "judge": {
+        "llm": 83.50666666666666,
+        "completed": 30,
+        "expected": 30,
+        "dimensions": {
+          "general_quality": {
+            "mean": 83.16666666666667,
+            "applicable": 30
+          },
+          "cohesion": {
+            "mean": 88.6,
+            "applicable": 30
+          },
+          "coherence": {
+            "mean": 86.03333333333333,
+            "applicable": 30
+          },
+          "style_consistency": {
+            "mean": 84.63333333333334,
+            "applicable": 30
+          },
+          "terminology_consistency": {
+            "mean": 75.1,
+            "applicable": 30
+          },
+          "character_relations": {
+            "mean": 86.53846153846153,
+            "applicable": 13
+          },
+          "localization_constraints": {
+            "mean": 95.5,
+            "applicable": 22
+          }
+        }
+      }
+    },
+    {
+      "path": "naev_ablation_300/qwen3-14B/memory/en-zh",
+      "dataset": "naev_ablation_300",
+      "model": "qwen3-14B",
+      "method": "memory",
+      "direction": "en-zh",
+      "n": 300,
+      "metrics": {
+        "sCMT": 84.83129644393921,
+        "BLEU-4": 41.635720746836995,
+        "LTCR-1": 68.48137535816619,
+        "LTCR-1f": 86.53295128939828,
+        "LLM": 85.0,
+        "Avg": 73.29626876766814
+      },
+      "judge": {
+        "llm": 85.0,
+        "completed": 30,
+        "expected": 30,
+        "dimensions": {
+          "general_quality": {
+            "mean": 84.06666666666666,
+            "applicable": 30
+          },
+          "cohesion": {
+            "mean": 89.43333333333334,
+            "applicable": 30
+          },
+          "coherence": {
+            "mean": 87.86666666666666,
+            "applicable": 30
+          },
+          "style_consistency": {
+            "mean": 86.06666666666666,
+            "applicable": 30
+          },
+          "terminology_consistency": {
+            "mean": 77.56666666666666,
+            "applicable": 30
+          },
+          "character_relations": {
+            "mean": 88.28571428571429,
+            "applicable": 14
+          },
+          "localization_constraints": {
+            "mean": 98.05,
+            "applicable": 20
+          }
+        }
+      }
+    },
+    {
+      "path": "naev_ablation_300/qwen3-14B/memory_graph/en-zh",
+      "dataset": "naev_ablation_300",
+      "model": "qwen3-14B",
+      "method": "memory_graph",
+      "direction": "en-zh",
+      "n": 300,
+      "metrics": {
+        "sCMT": 84.9046850601832,
+        "BLEU-4": 41.89218398980348,
+        "LTCR-1": 68.19484240687679,
+        "LTCR-1f": 82.52148997134671,
+        "LLM": 84.92,
+        "Avg": 72.48664028564204
+      },
+      "judge": {
+        "llm": 84.92,
+        "completed": 30,
+        "expected": 30,
+        "dimensions": {
+          "general_quality": {
+            "mean": 84.4,
+            "applicable": 30
+          },
+          "cohesion": {
+            "mean": 88.96666666666667,
+            "applicable": 30
+          },
+          "coherence": {
+            "mean": 87.83333333333333,
+            "applicable": 30
+          },
+          "style_consistency": {
+            "mean": 85.7,
+            "applicable": 30
+          },
+          "terminology_consistency": {
+            "mean": 77.7,
+            "applicable": 30
+          },
+          "character_relations": {
+            "mean": 88.78571428571429,
+            "applicable": 14
+          },
+          "localization_constraints": {
+            "mean": 98,
+            "applicable": 21
+          }
+        }
+      }
+    },
+    {
+      "path": "naev_ablation_300/qwen3-14B/memory_graph_base_selector/en-zh",
+      "dataset": "naev_ablation_300",
+      "model": "qwen3-14B",
+      "method": "memory_graph_base_selector",
+      "direction": "en-zh",
+      "n": 300,
+      "metrics": {
+        "sCMT": 84.98687114318211,
+        "BLEU-4": 42.13208634876502,
+        "LTCR-1": 67.90830945558739,
+        "LTCR-1f": 84.5272206303725,
+        "LLM": 84.92,
+        "Avg": 72.8948975155814
+      },
+      "judge": {
+        "llm": 84.92,
+        "completed": 30,
+        "expected": 30,
+        "dimensions": {
+          "general_quality": {
+            "mean": 83.96666666666667,
+            "applicable": 30
+          },
+          "cohesion": {
+            "mean": 89.33333333333333,
+            "applicable": 30
+          },
+          "coherence": {
+            "mean": 87.66666666666667,
+            "applicable": 30
+          },
+          "style_consistency": {
+            "mean": 86,
+            "applicable": 30
+          },
+          "terminology_consistency": {
+            "mean": 77.63333333333334,
+            "applicable": 30
+          },
+          "character_relations": {
+            "mean": 88.92307692307692,
+            "applicable": 13
+          },
+          "localization_constraints": {
+            "mean": 97.04761904761905,
+            "applicable": 21
+          }
+        }
+      }
+    },
+    {
+      "path": "naev_ablation_300/qwen3-14B/memory_graph_sft_dpo_selector/en-zh",
+      "dataset": "naev_ablation_300",
+      "model": "qwen3-14B",
+      "method": "memory_graph_sft_dpo_selector",
+      "direction": "en-zh",
+      "n": 300,
+      "metrics": {
+        "sCMT": 85.07837166388829,
+        "BLEU-4": 42.929769758401115,
+        "LTCR-1": 66.4756446991404,
+        "LTCR-1f": 84.81375358166189,
+        "LLM": 84.26,
+        "Avg": 72.71150794061833
+      },
+      "judge": {
+        "llm": 84.26,
+        "completed": 30,
+        "expected": 30,
+        "dimensions": {
+          "general_quality": {
+            "mean": 83.73333333333333,
+            "applicable": 30
+          },
+          "cohesion": {
+            "mean": 88.16666666666667,
+            "applicable": 30
+          },
+          "coherence": {
+            "mean": 87.26666666666667,
+            "applicable": 30
+          },
+          "style_consistency": {
+            "mean": 85.03333333333333,
+            "applicable": 30
+          },
+          "terminology_consistency": {
+            "mean": 77.1,
+            "applicable": 30
+          },
+          "character_relations": {
+            "mean": 88.53846153846153,
+            "applicable": 13
+          },
+          "localization_constraints": {
+            "mean": 95.66666666666667,
+            "applicable": 21
+          }
+        }
+      }
+    }
+  ]
+}

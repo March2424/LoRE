@@ -1,0 +1,4 @@
+-r ../configs/requirements-naev.txt
+-r ../configs/requirements-shattered.txt
+-r ../configs/requirements-retrieval.txt
+sacrebleu==2.6.0

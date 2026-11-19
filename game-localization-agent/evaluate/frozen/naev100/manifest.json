@@ -1,0 +1,899 @@
+{
+  "samples": [
+    {
+      "source_id": "naev_157e8ecdbdd08f6ec099",
+      "phase": "warmup",
+      "text_type": "narrative",
+      "words": 50,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 1326
+    },
+    {
+      "source_id": "naev_1a8b3246223906668570",
+      "phase": "warmup",
+      "text_type": "narrative",
+      "words": 50,
+      "group_id": "naev:49f93138b0b34b47",
+      "position": 34341
+    },
+    {
+      "source_id": "naev_20a32a238b69420d8a75",
+      "phase": "warmup",
+      "text_type": "narrative",
+      "words": 50,
+      "group_id": "naev:d270f2e7c2290abd",
+      "position": 7794
+    },
+    {
+      "source_id": "naev_2b54dc7f261ce7c20d93",
+      "phase": "warmup",
+      "text_type": "narrative",
+      "words": 50,
+      "group_id": "naev:ef3427b6f0270782",
+      "position": 34505
+    },
+    {
+      "source_id": "naev_2bc865d4f29ef2548776",
+      "phase": "warmup",
+      "text_type": "narrative",
+      "words": 50,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 13327
+    },
+    {
+      "source_id": "naev_2c8b26a57272fbfe3d68",
+      "phase": "warmup",
+      "text_type": "narrative",
+      "words": 50,
+      "group_id": "naev:b6239937a151fb0d",
+      "position": 2311
+    },
+    {
+      "source_id": "naev_2ccd940fb6526dd2ceee",
+      "phase": "warmup",
+      "text_type": "narrative",
+      "words": 50,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 2245
+    },
+    {
+      "source_id": "naev_46c82226a7b86991c652",
+      "phase": "warmup",
+      "text_type": "narrative",
+      "words": 50,
+      "group_id": "naev:3487e04d89e7940a",
+      "position": 34118
+    },
+    {
+      "source_id": "naev_4835924fdf00f4eece92",
+      "phase": "warmup",
+      "text_type": "narrative",
+      "words": 50,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 27099
+    },
+    {
+      "source_id": "naev_4be1529f7deeee16e2fa",
+      "phase": "warmup",
+      "text_type": "narrative",
+      "words": 50,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 3562
+    },
+    {
+      "source_id": "naev_f4719424261158f6dc95",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 66,
+      "group_id": "naev:4e89ff46710d8d12",
+      "position": 121
+    },
+    {
+      "source_id": "naev_68d795897fb43da453f2",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 28,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 433
+    },
+    {
+      "source_id": "naev_d3e4ad8888a3540ee15e",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 129,
+      "group_id": "naev:4e89ff46710d8d12",
+      "position": 525
+    },
+    {
+      "source_id": "naev_579f8ff1cd60f0032b5f",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 26,
+      "group_id": "naev:4e1428e47dcc36d0",
+      "position": 570
+    },
+    {
+      "source_id": "naev_5c03897e2317bc870601",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 47,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 572
+    },
+    {
+      "source_id": "naev_316c18becd6597aa7e56",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 48,
+      "group_id": "naev:4e1428e47dcc36d0",
+      "position": 733
+    },
+    {
+      "source_id": "naev_92300ae509f39d65b5b3",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 36,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 792
+    },
+    {
+      "source_id": "naev_1b0bee9d31cd44c20bce",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 68,
+      "group_id": "naev:055624d7e1b92b7e",
+      "position": 814
+    },
+    {
+      "source_id": "naev_43a8c21be0fe58dad520",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 98,
+      "group_id": "naev:4e89ff46710d8d12",
+      "position": 1359
+    },
+    {
+      "source_id": "naev_72002de8421b6a5c79f6",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 46,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 1485
+    },
+    {
+      "source_id": "naev_3000f6751276d238779c",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 53,
+      "group_id": "naev:4e1428e47dcc36d0",
+      "position": 1575
+    },
+    {
+      "source_id": "naev_cedc7795e78138792fe4",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 32,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 1825
+    },
+    {
+      "source_id": "naev_f5b5a395fe01fd914b85",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 93,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 1976
+    },
+    {
+      "source_id": "naev_7e33395219de61b2a115",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 38,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 2036
+    },
+    {
+      "source_id": "naev_6fc9e1d9448ffc241d07",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 37,
+      "group_id": "naev:4e1428e47dcc36d0",
+      "position": 2050
+    },
+    {
+      "source_id": "naev_bbfd73cc11bbd515b6e1",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 139,
+      "group_id": "naev:4e89ff46710d8d12",
+      "position": 2070
+    },
+    {
+      "source_id": "naev_3212dd2de1010b3113cb",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 88,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 2280
+    },
+    {
+      "source_id": "naev_0ed62e766a51c2c08782",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 75,
+      "group_id": "naev:6e49d532ea71fd13",
+      "position": 2351
+    },
+    {
+      "source_id": "naev_8cfd2aea9f3577fd447c",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 59,
+      "group_id": "naev:9e1a7a0b831e03cf",
+      "position": 2433
+    },
+    {
+      "source_id": "naev_ea8e3571fbe8aa00f181",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 83,
+      "group_id": "naev:9e1a7a0b831e03cf",
+      "position": 2566
+    },
+    {
+      "source_id": "naev_6e1a2ea3c82f0daf7eed",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 30,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 2682
+    },
+    {
+      "source_id": "naev_d4b66500536942b7d050",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 33,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 2844
+    },
+    {
+      "source_id": "naev_78524818c4d8cbe9e550",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 64,
+      "group_id": "naev:9e1a7a0b831e03cf",
+      "position": 3051
+    },
+    {
+      "source_id": "naev_c0d39b5589f4a28350d1",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 43,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 3532
+    },
+    {
+      "source_id": "naev_b17e3a012a13b7053160",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 91,
+      "group_id": "naev:9e1a7a0b831e03cf",
+      "position": 3580
+    },
+    {
+      "source_id": "naev_89f6b3bce047ce663937",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 64,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 3587
+    },
+    {
+      "source_id": "naev_a53d988f1b89b83f6281",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 46,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 3810
+    },
+    {
+      "source_id": "naev_f664faf678aab62972c0",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 108,
+      "group_id": "naev:9e1a7a0b831e03cf",
+      "position": 4383
+    },
+    {
+      "source_id": "naev_c7288e5738eed1f9ab12",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 72,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 4605
+    },
+    {
+      "source_id": "naev_9a119bd89a0ae12815a1",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 85,
+      "group_id": "naev:055624d7e1b92b7e",
+      "position": 4679
+    },
+    {
+      "source_id": "naev_ef497ee153911b882fad",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 25,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 4958
+    },
+    {
+      "source_id": "naev_c19e3417a5fb1d27894f",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 96,
+      "group_id": "naev:9e1a7a0b831e03cf",
+      "position": 5085
+    },
+    {
+      "source_id": "naev_7ac920244644e5cd2b79",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 103,
+      "group_id": "naev:9e1a7a0b831e03cf",
+      "position": 7179
+    },
+    {
+      "source_id": "naev_bdbd725f101efdb0498b",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 36,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 7455
+    },
+    {
+      "source_id": "naev_26e3a648360e0fa88253",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 26,
+      "group_id": "naev:ae320781341a20de",
+      "position": 7725
+    },
+    {
+      "source_id": "naev_f0793a3f8912c1aad5e3",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 29,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 7761
+    },
+    {
+      "source_id": "naev_08b205fc6177a2b8cd0c",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 78,
+      "group_id": "naev:ee2815a637bdc42a",
+      "position": 8385
+    },
+    {
+      "source_id": "naev_890ad565f43ffcf02dde",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 83,
+      "group_id": "naev:3233ac42bd1930c3",
+      "position": 8524
+    },
+    {
+      "source_id": "naev_8e5ea07e8523e7923b03",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 64,
+      "group_id": "naev:786b08b8e817f984",
+      "position": 9163
+    },
+    {
+      "source_id": "naev_063129115c2202bbd234",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 65,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 9176
+    },
+    {
+      "source_id": "naev_ee11c0efdec96704beac",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 61,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 9572
+    },
+    {
+      "source_id": "naev_f973e3b0211a41f23186",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 46,
+      "group_id": "naev:b050d7f6c6697b90",
+      "position": 9707
+    },
+    {
+      "source_id": "naev_e115725d7ba02da19966",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 37,
+      "group_id": "naev:ae320781341a20de",
+      "position": 10375
+    },
+    {
+      "source_id": "naev_f9e54854e7831a259990",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 32,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 10723
+    },
+    {
+      "source_id": "naev_e99ce5c69fdd68a912bd",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 128,
+      "group_id": "naev:26511728812aadf7",
+      "position": 11157
+    },
+    {
+      "source_id": "naev_e63515340f373752a48f",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 69,
+      "group_id": "naev:ae0ea334348de746",
+      "position": 11344
+    },
+    {
+      "source_id": "naev_89d9557544e0e749fc2d",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 47,
+      "group_id": "naev:9e1a7a0b831e03cf",
+      "position": 12075
+    },
+    {
+      "source_id": "naev_879fb471c01cfcbd8d84",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 26,
+      "group_id": "naev:852d4d2206b5424c",
+      "position": 12701
+    },
+    {
+      "source_id": "naev_c3f23ce51ac39e90a50c",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 64,
+      "group_id": "naev:aade21dbd915dd77",
+      "position": 12999
+    },
+    {
+      "source_id": "naev_d7e7a7a260f823699dea",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 64,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 13623
+    },
+    {
+      "source_id": "naev_cf3be59989c43c6e7bc5",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 91,
+      "group_id": "naev:b36fe1b3b8475df4",
+      "position": 13721
+    },
+    {
+      "source_id": "naev_fb2fe5d66ce5f4b84b0b",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 42,
+      "group_id": "naev:9e1a7a0b831e03cf",
+      "position": 13751
+    },
+    {
+      "source_id": "naev_bb5e445f9df919f43aa6",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 69,
+      "group_id": "naev:b36fe1b3b8475df4",
+      "position": 13912
+    },
+    {
+      "source_id": "naev_2c64c1de7e7c85e3df17",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 63,
+      "group_id": "naev:ae320781341a20de",
+      "position": 14679
+    },
+    {
+      "source_id": "naev_a4e1187aba800d20ec6e",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 27,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 14787
+    },
+    {
+      "source_id": "naev_dcec954e24037d1d0bbf",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 38,
+      "group_id": "naev:852d4d2206b5424c",
+      "position": 14831
+    },
+    {
+      "source_id": "naev_a3670a5f5026ebea5e07",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 50,
+      "group_id": "naev:4e89ff46710d8d12",
+      "position": 15394
+    },
+    {
+      "source_id": "naev_7706721e7e1c2e0e26ff",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 33,
+      "group_id": "naev:852d4d2206b5424c",
+      "position": 15405
+    },
+    {
+      "source_id": "naev_dfd727b11380c659ad64",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 85,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 15469
+    },
+    {
+      "source_id": "naev_acca84f74169dd7d4b63",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 74,
+      "group_id": "naev:f0daf4ec2e1f5005",
+      "position": 15554
+    },
+    {
+      "source_id": "naev_a5e2f12d370929b031a9",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 74,
+      "group_id": "naev:ae320781341a20de",
+      "position": 15647
+    },
+    {
+      "source_id": "naev_c6cdedf028174895cd06",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 71,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 15815
+    },
+    {
+      "source_id": "naev_00ffab1c74e6fd2e194c",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 62,
+      "group_id": "naev:291d7a7d88567160",
+      "position": 15906
+    },
+    {
+      "source_id": "naev_7004b6329ff97eb8833f",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 59,
+      "group_id": "naev:8642ea1145c620cd",
+      "position": 16248
+    },
+    {
+      "source_id": "naev_0376f33f5dd8c4eb796f",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 76,
+      "group_id": "naev:eaf74468afd57636",
+      "position": 16318
+    },
+    {
+      "source_id": "naev_358e7845410ecf8720e6",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 66,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 16485
+    },
+    {
+      "source_id": "naev_3fb2fd8dcb6ea1b43bc9",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 86,
+      "group_id": "naev:0a787be121ae5808",
+      "position": 16877
+    },
+    {
+      "source_id": "naev_7eb70acb80e8f9438510",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 64,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 17208
+    },
+    {
+      "source_id": "naev_f4ae3814c3154149f08e",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 86,
+      "group_id": "naev:f0daf4ec2e1f5005",
+      "position": 17290
+    },
+    {
+      "source_id": "naev_08c86ee907712f0d2f3d",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 27,
+      "group_id": "naev:852d4d2206b5424c",
+      "position": 17547
+    },
+    {
+      "source_id": "naev_bfdef9c1012d185dbb72",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 57,
+      "group_id": "naev:025c0529061678ba",
+      "position": 17701
+    },
+    {
+      "source_id": "naev_5dd65c7a705060113b95",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 58,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 18215
+    },
+    {
+      "source_id": "naev_4ede2f7908f783ce83fd",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 52,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 18899
+    },
+    {
+      "source_id": "naev_ea12e1fa347b0f493aea",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 70,
+      "group_id": "naev:aade21dbd915dd77",
+      "position": 18923
+    },
+    {
+      "source_id": "naev_b697ce32fd328f93c49b",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 101,
+      "group_id": "naev:0a787be121ae5808",
+      "position": 18949
+    },
+    {
+      "source_id": "naev_1c36d4b5f5c321d7f772",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 85,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 19002
+    },
+    {
+      "source_id": "naev_cc4307f9d2fc889ae4c2",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 51,
+      "group_id": "naev:025c0529061678ba",
+      "position": 19252
+    },
+    {
+      "source_id": "naev_9dcf6712138215b87373",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 55,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 19368
+    },
+    {
+      "source_id": "naev_8d3780fc944bcc2b6300",
+      "phase": "target",
+      "text_type": "dialogue",
+      "words": 78,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 19491
+    },
+    {
+      "source_id": "naev_aca37f07fd32ce7089d0",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 86,
+      "group_id": "naev:0a787be121ae5808",
+      "position": 20421
+    },
+    {
+      "source_id": "naev_dcfa5629402db70e71e8",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 78,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 20769
+    },
+    {
+      "source_id": "naev_5f3a52da6cb8b1a2ea5b",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 63,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 21142
+    },
+    {
+      "source_id": "naev_61d3180bdd81272a0708",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 63,
+      "group_id": "naev:aade21dbd915dd77",
+      "position": 22188
+    },
+    {
+      "source_id": "naev_90449806746f6e5a86a0",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 59,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 22984
+    },
+    {
+      "source_id": "naev_8fece4c9bd975b774acb",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 93,
+      "group_id": "naev:9e1a7a0b831e03cf",
+      "position": 23853
+    },
+    {
+      "source_id": "naev_d2b59e7e910ebc4c0c05",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 69,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 24682
+    },
+    {
+      "source_id": "naev_7a5eb5f382f8d9cdafa8",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 69,
+      "group_id": "naev:291d7a7d88567160",
+      "position": 24751
+    },
+    {
+      "source_id": "naev_1a507a9035900a53e799",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 58,
+      "group_id": "naev:f0daf4ec2e1f5005",
+      "position": 24850
+    },
+    {
+      "source_id": "naev_ba4e6c20106e64c1409b",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 112,
+      "group_id": "naev:f556529d9e82eb65",
+      "position": 25387
+    },
+    {
+      "source_id": "naev_fb600e4f19de0b0b7efe",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 71,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 25487
+    },
+    {
+      "source_id": "naev_a283b3dc0ad793496bbc",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 64,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 25741
+    },
+    {
+      "source_id": "naev_9bb5b0e9995904f0b460",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 58,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 26332
+    },
+    {
+      "source_id": "naev_072a985c35060ac45ad1",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 84,
+      "group_id": "naev:291d7a7d88567160",
+      "position": 26396
+    },
+    {
+      "source_id": "naev_d7be66815f330e0b89fc",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 68,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 26501
+    },
+    {
+      "source_id": "naev_96aca51cee38cff9e77f",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 101,
+      "group_id": "naev:975cc9d38915c325",
+      "position": 26708
+    },
+    {
+      "source_id": "naev_0d21aad916263d0a2f7c",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 65,
+      "group_id": "naev:3eae2352a305a2df",
+      "position": 26759
+    },
+    {
+      "source_id": "naev_c37b84b5f0f8061f0c68",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 69,
+      "group_id": "naev:291d7a7d88567160",
+      "position": 27089
+    },
+    {
+      "source_id": "naev_255f6162f1becc7e9faf",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 84,
+      "group_id": "naev:9e1a7a0b831e03cf",
+      "position": 27550
+    },
+    {
+      "source_id": "naev_9a3aa476ec03bcfc03b7",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 67,
+      "group_id": "naev:0a787be121ae5808",
+      "position": 28356
+    },
+    {
+      "source_id": "naev_170af821b6f4728e2b60",
+      "phase": "target",
+      "text_type": "narrative",
+      "words": 73,
+      "group_id": "naev:9e1a7a0b831e03cf",
+      "position": 28456
+    }
+  ],
+  "selection": "first 100 targets in original 300-target run order",
+  "source_run": "outputs/naev_ablation_300_20261109_manual",
+  "source_manifest_sha256": "4d71f2cc2efc1465258d804688e65f5afa8cdc0063b4be97340ba3de3533226f",
+  "translator_prompt_sha256": "c23e068f7215001462ff5d2d2d358c939348850b01868c52f3ab623d56e5177c",
+  "graph_sha256": "51c774cd54c195d9c6995291ef8fc7899d6d96df5bcea497efce490d841695b3",
+  "models": {
+    "14b": "/root/autodl-tmp/Qwen3-14B/Qwen3-14B",
+    "7b": "/root/autodl-tmp/Qwen2.5-7B-Instruct",
+    "8b": "/root/autodl-tmp/Qwen3-8B"
+  },
+  "counts": {
+    "narrative": 58,
+    "dialogue": 42
+  },
+  "ltcr_scope": "same 100 test occurrences as a user-defined pool, in experiment order"
+}
