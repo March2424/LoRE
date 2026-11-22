@@ -2,8 +2,9 @@
 
 import json
 import os
-from selectors import DefaultSelector, EVENT_READ
+from queue import Empty, Queue
 import subprocess
+from threading import Thread
 from time import monotonic
 from uuid import uuid4
 
@@ -57,35 +58,43 @@ def parse_review(text):
 def pi_with_tools(path, request, tool, timeout):
     """Serve Pi's JSON-lines tool calls on the worker that owns the read view."""
     deadline = monotonic() + timeout
-    buffer = b""
     with subprocess.Popen(["node", str(path)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-                          stderr=subprocess.DEVNULL) as process, DefaultSelector() as reader:
+                          stderr=subprocess.DEVNULL) as process:
+        lines = Queue()
+
+        def read_stdout():
+            try:
+                for line in process.stdout:
+                    lines.put(line)
+            finally:
+                lines.put(None)
+
         def send(payload):
             process.stdin.write(json.dumps(payload, ensure_ascii=False).encode("utf-8") + b"\n")
             process.stdin.flush()
 
+        reader = Thread(target=read_stdout, name="pi-receipts")
+        reader.start()
         try:
             send(request)
-            reader.register(process.stdout, EVENT_READ)
             while True:
-                if not reader.select(max(0, deadline - monotonic())):
-                    raise subprocess.TimeoutExpired(path, timeout)
-                chunk = os.read(process.stdout.fileno(), 65536)
-                if not chunk:
+                try:
+                    line = lines.get(timeout=max(0, deadline - monotonic()))
+                except Empty:
+                    raise subprocess.TimeoutExpired(path, timeout) from None
+                if line is None:
                     raise ValueError("Pi ended without a receipt")
-                buffer += chunk
-                while b"\n" in buffer:
-                    line, buffer = buffer.split(b"\n", 1)
-                    event = json.loads(line)
-                    if event.get("type") != "tool_request":
-                        process.stdin.close()
-                        process.wait(timeout=max(0, deadline - monotonic()))
-                        return event
-                    result = tool(event["name"], event["args"], event["id"])
-                    send({"type": "tool_result", "id": event["id"], "result": result})
+                event = json.loads(line)
+                if event.get("type") != "tool_request":
+                    process.stdin.close()
+                    process.wait(timeout=max(0, deadline - monotonic()))
+                    return event
+                result = tool(event["name"], event["args"], event["id"])
+                send({"type": "tool_result", "id": event["id"], "result": result})
         finally:
             if process.poll() is None:
                 process.kill()
+            reader.join()
 
 
 class Responses:

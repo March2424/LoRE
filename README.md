@@ -12,7 +12,7 @@ LoRE 面向游戏台词、任务描述、物品名称和界面文本，支持中
 
 | 目录 | 内容 |
 | --- | --- |
-| [agentdesign](agentdesign/README.md) | 交互式 CLI、任务 API 和简易网页。项目导入、建图、模型绑定和导出见 [项目接口](agentdesign/docs/PROJECTS.md)。 |
+| [agentdesign](agentdesign/README.md) | LoRE 网页工作台、交互式 CLI 和任务 API。项目导入、建图、模型绑定和导出见 [项目接口](agentdesign/docs/PROJECTS.md)。 |
 | [game-localization-agent](game-localization-agent/README.md) | 研究复现包，包含游戏数据、图谱与记忆组件、选择器训练、推理、评测和结果。 |
 
 体验导入和翻译流程，从 `agentdesign` 开始。复现训练或比较评测结果，从 `game-localization-agent` 开始。

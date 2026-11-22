@@ -207,6 +207,14 @@ class Maintenance:
         return {**{key: value for key, value in rule.items() if key != "members"},
                 "matched_occurrences": len(rule["members"])}
 
+    def plans(self):
+        with closing(self.workbench.open()) as repo:
+            return {"plans": [
+                {key: plan[key] for key in ("plan_id", "rule", "status")}
+                for (data,) in repo.db.execute("SELECT data FROM p4_plans ORDER BY rowid DESC")
+                for plan in (json.loads(data),)
+            ]}
+
     def detail(self, plan_id):
         with closing(self.workbench.open()) as repo:
             plan = self._load(repo, plan_id)

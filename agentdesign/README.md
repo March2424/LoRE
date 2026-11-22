@@ -4,7 +4,7 @@
 
 | 位置 | 内容 |
 | --- | --- |
-| `web/` | 最简 React 工作台与 TypeScript 构建 |
+| `web/` | React 工作台与 TypeScript 构建；`web/design/` 提供样式真源与静态模板 |
 | `run_api.py` | FastAPI、SQLite 检查点与单 worker |
 | `run_p0.py` 与 `workbench/` | 命令行、Responses 适配、LangGraph 翻译闭环、只读源图查询 |
 | `pi/` | Pi Reviewer、原生工具调用、流式回执及依赖锁文件 |
@@ -47,7 +47,22 @@ uv pip install --python .venv/bin/python -r requirements-api.txt
 
 在本机打开 `http://127.0.0.1:8766/docs` 可调用 API。设置 `DEEPSEEK_API_KEY` 后省略 `--offline` 运行真实模型。离线和真实模式各有独立 SQLite 工作目录。[接口与验收](docs/P2.md)
 
-## 启动 P3 工作台
+## 启动 LoRE 工作台
+
+没有 Naev 冻结快照时，可从空项目库启动。Windows PowerShell 在 `agentdesign` 目录运行：
+
+```powershell
+uv venv --python 3.14 .venv
+uv pip install --python .venv\Scripts\python.exe -r requirements-api.txt
+npm --prefix pi ci
+npm --prefix web ci
+npm --prefix web run build
+.\.venv\Scripts\python.exe run_api.py --projects-only --offline
+```
+
+打开 [本地工作台](http://127.0.0.1:8766/)，创建项目并导入 CSV、XLSX 或 UTF-8 PO。发布图谱后可在资源库勾选条目发起任务，人工复核完成后从导入记录下载原格式文件和排除报告。离线模式使用固定回执，普通项目由编辑输入并批准译文。设置服务端模型凭据后，移除 `--offline` 启动在线工作区。
+
+已有冻结 Naev 图谱时，可改用以下方式启动示范工作区：
 
 ```bash
 npm --prefix web ci

@@ -1,440 +1,227 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
+import { type FileReviewItem, type FileReviewScope, type JobPage, type Project, type Selection, type Workspace, json, language, params, post, stored, useQuery } from "./api";
+import { Button, Empty, ErrorNote, Field, Grid, Head, Modal, Section, Status, useAction } from "./ui";
+import { type Upload, Resources } from "./resources";
+import { Compose, type Composer, FileReviewQueue, JobDetail, JobList } from "./jobs";
+import { Knowledge, Models } from "./knowledge";
+import { Glossary } from "./glossary";
+import { Evolution } from "./evolution";
 
-type Location = { path?: string; line?: number; xpath?: string };
-type Occurrence = { occurrence_id: string; label: string; source_form: string; location: Location };
-type Entry = { id: string; context: string | null; source: string; source_plural: string | null; occurrences: Occurrence[] };
-type Catalog = { entries: Entry[]; total: number };
-type Upload = { upload_id: string; filename: string; entries: number; mapped_occurrences: number };
-type Item = { occurrence_id: string; step: number; source: string; target: string | null; status: string;
-  reason: string | null; display_reason?: string | null; expected_version: number;
-  draft_hash: string | null; evidence_url: string };
-type Job = { job_id: string; status: string; reason: string | null; items: Item[];
-  source_kind: "text" | "naev"; source_lang: string | null; target_lang: string | null;
-  steps: { intent: string; status: string }[]; next_actions: string[];
-  counts: { items: number; passed: number; exportable: number; awaiting_review: number };
-  missing: Record<string, { reason: string; choices?: string[] }>;
-  artifacts: { type: string; url: string }[] };
-type Evidence = { retrieved: { id: string; text: string }[];
-  actual_context: { items: { id: string; text: string }[] } | null;
-  actual_sources: { occurrence_id: string; source_version: number; quote: string; location: Location | null }[];
-  source_lookups: { name: string; effective_query?: string | null; args: { query?: string }; result: { status: string } }[];
-  reviews: { verdict: string; reason: string }[] };
-type Release = { occurrence_id: string; version: number; target: string };
-type Report = { validation: { ok: boolean; level: string; diagnostics?: string; reason?: string };
-  download_ready: boolean; applied: number; changes: unknown[];
-  conflicts: { entry_id: string; source: string; versions: Release[] }[];
-  exclusions: { occurrence_id?: string; entry_id?: string; reason: string }[] };
-
-const terminal = new Set(["completed", "partial", "failed", "cancelled"]);
-const statuses: Record<string, string> = {
-  queued: "排队中", running: "执行中", awaiting_input: "待补充", awaiting_review: "待复核",
-  completed: "已完成", partial: "部分完成", failed: "失败", cancelled: "已取消",
-  committed: "已提交", needs_human: "待人工", locked: "已锁定", conflict: "版本冲突",
-  excluded: "已排除", no_change: "沿用已有版本",
+const pages = {
+  home: "工作台", resources: "资源库", jobs: "任务", knowledge: "图谱与记忆", models: "模型设置",
+  glossary: "术语变更", evolution: "进化中心",
 };
-const label = (status: string) => statuses[status] || status;
-
-async function request(path: string, init?: RequestInit) {
-  const response = await fetch(path, init);
-  if (!response.ok) {
-    const details = await response.json().catch(() => ({}));
-    throw new Error(details.reason || `HTTP ${response.status}`);
-  }
-  return response;
-}
-async function json<T>(path: string, init?: RequestInit): Promise<T> {
-  return (await request(path, init)).json();
-}
-function post(payload: unknown): RequestInit {
-  return { method: "POST", headers: { "Content-Type": "application/json", "Idempotency-Key": crypto.randomUUID() },
-    body: JSON.stringify(payload) };
-}
-
-type GlossaryScope = { occurrence_ids?: string[]; file?: string; branch_id?: string };
-type GlossaryRule = { rule_id: string; source: string; target: string; version: number; scope: GlossaryScope;
-  matched_occurrences: number; memory_ref?: unknown };
-type MaintenancePlan = { plan_id: string; status: string; rule: GlossaryRule; job_id: string | null; job_status?: string;
-  items: { occurrence_id: string; source: string; before_version: number; before: string; proposed: string | null;
-    status: string; reason: string; discovery: string[]; result?: string; result_reason?: string;
-    after?: string; after_version?: number; model_calls?: number }[] };
-
-function Glossary({ selected, openJob }: { selected: Occurrence[]; openJob: (job: Job) => void }) {
-  const [rules, setRules] = useState<GlossaryRule[]>([]);
-  const [ruleId, setRuleId] = useState("");
-  const [source, setSource] = useState("");
-  const [target, setTarget] = useState("");
-  const [previous, setPrevious] = useState("");
-  const [scopeMode, setScopeMode] = useState("selected");
-  const [file, setFile] = useState("");
-  const [branch, setBranch] = useState("");
-  const [plan, setPlan] = useState<MaintenancePlan | null>(null);
-  const [activeId, setActiveId] = useState(() => localStorage.getItem("naev-maintenance") || "");
-  const [error, setError] = useState("");
-  const [busy, setBusy] = useState(false);
-
-  async function refreshRules() {
-    setRules((await json<{rules: GlossaryRule[]}>("/glossary")).rules);
-  }
-  useEffect(() => { void refreshRules().catch(err => setError(err.message)); }, []);
-  useEffect(() => {
-    if (!activeId) return;
-    let stopped = false;
-    async function refresh() {
-      try {
-        const current = await json<MaintenancePlan>(`/maintenance/${activeId}`);
-        if (!stopped) setPlan(current);
-      } catch (err) {
-        if (!stopped) setError((err as Error).message);
-      }
+type Page = keyof typeof pages;
+type Route = { page: Page; job?: string; fileReview?: FileReviewScope; reviewSelection?: string };
+function readRoute(): Route {
+  const [path, search] = location.hash.slice(1).split("?", 2);
+  const [page, detail] = path.split("/");
+  const job = page === "jobs" && /^[a-f0-9]{32}$/.test(detail || "") ? detail : undefined;
+  const route: Route = { page: Object.hasOwn(pages, page) ? page as Page : "home", job };
+  if (page === "jobs" && (job || detail === "file-review")) {
+    const query = new URLSearchParams(search);
+    const projectId = query.get("project");
+    const filename = query.get("file");
+    if (projectId && /^[a-f0-9]{32}$/.test(projectId) && filename) {
+      route.fileReview = { projectId, filename };
+      const step = query.get("step");
+      const item = query.get("item");
+      if (job && step !== null && /^\d+$/.test(step) && item) route.reviewSelection = `${step}:${item}`;
     }
-    void refresh();
-    const timer = setInterval(() => void refresh(), 1800);
-    return () => { stopped = true; clearInterval(timer); };
-  }, [activeId]);
-
-  async function act(action: () => Promise<void>) {
-    setError(""); setBusy(true);
-    try { await action(); } catch (err) { setError((err as Error).message); } finally { setBusy(false); }
   }
-  const existing = rules.find(rule => rule.rule_id === ruleId);
+  return route;
+}
 
-  return <section aria-labelledby="glossary">
-    <h2 id="glossary">术语维护</h2>
-    {error && <p className="error" role="alert">{error}</p>}
-    <form onSubmit={event => {
+function NewProject({ close, created }: { close: () => void; created: (project: Project) => void }) {
+  const action = useAction();
+  return <Modal title="新建项目" close={close}>
+    <ErrorNote error={action.error} />
+    <form className="stack" onSubmit={event => {
       event.preventDefault();
-      void act(async () => {
-        const scope = scopeMode === "existing" ? existing?.scope :
-          { ...(scopeMode === "selected" ? { occurrence_ids: selected.map(item => item.occurrence_id) } : {}),
-            ...(file.trim() ? { file: file.trim() } : {}), ...(branch.trim() ? { branch_id: branch.trim() } : {}) };
-        const next = await json<MaintenancePlan>("/maintenance/preview", post({
-          ...(ruleId ? { rule_id: ruleId } : {}), source, target, scope, ...(previous ? { previous_target: previous } : {}),
-        }));
-        setPlan(next); setActiveId(next.plan_id); localStorage.setItem("naev-maintenance", next.plan_id);
-      });
+      const data = new FormData(event.currentTarget);
+      const source = data.get("source");
+      void action.run(async () => created(await json<Project>("/projects", post({
+        name: data.get("name"), source_lang: source, target_lang: source === "en" ? "zh" : "en",
+      }))));
     }}>
-      <label>已登记规则 <select value={ruleId} onChange={event => {
-        const id = event.target.value;
-        const rule = rules.find(entry => entry.rule_id === id);
-        setRuleId(id); setSource(rule?.source || ""); setPrevious(rule?.target || "");
-        setTarget(rule?.target || ""); setScopeMode(rule ? "existing" : "selected");
-      }}><option value="">新规则</option>
-        {rules.map(rule => <option key={rule.rule_id} value={rule.rule_id}>
-          {rule.source} → {rule.target} · v{rule.version}{rule.memory_ref ? "" : "（已退役）"}
-        </option>)}
-      </select></label>
-      <div className="row">
-        <label>原文术语 <input required value={source} onChange={event => setSource(event.target.value)} /></label>
-        <label>新译法 <input required value={target} onChange={event => setTarget(event.target.value)} /></label>
-        <label>旧译法（可选） <input value={previous} onChange={event => setPrevious(event.target.value)} /></label>
-      </div>
-      <div className="row">
-        <label>作用域 <select value={scopeMode} onChange={event => setScopeMode(event.target.value)}>
-          <option value="selected">所选出现位置（{selected.length}）</option>
-          <option value="project">项目或文件范围</option>
-          {existing && <option value="existing">沿用已有作用域</option>}
-        </select></label>
-        {scopeMode !== "existing" && <><label>文件（可选） <input value={file} onChange={event => setFile(event.target.value)} /></label>
-          <label>分支（可选） <input value={branch} onChange={event => setBranch(event.target.value)} /></label></>}
-        <button disabled={busy || (scopeMode === "selected" && selected.length === 0)}>预览术语变更</button>
-      </div>
+      <Field label="项目名称"><input className="input" name="name" required maxLength={120} autoFocus /></Field>
+      <Field label="翻译方向"><select className="input" name="source">
+        <option value="en">英语 → 简体中文</option><option value="zh">简体中文 → 英语</option>
+      </select></Field>
+      <div className="dialog__foot"><Button type="submit" primary disabled={action.busy}>创建项目</Button></div>
     </form>
-    {plan && <>
-      <p>{plan.rule.source} → {plan.rule.target} · 规则 v{plan.rule.version} · {plan.rule.matched_occurrences} 个源位置
-        · {plan.status} {plan.job_status && "· " + label(plan.job_status)}</p>
-      <div className="row">
-        {plan.status === "preview" && <button disabled={busy} onClick={() => void act(async () => {
-          const applied = await json<{job_id: string | null}>(`/maintenance/${plan.plan_id}/apply`, post({}));
-          setPlan(await json<MaintenancePlan>(`/maintenance/${plan.plan_id}`));
-          await refreshRules();
-          if (applied.job_id) openJob(await json<Job>(`/jobs/${applied.job_id}`));
-        })}>确认应用</button>}
-        {plan.job_id && <button disabled={busy} onClick={() => void act(async () => {
-          openJob(await json<Job>(`/jobs/${plan.job_id}`));
-        })}>打开维护任务</button>}
-        {plan.status === "applied" && (!plan.job_status || terminal.has(plan.job_status)) &&
-          <button disabled={busy} onClick={() => void act(async () => {
-            await request(`/maintenance/${plan.plan_id}/rollback`, post({}));
-            setPlan(await json<MaintenancePlan>(`/maintenance/${plan.plan_id}`));
-            await refreshRules();
-          })}>回滚这次变更</button>}
+  </Modal>;
+}
+
+function Home({ project, scope, projects, jobs, offline, naev, choose, create, navigate, openJob, compose }: {
+  project?: Project; scope: string; projects: Project[]; jobs?: JobPage; offline: boolean; naev: boolean;
+  choose: (id: string) => void; create: () => void; navigate: (page: Page) => void; openJob: (id: string) => void;
+  compose: (mode: Composer) => void;
+}) {
+  const recent = jobs?.jobs.slice(0, 6) ?? [];
+  return <>
+    <Head title="工作台" sub={project?.name || (scope === "naev" ? "Naev 示范区" : "游戏本地化项目")}>
+      {scope && <Button onClick={() => compose("text")}>文本快译</Button>}
+      <Button primary onClick={create}>新建项目</Button>
+    </Head>
+    {offline && <div className="note">离线演示 · 使用固定回执。可导入源文件、建图、人工改译和导出。</div>}
+    {project && <>
+      <div className="stats">{[[project.resources ?? 0, "源条目"], [project.approved_memory ?? 0, "已批准记忆"],
+        [jobs?.total ?? 0, "项目任务"], [project.revision, "源版本"]].map(([count, title]) =>
+        <div className="stat" key={title}><b>{count}</b><span>{title}</span></div>)}</div>
+      <Section>项目流程</Section>
+      <div className="row-set">
+        <Button onClick={() => navigate("resources")}>{project.resources ? "浏览资源" : "导入源文件"}</Button>
+        <span className="muted">→</span><Button onClick={() => navigate("knowledge")}>{project.graph_ready ? "查看图谱" : "构建图谱"}</Button>
+        <span className="muted">→</span><Button onClick={() => navigate("jobs")}>任务与复核</Button>
+        <span className="muted">→</span><Button onClick={() => navigate("resources")}>原格式交付</Button>
       </div>
-      {plan.items.map(item => <article key={item.occurrence_id}>
-        <pre>{item.source}</pre>
-        <p>{item.result || item.status} · {item.result_reason || item.reason} · {item.discovery.join(" / ")}</p>
-        <p>v{item.before_version} {item.before} → {plan.status === "preview" ?
-          item.proposed || "保持原样或等待审校" :
-          `v${item.after_version || item.before_version} ${item.after || ""}`} · 调用 {item.model_calls || 0}</p>
-      </article>)}
     </>}
-  </section>;
+    <Section>项目</Section>
+    {!projects.length && !naev && <Empty title="还没有本地化项目">创建一个项目，导入 CSV、XLSX 或 UTF-8 PO 源文件。</Empty>}
+    {naev && <Grid columns="1fr 135px 85px"><b>Naev 示范区</b><span>英语 → 简体中文</span>
+      <Button small ghost onClick={() => choose("naev")}>打开项目</Button></Grid>}
+    {projects.map(item => <Grid key={item.project_id} columns="minmax(100px,1fr) 145px 105px 85px">
+      <b className="clip">{item.name}</b><span>{language[item.source_lang]} → {language[item.target_lang]}</span>
+      <Status value={item.graph_snapshot && item.graph_revision === item.revision ? "valid" : "pending"} />
+      <Button small ghost onClick={() => choose(item.project_id)}>打开项目</Button>
+    </Grid>)}
+    {!scope && <div><Button onClick={() => compose("text")}>文本快译</Button></div>}
+    {!!recent.length && <><Section>最近任务</Section>{recent.map(job => <Grid key={job.job_id} columns="110px minmax(110px,1fr) 90px 85px">
+      <span className="mono">J-{job.job_id.slice(0, 6)}</span><span className="clip">{job.title ||
+        (job.source_kind === "graph_build" ? "构建图谱" : job.source_kind === "text" ? "文本快译" : "资源任务")}</span>
+      <Status value={job.status} /><Button small ghost onClick={() => openJob(job.job_id)}>打开任务</Button>
+    </Grid>)}</>}
+  </>;
 }
 
 function App() {
-  const [upload, setUpload] = useState<Upload | null>(() => JSON.parse(localStorage.getItem("naev-upload") || "null"));
-  const [jobId, setJobId] = useState(() => localStorage.getItem("naev-job") || "");
-  const [job, setJob] = useState<Job | null>(null);
-  const [page, setPage] = useState<Catalog>({ entries: [], total: 0 });
-  const [offset, setOffset] = useState(0);
-  const [query, setQuery] = useState("");
-  const [search, setSearch] = useState("");
-  const [selected, setSelected] = useState<Occurrence[]>([]);
-  const [text, setText] = useState("");
-  const [sourceText, setSourceText] = useState("");
-  const [targetLang, setTargetLang] = useState("en");
-  const [drafts, setDrafts] = useState<Record<string, string>>({});
-  const [reviewReasons, setReviewReasons] = useState<Record<string, string>>({});
-  const [itemEvidence, setItemEvidence] = useState<Record<string, Evidence>>({});
-  const [report, setReport] = useState<Report | null>(null);
-  const [validated, setValidated] = useState(false);
-  const [choices, setChoices] = useState<Record<string, string>>({});
-  const [error, setError] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [latest, setLatest] = useState("");
-
-  async function act(action: () => Promise<void>) {
-    setError("");
-    setBusy(true);
-    try { await action(); }
-    catch (failure) { setError(String((failure as Error).message)); }
-    finally { setBusy(false); }
-  }
-
+  const [route, setRoute] = useState(readRoute);
+  const [selectedProject, setSelectedProject] = useState(() => stored("lore-project", ""));
+  const [createdProject, setCreatedProject] = useState<Project>();
+  const [upload, changeUpload] = useState<Upload | null>(() => stored("naev-upload", null));
+  const [selection, setSelection] = useState<Selection>(() => ({ ids: [], upload: selectedProject === "naev" ? upload?.upload_id : undefined }));
+  const [newProject, setNewProject] = useState(false);
+  const [composer, setComposer] = useState<Composer>();
+  const [refresh, setRefresh] = useState(0);
+  const [connected, setConnected] = useState(false);
+  const changed = () => setRefresh(value => value + 1);
+  const workspace = useQuery<Workspace>("/workspace", refresh);
+  const catalog = useQuery<{ projects: Project[] }>("/projects", refresh);
+  const projects = catalog.data?.projects ?? [];
+  const fileReview = route.fileReview;
+  const activeProject = fileReview?.projectId ?? selectedProject;
+  const chosen = projects.find(item => item.project_id === activeProject) ??
+    (createdProject?.project_id === selectedProject ? createdProject : undefined) ?? projects[0];
+  const scope = workspace.data?.naev && (activeProject === "naev" || !chosen) ? "naev" : chosen?.project_id ?? "";
+  const detail = useQuery<Project>(scope && scope !== "naev" ? `/projects/${scope}` : null, refresh);
+  const project = detail.data ?? (scope !== "naev" ? chosen : undefined);
+  const recent = useQuery<JobPage>(route.page === "home" ?
+    `/jobs?${params({ project: scope, limit: 6 })}` : null, refresh);
+  const name = project?.name || (scope === "naev" ? "Naev 示范区" : "选择项目");
+  const navigate = (page: Page, job?: string) => { location.hash = page + (job ? "/" + job : ""); setRoute({ page, job }); };
+  const choose = (id: string) => {
+    setSelectedProject(id); setSelection({ ids: [], upload: id === "naev" ? upload?.upload_id : undefined });
+    localStorage.setItem("lore-project", JSON.stringify(id));
+  };
+  const openJob = (id: string) => { setComposer(undefined); changed(); navigate("jobs", id); };
+  const openFileReview = (file: FileReviewScope, entry?: FileReviewItem) => {
+    location.hash = `jobs/${entry?.job_id ?? "file-review"}?${params({ project: file.projectId, file: file.filename,
+      step: entry?.step, item: entry?.occurrence_id })}`;
+    setRoute(readRoute());
+  };
+  const openResources = (id: string) => {
+    if (id !== selectedProject) choose(id);
+    navigate("resources");
+  };
+  const openCommand = () => { if (scope) setComposer("command"); };
   useEffect(() => {
-    if (!upload) return;
-    const controller = new AbortController();
-    const parameters = new URLSearchParams({ query: search, offset: String(offset), limit: "20" });
-    json<Catalog>(`/po-uploads/${upload.upload_id}/entries?${parameters}`, { signal: controller.signal })
-      .then(setPage).catch((failure: Error) => { if (failure.name !== "AbortError") setError(failure.message); });
-    return () => controller.abort();
-  }, [upload, offset, search]);
-
+    const navigateHash = () => setRoute(readRoute());
+    window.addEventListener("hashchange", navigateHash);
+    const events = new EventSource("/job-events");
+    events.onmessage = () => { setConnected(true); setRefresh(value => value + 1); };
+    events.onerror = () => setConnected(false);
+    return () => { window.removeEventListener("hashchange", navigateHash); events.close(); };
+  }, []);
   useEffect(() => {
-    if (!jobId) return;
-    let cancelled = false;
-    const cursorKey = "naev-events-" + jobId;
-    const stream = new EventSource(`/jobs/${jobId}/events?after=${localStorage.getItem(cursorKey) || "0"}`);
-    async function refresh() {
-      try {
-        const current = await json<Job>(`/jobs/${jobId}`);
-        if (cancelled) return;
-        setJob(current);
-        if (terminal.has(current.status)) stream.close();
-      } catch (failure) {
-        if (!cancelled) setError((failure as Error).message);
-        stream.close();
+    function keyboard(event: KeyboardEvent) {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k" && scope && !document.querySelector("dialog[open]")) {
+        event.preventDefault(); setComposer("command");
       }
     }
-    for (const kind of ["job", "planned", "step", "progress", "item", "approved", "version_action"]) {
-      stream.addEventListener(kind, ((event: MessageEvent) => {
-        localStorage.setItem(cursorKey, event.lastEventId);
-        const data = JSON.parse(event.data);
-        setLatest([data.stage || kind, data.item_status || data.status || ""].join(" "));
-        void refresh();
-      }) as EventListener);
-    }
-    stream.onerror = () => { void refresh(); };
-    void refresh();
-    return () => { cancelled = true; stream.close(); };
-  }, [jobId]);
-
-  async function uploadFile(file: File) {
-    const data = await json<Upload>(`/po-uploads?filename=${encodeURIComponent(file.name)}`, {
-      method: "POST", headers: { "Content-Type": "text/x-gettext-translation" }, body: file,
-    });
-    localStorage.setItem("naev-upload", JSON.stringify(data));
-    setUpload(data); setSelected([]); setOffset(0); setSearch(""); setQuery("");
-  }
-
-  async function start() {
-    const ids = selected.map(item => item.occurrence_id);
-    const intent = text.trim() ? { text } : { intents: ["translate", "export"] };
-    const next = await json<Job>("/jobs", post({
-      ...intent, upload_id: upload?.upload_id, selection: { source_ids: ids, target_lang: "zh" },
-    }));
-    openJob(next);
-  }
-
-  async function translateText() {
-    const next = await json<Job>("/jobs", post({ source_text: sourceText, target_lang: targetLang }));
-    openJob(next);
-  }
-
-  function openJob(next: Job) {
-    localStorage.setItem("naev-job", next.job_id);
-    setJob(next); setJobId(next.job_id); setLatest(""); setDrafts({}); setItemEvidence({});
-    setReviewReasons({});
-    setReport(null); setValidated(false); setChoices({});
-  }
-
-  async function download(endpoint: string, filename: string) {
-    const data = await (await request(`/jobs/${jobId}/po/${endpoint}`, post({ choices }))).blob();
-    const url = URL.createObjectURL(data);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = filename;
-    link.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
-
-  function details(item: Item): ReactNode {
-    const evidence = itemEvidence[item.evidence_url];
-    if (!evidence) return null;
-    return <div>
-      <p>主动查询</p>
-      <ul>{evidence.source_lookups.map((entry, i) => <li key={i}>{entry.name} {entry.args.query ?? entry.effective_query} → {entry.result.status}</li>)}</ul>
-      <details open><summary>实际送入模型的证据</summary>
-        {evidence.actual_context?.items.map(entry => <p key={entry.id}><code>{entry.id}</code><br />{entry.text}</p>)}
-        {evidence.actual_sources.map((entry, i) => <p key={i}><code>{entry.occurrence_id}@{entry.source_version}
-          {entry.location?.path && ` · ${entry.location.path}:${entry.location.line || ""}`}</code><br />{entry.quote}</p>)}
-      </details>
-      <details><summary>检索召回（{evidence.retrieved.length}）</summary>
-        {evidence.retrieved.map(entry => <p key={entry.id}><code>{entry.id}</code> {entry.text}</p>)}
-      </details>
-      {evidence.reviews.map((review, i) => <p key={i}>{review.verdict}：{review.reason}</p>)}
-    </div>;
-  }
-
-  return <main>
-    <h1>Naev 本地化工作台</h1>
-    {error && <p className="error" role="alert">{error}</p>}
-    <section aria-labelledby="resources">
-      <h2 id="resources">资源</h2>
-      <label>上传简体中文 PO <input type="file" accept=".po" disabled={busy}
-        onChange={e => { const file = e.target.files?.[0]; if (file) void act(() => uploadFile(file)); }} /></label>
-      {upload && <>
-        <p className="muted">{upload.filename} · {upload.entries} 个 PO 键 · {upload.mapped_occurrences} 个可绑定出现位置</p>
-        <form className="row" onSubmit={e => { e.preventDefault(); setSearch(query); setOffset(0); }}>
-          <input aria-label="搜索原文" placeholder="搜索原文或上下文" value={query} onChange={e => setQuery(e.target.value)} />
-          <button>搜索</button>
-          <button type="button" disabled={offset === 0} onClick={() => setOffset(offset - 20)}>上一页</button>
-          <button type="button" disabled={offset + 20 >= page.total} onClick={() => setOffset(offset + 20)}>下一页</button>
-          <span>{page.total} 项 · 已选 {selected.length}/12</span>
-        </form>
-        {page.entries.map(entry => <article key={entry.id}>
-          <pre>{entry.source}{entry.source_plural ? "\n" + entry.source_plural : ""}</pre>
-          {entry.context && <code>{entry.context}</code>}
-          {entry.occurrences.length === 0 && <p className="muted">当前源快照暂无映射</p>}
-          {entry.occurrences.map(item => {
-            const checked = selected.some(current => current.occurrence_id === item.occurrence_id);
-            return <label key={item.occurrence_id}><input type="checkbox" aria-label={item.occurrence_id}
-              checked={checked} disabled={!checked && selected.length >= 12}
-              onChange={() => setSelected(items => checked ? items.filter(x => x.occurrence_id !== item.occurrence_id) : [...items, item])} />
-              {item.location.path || item.occurrence_id}{item.location.line ? ":" + item.location.line : ""} · {item.source_form}</label>;
-          })}
-        </article>)}
-      </>}
-    </section>
-    <section aria-labelledby="work">
-      <h2 id="work">任务</h2>
-      <form onSubmit={e => { e.preventDefault(); void act(translateText); }}>
-        <h3>文本翻译</h3>
-        <label>方向 <select value={targetLang} onChange={e => setTargetLang(e.target.value)}>
-          <option value="en">中译英</option><option value="zh">英译中</option>
-        </select></label>
-        <label>原文<textarea maxLength={5000} value={sourceText} onChange={e => setSourceText(e.target.value)} /></label>
-        <button disabled={!sourceText.trim() || busy}>翻译文本</button>
-      </form>
-      <h3>Naev 资源任务</h3>
-      <textarea aria-label="任务要求" placeholder="可输入自然语言任务，留空时翻译并导出" value={text} onChange={e => setText(e.target.value)} />
-      <button disabled={!selected.length || busy} onClick={() => void act(start)}>运行所选条目</button>
-      {job && <>
-        {job.source_lang && job.target_lang && <p>翻译方向 {job.target_lang === "en" ? "中译英" : "英译中"}</p>}
-        <p><strong>{label(job.status)}</strong> · 通过 {job.counts.passed} · 可导出 {job.counts.exportable} · 待复核 {job.counts.awaiting_review} · 锁定 {job.items.filter(i => i.status === "locked").length} · 失败 {job.items.filter(i => i.status === "failed").length}</p>
-        <p>{job.steps.map(step => `${step.intent} (${label(step.status)})`).join(" → ")}</p>
-        {latest && <p className="muted">{latest}</p>}
-        {job.status === "awaiting_input" && <>
-          <pre>{JSON.stringify(job.missing, null, 2)}</pre>
-          <button disabled={busy || !selected.length} onClick={() => void act(async () => {
-            await request(`/jobs/${jobId}/continue`, post({
-              targets: selected.map(i => i.occurrence_id), target_lang: "zh",
-              ...(job.missing.intent ? { intents: ["translate", "export"] } : {}),
-            }));
-          })}>按所选资源继续</button>
+    window.addEventListener("keydown", keyboard);
+    return () => window.removeEventListener("keydown", keyboard);
+  }, [scope]);
+  useEffect(() => {
+    document.querySelector("main.page")?.scrollTo(0, 0);
+  }, [route.page, route.job, fileReview?.filename, route.reviewSelection, scope]);
+  const nav = (page: Page) => <a href={`#${page}`} aria-current={route.page === page ? "page" : undefined}
+    className={`nav${route.page === page ? " nav--active" : ""}`}>{pages[page]}</a>;
+  return <div className="shell">
+    <aside className="rail">
+      <div className="rail__brand">LoRE</div>
+      <div className="ws">
+        <select className="ws__name" aria-label="切换项目" value={scope} onChange={e => { choose(e.target.value); navigate("home"); }}>
+          {!scope && <option value="">选择项目</option>}{workspace.data?.naev && <option value="naev">Naev 示范区</option>}
+          {projects.map(item => <option key={item.project_id} value={item.project_id}>{item.name}</option>)}
+        </select>
+        {scope && <div className="ws__meta">{project ? `${project.source_lang.toUpperCase()} → ${project.target_lang.toUpperCase()} · 源 v${project.revision}` : "EN → ZH · 内置"}</div>}
+      </div>
+      <nav aria-label="工作台导航">
+        <div className="nav__label">项目</div>
+        {nav("home")}{scope && nav("resources")}{nav("jobs")}{project && nav("knowledge")}{project && nav("models")}
+        <div className="nav__label">维护</div>
+        {workspace.data?.naev && nav("glossary")}{nav("evolution")}
+      </nav>
+      <div className="rail__foot">
+        <div className={connected ? "live" : "rail__note"}>{connected ? "实时连接" : "正在连接"}</div>
+        <div className="rail__note">{workspace.data?.offline ? "离线模式 · 单 worker" : workspace.data ? "在线模式 · 单 worker" : ""}</div>
+      </div>
+    </aside>
+    <div className="canvas">
+      <header className="topbar">
+        <div className="crumb"><b>{name}</b><i>/</i><span>{pages[route.page]}</span>
+          {route.job && <><i>/</i><span className="mono">J-{route.job.slice(0, 6)}</span></>}</div>
+        <button type="button" className="cmdk" disabled={!scope} onClick={openCommand}>
+          <span className="clip">下达任务，例如「把选中的条目翻译成简体中文并导出」</span><span className="kbd">Ctrl K</span>
+        </button>
+        <div className="topbar__right"><a className="tray" href="#jobs">任务</a></div>
+      </header>
+      <main className="page">
+        <ErrorNote error={workspace.error || catalog.error || detail.error} />
+        {!workspace.data && !workspace.error && <Empty title="正在连接工作台…" />}
+        {workspace.data && <>
+          {route.page === "home" && <Home project={project} scope={scope} projects={projects} jobs={recent.data}
+            offline={workspace.data.offline} naev={workspace.data.naev} choose={id => { choose(id); navigate("resources"); }}
+            create={() => setNewProject(true)} openJob={openJob} compose={setComposer} navigate={navigate} />}
+          {route.page === "resources" && (scope ? <Resources key={scope} project={project}
+            upload={selection.upload && upload?.upload_id === selection.upload ? upload : null} setUpload={value => {
+              changeUpload(value); localStorage.setItem("naev-upload", JSON.stringify(value));
+            }} selection={selection} setSelection={setSelection} refresh={refresh} changed={changed} openJob={openJob}
+            compose={() => setComposer("selection")} openGraph={() => navigate("knowledge")} openFileReview={openFileReview} /> : <Empty title="请先创建项目" />)}
+          {route.page === "jobs" && (route.job ? <JobDetail key={`${route.job}:${fileReview?.filename ?? ""}:${route.reviewSelection ?? ""}`}
+            id={route.job} refresh={refresh} changed={changed} openJob={openJob} fileReview={fileReview} reviewSelection={route.reviewSelection}
+            back={fileReview ? () => openFileReview(fileReview) : () => navigate("jobs")} deliver={openResources} /> :
+            fileReview ? <FileReviewQueue key={`${fileReview.projectId}:${fileReview.filename}`} file={fileReview} refresh={refresh}
+              back={() => openResources(fileReview.projectId)} openItem={entry => openFileReview(fileReview, entry)} /> :
+            <JobList key={scope} scope={scope || undefined} refresh={refresh} openJob={openJob} compose={setComposer} />)}
+          {route.page === "knowledge" && (project ? <Knowledge key={scope} project={project} offline={workspace.data.offline}
+            selection={selection} openJob={openJob} refresh={refresh} changed={changed} /> : <Empty title="请先选择一个导入项目" />)}
+          {route.page === "models" && (project ? <Models key={scope} project={project} offline={workspace.data.offline} changed={changed} /> :
+            <Empty title="请先选择一个导入项目" />)}
+          {route.page === "glossary" && (workspace.data.naev ? <Glossary selected={scope === "naev" ? selection.ids : []}
+            openJob={openJob} refresh={refresh} changed={changed} /> : <Empty title="此工作区未加载 Naev 快照" />)}
+          {route.page === "evolution" && <Evolution offline={workspace.data.offline} refresh={refresh} changed={changed} openJob={openJob} />}
         </>}
-        {job.next_actions.includes("cancel") && <button disabled={busy} onClick={() => void act(async () => {
-          await request(`/jobs/${jobId}/cancel`, post({}));
-        })}>取消任务</button>}
-        {job.next_actions.includes("accept_partial") && <button disabled={busy} onClick={() => void act(async () => {
-          await request(`/jobs/${jobId}/accept-partial`, post({}));
-        })}>接受已完成部分</button>}
-      </>}
-    </section>
-    <section aria-labelledby="review">
-      <h2 id="review">复核</h2>
-      {job?.items.map(item => {
-        const key = `${item.step}:${item.occurrence_id}`;
-        const target = drafts[key] ?? item.target ?? "";
-        return <article key={key}>
-          <p>{label(item.status)} {(item.display_reason ?? item.reason) && "· " + (item.display_reason ?? item.reason)}</p>
-          <div className="compare">
-            <div><strong>原文</strong><pre>{item.source}</pre></div>
-            <label>译文<textarea aria-label={`译文 ${item.occurrence_id}`} value={target}
-              readOnly={item.status !== "needs_human"}
-              onChange={e => setDrafts(previous => ({ ...previous, [key]: e.target.value }))} /></label>
-          </div>
-          {job.status === "awaiting_review" && item.status === "needs_human" &&
-            <label>修改原因（可选） <input value={reviewReasons[key] || ""} maxLength={1000}
-              onChange={e => setReviewReasons(previous => ({ ...previous, [key]: e.target.value }))} /></label>}
-          <div className="row">
-            <button disabled={busy} onClick={() => void act(async () => {
-              const evidence = await json<Evidence>(item.evidence_url);
-              setItemEvidence(previous => ({ ...previous, [item.evidence_url]: evidence }));
-            })}>查看证据 {item.occurrence_id}</button>
-            {job.status === "awaiting_review" && item.status === "needs_human" &&
-              <button disabled={!target.trim() || busy} onClick={() => void act(async () => {
-                await request(`/jobs/${jobId}/items/${item.step}/${item.occurrence_id}/approve`, post({
-                  target, expected_version: item.expected_version, expected_draft_hash: item.draft_hash,
-                  ...(reviewReasons[key]?.trim() ? { reason: reviewReasons[key].trim() } : {}),
-                }));
-              })}>批准译文</button>}
-          </div>
-          {details(item)}
-        </article>;
-      })}
-    </section>
-    <section aria-labelledby="delivery">
-      <h2 id="delivery">交付</h2>
-      {job?.source_kind === "text" && job.artifacts.filter(a => a.type === "translation_export").map(a =>
-        <a key={a.url} href={a.url}>下载译文 JSON</a>)}
-      {job?.artifacts.some(item => item.type === "po_preview") &&
-        <button disabled={busy} onClick={() => void act(async () => {
-          setValidated(false);
-          const result = await json<Report>(`/jobs/${jobId}/po/preview`, post({ choices }));
-          setReport(result); setValidated(true);
-        })}>检查 PO 导出</button>}
-      {report && <>
-        <p>{report.validation.ok ? "校验通过" : "校验失败"} · {report.validation.level} · 写回 {report.applied} 个键</p>
-        {report.validation.diagnostics && <pre>{report.validation.diagnostics}</pre>}
-        {report.validation.reason && <p>{report.validation.reason}</p>}
-        {report.conflicts.map(entry => <label key={entry.entry_id}>
-          同一 PO 键存在译文冲突：{entry.source}
-          <select value={choices[entry.entry_id] || ""} onChange={e => {
-            setValidated(false);
-            const value = e.target.value;
-            setChoices(previous => {
-              const result = { ...previous };
-              if (value) result[entry.entry_id] = value; else delete result[entry.entry_id];
-              return result;
-            });
-          }}><option value="">选择已批准的译文</option>
-            {entry.versions.map(version => <option value={version.occurrence_id} key={version.occurrence_id}>
-              {version.target} · {version.occurrence_id} v{version.version}</option>)}
-          </select>
-        </label>)}
-        {report.exclusions.length > 0 && <ul>{report.exclusions.map((entry, i) =>
-          <li key={i}>{entry.occurrence_id || entry.entry_id} · {entry.reason}</li>)}</ul>}
-        <div className="row">
-          <button disabled={!validated || !report.download_ready || busy}
-            onClick={() => void act(() => download("download", "naev-zh_Hans.po"))}>下载 PO</button>
-          <button disabled={!validated || busy}
-            onClick={() => void act(() => download("report", "naev-po-changes.json"))}>下载变更报告</button>
-        </div>
-      </>}
-    </section>
-    <Glossary selected={selected} openJob={openJob} />
-  </main>;
+      </main>
+    </div>
+    {newProject && <NewProject close={() => setNewProject(false)} created={item => {
+      setNewProject(false); choose(item.project_id); setCreatedProject(item); changed(); navigate("resources");
+    }} />}
+    {composer && <Compose mode={composer} project={project} scope={scope} selection={selection}
+      close={() => setComposer(undefined)} openJob={openJob} />}
+  </div>;
 }
 
 createRoot(document.getElementById("root")!).render(<App />);

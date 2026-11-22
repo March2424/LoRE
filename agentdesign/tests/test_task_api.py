@@ -39,7 +39,7 @@ class TaskApiTests(unittest.TestCase):
         self.fail(data)
 
     def test_standalone_translation_runs_both_directions_and_exports_approved_text(self):
-        with tempfile.TemporaryDirectory() as tmp, TestClient(create_app(Path(tmp), offline=True)) as client:
+        with tempfile.TemporaryDirectory() as tmp, TestClient(create_app(Path(tmp), offline=True, projects_only=True)) as client:
             app = client.app.state.workbench
             verdict = {"verdict": "pass", "reason": "controlled fixture"}
             for index, (source_lang, target_lang, source, translation) in enumerate((
@@ -176,7 +176,7 @@ class TaskApiTests(unittest.TestCase):
                     response = self.post(client, "/jobs", intent, {"intent": intent, "targets": [NORMAL], **extra})
                     record = self.wait(client, response.json()["job_id"], "completed")
                     self.assertEqual(record["results"][0]["intent"], intent)
-            with sqlite3.connect(directory / "workbench.sqlite") as db:
+            with closing(sqlite3.connect(directory / "workbench.sqlite")) as db:
                 self.assertEqual(db.execute("SELECT count(*) FROM p2_versions WHERE item=?", (HUMAN,)).fetchone()[0], 1)
                 self.assertEqual(db.execute("SELECT count(*) FROM p2_calls WHERE job=? AND lane='intent'", (job,)).fetchone()[0], 1)
                 saved, = db.execute("SELECT data FROM p2_versions WHERE item=?", (HUMAN,)).fetchone()
