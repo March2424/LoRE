@@ -2,6 +2,7 @@
 
 from contextlib import closing
 from dataclasses import asdict
+import json
 from pathlib import Path
 import sqlite3
 from uuid import uuid4
@@ -78,6 +79,9 @@ class Workbench:
                 with closing(Jobs(staging)) as repo:
                     GraphStore(repo.memory)
             else:
+                if not self.source_db.is_file():
+                    raise FileNotFoundError(f"Naev snapshot missing at {self.source_db}. "
+                                            "Pass --db with the frozen snapshot or use --projects-only.")
                 if digest(self.source_db) != self.source_hash:
                     raise ValueError("Naev source graph does not match the frozen snapshot")
                 with closing(sqlite3.connect(f"{self.source_db.as_uri()}?mode=ro", uri=True)) as source, \
@@ -246,6 +250,37 @@ class Workbench:
         repo.put(job, event="job")
         return job["job_id"]
 
+    def list_jobs(self, project, offset, limit):
+        scope = """COALESCE(json_extract(data,'$.project_id'),
+                            CASE WHEN json_extract(data,'$.source_kind')='text' THEN 'text' ELSE 'naev' END)"""
+        with closing(self.open()) as repo:
+            repo.db.execute("BEGIN")
+            where = f"WHERE (? IS NULL OR {scope}=?)"
+            total = repo.db.execute(f"SELECT COUNT(*) FROM p2_jobs {where}", (project, project)).fetchone()[0]
+            rows = repo.db.execute(f"SELECT data FROM p2_jobs {where} ORDER BY rowid DESC LIMIT ? OFFSET ?",
+                                   (project, project, limit, offset))
+            return {"total": total, "jobs": [{
+                "job_id": job["job_id"], "status": job["status"], "reason": job.get("reason"),
+                "project_id": job.get("project_id"), "source_kind": job.get("source_kind", "naev"),
+                "intents": (job.get("plan") or {}).get("intents") or job["request"].get("intents", []),
+                "title": (job["request"].get("text") or job["request"].get("source_text") or "")[:120],
+                "bulk_id": job.get("bulk_id"),
+            } for (data,) in rows for job in (json.loads(data),)]}
+
+    def version_history(self, job_id, source_id):
+        with closing(self.open()) as repo:
+            repo.db.execute("BEGIN")
+            job = repo.get(job_id)
+            if source_id not in (job["plan"] or {}).get("targets", []):
+                raise JobError(404, "resource_not_in_job")
+            head, locked = repo.head(source_id)
+            rows = repo.db.execute("SELECT version,data FROM p2_versions WHERE item=? ORDER BY version DESC",
+                                   (source_id,))
+            return {"head_version": head, "locked": locked, "versions": [
+                {"version": version, "target": record["target"], "source_version": record["source_version"],
+                 "rollback_available": version < head and not locked and self._eligible(repo, source_id, version)}
+                for version, data in rows for record in (json.loads(data),)]}
+
     def detail(self, job_id):
         with closing(self.open()) as repo:
             repo.db.execute("BEGIN")
@@ -258,6 +293,7 @@ class Workbench:
             exportable = sum(self._eligible(repo, item, version)
                              for item, version in job["versions"].items() if item in ready)
             heads = {item: repo.head(item) for item in job["versions"]}
+            item_resources = {row["occurrence_id"]: self.resource(job, row["occurrence_id"]) for row in items}
             prerequisite = job.get("prerequisite")
             blocked_by = (prerequisite if prerequisite and repo.get(prerequisite)["status"] not in {"completed", "partial"}
                           else None)
@@ -267,7 +303,7 @@ class Workbench:
             "awaiting_input": ["continue", "cancel"], "awaiting_review": ["cancel"],
             "queued": ["cancel"], "running": ["cancel"], "failed": ["retry"],
         }.get(status, []).copy()
-        if status in RUNNABLE:
+        if status in RUNNABLE and not pause_requested and not blocked_by:
             actions.append("pause")
         elif status == "paused":
             actions.extend(("resume", "cancel"))
@@ -290,6 +326,35 @@ class Workbench:
                 actions.append("lock")
             if any(version > 1 and not locked for version, locked in heads.values()):
                 actions.append("rollback")
+
+        def item_detail(item):
+            source_id = item["occurrence_id"]
+            version, locked = heads[source_id]
+            resource = item_resources[source_id]
+            available = []
+            active_item = item["step"] == job["cursor"] and (version, locked) == (item["expected_version"], False)
+            if active_item and status == "awaiting_review" and item["status"] == "needs_human":
+                available.append("review_item")
+            if active_item and status in {"awaiting_review", "failed"} and item["status"] in {"failed", "locked"}:
+                available.append("retry")
+            conflict = item["step"] == job["cursor"] and status == "awaiting_review" and (
+                item["status"] == "conflict" or (item["status"] in ITEM_PENDING and version != item["expected_version"]))
+            if conflict and job.get("source_kind") != "text":
+                available.append("create_new_job")
+            if status in TERMINAL | {"awaiting_review"}:
+                available.append("unlock" if locked else "lock")
+                if version > 1 and not locked:
+                    available.append("rollback")
+            return {
+                **{k: v for k, v in item.items() if k not in {"pack", "read_view", "input_target"}},
+                "evidence_url": f'/jobs/{job_id}/items/{item["step"]}/{source_id}/evidence',
+                "display_reason": handoff(policy["spec"], item["reason"], source_id)
+                if policy and item["status"] == "needs_human" and item.get("reason") else item["reason"],
+                "head_version": version, "locked": locked, "version_conflict": conflict, "next_actions": available,
+                "file": resource.get("file"), "location": resource.get("location"),
+                "metadata": resource.get("metadata", {}),
+            }
+
         artifacts = [{"type": "translation_report", "url": f"/jobs/{job_id}/files/report.json"}]
         export = next((step for step in job["results"] if step["intent"] == "export"), None)
         if export is not None:
@@ -300,18 +365,16 @@ class Workbench:
         evidence = list(dict.fromkeys(ref for item in items for ref in item.get("evidence_refs", ())))
         policy = job.get("policy")
         return {
-            "job_id": job_id, "status": status, "reason": job.get("reason"), "items": [
-                {**{k: v for k, v in item.items() if k not in {"pack", "read_view", "input_target"}},
-                 "evidence_url": f'/jobs/{job_id}/items/{item["step"]}/{item["occurrence_id"]}/evidence',
-                 "display_reason": handoff(policy["spec"], item["reason"], item["occurrence_id"])
-                 if policy and item["status"] == "needs_human" and item.get("reason") else item["reason"]}
-                for item in items
-            ], "steps": job["steps"], "results": job["results"], "missing": job["missing"],
+            "job_id": job_id, "status": status, "reason": job.get("reason"), "items": [item_detail(item) for item in items],
+            "steps": job["steps"], "results": job["results"], "missing": job["missing"],
             "intent": job["intent"], "snapshots": job["snapshots"], "artifacts": artifacts,
             "policy_release_id": policy["release_id"] if policy else "baseline",
             "upload_id": job["request"].get("upload_id"),
             "source_kind": job.get("source_kind", "naev"),
             "project_id": job.get("project_id"),
+            "bulk_id": job.get("bulk_id"),
+            "clarification_resources": job.get("clarification_resources", []),
+            "resolved_targets": job.get("resolved_targets", []),
             "blocked_by": blocked_by,
             "pause_requested": pause_requested,
             "graph_build": ({"batches": len(job["build"]["batches"]),
@@ -335,19 +398,72 @@ class Workbench:
             actual_sources = []
             for source in (manifest or {}).get("sources", []):
                 if job.get("source_kind") == "project":
-                    location = self.projects.resource(repo, self.project(job), source["occurrence_id"],
-                                                      source["source_version"])["location"]
+                    try:
+                        location = self.projects.resource(repo, self.project(job), source["occurrence_id"],
+                                                          source["source_version"], revision=job.get("project_revision"),
+                                                          import_ids=job.get("project_import_ids"))["location"]
+                    except JobError:
+                        location = None
                 else:
-                    location = self.native.resources.get(source["occurrence_id"], {}).get("location")
+                    location = self._native_source_location(source["occurrence_id"])
                 actual_sources.append({**source, "location": location})
             return {
                 "job_id": job_id, "status": row["status"], "reason": row["reason"], "occurrence_id": item_id,
                 "artifacts": [], "next_actions": [], "evidence_refs": row.get("evidence_refs", []),
                 "actual_context": manifest, "actual_sources": actual_sources,
+                "mandatory_terms": [
+                    repo.memory.get(MemoryRef(**candidate["memory_ref"])).content
+                    for candidate in (manifest or {}).get("items", [])
+                    if candidate["mandatory"] and candidate["category"] == "term" and candidate["memory_ref"]
+                ],
                 "retrieved": retrieval[-1]["candidate_pool"]["candidates"] if retrieval else [],
                 "reviews": repo.audit(job_id, "review", item_id, lane=lane),
                 "source_lookups": repo.audit(job_id, "review_tool", item_id, lane=lane),
             }
+
+    def _native_source_location(self, source_id):
+        return self.native.resources.get(source_id, {}).get("location") or self.provenance.get(source_id)
+
+    def source_context(self, job_id, step, item_id, source_id, version):
+        with closing(self.open()) as repo:
+            job = repo.get(job_id)
+            item = repo.item(job_id, step, item_id)
+            manifest = item["pack"]["manifest"] if item.get("pack") else {}
+            refs = (item, *manifest.get("sources", ()))
+            if not any((ref["occurrence_id"], ref["source_version"]) == (source_id, version) for ref in refs):
+                raise JobError(404, "source_not_in_evidence")
+
+            if job.get("source_kind") == "project":
+                window = self.projects.source_window(repo, self.project(job), source_id, version,
+                                                     revision=job.get("project_revision"),
+                                                     import_ids=job.get("project_import_ids"))
+            else:
+                window = self._native_source_window(repo, job, source_id, version)
+            lines = []
+            for row in window:
+                focus = (row["occurrence_id"], row["source_version"]) == (source_id, version)
+                metadata = row.get("metadata", {})
+                if (row["occurrence_id"], row["source_version"]) == (item_id, item["source_version"]):
+                    metadata = {**metadata, **manifest.get("resolved_metadata", {})}
+                lines.append({"occurrence_id": row["occurrence_id"], "source_version": row["source_version"],
+                              "location": row["location"], "text": row["label"],
+                              "speaker_id": metadata.get("speaker_id"), "focused": focus})
+            return {"lines": lines}
+
+    def _native_source_window(self, repo, job, source_id, version):
+        location = self._native_source_location(source_id) or {}
+        if not location.get("path") or not isinstance(location.get("line"), int):
+            raise JobError(404, "source_context_unavailable")
+        anchor = {"occurrence_id": source_id, "source_version": version, "location": location}
+        neighbors = [row for row in self.native.resources.values() if row["occurrence_id"] != source_id
+                     and row["location"].get("path") == location["path"] and isinstance(row["location"].get("line"), int)]
+        ordered = sorted([*neighbors, anchor], key=lambda row: (row["location"]["line"], row["occurrence_id"]))
+        center = ordered.index(anchor)
+        window = []
+        for row in ordered[max(0, center - 2):center + 3]:
+            source = self.occurrence(repo, job, row)
+            window.append({**row, "label": source.source, "metadata": source.metadata})
+        return window
 
     def _trace(self, repo, job_id, item=None, lane=None):
         def record(event_type, **data):
@@ -398,14 +514,22 @@ class Workbench:
             job["intent"] = parsed or {}
             job["missing"] = missing
             if missing:
+                candidate_ids = set(plan["targets"])
+                candidate_ids.update(choice for finding in missing.values() for choice in finding.get("choices", []))
+                job["clarification_resources"] = [row for source_id, row in catalog.items() if source_id in candidate_ids]
+                job["resolved_targets"] = plan["targets"]
                 self._update_running(repo, job, "awaiting_input", "clarification_required")
                 return
+            job.pop("clarification_resources", None)
+            job.pop("resolved_targets", None)
             job["plan"] = plan
             if text_id:
                 self._register_text(repo, job, plan, text_id)
             if project:
                 job["project_revision"] = project["revision"]
                 job["project_resources"] = {item: catalog[item] for item in plan["targets"]}
+                job["project_import_ids"] = [row[0] for row in repo.db.execute(
+                    "SELECT import_id FROM p6_files WHERE project=?", (self.project(job),))]
                 job["snapshots"].update(graph=project["graph_snapshot"], source_sha256=text_hash(project["graph_snapshot"]))
             self._ensure_run(repo, job)
             job["versions"] = {item: repo.head(item)[0] for item in plan["targets"]}

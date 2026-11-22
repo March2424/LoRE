@@ -155,8 +155,11 @@ def router(service):
         projects = service().projects
         with closing(service().open()) as repo:
             projects.get(repo, project_id)
+            needle = query.casefold()
             rows = [row for row in projects.resources(repo, project_id, file).values()
-                    if not query or query.casefold() in row["label"].casefold()]
+                    if not needle or any(needle in value.casefold()
+                                         for value in (row["label"], row["key"], *row["metadata"].values())
+                                         if isinstance(value, str))]
             return {"total": len(rows), "resources": rows[offset:offset + limit]}
 
     @api.get("/projects/{project_id}/imports")
@@ -165,6 +168,16 @@ def router(service):
             service().projects.get(repo, project_id)
             return {"imports": [json.loads(row[0]) for row in repo.db.execute(
                 "SELECT data FROM p6_imports WHERE project=? ORDER BY rowid DESC", (project_id,))]}
+
+    @api.get("/projects/{project_id}/files/progress")
+    def file_progress(project_id: str):
+        return service().projects.file_progress(project_id)
+
+    @api.get("/projects/{project_id}/files/review")
+    def file_review(project_id: str, file: Annotated[str, Query(min_length=1, max_length=255)],
+                    offset: Annotated[int, Query(ge=0)] = 0, limit: Annotated[int, Query(ge=1, le=250)] = 30,
+                    job_id: Annotated[str | None, Query(pattern=r"^[a-f0-9]{32}$")] = None):
+        return service().projects.file_review(project_id, file, offset, limit, job_id)
 
     @api.post("/projects/{project_id}/graph/build", status_code=202)
     def build_graph(project_id: str, body: GraphBuild, key: Key):

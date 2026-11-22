@@ -1,5 +1,6 @@
 from contextlib import closing
-from io import BytesIO
+import csv
+from io import BytesIO, StringIO
 import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -111,6 +112,24 @@ class ProjectTests(unittest.TestCase):
             self.assertEqual(received["occurrence_id"], rows["a"])
             self.assertEqual(received["location"]["row"], 2)
             self.assertEqual(evidence["actual_context"]["memory_refs"], [received["memory_ref"]])
+            listed = client.get("/jobs", params={"project": project["project_id"]}).json()["jobs"]
+            self.assertEqual([job["job_id"] for job in listed][:2], [second_job, first_job])
+            history = client.get(f"/jobs/{second_job}/versions/{rows['b']}").json()
+            self.assertEqual(history["versions"][0]["target"], "使用灵药。")
+            feedback = post("/feedback", "same-file-feedback", json={
+                "job_id": first_job, "step": 0, "occurrence_id": rows["a"], "category": "correction", "reason": "复核示例",
+            })
+            candidate = post("/policy/candidates", "candidate", json={
+                "feedback_ids": [feedback["feedback_id"]], "changes": {"handoff_template": "请检查 {reason}"},
+            })
+            candidate_url = f"/policy/candidates/{candidate['candidate_id']}"
+            self.assertEqual(client.get(candidate_url + "/cases", params={"job_id": second_job, "dataset": "validation"}).json(),
+                             {"cases": []})
+            blocked = client.post(candidate_url + "/replay", json={
+                "mode": "record", "dataset": "validation",
+                "cases": [{"job_id": second_job, "step": 0, "occurrence_id": rows["b"]}],
+            })
+            self.assertEqual(blocked.json()["reason"], "held_out_case_overlaps_feedback")
             with closing(app.open()) as repo:
                 data = repo.get(second["job_id"])
                 self.assertEqual(data["config"]["roles"]["translator"]["model"], "fixture-translation")
@@ -137,6 +156,11 @@ class ProjectTests(unittest.TestCase):
                 self.run_until(client, sheet_job, "completed")
             translate(po_item, "catalog")
             base = route + "/imports/"
+            exported = client.get(base + imported["import_id"] + "/export").text
+            header, first, second, excluded = csv.reader(StringIO(exported))
+            self.assertEqual(header[-1], "translation")
+            self.assertEqual([first[-1], second[-1], excluded[-1]], ["灵药", "使用灵药。", ""])
+            self.assertEqual(len(excluded), len(header))
             excel = load_workbook(BytesIO(client.get(base + xlsx["import_id"] + "/export").content))
             self.assertEqual((excel["Dialog"]["C2"].value, excel["Dialog"]["D2"].value), ("查看任务", "=1+1"))
             excel.close()

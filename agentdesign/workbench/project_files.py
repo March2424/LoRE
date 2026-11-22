@@ -140,9 +140,14 @@ def render_table(raw, filename, rows, targets, target_column):
         header = original[0]
         names = [value.strip() for value in header]
         if target_column not in names:
+            column = len(header)
             header.append(target_column)
-            names.append(target_column)
-        column = names.index(target_column)
+            for cells in original[1:]:
+                if cells:
+                    cells.extend([""] * max(0, column - len(cells)))
+                    cells.insert(column, "")
+        else:
+            column = names.index(target_column)
         for row in rows:
             location = row["location"]
             if row["occurrence_id"] in targets:
@@ -171,21 +176,33 @@ def render_table(raw, filename, rows, targets, target_column):
         book.close()
 
 
-def render_project_po(raw, rows, targets, target_lang):
-    po = project_po(raw)
-    po.metadata["Language"] = "zh_Hans" if target_lang == "zh" else "en"
-    po.metadata["Plural-Forms"] = "nplurals=1; plural=0;" if target_lang == "zh" else "nplurals=2; plural=(n != 1);"
+def po_source_forms(rows):
     mapped = {}
     for row in rows:
         location = row["location"]
         mapped.setdefault((location["msgctxt"], location["msgid"]), {})[location["form"]] = row["occurrence_id"]
-    skipped, approved = [], {}
+    return mapped
+
+
+def po_writeback_exclusions(mapped, targets, target_lang):
+    skipped = {}
+    for forms in mapped.values():
+        if any(item not in targets for item in forms.values()):
+            skipped.update(dict.fromkeys((item for item in forms.values() if item in targets), "po_plural_translation_incomplete"))
+        elif "plural" in forms and target_lang == "zh" and targets[forms["singular"]] != targets[forms["plural"]]:
+            skipped.update(dict.fromkeys(forms.values(), "po_plural_translations_conflict"))
+    return skipped
+
+
+def render_project_po(raw, rows, targets, target_lang):
+    po = project_po(raw)
+    po.metadata["Language"] = "zh_Hans" if target_lang == "zh" else "en"
+    po.metadata["Plural-Forms"] = "nplurals=1; plural=0;" if target_lang == "zh" else "nplurals=2; plural=(n != 1);"
+    mapped = po_source_forms(rows)
+    skipped, approved = po_writeback_exclusions(mapped, targets, target_lang), {}
     for entry in po:
         forms = mapped.get((entry.msgctxt or "", entry.msgid))
-        if entry.obsolete or not forms:
-            continue
-        if any(item not in targets for item in forms.values()):
-            skipped.extend(item for item in forms.values() if item in targets)
+        if entry.obsolete or not forms or any(item not in targets or item in skipped for item in forms.values()):
             continue
         singular = targets[forms["singular"]]
         if not entry.msgid_plural:
@@ -194,12 +211,9 @@ def render_project_po(raw, rows, targets, target_lang):
         elif target_lang == "en":
             entry.msgstr_plural = {0: singular, 1: targets[forms["plural"]]}
             approved[identity(entry)] = entry.msgstr_plural[1]
-        elif singular == targets[forms["plural"]]:
+        else:
             entry.msgstr_plural = {0: singular}
             approved[identity(entry)] = singular
-        else:
-            skipped.extend(forms.values())
-            continue
         entry.flags = [flag for flag in entry.flags if flag != "fuzzy"]
     content = str(po).encode("utf-8")
     project_po(content)

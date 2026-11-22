@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LoRE 工作台 · 模板</title>
+<!-- 视觉标准的唯一样式来源；本页自身不写任何色值 -->
+<link rel="stylesheet" href="ui.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="rail">
+    <div class="rail__brand">LoRE</div>
+    <div class="ws">
+      <div class="ws__name">Naev 示范区 <span class="ws__tag">内置</span></div>
+      <div class="ws__meta">EN → ZH · 快照 s-2026-11-01</div>
+    </div>
+    <div class="nav__label">项目</div>
+    <a class="nav"><span class="nav__num">01</span>工作台</a>
+    <a class="nav"><span class="nav__num">02</span>资源库</a>
+    <a class="nav nav--active"><span class="nav__num">03</span>任务</a>
+    <a class="nav"><span class="nav__num">04</span>图谱与记忆</a>
+    <div class="nav__label">维护</div>
+    <a class="nav"><span class="nav__num">05</span>术语变更</a>
+    <a class="nav"><span class="nav__num">06</span>进化中心</a>
+    <div class="rail__foot">
+      <div class="live">实时连接</div>
+      <div class="rail__note">策略 v3 · 单 worker</div>
+    </div>
+  </aside>
+
+  <div class="canvas">
+
+    <header class="topbar">
+      <div class="crumb"><b>Naev 示范区</b><i>/</i><span>任务</span><i>/</i><span class="mono">J-4f21a9</span></div>
+      <div class="cmdk">
+        <span>下达任务，例如「把选中的 12 条翻译成简体中文并导出」</span>
+        <span class="kbd" style="opacity:.4">⌘K</span>
+      </div>
+      <div class="topbar__right">
+        <span class="conn">实时</span>
+        <span class="tray">任务 <b>2</b></span>
+        <div class="avatar">编</div>
+      </div>
+    </header>
+
+    <main class="page">
+
+      <div class="page-head">
+        <div>
+          <h1>复核</h1>
+          <p class="sub">J-4f21a9 · 翻译 → 导出 · 12 条 · 18 / 72 次调用</p>
+        </div>
+        <div class="actions">
+          <button class="btn btn--sm btn--ghost">暂停</button>
+          <button class="btn btn--sm btn--ghost">接受已完成</button>
+          <button class="btn btn--sm btn--ghost">取消</button>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>8</b><span>已通过</span><em>可直接导出</em></div>
+        <div class="stat"><b>3</b><span>待人工</span><em>含 1 条证据不足</em></div>
+        <div class="stat"><b>1</b><span>版本冲突</span><em>需选择写入版本</em></div>
+        <div class="stat"><b>2</b><span>已锁定</span><em>不会被批量修订覆盖</em></div>
+      </div>
+
+      <!-- ── 三栏：队列 / 对照编辑 / 证据抽屉 ───────────────── -->
+      <div class="panes">
+
+        <div class="pane--list">
+          <div class="queue__head">
+            <span class="seg seg--on">全部 12</span>
+            <span class="seg">待人工 3</span>
+            <span class="seg">冲突 1</span>
+          </div>
+          <div class="queue">
+            <div class="queue__item"><span class="queue__idx">L214</span><span class="dot dot--ok"></span><span class="queue__src">The Emperor's Fist is the spearhead…</span><span class="queue__meta"><span>fleet_intro.xml</span><span>已提交 · v3</span></span></div>
+            <div class="queue__item queue__item--active"><span class="queue__idx">L215</span><span class="dot dot--warn"></span><span class="queue__src">They say she burned three systems…</span><span class="queue__meta"><span>fleet_intro.xml</span><span>待人工 · v2</span></span></div>
+            <div class="queue__item"><span class="queue__idx">L216</span><span class="dot dot--ok"></span><span class="queue__src">Do not open the sealed packet…</span><span class="queue__meta"><span>fleet_intro.xml</span><span>已提交 · v1</span></span></div>
+            <div class="queue__item"><span class="queue__idx">L301</span><span class="dot dot--warn"></span><span class="queue__src">Report to the Sirius garrison…</span><span class="queue__meta"><span>escort_packet.xml</span><span>待人工 · v1</span></span></div>
+            <div class="queue__item"><span class="queue__idx">L302</span><span class="dot dot--lock"></span><span class="queue__src">Landing clearance revoked…</span><span class="queue__meta"><span>escort_packet.xml</span><span>已锁定 · v2</span></span></div>
+            <div class="queue__item"><span class="queue__idx">L388</span><span class="dot dot--bad"></span><span class="queue__src">Antlion Nest</span><span class="queue__meta"><span>antlion.xml</span><span>冲突 · v3</span></span></div>
+            <div class="queue__item"><span class="queue__idx">L402</span><span class="dot dot--warn"></span><span class="queue__src">The armistice was a lie.</span><span class="queue__meta"><span>armistice.xml</span><span>待人工 · v1</span></span></div>
+          </div>
+        </div>
+
+        <div class="pane--main">
+
+          <div class="field">
+            <div class="row-set" style="justify-content:space-between">
+              <span class="label">原文</span>
+              <span class="mono hint">missions/fleet_intro.xml:215 · en</span>
+            </div>
+            <div class="source">They say she burned three systems before the armistice. Nobody aboard the Fist will confirm it.</div>
+          </div>
+
+          <div class="field">
+            <div class="row-set" style="justify-content:space-between">
+              <span class="label">译文</span>
+              <span class="mono hint">zh-Hans · v2 · 待人工</span>
+            </div>
+            <div class="target">据说在停战之前，她烧毁了三个星系。<mark>「皇帝之拳」号上没有人愿意证实这件事。</mark></div>
+            <div class="check-strip">
+              <span class="chk">占位符 0 处</span>
+              <span class="chk">换行一致</span>
+              <span class="chk">首尾空格一致</span>
+              <span class="chk chk--warn">强制术语未使用</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="row-set" style="justify-content:space-between">
+              <span class="label">修改原因</span>
+              <span class="mono hint">可选 · 进入反馈库</span>
+            </div>
+            <div class="input">术语统一为「皇帝之拳」，与术语表 v3 对齐</div>
+          </div>
+
+          <div class="field">
+            <span class="label">上下文</span>
+            <div class="ctxgrid">
+              <div class="ctxcell"><span>剧情分支</span><b>主线 / armistice</b></div>
+              <div class="ctxcell"><span>说话人</span><b>舰长 Kade</b></div>
+              <div class="ctxcell"><span>听话人</span><b>玩家</b></div>
+              <div class="ctxcell"><span>阶段</span><b>第 3 章 · 出航前</b></div>
+            </div>
+          </div>
+
+          <div class="row-set" style="border-top:1px solid var(--line);padding-top:9px;margin-top:auto">
+            <button class="btn btn--sm btn--ghost">锁定</button>
+            <button class="btn btn--sm btn--ghost">版本历史 v2</button>
+            <span class="sp"></span>
+            <span class="hint">j / k 切换 · ⌘↵ 批准</span>
+            <button class="btn btn--sm btn--ghost">保存草稿</button>
+            <button class="btn btn--sm btn--primary">批准译文 <span class="kbd">⌘↵</span></button>
+          </div>
+
+        </div>
+
+        <aside class="pane--side">
+          <div class="drawer__head">
+            <b>依据</b>
+            <div class="segs"><span class="seg seg--on">实际输入</span><span class="seg">主动查证 3</span><span class="seg">审校结论</span></div>
+          </div>
+          <div class="drawer__body">
+
+            <div>
+              <div class="row-set" style="justify-content:space-between">
+                <span class="micro">硬性术语</span><span class="micro">模型不可忽略</span>
+              </div>
+              <div class="term"><b>皇帝之拳</b><span>←</span><code>Emperor's Fist</code><em>强制</em></div>
+              <div class="term"><b>先锋</b><span>←</span><code>spearhead</code><em>强制</em></div>
+            </div>
+
+            <div>
+              <div class="row-set" style="justify-content:space-between">
+                <span class="micro">候选与实际输入</span><span class="micro">7 → 3</span>
+              </div>
+              <div class="meter" style="margin-top:6px"><i style="width:42%"></i></div>
+              <div class="row-set" style="justify-content:space-between;margin-top:4px">
+                <span class="hint">实际输入 3</span><span class="hint">未采用 4</span>
+              </div>
+            </div>
+
+            <div class="note note--warn">
+              <b>已自动屏蔽 2 条越界命中</b>
+              检索词 <code>Emperors Fist</code> 命中其他剧情分支，已自动排除。
+            </div>
+
+            <div class="block">
+              <h4>审校结论 · 需人工接手</h4>
+              <p style="font-size:11px;color:var(--text-2);line-height:1.6">证据不足：同一实体在两个分支存在两种已批准译法，模型拒绝自行裁定。</p>
+              <div class="row-set" style="margin-top:7px">
+                <span class="hint">选择 0.8s</span><span class="hint">草译</span><span class="hint">查证 ×3</span><span class="hint">转人工</span>
+              </div>
+            </div>
+
+            <p class="hint" style="border-top:1px solid var(--line);padding-top:7px">策略 baseline v3 · deepseek-v4.1-flash · 检索 2 次</p>
+          </div>
+        </aside>
+
+      </div>
+
+      <!-- ── 组件索引：新增组件必须补在这里 ─────────────────── -->
+      <h2 class="section">组件索引</h2>
+      <div class="index">
+
+        <div class="panel">
+          <h4>按钮</h4>
+          <div class="row-set">
+            <button class="btn btn--primary">主操作</button>
+            <button class="btn">次操作</button>
+            <button class="btn btn--ghost">幽灵</button>
+          </div>
+          <div class="row-set">
+            <button class="btn btn--sm btn--primary">小号主操作 <span class="kbd">⌘↵</span></button>
+            <button class="btn btn--sm btn--ghost">小号</button>
+            <button class="btn btn--sm" disabled>禁用</button>
+          </div>
+          <p class="hint">一屏只允许一个主操作；破坏性操作用 ghost，不用红色填充。</p>
+        </div>
+
+        <div class="panel">
+          <h4>表单</h4>
+          <div class="field">
+            <span class="label">输入</span>
+            <div class="input">术语统一为「皇帝之拳」</div>
+          </div>
+          <div class="field">
+            <span class="label">占位</span>
+            <div class="input input--ph">补充要求，例如「飞船名保留英文」</div>
+          </div>
+          <div class="field">
+            <span class="label">选择</span>
+            <div class="input select"><span>zh-Hans · 简体中文</span><span style="color:var(--text-4)">▾</span></div>
+          </div>
+          <label class="check"><span class="box box--on"></span>接受已完成部分</label>
+        </div>
+
+        <div class="panel">
+          <h4>状态</h4>
+          <div class="row-set">
+            <span class="pill pill--ok">已提交</span>
+            <span class="pill pill--warn">待人工</span>
+            <span class="pill pill--bad">版本冲突</span>
+            <span class="pill pill--lock">已锁定</span>
+            <span class="pill pill--info">执行中</span>
+            <span class="pill">已排除</span>
+          </div>
+          <div class="grid-row" style="grid-template-columns:1fr auto">
+            <span class="status"><span class="dot dot--ok"></span>已提交</span><span class="hint">表格内</span>
+          </div>
+          <div class="grid-row" style="grid-template-columns:1fr auto">
+            <span class="status"><span class="dot dot--warn"></span>待人工</span><span class="hint">点 + 词</span>
+          </div>
+          <p class="hint">胶囊只出现在标题行；表格与队列用「点 + 词」，不铺色块。</p>
+        </div>
+
+        <div class="panel">
+          <h4>提示</h4>
+          <div class="note note--ok"><b>Gettext 校验通过</b>编译读回 41 个键。</div>
+          <div class="toast">
+            <div>PO 文件必须为 UTF-8 编码，当前文件在 214 行出现无效字节。<br><code>reason · invalid_utf8_po</code></div>
+          </div>
+          <div class="empty"><b>还没有导入源文件</b>支持 CSV、XLSX、UTF-8 PO · 16MB 以内</div>
+        </div>
+
+        <div class="panel">
+          <h4>对话框</h4>
+          <div class="dialog" style="width:auto;box-shadow:var(--shadow-pop)">
+            <h3>需要补充一项信息</h3>
+            <p>任务停在「待补充」。补齐后从断点继续，不重新解析。</p>
+            <div class="stack" style="gap:6px;margin-top:10px">
+              <label class="check"><span class="box box--on"></span>简体中文</label>
+              <label class="check"><span class="box"></span>English</label>
+            </div>
+            <div class="dialog__foot">
+              <button class="btn btn--sm btn--ghost">取消任务</button>
+              <button class="btn btn--sm btn--primary">继续任务</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h4>校样与进度</h4>
+          <div class="proof">
+            <span class="proof__n">1</span><div class="proof__line"><span class="proof__cmt">#: missions/fleet_intro.xml:214</span></div>
+            <span class="proof__n">2</span><div class="proof__line"><span class="proof__key">msgid</span> <span class="proof__val">"The Emperor's Fist is the spearhead of our fleet."</span></div>
+            <span class="proof__n">3</span><div class="proof__line"><span class="proof__key">msgstr</span> <span class="proof__val">"「皇帝之拳」是我们舰队的先锋。"</span></div>
+          </div>
+          <div class="meter"><i style="width:25%"></i></div>
+          <div class="row-set" style="justify-content:space-between">
+            <span class="hint">调用 18 / 72</span><span class="hint">建图 3 / 5 批</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h4>列表筛选与翻页</h4>
+          <div class="row-set">
+            <input class="input" placeholder="搜索原文" aria-label="搜索原文">
+            <button class="btn">搜索</button>
+          </div>
+          <details><summary>导入记录与文件交付</summary><p class="hint">dialog.xlsx · 源 v2</p></details>
+          <div class="row-set pager">
+            <span class="mono muted">1–25 / 42</span>
+            <button class="btn btn--sm btn--ghost" disabled>上一页</button>
+            <button class="btn btn--sm btn--ghost">下一页</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h4>条目上下文图</h4>
+          <div class="context-graph__example">
+            <button class="context-graph__node" aria-pressed="true">
+              <span class="context-graph__node-title">当前原文</span>
+              <span class="context-graph__node-summary">The Warden is here.</span>
+            </button>
+            <span class="hint">→ 由谁说出 →</span>
+            <button class="context-graph__node" aria-pressed="false">
+              <span class="context-graph__node-title">对话角色</span>
+              <span class="context-graph__node-summary">瞭望员</span>
+            </button>
+          </div>
+          <ol class="source-context__lines" aria-label="原文前后文">
+            <li class="source-context__line"><span class="label">第 26 行 · 瞭望员</span><div class="text-block">Look to the bridge.</div></li>
+            <li class="source-context__line source-context__line--focused" aria-current="true">
+              <span class="label">第 27 行 · 瞭望员 · 原句</span><div class="text-block">The Warden is here.</div>
+            </li>
+            <li class="source-context__line"><span class="label">第 28 行 · 舵手</span><div class="text-block">I'll tell the captain.</div></li>
+          </ol>
+        </div>
+
+      </div>
+
+      <div class="note">
+        <b>模板边界</b>
+        这里只有结构与样式，没有业务逻辑。按钮可见性由后端的 <code>next_actions</code> 推导，不按任务状态硬编码；错误一律「中文话术 + 小字机器码」；新增组件必须同步补进上面的组件索引。
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

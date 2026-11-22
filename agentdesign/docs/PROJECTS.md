@@ -1,6 +1,6 @@
 # 项目后端 · 导入、建图、记忆与交付
 
-这组接口与原有 Naev 工作台共用 SQLite、任务服务和 Pi Reviewer。每个项目有自己的语言方向、源版本、图快照和批准记忆。本轮交付为 API，现有浏览器页面继续走原有入口。启动后可在本机 `/docs` 试用。大部分写操作需要 `Idempotency-Key`，同一操作重试时复用原键。
+这组接口与 Naev 示范区共用 SQLite、任务服务和 Pi Reviewer。每个项目有自己的语言方向、源版本、图快照和批准记忆。浏览器工作台从 `/` 进入，API 可在本机 `/docs` 试用。大部分写操作需要 `Idempotency-Key`，同一操作重试时复用原键。
 
 在新工作目录中运行 `.venv/bin/python run_api.py --projects-only` 可从空项目库启动。加 `--offline` 使用离线回执。默认启动方式仍加载 Naev 冻结快照，同时可创建其他项目。
 

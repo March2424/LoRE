@@ -122,11 +122,47 @@ class FeedbackLoop:
             current = active(repo)
             if candidate_id is None:
                 return {"active": current, "candidates": [json.loads(row[0]) for row in repo.db.execute(
-                    "SELECT data FROM p5_candidates ORDER BY rowid DESC")]}
+                    "SELECT data FROM p5_candidates ORDER BY rowid DESC")],
+                        "releases": [json.loads(row[0]) for row in repo.db.execute(
+                            "SELECT data FROM p5_releases ORDER BY seq DESC")] + [
+                            {"release_id": "baseline", "parent": None, "components": versions(DEFAULT), "spec": DEFAULT}]}
             candidate = self._read(repo, "p5_candidates", candidate_id)
             reports = [json.loads(row[0]) for row in repo.db.execute(
                 "SELECT data FROM p5_replays WHERE candidate=? ORDER BY rowid", (candidate_id,))]
-            return {"active": current, "candidate": candidate, "replays": reports}
+            return {"active": current, "candidate": candidate, "replays": reports,
+                    "publication_checks": self.publication_checks(repo, candidate, current, reports)}
+
+    def _feedback_for(self, repo, candidate):
+        return [self._read(repo, "p5_feedback", key) for key in candidate["feedback_ids"]]
+
+    def _overlaps_feedback(self, job, item, feedback):
+        filename = self.workbench.resource(job, item)["file"]
+        return any(row["occurrence_id"] == item or (filename and row["file"] == filename) or
+                   (job.get("source_kind") == row.get("source_kind") == "text" and
+                    job["snapshots"]["source_sha256"] == row["snapshots"]["source_sha256"]) for row in feedback)
+
+    def replay_cases(self, candidate_id, dataset, job_id):
+        with closing(self.workbench.open()) as repo:
+            candidate = self._read(repo, "p5_candidates", candidate_id)
+            feedback = self._feedback_for(repo, candidate)
+            if dataset == "feedback":
+                refs = {(row["job_id"], row["step"], row["occurrence_id"]) for row in feedback}
+            else:
+                if not job_id:
+                    raise JobError(422, "job_required_for_validation_cases")
+                job = repo.get(job_id)
+                refs = {(job_id, row["step"], row["occurrence_id"]) for row in repo.items(job_id)
+                        if not self._overlaps_feedback(job, row["occurrence_id"], feedback)}
+            cases = []
+            for identity, step, item in sorted(refs):
+                ref = {"job_id": identity, "step": step, "occurrence_id": item}
+                try:
+                    case = self._case(repo, ref)
+                except JobError:
+                    continue
+                cases.append({**ref, "source": case["item"]["source"],
+                              "file": self.workbench.resource(case["job"], item)["file"]})
+            return {"cases": cases}
 
     def _case(self, repo, ref):
         job = repo.get(ref["job_id"])
@@ -324,24 +360,18 @@ class FeedbackLoop:
             raise JobError(422, "live_strategy_requires_live_workspace")
         with closing(self.workbench.open()) as repo:
             candidate = self._read(repo, "p5_candidates", candidate_id)
-            feedback = [self._read(repo, "p5_feedback", key) for key in candidate["feedback_ids"]]
+            feedback = self._feedback_for(repo, candidate)
             observed = {(row["job_id"], row["step"], row["occurrence_id"]) for row in feedback}
-            training_ids = {row["occurrence_id"] for row in feedback}
-            training_files = {row["file"] for row in feedback if row["file"]}
-            training_text = {row["snapshots"]["source_sha256"] for row in feedback if row.get("source_kind") == "text"}
             for ref in refs:
                 identity = (ref["job_id"], ref["step"], ref["occurrence_id"])
                 if dataset == "feedback" and identity not in observed:
                     raise JobError(422, "feedback_case_must_be_linked")
-                if dataset == "validation":
-                    file = self.workbench.resources.get(ref["occurrence_id"], {}).get("file")
-                    job = repo.get(ref["job_id"])
-                    if (ref["occurrence_id"] in training_ids or file in training_files
-                            or job.get("source_kind") == "text" and job["snapshots"]["source_sha256"] in training_text):
-                        raise JobError(422, "held_out_case_overlaps_feedback")
             if len({(r["job_id"], r["step"], r["occurrence_id"]) for r in refs}) != len(refs):
                 raise JobError(422, "duplicate_replay_case")
             cases = [self._case(repo, ref) for ref in refs]
+            if dataset == "validation" and any(self._overlaps_feedback(
+                    case["job"], case["item"]["occurrence_id"], feedback) for case in cases):
+                raise JobError(422, "held_out_case_overlaps_feedback")
             memory_id = candidate["spec"]["memory_plan_id"]
             memory_plan = Maintenance._load(repo, memory_id) if memory_id and (
                 memory_id != candidate["base"]["spec"]["memory_plan_id"]) else None
@@ -401,6 +431,34 @@ class FeedbackLoop:
         repo.db.execute("INSERT INTO p5_releases(id,data) VALUES (?,?)", (release["release_id"], encode(release)))
         return release
 
+    @staticmethod
+    def publication_checks(repo, candidate, current, reports):
+        latest = {(report["mode"], report["dataset"], report["live"]): report for report in reports}
+        datasets = ("feedback", "validation")
+        base, spec = candidate["base"]["spec"], candidate["spec"]
+        checks = {
+            "policy_base_changed": candidate["base"]["release_id"] == current["release_id"],
+            "record_replay_and_held_out_validation_required": all(
+                latest.get(("record", dataset, False), {}).get("passed") for dataset in datasets),
+        }
+        retrieval_changed = any(base[field] != spec[field] for field in ("aliases", "lookup_results", "skill_issues"))
+        prompts_changed = base["prompts"] != spec["prompts"]
+        memory_changed = base["memory_plan_id"] != spec["memory_plan_id"]
+        if retrieval_changed or prompts_changed or memory_changed:
+            trials = [latest.get(("strategy", dataset, prompts_changed), {}) for dataset in datasets]
+            checks["strategy_replay_and_held_out_validation_required"] = all(t.get("passed") for t in trials)
+            if prompts_changed:
+                checks["prompt_replay_needs_expected_verdicts"] = all(
+                    any(row.get("expected_verdict") for row in trial.get("rows", [])) for trial in trials)
+            if retrieval_changed:
+                checks["retrieval_change_needs_observed_evidence_improvement"] = any(
+                    bool(trial.get("evidence_gaps_resolved")) for trial in trials)
+        if memory_changed and spec["memory_plan_id"]:
+            plan = Maintenance._load(repo, spec["memory_plan_id"])
+            checks["memory_plan_requires_current_p4_approval"] = plan["status"] == "applied" and any(
+                row["memory_ref"] == plan["rule"]["memory_ref"] for row in latest_rules(repo))
+        return checks
+
     def decide(self, candidate_id, decision, reason, key):
         with closing(self.workbench.open()) as repo, repo.transaction():
             scope = "p5-candidate:" + candidate_id
@@ -413,35 +471,12 @@ class FeedbackLoop:
             if candidate.get("decision"):
                 raise JobError(409, "candidate_already_decided")
             if decision == "publish":
-                if candidate["base"]["release_id"] != current["release_id"]:
-                    raise JobError(409, "policy_base_changed")
                 reports = [json.loads(row[0]) for row in repo.db.execute(
                     "SELECT data FROM p5_replays WHERE candidate=? ORDER BY rowid", (candidate_id,))]
-                latest = {(report["mode"], report["dataset"], report["live"]): report for report in reports}
-                for dataset in ("feedback", "validation"):
-                    if not latest.get(("record", dataset, False), {}).get("passed"):
-                        raise JobError(409, "record_replay_and_held_out_validation_required")
-                base, spec = candidate["base"]["spec"], candidate["spec"]
-                changed_strategy = any(base[field] != spec[field] for field in (
-                    "aliases", "lookup_results", "skill_issues", "memory_plan_id", "prompts"))
-                if changed_strategy:
-                    trials = [latest.get(("strategy", dataset, base["prompts"] != spec["prompts"]))
-                              for dataset in ("feedback", "validation")]
-                    if any(not trial or not trial["passed"] for trial in trials):
-                        raise JobError(409, "strategy_replay_and_held_out_validation_required")
-                    if base["prompts"] != spec["prompts"] and any(
-                            not any(row.get("expected_verdict") for row in trial["rows"]) for trial in trials):
-                        raise JobError(409, "prompt_replay_needs_expected_verdicts")
-                    if (base["aliases"] != spec["aliases"] or base["lookup_results"] != spec["lookup_results"]
-                            or base["skill_issues"] != spec["skill_issues"]) and not any(
-                            trial["evidence_gaps_resolved"] for trial in trials):
-                        raise JobError(409, "retrieval_change_needs_observed_evidence_improvement")
-                if spec["memory_plan_id"] and spec["memory_plan_id"] != base["memory_plan_id"]:
-                    plan = Maintenance._load(repo, spec["memory_plan_id"])
-                    if plan["status"] != "applied" or not any(
-                            row["memory_ref"] == plan["rule"]["memory_ref"] for row in latest_rules(repo)):
-                        raise JobError(409, "memory_plan_requires_current_p4_approval")
-                current = self._append_release(repo, spec, current["release_id"], candidate_id, reason)
+                for failed, passed in self.publication_checks(repo, candidate, current, reports).items():
+                    if not passed:
+                        raise JobError(409, failed)
+                current = self._append_release(repo, candidate["spec"], current["release_id"], candidate_id, reason)
             result = {"candidate_id": candidate_id, "decision": decision, "reason": reason,
                       "release_id": current["release_id"]}
             candidate["decision"] = result

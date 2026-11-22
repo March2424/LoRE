@@ -4,7 +4,7 @@
 import argparse
 import asyncio
 from contextlib import asynccontextmanager, closing
-import fcntl
+import os
 from pathlib import Path
 from threading import Event, Thread
 from typing import Annotated, Literal
@@ -156,14 +156,26 @@ class PolicyRollback(Input):
     reason: Text
 
 
+def lock_worker(lease):
+    if os.name == "nt":
+        import msvcrt
+
+        lease.seek(0)
+        msvcrt.locking(lease.fileno(), msvcrt.LK_NBLCK, 1)
+    else:
+        import fcntl
+
+        fcntl.flock(lease, fcntl.LOCK_EX | fcntl.LOCK_NB)
+
+
 def create_app(data_dir: Path, source_db: Path = DEFAULT_DB, *, offline=False, projects_only=False):
     @asynccontextmanager
     async def lifespan(app):
         data_dir.mkdir(parents=True, exist_ok=True)
         with (data_dir / "worker.lock").open("a") as lease:
             try:
-                fcntl.flock(lease, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            except BlockingIOError as error:
+                lock_worker(lease)
+            except OSError as error:
                 raise RuntimeError("This workspace is already served by another worker") from error
             service = Workbench(data_dir, source_db, offline=offline, projects_only=projects_only)
             service.initialize()
@@ -177,7 +189,7 @@ def create_app(data_dir: Path, source_db: Path = DEFAULT_DB, *, offline=False, p
                 stop.set()
                 await asyncio.to_thread(thread.join)
 
-    app = FastAPI(title="Naev localization workbench", version="0.2.0", lifespan=lifespan)
+    app = FastAPI(title="LoRE localization workbench", version="0.2.0", lifespan=lifespan)
 
     def service():
         return app.state.workbench
@@ -219,6 +231,10 @@ def create_app(data_dir: Path, source_db: Path = DEFAULT_DB, *, offline=False, p
     def maintenance_detail(plan_id: str):
         return service().maintenance.detail(plan_id)
 
+    @app.get("/maintenance")
+    def maintenance_plans():
+        return service().maintenance.plans()
+
     @app.post("/maintenance/{plan_id}/apply", status_code=202)
     def apply_maintenance(plan_id: str, key: Key):
         return service().maintenance.apply(plan_id, key)
@@ -247,6 +263,10 @@ def create_app(data_dir: Path, source_db: Path = DEFAULT_DB, *, offline=False, p
     def policy_candidate_status(candidate_id: str):
         return service().feedback.status(candidate_id)
 
+    @app.get("/policy/candidates/{candidate_id}/cases")
+    def policy_replay_cases(candidate_id: str, dataset: Literal["feedback", "validation"], job_id: str | None = None):
+        return service().feedback.replay_cases(candidate_id, dataset, job_id)
+
     @app.post("/policy/candidates/{candidate_id}/replay", status_code=201)
     def policy_replay(candidate_id: str, body: Replay):
         return service().feedback.replay(candidate_id, body.model_dump(exclude_none=True))
@@ -269,6 +289,49 @@ def create_app(data_dir: Path, source_db: Path = DEFAULT_DB, *, offline=False, p
         if not path.is_file():
             raise JobError(503, "build_web_with_npm_prefix_web_run_build")
         return FileResponse(path, media_type="text/javascript")
+
+    @app.get("/workbench.css", include_in_schema=False)
+    def web_styles():
+        return FileResponse(HERE / "web/design/ui.css", media_type="text/css")
+
+    @app.get("/workbench-bundle.css", include_in_schema=False)
+    def web_bundle_styles():
+        path = HERE / "web/dist/app.css"
+        if not path.is_file():
+            raise JobError(503, "build_web_with_npm_prefix_web_run_build")
+        return FileResponse(path, media_type="text/css")
+
+    @app.get("/workspace")
+    def workspace():
+        return {"offline": offline, "naev": not projects_only, "naev_snapshot": service().snapshot}
+
+    @app.get("/jobs")
+    def list_jobs(project: str | None = None, offset: Annotated[int, Query(ge=0)] = 0,
+                  limit: Annotated[int, Query(ge=1, le=100)] = 30):
+        return service().list_jobs(project, offset, limit)
+
+    @app.get("/job-events")
+    async def job_events(request: Request):
+        def revision():
+            with closing(service().open()) as repo:
+                return repo.db.execute("SELECT COALESCE(MAX(seq),0) FROM p2_events WHERE public=1").fetchone()[0]
+
+        async def stream():
+            previous = None
+            idle = 0
+            while not await request.is_disconnected():
+                current = await asyncio.to_thread(revision)
+                if current != previous:
+                    previous = current
+                    yield f"data: {current}\n\n"
+                    idle = 0
+                elif idle == 0:
+                    yield ": keep-alive\n\n"
+                idle = (idle + 1) % 20
+                await asyncio.sleep(0.5)
+
+        return StreamingResponse(stream(), media_type="text/event-stream",
+                                 headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
 
     @app.post("/po-uploads", status_code=201)
     async def upload_po(request: Request, filename: Annotated[str, Query(min_length=1, max_length=255)]):
@@ -362,10 +425,20 @@ def create_app(data_dir: Path, source_db: Path = DEFAULT_DB, *, offline=False, p
     def evidence(job_id: str, step: int, occurrence_id: str):
         return service().item_evidence(job_id, step, occurrence_id)
 
+    @app.get("/jobs/{job_id}/items/{step}/{occurrence_id}/evidence/context")
+    def source_context(job_id: str, step: int, occurrence_id: str,
+                       source_id: Annotated[str, Query(min_length=1, max_length=512)],
+                       source_version: Annotated[int, Query(ge=1)]):
+        return service().source_context(job_id, step, occurrence_id, source_id, source_version)
+
     @app.post("/jobs/{job_id}/versions/{occurrence_id}/{action}")
     def version_action(job_id: str, occurrence_id: str, action: Literal["lock", "unlock", "rollback"],
                        body: VersionAction, key: Key):
         return receipt(service().version_action(job_id, occurrence_id, action, body.model_dump(), key))
+
+    @app.get("/jobs/{job_id}/versions/{occurrence_id}")
+    def version_history(job_id: str, occurrence_id: str):
+        return service().version_history(job_id, occurrence_id)
 
     @app.get("/jobs/{job_id}/files/{name}")
     def file(job_id: str, name: Literal["report.json", "export.json"]):

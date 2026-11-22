@@ -21,7 +21,7 @@ from run_p0 import PI
 from .job_models import JobModels
 from .job_store import JobError, encode
 from .models import ModelFailure, Responses, SELECTION_SCHEMA
-from .project_files import parse, project_po, render_project_po, render_table
+from .project_files import parse, po_source_forms, po_writeback_exclusions, project_po, render_project_po, render_table
 
 ROLES = {"extractor", "selector", "translator", "reviewer", "repairer", "intent"}
 
@@ -210,14 +210,95 @@ class Projects:
         return {row["occurrence_id"]: row for (data,) in result for row in (json.loads(data),)}
 
     @staticmethod
-    def resource(repo, project, item, version):
+    def _resource_row(repo, project, item, version, *, import_ids=None, revision=None):
+        imports = encode(import_ids) if import_ids is not None else None
         row = repo.db.execute("""
-            SELECT r.data FROM p6_resources r JOIN p6_imports i ON i.id=r.import_id
-            WHERE i.project=? AND r.occurrence=? AND r.version=? ORDER BY r.rowid DESC LIMIT 1
-            """, (project, item, version)).fetchone()
+            SELECT r.data, r.import_id, r.rowid FROM p6_resources r JOIN p6_imports i ON i.id=r.import_id
+            WHERE i.project=? AND r.occurrence=? AND r.version=?
+              AND (? IS NULL OR r.import_id IN (SELECT value FROM json_each(?)))
+              AND (? IS NULL OR json_extract(i.data, '$.project_revision') <= ?)
+            ORDER BY r.rowid DESC LIMIT 1
+            """, (project, item, version, imports, imports, revision, revision)).fetchone()
         if row is None:
             raise JobError(404, "resource_not_found")
-        return json.loads(row[0])
+        return row
+
+    def resource(self, repo, project, item, version, *, import_ids=None, revision=None):
+        row = self._resource_row(repo, project, item, version, import_ids=import_ids, revision=revision)
+        return json.loads(row["data"])
+
+    def source_window(self, repo, project, item, version, *, import_ids=None, revision=None):
+        anchor = self._resource_row(repo, project, item, version, import_ids=import_ids, revision=revision)
+        position = (anchor["import_id"], anchor["rowid"])
+        before = repo.db.execute("""
+            SELECT data FROM p6_resources WHERE import_id=? AND rowid<? ORDER BY rowid DESC LIMIT 2
+            """, position).fetchall()
+        after = repo.db.execute("""
+            SELECT data FROM p6_resources WHERE import_id=? AND rowid>? ORDER BY rowid LIMIT 2
+            """, position).fetchall()
+        return [json.loads(row["data"]) for row in (*reversed(before), anchor, *after)]
+
+    @staticmethod
+    def _current_file_reviews(repo, project, filename=None):
+        matches = repo.db.execute("""
+            SELECT f.filename, r.occurrence, r.version, r.data AS resource, t.job, t.step
+            FROM p2_jobs j JOIN p2_items t ON t.job=j.id
+            JOIN p6_files f ON f.project=json_extract(j.data, '$.project_id')
+            JOIN p6_resources r ON r.import_id=f.import_id AND r.occurrence=t.item
+            LEFT JOIN p2_heads h ON h.item=r.occurrence
+            WHERE f.project=? AND (? IS NULL OR f.filename=?) AND j.status='awaiting_review'
+              AND t.step=json_extract(j.data, '$.cursor') AND json_extract(t.data, '$.status')='needs_human'
+              AND r.version=json_extract(t.data, '$.source_version')
+              AND COALESCE(h.locked, 0)=0 AND COALESCE(h.version, 0)=json_extract(t.data, '$.expected_version')
+              AND (json_extract(j.data, '$.steps[' || t.step || '].intent')='review'
+                   OR (json_extract(j.data, '$.project_revision')=? AND json_extract(j.data, '$.knowledge_epoch')=?))
+            ORDER BY f.filename, r.rowid, j.rowid DESC
+            """, (project["project_id"], filename, filename, project["revision"], project["knowledge_epoch"]))
+        # A source entry can be nominated by multiple jobs. Keep the newest actionable task.
+        items = {}
+        for row in matches:
+            items.setdefault(row["occurrence"], row)
+        return items.values()
+
+    def file_review(self, project_id, filename, offset, limit, job_id=None):
+        with closing(self.workbench.open()) as repo:
+            repo.db.execute("BEGIN")
+            project = self.get(repo, project_id)
+            if not repo.db.execute("SELECT 1 FROM p6_files WHERE project=? AND filename=?", (project_id, filename)).fetchone():
+                raise JobError(404, "source_file_not_found")
+            entries = [row for row in self._current_file_reviews(repo, project, filename)
+                       if job_id is None or row["job"] == job_id]
+            items = []
+            for entry in entries[offset:offset + limit]:
+                resource = json.loads(entry["resource"])
+                items.append({"job_id": entry["job"], "step": entry["step"], "occurrence_id": entry["occurrence"],
+                              "source_version": entry["version"], "source": resource["label"], "location": resource["location"]})
+            return {"project_revision": project["revision"], "total": len(entries), "items": items}
+
+    def file_progress(self, project_id):
+        with closing(self.workbench.open()) as repo:
+            repo.db.execute("BEGIN")
+            project = self.get(repo, project_id)
+            pending = {}
+            for row in self._current_file_reviews(repo, project):
+                pending.setdefault(row["filename"], set()).add(row["occurrence"])
+            records = repo.db.execute("""
+                SELECT f.filename, i.id, i.data FROM p6_files f JOIN p6_imports i ON i.id=f.import_id
+                WHERE f.project=? ORDER BY f.filename
+                """, (project_id,)).fetchall()
+            files = []
+            for record in records:
+                filename, import_id = record["filename"], record["id"]
+                rows = self.resources(repo, project_id, import_id=import_id)
+                targets, _ = self._delivery_targets(repo, import_id, rows.values())
+                deliverable = set(targets)
+                if json.loads(record["data"])["format"] == "po":
+                    deliverable.difference_update(po_writeback_exclusions(po_source_forms(rows.values()), targets, project["target_lang"]))
+                review = pending.get(filename, set())
+                files.append({"filename": filename, "import_id": import_id, "total": len(rows),
+                              "untranslated": len(rows) - len(deliverable | review), "awaiting_review": len(review),
+                              "deliverable": len(deliverable)})
+            return {"project_revision": project["revision"], "files": files}
 
     @staticmethod
     def ready(project):
@@ -535,29 +616,43 @@ class Projects:
                 if term.kind == "term" and is_mandatory(term) and scope_match(term.scope, effective) == "match"
                 and term.content["source"] in source.source and term.content["target"] not in release["target"]]
 
+    def _delivery_targets(self, repo, import_id, rows):
+        heads = {row["item"]: (row["version"], json.loads(row["data"])) for row in repo.db.execute("""
+            SELECT h.item, h.version, v.data FROM p6_resources r JOIN p2_heads h ON h.item=r.occurrence
+            JOIN p2_versions v ON v.item=h.item AND v.version=h.version WHERE r.import_id=?
+            """, (import_id,))}
+        targets, skipped = {}, {}
+        for row in rows:
+            item = row["occurrence_id"]
+            current, release = heads.get(item, (0, None))
+            if not release:
+                skipped[item] = "no_approved_translation"
+            elif release["source_version"] != row["source_version"]:
+                skipped[item] = "export_source_version_mismatch"
+            elif not self.workbench._eligible(repo, item, current):
+                skipped[item] = "translation_validation_stale"
+            else:
+                targets[item] = release["target"]
+        return targets, skipped
+
     def export(self, project_id, import_id):
         with closing(self.workbench.open()) as repo:
+            repo.db.execute("BEGIN")
             self.get(repo, project_id)
             record = repo.db.execute("SELECT * FROM p6_imports WHERE project=? AND id=?", (project_id, import_id)).fetchone()
             if not record:
                 raise JobError(404, "import_not_found")
             rows = list(self.resources(repo, project_id, import_id=import_id).values())
-            targets, skipped = {}, []
-            for row in rows:
-                item = row["occurrence_id"]
-                current, _ = repo.head(item)
-                release = repo.version(item, current)
-                if release and release["source_version"] == row["source_version"] and self.workbench._eligible(repo, item, current):
-                    targets[item] = release["target"]
-                else:
-                    skipped.append(item)
+            targets, skipped = self._delivery_targets(repo, import_id, rows)
             info = json.loads(record["data"])
             validation = None
             if info["format"] == "po":
                 project = self.get(repo, project_id)
                 payload, plural_skipped, validation = render_project_po(record["content"], rows, targets, project["target_lang"])
-                skipped.extend(plural_skipped)
+                skipped.update(plural_skipped)
             else:
                 payload = render_table(record["content"], record["filename"], rows, targets, info["target_column"])
-            return record["filename"], payload, {"translated": len(rows) - len(skipped), "excluded": skipped,
-                                                 "validation": validation}
+            details = [{"occurrence_id": item, "source": row["label"][:180], "location": row["location"],
+                        "reason": skipped[item]} for row in rows for item in (row["occurrence_id"],) if item in skipped]
+            return record["filename"], payload, {"translated": len(rows) - len(skipped), "excluded": list(skipped),
+                                                 "exclusion_details": details, "validation": validation}
