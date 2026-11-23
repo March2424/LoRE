@@ -2,24 +2,28 @@ import { createInterface } from "node:readline";
 import { Agent } from "@earendil-works/pi-agent-core";
 import { AssistantMessageEventStream } from "@earendil-works/pi-ai";
 import { stream as streamResponses } from "@earendil-works/pi-ai/api/openai-responses";
+import { stream as streamCompletions } from "@earendil-works/pi-ai/api/openai-completions";
 
 const input = createInterface({ input: process.stdin, crlfDelay: Infinity });
 const messagesIn = input[Symbol.asyncIterator]();
 const request = JSON.parse((await messagesIn.next()).value);
 const { config, mode, prompt } = request;
 const role = mode === "tools" ? "probe" : ["intent", "source_recheck"].includes(mode) ? "reviewer_source" : "reviewer";
+const useCompletions = config.api_format === "chat_completions";
 const model = {
   id: config.model,
   name: config.model,
-  api: "openai-responses",
-  provider: "tokendance",
+  api: useCompletions ? "openai-completions" : "openai-responses",
+  provider: useCompletions ? "openai-compatible" : "tokendance",
   baseUrl: config.base_url,
   input: ["text"],
   reasoning: false,
   contextWindow: 32768,
-  maxTokens: config.max_output_tokens[role],
+  maxTokens: config.max_output_tokens[role] ?? 2048,
   cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
-  compat: { supportsDeveloperRole: false },
+  compat: useCompletions
+    ? { supportsDeveloperRole: false, supportsStore: false, maxTokensField: "max_tokens" }
+    : { supportsDeveloperRole: false },
 };
 
 const calls = [];
@@ -104,12 +108,21 @@ function offlineStream() {
   return output;
 }
 
+function resolvedApiKey() {
+  if (config.api_key) return config.api_key;
+  if ("api_key_env" in config) {
+    return config.api_key_env ? process.env[config.api_key_env] : "local";
+  }
+  return process.env.DEEPSEEK_API_KEY;
+}
+
 function liveStream(resolved, context, options) {
-  const call = { transport: "responses_sse", events: {} };
+  const call = { transport: useCompletions ? "completions_sse" : "responses_sse", events: {} };
   calls.push(call);
-  return streamResponses(resolved, context, {
+  const streamFn = useCompletions ? streamCompletions : streamResponses;
+  return streamFn(resolved, context, {
     ...options,
-    apiKey: config.api_key_env === null ? "local" : process.env[config.api_key_env ?? "DEEPSEEK_API_KEY"],
+    apiKey: resolvedApiKey(),
     cacheRetention: "none",
     maxRetries: 0,
     maxTokens: model.maxTokens,
@@ -117,13 +130,25 @@ function liveStream(resolved, context, options) {
     toolChoice: mode === "source_review" && calls.length > 1 ? "none"
       : mode === "tools" && calls.length === 1 ? "required" : "auto",
     onPayload: (payload) => {
-      const next = { ...payload, store: false };
-      if (["intent", "source_recheck"].includes(mode)) next.reasoning = { effort: "low" };
-      if (request.schema) {
-        next.text = { format: { type: "json_schema", name: mode === "intent" ? "job_intent" : "localization_review",
-          strict: true, schema: request.schema } };
+      const next = useCompletions ? { ...payload } : { ...payload, store: false };
+      if (!useCompletions) {
+        if (config.thinking === "disabled") next.reasoning = { effort: "none" };
+        else if (["intent", "source_recheck"].includes(mode)) next.reasoning = { effort: "low" };
+        if (request.schema) {
+          next.text = { format: { type: "json_schema", name: mode === "intent" ? "job_intent" : "localization_review",
+            strict: true, schema: request.schema } };
+        }
+        call.input_types = next.input.map((item) => item.type ?? item.role);
+      } else {
+        if (config.thinking === "disabled") next.thinking = { type: "disabled" };
+        if (request.schema && (!tools.length || mode !== "tools")) {
+          next.response_format = { type: "json_schema", json_schema: {
+            name: mode === "intent" ? "job_intent" : "localization_review",
+            strict: true, schema: request.schema,
+          } };
+        }
+        call.input_types = next.messages.map((item) => item.role);
       }
-      call.input_types = next.input.map((item) => item.type ?? item.role);
       return next;
     },
     onResponse: ({ status }) => { call.http_status = status; },
@@ -174,6 +199,13 @@ try {
 }
 const messages = agent.state.messages.filter((message) => message.role === "assistant");
 const final = messages.at(-1);
+if (calls.length && final && !calls.at(-1).response_status) {
+  const lastCall = calls.at(-1);
+  lastCall.response_status = final.stopReason === "length" ? "incomplete"
+    : final.stopReason === "error" ? "failed" : "completed";
+  lastCall.usage ??= final.usage;
+  if (final.stopReason === "length") lastCall.error_code ??= "length";
+}
 if (!final || ["error", "aborted", "length"].includes(final.stopReason)) {
   error ??= final?.errorMessage?.replace(/sk-[a-zA-Z0-9_-]+/g, "[redacted]").slice(0, 400)
     ?? final?.stopReason ?? "missing_assistant_response";

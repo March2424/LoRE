@@ -156,6 +156,10 @@ class PolicyRollback(Input):
     reason: Text
 
 
+class AskOccurrence(Input):
+    question: Text
+
+
 def lock_worker(lease):
     if os.name == "nt":
         import msvcrt
@@ -211,13 +215,27 @@ def create_app(data_dir: Path, source_db: Path = DEFAULT_DB, *, offline=False, p
         return JSONResponse(receipt({
             "status": "error", "reason": "invalid_request", "job_id": request.path_params.get("job_id"),
             "fields": [list(item["loc"]) for item in error.errors()],
+            "details": [{"field": ".".join(str(x) for x in item["loc"]), "type": item["type"], "msg": item["msg"]}
+                        for item in error.errors()],
         }), status_code=422)
 
     @app.get("/resources")
-    def resources(file: str | None = None, branch_id: str | None = None):
-        return {"project": "naev", "resources": list(scope_resources(
-            service().catalog, {"file": file, "branch_id": branch_id},
-        ).values())}
+    def resources(file: str | None = None, branch_id: str | None = None,
+                  status: Literal["all", "translated", "untranslated", "awaiting_review"] = "all"):
+        rows = list(scope_resources(service().catalog, {"file": file, "branch_id": branch_id}).values())
+        with closing(service().open()) as repo:
+            enriched, counts = service().enrich_resources(repo, rows)
+        if status != "all":
+            enriched = [row for row in enriched if row["translation_status"] == status]
+        return {"project": "naev", "counts": counts, "resources": enriched}
+
+    @app.get("/occurrences/{project_id}/{occurrence_id:path}/inspect")
+    def inspect_occurrence(project_id: str, occurrence_id: str):
+        return service().inspect_occurrence(project_id, occurrence_id)
+
+    @app.post("/occurrences/{project_id}/{occurrence_id:path}/ask")
+    def ask_occurrence(project_id: str, occurrence_id: str, body: AskOccurrence):
+        return service().ask_occurrence(project_id, occurrence_id, body.question)
 
     @app.get("/glossary")
     def glossary():
@@ -279,36 +297,61 @@ def create_app(data_dir: Path, source_db: Path = DEFAULT_DB, *, offline=False, p
     def policy_rollback(release_id: str, body: PolicyRollback, key: Key):
         return service().feedback.rollback(release_id, body.reason, key)
 
+    no_cache = {"Cache-Control": "no-store"}
+
     @app.get("/", include_in_schema=False)
     def web_home():
-        return FileResponse(HERE / "web/index.html")
+        return FileResponse(HERE / "web/index.html", headers=no_cache)
 
     @app.get("/workbench.js", include_in_schema=False)
     def web_bundle():
         path = HERE / "web/dist/app.js"
         if not path.is_file():
             raise JobError(503, "build_web_with_npm_prefix_web_run_build")
-        return FileResponse(path, media_type="text/javascript")
+        return FileResponse(path, media_type="text/javascript", headers=no_cache)
 
     @app.get("/workbench.css", include_in_schema=False)
     def web_styles():
-        return FileResponse(HERE / "web/design/ui.css", media_type="text/css")
+        return FileResponse(HERE / "web/design/ui.css", media_type="text/css", headers=no_cache)
 
     @app.get("/workbench-bundle.css", include_in_schema=False)
     def web_bundle_styles():
         path = HERE / "web/dist/app.css"
         if not path.is_file():
             raise JobError(503, "build_web_with_npm_prefix_web_run_build")
-        return FileResponse(path, media_type="text/css")
+        return FileResponse(path, media_type="text/css", headers=no_cache)
+
+    @app.get("/assets/{filename:path}", include_in_schema=False)
+    def web_assets(filename: str):
+        assets_dir = (HERE / "web/assets").resolve()
+        candidate = (assets_dir / filename).resolve()
+        if candidate == assets_dir or assets_dir not in candidate.parents or not candidate.is_file():
+            raise JobError(404, "asset_not_found")
+        return FileResponse(candidate, headers={"Cache-Control": "public, max-age=86400"})
 
     @app.get("/workspace")
     def workspace():
-        return {"offline": offline, "naev": not projects_only, "naev_snapshot": service().snapshot}
+        with closing(service().open()) as repo:
+            default_models = service().projects.workspace_model_bindings(repo)
+        return {
+            "offline": offline,
+            "naev": not projects_only,
+            "naev_snapshot": service().snapshot,
+            "capabilities": {"direct_api_key": True, "partial_graph_build": True},
+            "default_models": default_models,
+            "default_model_config": {
+                "model": service().config["model"],
+                "base_url": service().config["base_url"],
+                "api_key_env": "DEEPSEEK_API_KEY",
+                "credential_configured": bool(os.environ.get("DEEPSEEK_API_KEY")),
+            },
+        }
 
     @app.get("/jobs")
-    def list_jobs(project: str | None = None, offset: Annotated[int, Query(ge=0)] = 0,
+    def list_jobs(project: str | None = None, kind: str | None = None, intent: str | None = None,
+                  status: str | None = None, offset: Annotated[int, Query(ge=0)] = 0,
                   limit: Annotated[int, Query(ge=1, le=100)] = 30):
-        return service().list_jobs(project, offset, limit)
+        return service().list_jobs(project, offset, limit, kind=kind, intent=intent, status=status)
 
     @app.get("/job-events")
     async def job_events(request: Request):

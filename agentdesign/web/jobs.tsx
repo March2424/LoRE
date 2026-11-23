@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ApiError, type Evidence, type FileReviewItem, type FileReviewPage, type FileReviewScope, type Item, type Job, type JobPage, type Language, type Project, type Selection,
   download, intents, json, language, locationText, params, post, reasonText, stored, terminal, useQuery } from "./api";
 import { Button, Empty, ErrorNote, Field, Grid, Head, Modal, Pager, Section, Status, label, tone, useAction } from "./ui";
 import { ContextGraph, evidenceCitation, type SourcePreview } from "./context-graph";
 
 export type Composer = "command" | "selection" | "text";
-export function Compose({ mode, scope, project, selection, close, openJob }: {
-  mode: Composer; scope: string; project?: Project; selection: Selection; close: () => void; openJob: (id: string) => void;
+export function Compose({ mode, scope, project, selection, initialOperation, close, openJob }: {
+  mode: Composer; scope: string; project?: Project; selection: Selection; initialOperation?: string;
+  close: () => void; openJob: (id: string) => void;
 }) {
   const [requirements, setRequirements] = useState("");
-  const [operation, setOperation] = useState("translate,export");
+  const [operation, setOperation] = useState(initialOperation || "translate,export");
   const [drafts, setDrafts] = useState<Record<string, string>>({});
   const action = useAction();
   return <Modal title={{ command: "下达任务", selection: "发起资源任务", text: "文本快译" }[mode]} close={close}>
@@ -59,32 +60,140 @@ export function Compose({ mode, scope, project, selection, close, openJob }: {
   </Modal>;
 }
 
-export function JobList({ scope, refresh, openJob, compose }: {
-  scope?: string; refresh: number; openJob: (id: string) => void; compose: (mode: Composer) => void;
+const kindLabels: Record<string, string> = {
+  project: "项目资源任务", graph_build: "知识图谱构建", text: "文本快译", naev: "Naev 示范区",
+};
+const statusGroupMap: Record<string, Set<string>> = {
+  active: new Set(["queued", "running", "awaiting_input", "awaiting_review", "paused"]),
+  completed: new Set(["completed", "partial"]),
+  failed: new Set(["failed", "cancelled"]),
+};
+
+export function JobList({ scope, refresh, openJob, onBack, openChat }: {
+  scope?: string; refresh: number; openJob: (id: string) => void; onBack?: () => void; openChat?: () => void;
 }) {
-  const [view, setView] = useState("project");
+  const [scopeTab, setScopeTab] = useState<"project" | "all">("project");
+  const [kindFilter, setKindFilter] = useState("all");
+  const [intentFilter, setIntentFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState("all");
   const [offset, setOffset] = useState(0);
   const size = 30;
-  const query = useQuery<JobPage>(`/jobs?${params({ project: view === "text" ? "text" : scope, offset, limit: size })}`, refresh);
+  const query = useQuery<JobPage>(`/jobs?${params({
+    project: scopeTab === "all" ? undefined : scope,
+    kind: kindFilter === "all" ? undefined : kindFilter,
+    intent: intentFilter === "all" ? undefined : intentFilter,
+    status: statusFilter === "all" ? undefined : statusFilter,
+    offset, limit: size,
+  })}`, refresh);
+
+  const rawJobs = query.data?.jobs ?? [];
+  const jobIntents = (j: JobPage["jobs"][number]) =>
+    j.source_kind === "graph_build" ? ["build_graph"] : (j.intents.length ? j.intents : j.source_kind === "text" ? ["translate"] : []);
+
+  // Client-side fallback filtering in case backend server hasn't restarted yet
+  const visibleJobs = query.data?.summary ? rawJobs : rawJobs.filter(j => {
+    if (kindFilter !== "all" && j.source_kind !== kindFilter) return false;
+    if (intentFilter !== "all" && !jobIntents(j).includes(intentFilter)) return false;
+    if (statusFilter !== "all") {
+      const group = statusGroupMap[statusFilter];
+      if (group ? !group.has(j.status) : j.status !== statusFilter) return false;
+    }
+    return true;
+  });
+
+  const computedSummary = query.data?.summary ?? (() => {
+    const kinds: Record<string, number> = {};
+    const intentCounts: Record<string, number> = {};
+    const statuses: Record<string, number> = { active: 0, completed: 0, failed: 0 };
+    const exact_statuses: Record<string, number> = {};
+    for (const j of rawJobs) {
+      kinds[j.source_kind] = (kinds[j.source_kind] ?? 0) + 1;
+      for (const act of jobIntents(j)) intentCounts[act] = (intentCounts[act] ?? 0) + 1;
+      exact_statuses[j.status] = (exact_statuses[j.status] ?? 0) + 1;
+      for (const [g, set] of Object.entries(statusGroupMap)) if (set.has(j.status)) statuses[g] += 1;
+    }
+    return { kinds, intents: intentCounts, statuses, exact_statuses };
+  })();
+
+  const totalKinds = Object.values(computedSummary.kinds).reduce((a, b) => a + b, 0);
+  const totalDisplay = query.data?.summary ? (query.data.total ?? 0) : visibleJobs.length;
+  const hasFilters = kindFilter !== "all" || intentFilter !== "all" || statusFilter !== "all";
   return <>
-    <Head title="任务" sub="建图、翻译与人工复核记录"><Button primary onClick={() => compose("text")}>文本快译</Button></Head>
-    <div className="row-set">
-      <Button small ghost aria-pressed={view === "project"} onClick={() => { setView("project"); setOffset(0); }}>{scope ? "项目任务" : "全部任务"}</Button>
-      <Button small ghost aria-pressed={view === "text"} onClick={() => { setView("text"); setOffset(0); }}>文本快译</Button>
+    <Head title="任务中心" sub="按任务种类、意图与执行状态分类筛选与管理全部任务">
+      {onBack && <Button ghost onClick={onBack}>← 返回上一页</Button>}
+      {openChat && <Button primary onClick={openChat}>前往 Agent 对话</Button>}
+    </Head>
+
+    <div className="panel stack">
+      <div className="row-set">
+        <span className="micro">范围</span>
+        <Button small ghost={scopeTab !== "project"} primary={scopeTab === "project"}
+          onClick={() => { setScopeTab("project"); setOffset(0); }}>{scope ? "当前项目" : "默认范围"}</Button>
+        <Button small ghost={scopeTab !== "all"} primary={scopeTab === "all"}
+          onClick={() => { setScopeTab("all"); setOffset(0); }}>全部工作区任务</Button>
+        {hasFilters && <><span className="sp" /><Button small ghost onClick={() => {
+          setKindFilter("all"); setIntentFilter("all"); setStatusFilter("all"); setOffset(0);
+        }}>重置筛选</Button></>}
+      </div>
+
+      <div className="row-set">
+        <span className="micro">任务种类</span>
+        <Button small ghost={kindFilter !== "all"} primary={kindFilter === "all"}
+          onClick={() => { setKindFilter("all"); setOffset(0); }}>全部种类 ({totalKinds})</Button>
+        {(["project", "graph_build", "text", "naev"] as const).map(k => {
+          const n = computedSummary.kinds[k] ?? 0;
+          if (!n && kindFilter !== k) return null;
+          return <Button key={k} small ghost={kindFilter !== k} primary={kindFilter === k}
+            onClick={() => { setKindFilter(k); setOffset(0); }}>{kindLabels[k]} ({n})</Button>;
+        })}
+      </div>
+
+      <div className="row-set">
+        <span className="micro">意图动作</span>
+        <Button small ghost={intentFilter !== "all"} primary={intentFilter === "all"}
+          onClick={() => { setIntentFilter("all"); setOffset(0); }}>全部动作</Button>
+        {(["translate", "review", "export", "explain", "propose_update", "build_graph"] as const).map(act => {
+          const n = computedSummary.intents[act] ?? 0;
+          return <Button key={act} small ghost={intentFilter !== act} primary={intentFilter === act}
+            onClick={() => { setIntentFilter(act); setOffset(0); }}>{intents[act] ?? act} ({n})</Button>;
+        })}
+      </div>
+
+      <div className="row-set">
+        <span className="micro">执行状态</span>
+        {([
+          ["all", "全部状态"],
+          ["active", `进行中 (${computedSummary.statuses.active ?? 0})`],
+          ["awaiting_review", `待复核 (${computedSummary.exact_statuses?.awaiting_review ?? 0})`],
+          ["awaiting_input", `待补充 (${computedSummary.exact_statuses?.awaiting_input ?? 0})`],
+          ["completed", `已完成/部分 (${computedSummary.statuses.completed ?? 0})`],
+          ["failed", `失败/取消 (${computedSummary.statuses.failed ?? 0})`],
+        ] as const).map(([st, title]) => (
+          <Button key={st} small ghost={statusFilter !== st} primary={statusFilter === st}
+            onClick={() => { setStatusFilter(st); setOffset(0); }}>{title}</Button>
+        ))}
+      </div>
     </div>
+
     <ErrorNote error={query.error} />
-    {query.data?.total === 0 && <Empty title="还没有任务">从资源库发起翻译，或粘贴文本直接翻译。</Empty>}
-    {!!query.data?.jobs.length && <div className="table">
-      <Grid columns="110px minmax(140px, 1fr) 90px 85px" header><span>任务</span><span>内容</span><span>状态</span><span /></Grid>
-      {query.data.jobs.map(job => <Grid key={job.job_id} columns="110px minmax(140px, 1fr) 90px 85px">
+    {query.data && visibleJobs.length === 0 && <Empty title={hasFilters ? "当前分类下暂无任务" : "还没有任务"}>
+      {hasFilters ? "可点击上方「重置筛选」查看其他任务。" : "请在「02 Agent 对话」或「01 工作台」发起翻译或建图任务。"}
+    </Empty>}
+    {!!visibleJobs.length && <div className="table">
+      <Grid columns="105px 135px minmax(160px, 1fr) 150px 95px 90px" header>
+        <span>任务编号</span><span>种类</span><span>内容</span><span>意图 / 动作</span><span>状态</span><span />
+      </Grid>
+      {visibleJobs.map(job => <Grid key={job.job_id} columns="105px 135px minmax(160px, 1fr) 150px 95px 90px">
         <span className="mono">J-{job.job_id.slice(0, 6)}</span>
-        <span className="clip" title={job.title}>{job.title || (job.source_kind === "graph_build" ? "构建图谱" :
-          job.intents.map(intent => intents[intent] ?? intent).join(" → ") || "Agent 指令")}
+        <span className="pill pill--plain clip">{kindLabels[job.source_kind] ?? job.source_kind}</span>
+        <span className="clip" title={job.title}>{job.title || (job.source_kind === "graph_build" ? "构建知识图谱" :
+          job.intents.map(i => intents[i] ?? i).join(" → ") || "Agent 指令")}
           {job.bulk_id && <span className="mono hint"> · 批次 {job.bulk_id.slice(0, 6)}</span>}</span>
+        <span className="hint clip">{jobIntents(job).map(i => intents[i] ?? i).join(" · ") || "待解析"}</span>
         <Status value={job.status} /><Button small ghost onClick={() => openJob(job.job_id)}>打开任务</Button>
       </Grid>)}
     </div>}
-    {!!query.data?.total && <Pager total={query.data.total} offset={offset} size={size} setOffset={setOffset} />}
+    {!!totalDisplay && <Pager total={totalDisplay} offset={offset} size={size} setOffset={setOffset} />}
   </>;
 }
 
@@ -100,7 +209,7 @@ export function FileReviewQueue({ file, refresh, back, openItem }: {
   }, [queue.data, offset]);
   return <>
     <Head title="文件复核队列" sub={<>{file.filename}{queue.data && ` · 源 v${queue.data.project_revision} · ${queue.data.total} 条待复核`}</>}>
-      <Button ghost onClick={back}>返回资源库</Button>
+      <Button ghost onClick={back}>← 返回上一页 / 退出队列</Button>
     </Head>
     <ErrorNote error={queue.error} />
     {!queue.data && !queue.error && <Empty title="正在读取文件复核队列…" />}
@@ -118,7 +227,7 @@ export function FileReviewQueue({ file, refresh, back, openItem }: {
   </>;
 }
 
-function Clarify({ job, changed }: { job: Job; changed: () => void }) {
+export function Clarify({ job, changed }: { job: Job; changed: () => void }) {
   const missing = job.missing;
   const [targets, setTargets] = useState(job.resolved_targets ?? []);
   const [actions, setActions] = useState<string[]>([]);
@@ -167,11 +276,11 @@ function Clarify({ job, changed }: { job: Job; changed: () => void }) {
   </form>;
 }
 
-const reviewLabels: Record<string, string> = {
+export const reviewLabels: Record<string, string> = {
   pass: "通过", repair: "需修复", needs_human: "需人工接手", found: "找到证据", no_match: "未匹配",
   out_of_scope: "范围外", no_new_evidence: "无新证据", evidence_budget_exhausted: "证据预算不足",
 };
-const toolLabels: Record<string, string> = {
+export const toolLabels: Record<string, string> = {
   search_source_graph: "查源图", get_evidence: "核对证据", search_tm: "查译例", lookup_glossary: "查术语", get_character_note: "查角色笔记",
 };
 function EvidenceDrawer({ evidence, error, openSource }: { evidence?: Evidence; error?: unknown; openSource: (source: SourcePreview) => void }) {
@@ -224,7 +333,7 @@ function EvidenceDrawer({ evidence, error, openSource }: { evidence?: Evidence; 
 const categories: Record<string, string> = {
   correction: "译文纠偏", retrieval: "检索遗漏", prompt: "提示指令", memory: "记忆问题", skill: "查证流程", harness: "工具调用",
 };
-function FeedbackDialog({ job, item, close }: { job: Job; item: Item; close: () => void }) {
+export function FeedbackDialog({ job, item, close }: { job: Job; item: Item; close: () => void }) {
   const action = useAction();
   return <Modal title="登记反馈" close={close}><ErrorNote error={action.error} />
     <form className="stack" onSubmit={event => {
@@ -254,7 +363,7 @@ function FeedbackDialog({ job, item, close }: { job: Job; item: Item; close: () 
 type History = { head_version: number; locked: boolean; versions: { version: number; source_version: number; target: string; rollback_available: boolean }[] };
 const itemKey = (item: Pick<Item, "step" | "occurrence_id">) => `${item.step}:${item.occurrence_id}`;
 const pending = new Set(["needs_human", "locked", "conflict", "failed"]);
-const itemStatus = (item: Item) => item.version_conflict ? "conflict" : item.locked ? "locked" : item.status;
+export const itemStatus = (item: Item) => item.version_conflict ? "conflict" : item.locked ? "locked" : item.status;
 const metadataLabels: Record<string, string> = {
   branch_id: "剧情分支", speaker_id: "说话人", addressee_id: "听话人", phase_id: "阶段", native_context: "上下文",
 };
@@ -273,7 +382,7 @@ function unmatchedPlaceholders(expected: string[], actual: string[]) {
   });
 }
 
-function TranslationChecks({ source, target, terms }: { source: string; target: string; terms?: Evidence["mandatory_terms"] }) {
+export function TranslationChecks({ source, target, terms }: { source: string; target: string; terms?: Evidence["mandatory_terms"] }) {
   const originalTokens = placeholders(source);
   const translatedTokens = placeholders(target);
   const missing = unmatchedPlaceholders(originalTokens, translatedTokens);
@@ -358,21 +467,23 @@ function Review({ job, refresh, refreshError, changed, openJob, retry, fileQueue
     setContextSource(undefined);
     setContextApproval(next ? undefined : "complete");
   }, [job.items, reviewItems, updatingContext]);
-  useEffect(() => {
-    function shortcuts(event: KeyboardEvent) {
-      if (dialog || document.querySelector("dialog[open]")) return;
-      if ((event.ctrlKey || event.metaKey) && event.key === "Enter" && edit) {
-        event.preventDefault(); approve(); return;
-      }
-      if (!item || (event.target instanceof HTMLElement && event.target.closest("input,textarea,select,button"))) return;
-      if (event.key === "j" || event.key === "k") {
-        const next = rows[rows.indexOf(item) + (event.key === "j" ? 1 : -1)];
-        if (next) setSelected(itemKey(next));
-      }
+  const shortcutHandler = useRef<(event: KeyboardEvent) => void>(undefined);
+  shortcutHandler.current = (event: KeyboardEvent) => {
+    if (dialog || document.querySelector("dialog[open]")) return;
+    if ((event.ctrlKey || event.metaKey) && event.key === "Enter" && edit) {
+      event.preventDefault(); approve(); return;
     }
-    window.addEventListener("keydown", shortcuts);
-    return () => window.removeEventListener("keydown", shortcuts);
-  });
+    if (!item || (event.target instanceof HTMLElement && event.target.closest("input,textarea,select,button"))) return;
+    if (event.key === "j" || event.key === "k") {
+      const next = rows[rows.indexOf(item) + (event.key === "j" ? 1 : -1)];
+      if (next) setSelected(itemKey(next));
+    }
+  };
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => shortcutHandler.current?.(event);
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
   const checks = item && target ? <TranslationChecks source={item.source} target={target} terms={evidence.data?.mandatory_terms} /> : null;
   const hasNextReview = reviewItems.some(row => itemKey(row) !== key && row.next_actions.includes("review_item"));
   const toggleContext = (open: boolean, source?: SourcePreview) => {
@@ -487,7 +598,7 @@ type PoReport = {
   download_ready: boolean; conflicts: { entry_id: string; source: string; versions: { occurrence_id: string; target: string; version: number }[] }[];
   exclusions: { occurrence_id?: string; entry_id?: string; reason: string }[];
 };
-function PoDelivery({ job, close }: { job: Job; close: () => void }) {
+export function PoDelivery({ job, close }: { job: Job; close: () => void }) {
   const [choices, setChoices] = useState<Record<string, string>>({});
   const [report, setReport] = useState<PoReport>();
   const [checked, setChecked] = useState(false);
@@ -529,9 +640,9 @@ function PoDelivery({ job, close }: { job: Job; close: () => void }) {
   </Modal>;
 }
 
-export function JobDetail({ id, refresh, changed, openJob, back, deliver, fileReview, reviewSelection }: {
+export function JobDetail({ id, refresh, changed, openJob, back, deliver, fileReview, reviewSelection, onExit, openChat }: {
   id: string; refresh: number; changed: () => void; openJob: (id: string) => void; back: () => void; deliver: (projectId: string) => void;
-  fileReview?: FileReviewScope; reviewSelection?: string;
+  fileReview?: FileReviewScope; reviewSelection?: string; onExit?: () => void; openChat?: () => void;
 }) {
   const status = useQuery<Job>(`/jobs/${id}`, refresh);
   const fileQueue = useQuery<FileReviewPage>(fileReview ? `/projects/${fileReview.projectId}/files/review?${params({
@@ -550,14 +661,17 @@ export function JobDetail({ id, refresh, changed, openJob, back, deliver, fileRe
   if (fileReview) return <>
     <Head title="文件复核" sub={<>{fileReview.filename} · <span className="mono">J-{id.slice(0, 6)}</span></>}>
       <Button small ghost onClick={() => openJob(id)}>查看完整任务</Button>
-      <Button small onClick={back}>返回文件复核队列</Button>
+      <Button small onClick={back}>← 返回文件复核队列</Button>
     </Head>
     <ErrorNote error={status.error || fileQueue.error} />
     {job && fileQueue.data ? <Review job={job} refresh={refresh} refreshError={status.error || fileQueue.error}
       changed={changed} openJob={openJob} retry={showRetry} fileQueue={{ items: fileQueue.data.items, selected: reviewSelection, back }} /> :
       !status.error && !fileQueue.error && <Empty title="正在读取复核条目…" />}
   </>;
-  if (!job) return <><Head title="任务"><Button ghost onClick={back}>返回任务列表</Button></Head>
+  if (!job) return <><Head title="任务详情">
+    {onExit && <Button ghost onClick={onExit}>← 返回上一页</Button>}
+    <Button ghost onClick={back}>全部任务</Button>
+  </Head>
     <ErrorNote error={status.error} />{!status.error && <Empty title="正在读取任务…" />}</>;
   const failedRows = job.items.filter(item => item.next_actions.includes("retry"));
   const jobRetry = can("retry") && (job.source_kind === "graph_build" || !job.steps.length || !!failedRows.length);
@@ -565,13 +679,15 @@ export function JobDetail({ id, refresh, changed, openJob, back, deliver, fileRe
   const output = job.artifacts.find(item => item.type === "translation_export");
   const reviewRequired = can("continue") || job.items.some(item => item.next_actions.includes("review_item"));
   return <>
-    <Head title={job.graph_build ? "建图任务" : job.items.length ? "复核" : "任务详情"} sub={<>
+    <Head title={job.graph_build ? "建图任务" : job.items.length ? "任务审校与详情" : "任务详情"} sub={<>
       <span className="mono">J-{id.slice(0, 6)}</span> · <Status value={job.status} pill />
       {job.source_lang && job.target_lang && ` · ${language[job.source_lang]} → ${language[job.target_lang]}`}
       {" · "}<span className="mono">{job.budget.reserved_or_spent} / {job.budget.limit_calls}</span> 次调用
       {job.bulk_id && ` · 批次 ${job.bulk_id.slice(0, 6)}`}
     </>}>
-      <Button small ghost onClick={back}>任务列表</Button>
+      {onExit && <Button small ghost onClick={onExit}>← 返回上一页</Button>}
+      <Button small ghost onClick={back}>全部任务</Button>
+      {openChat && <Button small ghost onClick={openChat}>回到 Agent 对话</Button>}
       {can("pause") && <Button small ghost disabled={action.busy} onClick={() => void action.run(() => change("pause"))}>暂停</Button>}
       {can("resume") && <Button small onClick={() => setDialog("resume")}>继续</Button>}
       {jobRetry && <Button small onClick={() => showRetry(failedRows[0]?.occurrence_id)}>重试</Button>}

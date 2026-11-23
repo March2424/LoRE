@@ -1,24 +1,38 @@
 import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { type FileReviewItem, type FileReviewScope, type JobPage, type Project, type Selection, type Workspace, json, language, params, post, stored, useQuery } from "./api";
-import { Button, Empty, ErrorNote, Field, Grid, Head, Modal, Section, Status, useAction } from "./ui";
-import { type Upload, Resources } from "./resources";
+import { type FileReviewItem, type FileReviewScope, type JobPage, type Project, type Selection, type Workspace, json, params, post, stored, useQuery } from "./api";
+import { Button, Empty, ErrorNote, Field, Modal, useAction } from "./ui";
+import { Resources, type Upload } from "./resources";
+import { AgentWorkspace } from "./agent-workspace";
 import { Compose, type Composer, FileReviewQueue, JobDetail, JobList } from "./jobs";
-import { Knowledge, Models } from "./knowledge";
+import { Knowledge } from "./knowledge";
+import { Models } from "./models";
 import { Glossary } from "./glossary";
 import { Evolution } from "./evolution";
+import {
+  ASCII_MODES,
+  ASCII_STORAGE_MODE,
+  ASCII_STORAGE_PAUSED,
+  AsciiDock,
+  type AsciiMode,
+  AsciiOcean,
+} from "./ascii-ocean";
 
 const pages = {
-  home: "工作台", resources: "资源库", jobs: "任务", knowledge: "图谱与记忆", models: "模型设置",
+  home: "工作台", chat: "Agent 对话", jobs: "任务", knowledge: "图谱与记忆", models: "模型设置",
   glossary: "术语变更", evolution: "进化中心",
+};
+const pageNumbers: Record<keyof typeof pages, string> = {
+  home: "01", chat: "02", jobs: "03", knowledge: "04", models: "05", glossary: "06", evolution: "07",
 };
 type Page = keyof typeof pages;
 type Route = { page: Page; job?: string; fileReview?: FileReviewScope; reviewSelection?: string };
 function readRoute(): Route {
   const [path, search] = location.hash.slice(1).split("?", 2);
-  const [page, detail] = path.split("/");
+  const [rawPage, detail] = path.split("/");
+  const page = !rawPage ? "chat" : rawPage === "resources" ? "home" : rawPage;
   const job = page === "jobs" && /^[a-f0-9]{32}$/.test(detail || "") ? detail : undefined;
-  const route: Route = { page: Object.hasOwn(pages, page) ? page as Page : "home", job };
+  const route: Route = { page: Object.hasOwn(pages, page) ? page as Page : "chat", job };
   if (page === "jobs" && (job || detail === "file-review")) {
     const query = new URLSearchParams(search);
     const projectId = query.get("project");
@@ -54,48 +68,6 @@ function NewProject({ close, created }: { close: () => void; created: (project: 
   </Modal>;
 }
 
-function Home({ project, scope, projects, jobs, offline, naev, choose, create, navigate, openJob, compose }: {
-  project?: Project; scope: string; projects: Project[]; jobs?: JobPage; offline: boolean; naev: boolean;
-  choose: (id: string) => void; create: () => void; navigate: (page: Page) => void; openJob: (id: string) => void;
-  compose: (mode: Composer) => void;
-}) {
-  const recent = jobs?.jobs.slice(0, 6) ?? [];
-  return <>
-    <Head title="工作台" sub={project?.name || (scope === "naev" ? "Naev 示范区" : "游戏本地化项目")}>
-      {scope && <Button onClick={() => compose("text")}>文本快译</Button>}
-      <Button primary onClick={create}>新建项目</Button>
-    </Head>
-    {offline && <div className="note">离线演示 · 使用固定回执。可导入源文件、建图、人工改译和导出。</div>}
-    {project && <>
-      <div className="stats">{[[project.resources ?? 0, "源条目"], [project.approved_memory ?? 0, "已批准记忆"],
-        [jobs?.total ?? 0, "项目任务"], [project.revision, "源版本"]].map(([count, title]) =>
-        <div className="stat" key={title}><b>{count}</b><span>{title}</span></div>)}</div>
-      <Section>项目流程</Section>
-      <div className="row-set">
-        <Button onClick={() => navigate("resources")}>{project.resources ? "浏览资源" : "导入源文件"}</Button>
-        <span className="muted">→</span><Button onClick={() => navigate("knowledge")}>{project.graph_ready ? "查看图谱" : "构建图谱"}</Button>
-        <span className="muted">→</span><Button onClick={() => navigate("jobs")}>任务与复核</Button>
-        <span className="muted">→</span><Button onClick={() => navigate("resources")}>原格式交付</Button>
-      </div>
-    </>}
-    <Section>项目</Section>
-    {!projects.length && !naev && <Empty title="还没有本地化项目">创建一个项目，导入 CSV、XLSX 或 UTF-8 PO 源文件。</Empty>}
-    {naev && <Grid columns="1fr 135px 85px"><b>Naev 示范区</b><span>英语 → 简体中文</span>
-      <Button small ghost onClick={() => choose("naev")}>打开项目</Button></Grid>}
-    {projects.map(item => <Grid key={item.project_id} columns="minmax(100px,1fr) 145px 105px 85px">
-      <b className="clip">{item.name}</b><span>{language[item.source_lang]} → {language[item.target_lang]}</span>
-      <Status value={item.graph_snapshot && item.graph_revision === item.revision ? "valid" : "pending"} />
-      <Button small ghost onClick={() => choose(item.project_id)}>打开项目</Button>
-    </Grid>)}
-    {!scope && <div><Button onClick={() => compose("text")}>文本快译</Button></div>}
-    {!!recent.length && <><Section>最近任务</Section>{recent.map(job => <Grid key={job.job_id} columns="110px minmax(110px,1fr) 90px 85px">
-      <span className="mono">J-{job.job_id.slice(0, 6)}</span><span className="clip">{job.title ||
-        (job.source_kind === "graph_build" ? "构建图谱" : job.source_kind === "text" ? "文本快译" : "资源任务")}</span>
-      <Status value={job.status} /><Button small ghost onClick={() => openJob(job.job_id)}>打开任务</Button>
-    </Grid>)}</>}
-  </>;
-}
-
 function App() {
   const [route, setRoute] = useState(readRoute);
   const [selectedProject, setSelectedProject] = useState(() => stored("lore-project", ""));
@@ -103,9 +75,26 @@ function App() {
   const [upload, changeUpload] = useState<Upload | null>(() => stored("naev-upload", null));
   const [selection, setSelection] = useState<Selection>(() => ({ ids: [], upload: selectedProject === "naev" ? upload?.upload_id : undefined }));
   const [newProject, setNewProject] = useState(false);
-  const [composer, setComposer] = useState<Composer>();
+  const [composer, setComposer] = useState<{ mode: Composer; operation?: string }>();
   const [refresh, setRefresh] = useState(0);
   const [connected, setConnected] = useState(false);
+  const [navStack, setNavStack] = useState<string[]>([]);
+  const [asciiMode, setAsciiMode] = useState<AsciiMode>(() => {
+    const raw = localStorage.getItem(ASCII_STORAGE_MODE);
+    return ASCII_MODES.some(m => m.id === raw) ? (raw as AsciiMode) : "ascii";
+  });
+  const [asciiPaused, setAsciiPaused] = useState(() => localStorage.getItem(ASCII_STORAGE_PAUSED) === "1");
+  const cycleAsciiMode = () => setAsciiMode(cur => {
+    const idx = ASCII_MODES.findIndex(m => m.id === cur);
+    const next = ASCII_MODES[(idx + 1) % ASCII_MODES.length].id;
+    localStorage.setItem(ASCII_STORAGE_MODE, next);
+    return next;
+  });
+  const toggleAsciiPause = () => setAsciiPaused(cur => {
+    const next = !cur;
+    localStorage.setItem(ASCII_STORAGE_PAUSED, next ? "1" : "0");
+    return next;
+  });
   const changed = () => setRefresh(value => value + 1);
   const workspace = useQuery<Workspace>("/workspace", refresh);
   const catalog = useQuery<{ projects: Project[] }>("/projects", refresh);
@@ -120,7 +109,23 @@ function App() {
   const recent = useQuery<JobPage>(route.page === "home" ?
     `/jobs?${params({ project: scope, limit: 6 })}` : null, refresh);
   const name = project?.name || (scope === "naev" ? "Naev 示范区" : "选择项目");
-  const navigate = (page: Page, job?: string) => { location.hash = page + (job ? "/" + job : ""); setRoute({ page, job }); };
+  const navigate = (page: Page, job?: string) => {
+    const targetHash = page + (job ? "/" + job : "");
+    const currentHash = location.hash.slice(1) || "chat";
+    if (currentHash !== targetHash) setNavStack(prev => [...prev.slice(-15), currentHash]);
+    location.hash = targetHash;
+    setRoute({ page, job });
+  };
+  const goBack = (fallback: Page) => {
+    const prev = navStack[navStack.length - 1];
+    if (prev) {
+      setNavStack(s => s.slice(0, -1));
+      location.hash = prev;
+      setRoute(readRoute());
+    } else {
+      navigate(fallback);
+    }
+  };
   const choose = (id: string) => {
     setSelectedProject(id); setSelection({ ids: [], upload: id === "naev" ? upload?.upload_id : undefined });
     localStorage.setItem("lore-project", JSON.stringify(id));
@@ -131,97 +136,104 @@ function App() {
       step: entry?.step, item: entry?.occurrence_id })}`;
     setRoute(readRoute());
   };
-  const openResources = (id: string) => {
+  const openWorkbench = (id: string) => {
     if (id !== selectedProject) choose(id);
-    navigate("resources");
+    navigate("home");
   };
-  const openCommand = () => { if (scope) setComposer("command"); };
+  const openCompose = (mode: Composer, operation?: string) => setComposer({ mode, operation });
   useEffect(() => {
     const navigateHash = () => setRoute(readRoute());
     window.addEventListener("hashchange", navigateHash);
     const events = new EventSource("/job-events");
+    events.onopen = () => setConnected(true);
     events.onmessage = () => { setConnected(true); setRefresh(value => value + 1); };
     events.onerror = () => setConnected(false);
     return () => { window.removeEventListener("hashchange", navigateHash); events.close(); };
   }, []);
   useEffect(() => {
-    function keyboard(event: KeyboardEvent) {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k" && scope && !document.querySelector("dialog[open]")) {
-        event.preventDefault(); setComposer("command");
-      }
-    }
-    window.addEventListener("keydown", keyboard);
-    return () => window.removeEventListener("keydown", keyboard);
-  }, [scope]);
-  useEffect(() => {
     document.querySelector("main.page")?.scrollTo(0, 0);
   }, [route.page, route.job, fileReview?.filename, route.reviewSelection, scope]);
   const nav = (page: Page) => <a href={`#${page}`} aria-current={route.page === page ? "page" : undefined}
-    className={`nav${route.page === page ? " nav--active" : ""}`}>{pages[page]}</a>;
-  return <div className="shell">
-    <aside className="rail">
-      <div className="rail__brand">LoRE</div>
-      <div className="ws">
-        <select className="ws__name" aria-label="切换项目" value={scope} onChange={e => { choose(e.target.value); navigate("home"); }}>
-          {!scope && <option value="">选择项目</option>}{workspace.data?.naev && <option value="naev">Naev 示范区</option>}
-          {projects.map(item => <option key={item.project_id} value={item.project_id}>{item.name}</option>)}
-        </select>
-        {scope && <div className="ws__meta">{project ? `${project.source_lang.toUpperCase()} → ${project.target_lang.toUpperCase()} · 源 v${project.revision}` : "EN → ZH · 内置"}</div>}
-      </div>
-      <nav aria-label="工作台导航">
-        <div className="nav__label">项目</div>
-        {nav("home")}{scope && nav("resources")}{nav("jobs")}{project && nav("knowledge")}{project && nav("models")}
-        <div className="nav__label">维护</div>
-        {workspace.data?.naev && nav("glossary")}{nav("evolution")}
-      </nav>
-      <div className="rail__foot">
-        <div className={connected ? "live" : "rail__note"}>{connected ? "实时连接" : "正在连接"}</div>
-        <div className="rail__note">{workspace.data?.offline ? "离线模式 · 单 worker" : workspace.data ? "在线模式 · 单 worker" : ""}</div>
-      </div>
-    </aside>
+    className={`nav${route.page === page ? " nav--active" : ""}`}>
+    <span className="nav__num">{pageNumbers[page]}</span>{pages[page]}
+  </a>;
+  return <>
+    <AsciiOcean mode={asciiMode} paused={asciiPaused} />
+    <div className="soft-light" aria-hidden="true" />
+    <div className="shell">
+      <aside className="rail">
+        <div className="rail__brand">LoRE</div>
+        <div className="ws">
+          <select className="ws__name" aria-label="切换项目" value={scope} onChange={e => { choose(e.target.value); navigate(route.page === "chat" ? "chat" : "home"); }}>
+            {!scope && <option value="">选择项目</option>}{workspace.data?.naev && <option value="naev">Naev 示范区</option>}
+            {projects.map(item => <option key={item.project_id} value={item.project_id}>{item.name}</option>)}
+          </select>
+          {scope && <div className="ws__meta">{project ? `${project.source_lang.toUpperCase()} → ${project.target_lang.toUpperCase()} · 源 v${project.revision}` : "EN → ZH · 内置"}</div>}
+        </div>
+        <nav aria-label="工作台导航">
+          <div className="nav__label">项目</div>
+          {nav("home")}{nav("chat")}{nav("jobs")}{project && nav("knowledge")}{nav("models")}
+          <div className="nav__label">维护</div>
+          {workspace.data?.naev && nav("glossary")}{nav("evolution")}
+        </nav>
+        <div className="rail__foot">
+          <AsciiDock mode={asciiMode} paused={asciiPaused} onCycleMode={cycleAsciiMode} onTogglePause={toggleAsciiPause} />
+          <div className={connected ? "live" : "rail__note"}>{connected ? "实时连接" : "正在连接"}</div>
+          <div className="rail__note">{workspace.data?.offline ? "离线模式 · 单 worker" : workspace.data ? "在线模式 · 单 worker" : ""}</div>
+        </div>
+      </aside>
     <div className="canvas">
       <header className="topbar">
         <div className="crumb"><b>{name}</b><i>/</i><span>{pages[route.page]}</span>
           {route.job && <><i>/</i><span className="mono">J-{route.job.slice(0, 6)}</span></>}</div>
-        <button type="button" className="cmdk" disabled={!scope} onClick={openCommand}>
-          <span className="clip">下达任务，例如「把选中的条目翻译成简体中文并导出」</span><span className="kbd">Ctrl K</span>
-        </button>
-        <div className="topbar__right"><a className="tray" href="#jobs">任务</a></div>
       </header>
       <main className="page">
         <ErrorNote error={workspace.error || catalog.error || detail.error} />
         {!workspace.data && !workspace.error && <Empty title="正在连接工作台…" />}
         {workspace.data && <>
-          {route.page === "home" && <Home project={project} scope={scope} projects={projects} jobs={recent.data}
-            offline={workspace.data.offline} naev={workspace.data.naev} choose={id => { choose(id); navigate("resources"); }}
-            create={() => setNewProject(true)} openJob={openJob} compose={setComposer} navigate={navigate} />}
-          {route.page === "resources" && (scope ? <Resources key={scope} project={project}
-            upload={selection.upload && upload?.upload_id === selection.upload ? upload : null} setUpload={value => {
-              changeUpload(value); localStorage.setItem("naev-upload", JSON.stringify(value));
-            }} selection={selection} setSelection={setSelection} refresh={refresh} changed={changed} openJob={openJob}
-            compose={() => setComposer("selection")} openGraph={() => navigate("knowledge")} openFileReview={openFileReview} /> : <Empty title="请先创建项目" />)}
+          {route.page === "home" && <Resources key={scope || "empty"} project={project} scope={scope} projects={projects}
+            jobs={recent.data} offline={workspace.data.offline} naev={workspace.data.naev}
+            upload={selection.upload && upload?.upload_id === selection.upload ? upload : null}
+            setUpload={value => { changeUpload(value); localStorage.setItem("naev-upload", JSON.stringify(value)); }}
+            selection={selection} setSelection={setSelection} refresh={refresh} changed={changed}
+            choose={id => { choose(id); navigate("home"); }} createProject={() => setNewProject(true)}
+            navigate={navigate} openJob={openJob} compose={openCompose}
+            openGraph={() => navigate("knowledge")} openFileReview={openFileReview} />}
+          {route.page === "chat" && <AgentWorkspace key={scope || "empty"} project={project} scope={scope} projects={projects}
+            offline={workspace.data.offline} naev={workspace.data.naev}
+            upload={selection.upload && upload?.upload_id === selection.upload ? upload : null}
+            setUpload={value => { changeUpload(value); localStorage.setItem("naev-upload", JSON.stringify(value)); }}
+            selection={selection} setSelection={setSelection} refresh={refresh} changed={changed}
+            choose={id => { choose(id); navigate("chat"); }} createProject={() => setNewProject(true)}
+            navigate={navigate} openJob={openJob}
+            openGraph={() => navigate("knowledge")} />}
           {route.page === "jobs" && (route.job ? <JobDetail key={`${route.job}:${fileReview?.filename ?? ""}:${route.reviewSelection ?? ""}`}
             id={route.job} refresh={refresh} changed={changed} openJob={openJob} fileReview={fileReview} reviewSelection={route.reviewSelection}
-            back={fileReview ? () => openFileReview(fileReview) : () => navigate("jobs")} deliver={openResources} /> :
+            onExit={() => goBack("jobs")} openChat={() => navigate("chat")}
+            back={fileReview ? () => openFileReview(fileReview) : () => navigate("jobs")} deliver={openWorkbench} /> :
             fileReview ? <FileReviewQueue key={`${fileReview.projectId}:${fileReview.filename}`} file={fileReview} refresh={refresh}
-              back={() => openResources(fileReview.projectId)} openItem={entry => openFileReview(fileReview, entry)} /> :
-            <JobList key={scope} scope={scope || undefined} refresh={refresh} openJob={openJob} compose={setComposer} />)}
+              back={() => goBack("home")} openItem={entry => openFileReview(fileReview, entry)} /> :
+            <JobList key={scope} scope={scope || undefined} refresh={refresh} openJob={openJob}
+              onBack={navStack.length ? () => goBack("chat") : undefined} openChat={() => navigate("chat")} />)}
           {route.page === "knowledge" && (project ? <Knowledge key={scope} project={project} offline={workspace.data.offline}
-            selection={selection} openJob={openJob} refresh={refresh} changed={changed} /> : <Empty title="请先选择一个导入项目" />)}
-          {route.page === "models" && (project ? <Models key={scope} project={project} offline={workspace.data.offline} changed={changed} /> :
-            <Empty title="请先选择一个导入项目" />)}
+            selection={selection} openJob={openJob} refresh={refresh} changed={changed}
+            onBack={navStack.length ? () => goBack("chat") : undefined} /> : <Empty title="请先选择一个导入项目" />)}
+          {route.page === "models" && <Models key={scope || "workspace"} project={project} projects={projects}
+            workspace={workspace.data} offline={workspace.data.offline} changed={changed} />}
           {route.page === "glossary" && (workspace.data.naev ? <Glossary selected={scope === "naev" ? selection.ids : []}
             openJob={openJob} refresh={refresh} changed={changed} /> : <Empty title="此工作区未加载 Naev 快照" />)}
-          {route.page === "evolution" && <Evolution offline={workspace.data.offline} refresh={refresh} changed={changed} openJob={openJob} />}
+          {route.page === "evolution" && <Evolution offline={workspace.data.offline} naev={workspace.data.naev}
+            scope={scope || undefined} refresh={refresh} changed={changed} openJob={openJob} />}
         </>}
       </main>
     </div>
     {newProject && <NewProject close={() => setNewProject(false)} created={item => {
-      setNewProject(false); choose(item.project_id); setCreatedProject(item); changed(); navigate("resources");
+      setNewProject(false); choose(item.project_id); setCreatedProject(item); changed(); navigate(route.page === "chat" ? "chat" : "home");
     }} />}
-    {composer && <Compose mode={composer} project={project} scope={scope} selection={selection}
-      close={() => setComposer(undefined)} openJob={openJob} />}
-  </div>;
+    {composer && <Compose key={`${composer.mode}:${composer.operation ?? ""}`} mode={composer.mode} initialOperation={composer.operation}
+      project={project} scope={scope} selection={selection} close={() => setComposer(undefined)} openJob={openJob} />}
+  </div>
+  </>;
 }
 
 createRoot(document.getElementById("root")!).render(<App />);
