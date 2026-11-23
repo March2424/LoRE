@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { type Locale, getLocale, pick } from "./i18n";
 
 export type Language = "en" | "zh";
 export type Profile = {
@@ -111,13 +112,29 @@ export type Job = Omit<JobSummary, "title" | "intents"> & {
 
 export const terminal = new Set(["completed", "partial", "failed", "cancelled"]);
 export const language = { en: "英语", zh: "简体中文" };
+export const languageEn = { en: "English", zh: "Simplified Chinese" };
+export const langLabel = (lang: string, locale: Locale = getLocale()) =>
+  locale === "zh" ? (language[lang as Language] ?? lang) : (languageEn[lang as Language] ?? lang);
+
 export const intents: Record<string, string> = {
   translate: "翻译", review: "审校", explain: "解释依据", export: "导出", propose_update: "术语更新预演", build_graph: "建图",
 };
+export const intentsEn: Record<string, string> = {
+  translate: "Translate", review: "Review", explain: "Explain", export: "Export", propose_update: "Glossary Preview", build_graph: "Build Graph",
+};
+export const intentLabel = (intent: string, locale: Locale = getLocale()) =>
+  locale === "zh" ? (intents[intent] ?? intent) : (intentsEn[intent] ?? intent);
+
 export const roles = {
   extractor: "图谱提取", selector: "证据选择", translator: "草译",
   reviewer: "审校", repairer: "修复", intent: "意图理解",
 };
+export const rolesEn: Record<keyof typeof roles, string> = {
+  extractor: "Graph Extractor", selector: "Context Selector", translator: "Translator",
+  reviewer: "Pi Reviewer", repairer: "Repairer", intent: "Intent Parser",
+};
+export const roleLabel = (role: keyof typeof roles, locale: Locale = getLocale()) =>
+  locale === "zh" ? roles[role] : rolesEn[role];
 
 const messages: Record<string, string> = {
   // 通用与请求错误
@@ -284,67 +301,283 @@ const messages: Record<string, string> = {
   can_only_rollback_current_policy_release: "仅支持回滚当前正在生效的最新策略版本。",
 };
 
-export function reasonText(reason?: string | null) {
+const messagesEn: Record<string, string> = {
+  invalid_request: "The request parameters or field format did not pass validation. Check required fields, ranges, or file formats and retry.",
+  operation_failed: "The operation could not be completed. Check your model settings or project state and try again.",
+  network_error: "Cannot reach the local LoRE server. Make sure run_api.py is still running (or refresh the page) and retry.",
+  idempotency_key_required: "Missing idempotency header. Refresh the page and submit the request again.",
+  idempotency_key_reused_with_different_payload: "Duplicate request key with changed payload. Wait a moment or refresh and retry.",
+  build_web_with_npm_prefix_web_run_build: "Frontend assets are not built yet. Run `npm --prefix agentdesign/web run build` and refresh.",
+  project_not_found: "Project not found (it may have been deleted). Select another project or create a new one.",
+  resource_not_found: "Source entry not found. Refresh the resource list and retry.",
+  import_not_found: "Import record not found. Reopen the project resources view.",
+  select_an_imported_project: "This action requires an imported project. Create or select a project with imported files first.",
+  import_project_sources_first: "No source files have been imported yet. Click '+ Import' to upload CSV, XLSX, or UTF-8 PO files first.",
+  supported_import_formats_csv_xlsx_po: "Unsupported file format. Upload a UTF-8 CSV, XLSX, or PO file.",
+  project_languages_must_differ: "Source and target languages cannot be the same.",
+  project_import_too_large: "Imported file exceeds the 16 MB limit. Split the file or remove unused columns.",
+  po_upload_too_large: "Uploaded PO file exceeds the 16 MB limit.",
+  uncompressed_workbook_too_large: "Uncompressed XLSX content exceeds the safety limit. Split it into smaller workbooks.",
+  invalid_xlsx_archive: "Cannot read this XLSX archive. Re-save as XLSX or CSV and re-upload.",
+  invalid_utf8_po: "The PO file is not valid UTF-8. Convert to UTF-8 (without BOM) and retry.",
+  invalid_po: "Invalid PO syntax. Check msgid/msgstr quotes and escape sequences.",
+  invalid_po_content: "Unable to parse PO content. Verify headers and entries.",
+  po_extension_required: "Only .po files are accepted here.",
+  po_upload_not_found: "Previous PO upload expired or was not found. Re-upload the file.",
+  use_project_import_for_project_po: "Please upload files via '+ Import' inside this project.",
+  missing_import_columns: "Required ID or source columns were not found in the file. Check column headers and mappings.",
+  worksheet_not_found: "Specified worksheet name was not found in the XLSX workbook.",
+  invalid_import_options: "Invalid import mapping options. Check your column mappings.",
+  unknown_source_metadata_mapping: "Unrecognized metadata column mapping. Remove invalid column names.",
+  no_source_rows: "No valid source text rows found in the uploaded file.",
+  existing_po_translations_use_another_target_language: "Existing PO translations conflict with this project's target language.",
+  source_file_not_found: "File is no longer in the active source set. Refresh the workspace.",
+  empty_or_nontext_source: "Selected entry has empty or non-text source content and cannot be translated.",
+  empty_source: "Source text is empty. Provide valid source text.",
+  source_text_required: "Source text is required before submitting.",
+  text_source_cannot_be_combined_with_resource_selection: "Quick text translation cannot be combined with selected project entries.",
+  conflicting_intent_fields: "Conflicting instruction parameters were sent. Submit either natural language or explicit intents.",
+  intent_or_text_required: "Enter a natural-language instruction or choose at least one explicit action.",
+  export_not_ready: "Export is not ready yet. Wait for the job to finish or inspect the exclusion report.",
+  po_export_not_ready: "PO export is not ready yet. Ensure translations are approved and validated.",
+  project_export_validation_failed: "Export validation failed (missing translations, glossary conflicts, or unreviewed items). Resolve flagged items first.",
+  resolve_po_export_issues_first: "Resolve PO translation conflicts or validation issues before downloading.",
+  po_plural_translations_conflict: "Plural translations sharing this slot conflict. Review and unify plural forms.",
+  po_plural_translation_incomplete: "Not all plural forms for this PO key are approved yet.",
+  export_source_version_mismatch: "Approved translation targets an older source revision. Retranslate and approve on the latest source.",
+  project_graph_not_current: "Source files changed and the current graph is stale. Rebuild the graph in '04 Graph & Memory'.",
+  project_graph_not_built: "Knowledge graph has not been built yet. Build the graph in '04 Graph & Memory' first.",
+  graph_snapshot_not_found: "Graph snapshot not found. Check or rebuild in '04 Graph & Memory'.",
+  project_graph_build_active: "A graph build job is already running for this revision. Wait for completion or pause/cancel it first.",
+  graph_partial_budget_reached: "Reached max_calls limit. Completed batches are saved in 'Graph & Memory'; click 'Build Graph' anytime to continue.",
+  graph_build_superseded: "A newer source revision superseded this graph build.",
+  graph_build_interrupted: "Graph build was interrupted (timeout or context limit). Lower batch_size and disable thinking in 'Models', then retry.",
+  graph_resume_cannot_change_extraction_inputs: "Extraction parameters cannot be changed when resuming a paused graph build.",
+  memory_quote_not_in_source: "The selected quote must appear verbatim inside the source text.",
+  memory_requires_current_source: "Source entry was updated. Refresh and select the current revision.",
+  memory_term_requires_source_quote_and_target: "Provide the target translation and ensure the source term appears verbatim in the quote.",
+  memory_note_requires_known_speaker: "Speaker metadata is missing on this entry. Add speaker metadata or use a project-level note.",
+  memory_not_found: "Memory record not found. Refresh the memory list.",
+  memory_version_changed: "Memory record was modified concurrently. Refresh and retry.",
+  memory_action_does_not_match_status: "This memory status does not allow the requested action.",
+  offline_fixture_unavailable: "Offline demo mode has no fixture for this row; original text was kept. Edit manually on the right or switch to a live model.",
+  model_probe_requires_live_workspace: "Model probing requires live workspace mode (start run_api.py without --offline).",
+  model_credential_endpoint_not_configured: "This model profile has no valid Base URL configured. Edit it in '05 Models'.",
+  model_credential_unavailable: "No usable API key detected. Open '05 Models', edit this profile, and paste your API Key directly (or set the env var).",
+  invalid_model_base_url: "Invalid Base URL. Enter a full http:// or https:// URL (e.g. https://api.openai.com/v1).",
+  model_requires_https_or_loopback: "Remote model endpoints must use https:// (http:// is allowed only for localhost / 127.0.0.1).",
+  model_local_requires_loopback: "Local model mode only permits loopback hosts (localhost, 127.0.0.1, ::1).",
+  model_api_requires_key_env: "Remote API models require credentials. Enter an API Key or environment variable name.",
+  model_api_requires_credential: "Remote API models require an API Key or environment variable name.",
+  model_profile_in_use: "This model profile is currently assigned to a project or workspace role. Reassign those roles before deleting.",
+  model_profile_not_found: "Model profile not found. Refresh the page and select another profile.",
+  unknown_model_role: "Invalid agent role name.",
+  invalid_probe_reply: "Model returned an empty or unexpected reply. Check the Model ID and disable thinking in '05 Models'.",
+  model_capability_not_confirmed: "Model did not return valid structured JSON. Try switching between Chat Completions and Responses format.",
+  pi_provider_error: "Pi Reviewer model call failed. Check the reviewer profile in '05 Models' and retry.",
+  call_budget_exhausted: "Reached max_calls budget for this job. Increase budget or accept completed items.",
+  empty_response: "Model returned an empty response (often caused by reasoning tokens exhausting output length). Disable thinking in '05 Models' and retry.",
+  unknown_provider_result: "Previous model call status is uncertain. Confirm duplicate call permission before retrying.",
+  unknown_provider_result_requires_confirmation: "Previous call outcome is uncertain. Check the confirmation box before retrying.",
+  call_input_changed: "Entry context changed before retry. Start a new job for this entry.",
+  stale_tool_receipt: "Tool lookup receipt is stale. Retry this item.",
+  intent_structure: "Could not parse your request into a structured job. Try clearer instructions (e.g. 'Translate selected entries to Chinese').",
+  job_not_found: "Job not found. Check '03 Jobs'.",
+  job_item_not_found: "Job item not found. Refresh the job details page.",
+  resource_not_in_job: "This entry is not part of the current job.",
+  batch_targets_outside_project_scope: "Some selected entries do not belong to the active project. Clear selection and retry.",
+  no_approved_translation: "No approved translation exists for this entry yet.",
+  no_completed_items_to_accept: "No completed items are ready for partial acceptance yet.",
+  job_not_retryable: "Current job status does not allow retrying.",
+  job_is_not_running: "Job is not currently running.",
+  job_is_not_paused: "Job is not paused.",
+  unsupported_job_action: "Unsupported job action. Refresh to see available actions.",
+  occurrence_id_required: "Specify an occurrence_id to retry.",
+  item_not_retryable: "This item does not need or allow retrying.",
+  item_is_not_awaiting_approval: "Item is no longer awaiting manual review.",
+  wait_for_item_outcome: "Item is still running. Wait for completion before submitting.",
+  items_need_attention: "Some items did not pass automated review and require human confirmation.",
+  items_failed: "Some items failed during execution (timeout, truncated output, or API error). Inspect the item and retry.",
+  paused_by_editor: "Job paused as requested. Click 'Resume' when ready.",
+  cancelled_by_editor: "Job cancelled; unfinished items were not committed.",
+  translation_locked: "Translation is locked. Unlock it before making edits.",
+  translation_locked_or_version_changed: "Translation is locked or a newer version exists. Refresh before approving.",
+  translation_version_changed: "A newer translation version exists. Refresh before submitting.",
+  translation_version_changed_create_new_job: "Source or translation version changed since this job started. Create a new job.",
+  version_or_knowledge_changed: "Translation or knowledge graph changed concurrently. Refresh and verify.",
+  knowledge_changed_create_new_job: "Project glossary or memory changed; start a new job to use the latest context.",
+  context_changed_create_new_job: "Context evidence changed. Create a new job.",
+  source_not_in_evidence: "Source revision is not cited in this item's evidence.",
+  source_context_unavailable: "Source file location context is unavailable for this citation.",
+  translation_validation_stale: "Validation is stale because source text or glossary changed. Re-review this entry.",
+  historical_translation_stale_or_missing: "Historical version is incompatible with current source or glossary and cannot be rolled back directly.",
+  historical_version_required: "Select a version older than the active head version.",
+  unsupported_version_action: "Unsupported version action.",
+  draft_changed: "Draft changed while you were editing. Refresh to view the latest draft.",
+  draft_required: "Enter a non-empty translation before approving.",
+  stale_expected_version: "Form holds a stale translation version. Refresh and submit again.",
+  target_conflicts_with_active_glossary: "Translation conflicts with an active mandatory glossary rule.",
+  clarification_requires_new_information: "Additional clarification details did not change. Provide new parameters or targets.",
+  choose_supported_intent: "Could not identify action. Specify translate, review, explain, glossary update, or export.",
+  choose_other_supported_language: "Unsupported target language (supported: English and Simplified Chinese).",
+  choose_supported_source_language: "Unsupported source language (supported: English and Simplified Chinese).",
+  target_required: "Target entries are unclear. Select entries on the right or name the text/file in chat.",
+  ambiguous_target: "Multiple entries matched. Check the exact target(s) below to continue.",
+  target_not_in_scope: "Mentioned entry is outside the active project or file scope.",
+  source_and_target_terms_required: "Provide both source term and new target translation.",
+  project_source_language_mismatch: "Specified source language does not match the project setting.",
+  project_target_language_mismatch: "Specified target language does not match the project setting.",
+  naev_requires_chinese_target: "Naev demo workspace only supports Simplified Chinese as target language.",
+  naev_source_language_is_english: "Naev demo source texts are in English.",
+  maintenance_plan_not_found: "Glossary maintenance plan not found.",
+  overlapping_conflicting_term: "Overlapping conflicting mandatory glossary rule exists.",
+  glossary_rule_not_found: "Glossary rule not found.",
+  term_not_found_in_scope: "Term was not found in source texts within the selected scope.",
+  unknown_scope_occurrence: "Unknown occurrence ID in scope.",
+  maintenance_plan_already_used: "This maintenance plan has already been applied.",
+  maintenance_plan_stale_preview_again: "Entries changed since preview. Regenerate preview first.",
+  feedback_or_policy_not_found: "Feedback or policy release not found. Refresh Evolution Center.",
+  feedback_required: "Select at least one feedback record before creating a policy candidate.",
+  conflicting_feedback_aliases: "Selected feedback rows define conflicting aliases for the same query.",
+  no_policy_change: "No policy parameters were modified in this candidate.",
+  memory_candidate_requires_preview: "Candidates modifying memory require a glossary preview first.",
+  job_required_for_validation_cases: "Select a completed job to load validation cases.",
+  historical_source_snapshot_unavailable: "Historical source snapshot is unavailable for replay.",
+  complete_review_trace_required: "Complete review trace is required for replay cases.",
+  historical_review_draft_unavailable: "Historical review draft is missing.",
+  live_strategy_requires_live_workspace: "Live strategy replay requires live mode (without --offline).",
+  feedback_case_must_be_linked: "Replay case must be linked to a real feedback or job record.",
+  duplicate_replay_case: "Duplicate case in replay selection.",
+  held_out_case_overlaps_feedback: "Validation cases cannot overlap with training feedback entries or files. Pick cases from another file.",
+  candidate_already_decided: "This policy candidate has already been decided.",
+  can_only_rollback_current_policy_release: "Only the currently active policy release can be rolled back.",
+};
+
+export function reasonText(reason?: string | null, locale: Locale = getLocale()) {
   if (!reason) return "";
   const raw = String(reason).trim();
-  if (messages[raw]) return messages[raw];
+  const table = locale === "zh" ? messages : messagesEn;
+  if (table[raw]) return table[raw];
   const base = raw.split(":")[0];
-  if (messages[base]) {
+  if (table[base]) {
     const rest = raw.slice(base.length + 1).trim();
-    return rest ? `${messages[base]}（详情：${rest}）` : messages[base];
+    return rest ? `${table[base]} (${rest})` : table[base];
   }
   if (raw.startsWith("graph_calls_required:")) {
-    const need = raw.match(/\d+/)?.[0] ?? "更多";
-    return `本次建图至少需要 ${need} 次模型调用，当前调用上限不足。请将「最大调用数 max_calls」调高至 ${need} 以上，或适当增大「每批条数」后重试。`;
+    const need = raw.match(/\d+/)?.[0] ?? (locale === "zh" ? "更多" : "more");
+    return pick(
+      `This graph build requires at least ${need} calls. Increase max_calls above ${need} or raise batch_size.`,
+      `本次建图至少需要 ${need} 次模型调用，当前调用上限不足。请将「最大调用数 max_calls」调高至 ${need} 以上，或适当增大「每批条数」后重试。`,
+      locale,
+    );
   }
   if (raw.startsWith("graph_input_token_limit:")) {
-    const tokens = raw.split(":")[1] ?? "超限";
-    return `单批输入长度（约 ${tokens} tokens）超出上下文预算。请调高「单批输入 token」，或调小「每批条数」并确认「模型设置」中已关闭思考后再试。`;
+    const tokens = raw.split(":")[1] ?? "limit";
+    return pick(
+      `Batch input (~${tokens} tokens) exceeded context budget. Raise max_input_tokens or lower batch_size and disable thinking.`,
+      `单批输入长度（约 ${tokens} tokens）超出上下文预算。请调高「单批输入 token」，或调小「每批条数」并确认「模型设置」中已关闭思考后再试。`,
+      locale,
+    );
   }
   if (raw.startsWith("response_incomplete:") || raw.startsWith("response_failed:")) {
     const why = raw.split(":").slice(1).join(":") || "output_limit";
-    return `模型响应在完成前被中断或达到输出长度上限（${why}）。请到「模型设置」中关闭模型思考（thinking=disabled），或调高最大输出 token 上限后重试。`;
+    return pick(
+      `Model response stopped before completion (${why}). Disable thinking in Models or increase output limit.`,
+      `模型响应在完成前被中断或达到输出长度上限（${why}）。请到「模型设置」中关闭模型思考（thinking=disabled），或调高最大输出 token 上限后重试。`,
+      locale,
+    );
   }
   if (raw.startsWith("pi_response_incomplete:")) {
     const why = raw.split(":").slice(1).join(":") || "interrupted";
-    return `Pi 审校工具调用被中断（${why}）。请检查「模型设置」中审校模型的超时时间与可用性，确认后重试该条目。`;
+    return pick(
+      `Pi Reviewer tool loop interrupted (${why}). Check reviewer timeout/model settings and retry.`,
+      `Pi 审校工具调用被中断（${why}）。请检查「模型设置」中审校模型的超时时间与可用性，确认后重试该条目。`,
+      locale,
+    );
   }
   if (raw.startsWith("hard_check_failed:")) {
     const problems = raw.slice("hard_check_failed:".length).trim();
-    return `译文未通过术语或格式硬校验（${problems}）。请对照检查强制术语、占位符与格式标签后重新批准。`;
+    return pick(
+      `Translation failed hard checks (${problems}). Verify mandatory terms, placeholders, and formatting.`,
+      `译文未通过术语或格式硬校验（${problems}）。请对照检查强制术语、占位符与格式标签后重新批准。`,
+      locale,
+    );
   }
-  // OpenAI / HTTP / Python exception modes
   if (/AuthenticationError|401/.test(raw)) {
-    return "模型 API 密钥鉴权失败（401）。请检查启动服务的环境变量中对应的 API Key 是否填写正确或已失效，修改环境变量并重启服务后重试。";
+    return pick(
+      "API authentication failed (401). Check your API Key in Models and retry.",
+      "模型 API 密钥鉴权失败（401）。请检查启动服务的环境变量中对应的 API Key 是否填写正确或已失效，修改环境变量并重启服务后重试。",
+      locale,
+    );
   }
   if (/PermissionDeniedError|403/.test(raw)) {
-    return "没有权限访问所配置的模型接口（403）。请核对 API Key 权限或更换可用模型名称。";
+    return pick(
+      "Access denied for this model endpoint (403). Verify API Key permissions or model ID.",
+      "没有权限访问所配置的模型接口（403）。请核对 API Key 权限或更换可用模型名称。",
+      locale,
+    );
   }
   if (/RateLimitError|429/.test(raw)) {
-    return "模型服务请求频率或账户额度达到上限（429）。请稍等片刻后点击重试，或适当调小分批并发速度。";
+    return pick(
+      "Rate limit or quota reached (429). Wait a moment and retry, or reduce batch concurrency.",
+      "模型服务请求频率或账户额度达到上限（429）。请稍等片刻后点击重试，或适当调小分批并发速度。",
+      locale,
+    );
   }
   if (/APITimeoutError|TimeoutError|timed out/i.test(raw)) {
-    return "调用模型接口超时未返回结果。请检查网络连接或本地模型负载，并在「模型设置」中增大 Timeout（建议 120–300 秒）后重试。";
+    return pick(
+      "Model request timed out. Check network/local model load and increase Timeout (e.g. 120-300s) in Models.",
+      "调用模型接口超时未返回结果。请检查网络连接或本地模型负载，并在「模型设置」中增大 Timeout（建议 120–300 秒）后重试。",
+      locale,
+    );
   }
   if (/APIConnectionError|ConnectionError|ECONNREFUSED/i.test(raw)) {
-    return "无法连接到模型服务端点。请到「模型设置」检查 Base URL 是否正确；若使用本地 Ollama/vLLM，请先确认本地模型服务已启动。";
+    return pick(
+      "Could not connect to model endpoint. Verify Base URL in Models and ensure local Ollama/vLLM is running.",
+      "无法连接到模型服务端点。请到「模型设置」检查 Base URL 是否正确；若使用本地 Ollama/vLLM，请先确认本地模型服务已启动。",
+      locale,
+    );
   }
   if (/NotFoundError|404/.test(raw)) {
-    return "找不到指定的模型或 API 路径（404）。请到「模型设置」核对 Model 名称（如 gpt-4o-mini / qwen3:8b）以及 Base URL 是否包含正确的 /v1 路径。";
+    return pick(
+      "Model or API endpoint not found (404). Verify Model ID and Base URL (/v1 path) in Models.",
+      "找不到指定的模型或 API 路径（404）。请到「模型设置」核对 Model 名称（如 gpt-4o-mini / qwen3:8b）以及 Base URL 是否包含正确的 /v1 路径。",
+      locale,
+    );
   }
   if (/BadRequestError|UnprocessableEntityError|400|422/.test(raw)) {
-    return `模型服务拒绝了当前请求参数（${raw}）。常见原因是 API 接口格式或思考参数不兼容，请到「模型设置」切换 Chat Completions / Responses 并点击「测试可用性」。`;
+    return pick(
+      `Model rejected request parameters (${raw}). Try switching API format (Chat / Responses) in Models and probe.`,
+      `模型服务拒绝了当前请求参数（${raw}）。常见原因是 API 接口格式或思考参数不兼容，请到「模型设置」切换 Chat Completions / Responses 并点击「测试可用性」。`,
+      locale,
+    );
   }
   if (/InternalServerError|500|502|503|504/.test(raw)) {
-    return `模型或服务端临时出现内部错误（${raw}）。请稍等几秒后重试当前操作；如持续出现请检查服务终端日志。`;
+    return pick(
+      `Model provider returned server error (${raw}). Wait a few seconds and retry.`,
+      `模型或服务端临时出现内部错误（${raw}）。请稍等几秒后重试当前操作；如持续出现请检查服务终端日志。`,
+      locale,
+    );
   }
   if (/JSONDecodeError|json/i.test(raw)) {
-    return "模型输出未能解析为预期的 JSON 结构。建议在「模型设置」关闭思考（thinking=disabled）或调高输出长度上限后重试。";
+    return pick(
+      "Model output was not valid JSON. Disable thinking in Models or raise max output tokens and retry.",
+      "模型输出未能解析为预期的 JSON 结构。建议在「模型设置」关闭思考（thinking=disabled）或调高输出长度上限后重试。",
+      locale,
+    );
   }
   if (raw.startsWith("http_")) {
-    return `服务接口返回 HTTP 错误（${raw.replace("http_", "")}）。请检查表单输入与项目状态，或刷新页面后重试。`;
+    return pick(
+      `Server returned HTTP error (${raw.replace("http_", "")}). Check inputs or refresh the page.`,
+      `服务接口返回 HTTP 错误（${raw.replace("http_", "")}）。请检查表单输入与项目状态，或刷新页面后重试。`,
+      locale,
+    );
   }
-  return `操作未能完成（${raw}）。请检查当前模型配置、项目资源或填写参数是否正确，修正后重试。`;
+  return pick(
+    `Operation failed (${raw}). Check model configuration, project resources, or inputs and retry.`,
+    `操作未能完成（${raw}）。请检查当前模型配置、项目资源或填写参数是否正确，修正后重试。`,
+    locale,
+  );
 }
 
 export type ValidationDetail = { field: string; type: string; msg: string };
