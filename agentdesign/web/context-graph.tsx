@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Controls, Handle, Position, ReactFlow, type Edge, type Node, type NodeProps } from "@xyflow/react";
-import "@xyflow/react/dist/base.css";
 import { type Evidence, type Item, type Location, locationText, params, useQuery } from "./api";
 import { Button, Empty, ErrorNote } from "./ui";
 
@@ -11,23 +9,7 @@ type ContextEntry = { id: string; label: string; text: string; location?: string
 type ContextGroup = {
   id: string; title: string; summary: string; relation?: string; entries: ContextEntry[]; empty?: string;
 };
-type ContextNode = Node<{
-  title: string; summary: string; source: boolean; active: boolean; select: () => void;
-}, "context">;
 
-function ContextNodeButton({ data }: NodeProps<ContextNode>) {
-  return <>
-    {!data.source && <Handle type="target" position={Position.Left} isConnectable={false} />}
-    <button type="button" className={data.source ? "context-graph__node context-graph__node--source nopan" : "context-graph__node nopan"}
-      aria-pressed={data.active} onClick={data.select}>
-      <span className="context-graph__node-title">{data.title}</span>
-      <span className="context-graph__node-summary">{data.summary}</span>
-    </button>
-    {data.source && <Handle type="source" position={Position.Right} isConnectable={false} />}
-  </>;
-}
-
-const nodeTypes = { context: ContextNodeButton };
 const contextLabels: Record<string, string> = {
   source: "原文", style: "角色笔记", translation: "译例", summary: "摘要", term: "术语",
 };
@@ -50,7 +32,7 @@ function SourceContext({ url, location, back }: { url: string; location: string;
     if (panel && line) panel.scrollTop = Math.max(0, line.offsetTop - Math.max(0, (panel.clientHeight - line.offsetHeight) / 2));
   }, [data]);
   return <>
-    <div className="row-set"><h4>原文前后文</h4><span className="sp" /><Button small ghost autoFocus onClick={back}>返回详情</Button></div>
+    <div className="row-set"><h4>原文前后文</h4><span className="sp" /><Button small ghost autoFocus onClick={back}>← 返回详情</Button></div>
     <span className="hint">{location}</span>
     <ErrorNote error={error} />
     {error ? <Button small onClick={() => setRetry(value => value + 1)}>重试读取前后文</Button> : !data && <p role="status">正在读取原文前后文…</p>}
@@ -129,9 +111,6 @@ export function ContextGraph({ item, items, translation, editor, evidence, loadi
   const [selection, setSelection] = useState(initialSource ? "evidence" : "current");
   const [sourcePreview, setSourcePreview] = useState(initialSource);
   const returnToSource = useRef("");
-  const [visible, setVisible] = useState(false);
-  // Wait until the native dialog opens so React Flow fits a measurable canvas.
-  useEffect(() => { setVisible(true); }, []);
   const groups = contextGroups(item, items, evidence);
   const originalLocation = [locationText(item.location, item.file), `源 v${item.source_version}`].filter(Boolean).join(" · ");
   const current: ContextGroup = {
@@ -139,19 +118,9 @@ export function ContextGraph({ item, items, translation, editor, evidence, loadi
     entries: [{ id: "original", label: "原文", text: item.source, location: originalLocation,
       preview: hasSourceLine(item.location) ? { id: "original", location: originalLocation, source: item } : undefined }],
   };
+  const allGroups = [current, ...groups];
   const selected = groups.find(group => group.id === selection) ?? current;
-  const rowSpacing = 82;
-  const nodes: ContextNode[] = [current, ...groups].map((group, index) => ({
-    id: group.id,
-    type: "context",
-    position: index === 0 ? { x: 0, y: Math.max(0, (groups.length - 1) * rowSpacing / 2) } :
-      { x: 360, y: (index - 1) * rowSpacing },
-    data: { title: group.title, summary: group.summary, source: index === 0, active: selected.id === group.id,
-      select: () => { setSourcePreview(undefined); setSelection(group.id); } },
-  }));
-  const edges: Edge[] = groups.map(group => ({
-    id: group.id, source: current.id, target: group.id, label: group.relation, type: "straight",
-  }));
+
   return (
     <div className="context-graph">
       <section className="context-graph__translation" aria-label="当前译文">
@@ -173,18 +142,21 @@ export function ContextGraph({ item, items, translation, editor, evidence, loadi
           {translation.trim() ? <div className="text-block">{translation}</div> : <span className="muted">暂无译文</span>}
         </>}
       </section>
-      <div className="context-graph__canvas">
-        {visible && <ReactFlow key={groups.map(group => group.id).join(":")} nodes={nodes} edges={edges} nodeTypes={nodeTypes}
-          aria-label="当前条目的上下文关系" fitView fitViewOptions={{ padding: .14, maxZoom: 1.15 }} minZoom={.2}
-          nodesDraggable={false} nodesConnectable={false} elementsSelectable={false}
-          nodesFocusable={false} edgesFocusable={false} deleteKeyCode={null}
-          zoomOnDoubleClick={false} ariaLabelConfig={{
-            "controls.ariaLabel": "图谱缩放", "controls.zoomIn.ariaLabel": "放大", "controls.zoomOut.ariaLabel": "缩小",
-            "controls.fitView.ariaLabel": "显示全图",
-          }}>
-          <Controls showInteractive={false} />
-        </ReactFlow>}
+
+      <div className="ctx-ledger" role="tablist" aria-label="当前条目的上下文分组">
+        {allGroups.map(group => <button key={group.id} type="button" role="tab" aria-selected={selected.id === group.id}
+          className={`ctx-ledger__card${selected.id === group.id ? " ctx-ledger__card--active" : ""}`}
+          onClick={() => { setSourcePreview(undefined); setSelection(group.id); }}>
+          <div className="row-set">
+            <b>{group.title}</b>
+            {group.relation && <span className="pill pill--plain">{group.relation}</span>}
+            <span className="sp" />
+            <span className="mono hint">{group.entries.length} 项</span>
+          </div>
+          <div className="ctx-ledger__summary">{group.summary}</div>
+        </button>)}
       </div>
+
       <section className="context-graph__details" key={sourcePreview?.id ?? selected.id} aria-label="上下文详情">
         {sourcePreview ? <SourceContext location={sourcePreview.location}
           url={`${item.evidence_url}/context?${params({ source_id: sourcePreview.source.occurrence_id, source_version: sourcePreview.source.source_version })}`}

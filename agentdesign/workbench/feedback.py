@@ -141,20 +141,31 @@ class FeedbackLoop:
                    (job.get("source_kind") == row.get("source_kind") == "text" and
                     job["snapshots"]["source_sha256"] == row["snapshots"]["source_sha256"]) for row in feedback)
 
-    def replay_cases(self, candidate_id, dataset, job_id):
+    def replay_cases(self, candidate_id, dataset, job_id=None):
         with closing(self.workbench.open()) as repo:
             candidate = self._read(repo, "p5_candidates", candidate_id)
             feedback = self._feedback_for(repo, candidate)
             if dataset == "feedback":
-                refs = {(row["job_id"], row["step"], row["occurrence_id"]) for row in feedback}
-            else:
-                if not job_id:
-                    raise JobError(422, "job_required_for_validation_cases")
+                refs = sorted({(row["job_id"], row["step"], row["occurrence_id"]) for row in feedback})
+                auto_discovered = False
+            elif job_id:
                 job = repo.get(job_id)
-                refs = {(job_id, row["step"], row["occurrence_id"]) for row in repo.items(job_id)
-                        if not self._overlaps_feedback(job, row["occurrence_id"], feedback)}
+                refs = sorted((job_id, row["step"], row["occurrence_id"]) for row in repo.items(job_id)
+                              if not self._overlaps_feedback(job, row["occurrence_id"], feedback))
+                auto_discovered = False
+            else:
+                refs = []
+                rows = repo.db.execute(
+                    "SELECT id FROM p2_jobs WHERE json_extract(data,'$.source_kind')!='graph_build' ORDER BY rowid DESC LIMIT 40"
+                ).fetchall()
+                for (jid,) in rows:
+                    job = repo.get(jid)
+                    for row in repo.items(jid):
+                        if not self._overlaps_feedback(job, row["occurrence_id"], feedback):
+                            refs.append((jid, row["step"], row["occurrence_id"]))
+                auto_discovered = True
             cases = []
-            for identity, step, item in sorted(refs):
+            for identity, step, item in refs:
                 ref = {"job_id": identity, "step": step, "occurrence_id": item}
                 try:
                     case = self._case(repo, ref)
@@ -162,7 +173,9 @@ class FeedbackLoop:
                     continue
                 cases.append({**ref, "source": case["item"]["source"],
                               "file": self.workbench.resource(case["job"], item)["file"]})
-            return {"cases": cases}
+                if auto_discovered and len(cases) >= 16:
+                    break
+            return {"cases": cases, **({"auto_discovered": True} if auto_discovered else {})}
 
     def _case(self, repo, ref):
         job = repo.get(ref["job_id"])
@@ -310,7 +323,8 @@ class FeedbackLoop:
                      "current_resource": json.loads(pack.manifest["current_source_context"]),
                      "selected_evidence": json.loads(pack.model_context), "draft": draft, "hard_check": initial,
                      "editor_requirement": (job["plan"] or {}).get("requirements")}
-            models = Responses({**job["config"], "max_calls": min(job["config"]["max_calls"], 2)}, record, PI)
+            models = Responses({**job["config"], "max_calls": min(job["config"]["max_calls"], 2)}, record, PI,
+                               secret_resolver=self.workbench.projects.resolve_secret)
             try:
                 reply, _ = models.pi(prompts["reviewer_source"] + "\nResource payload:\n" + json.dumps(query, ensure_ascii=False),
                                      item=source.occurrence_id, tool=tool.call)

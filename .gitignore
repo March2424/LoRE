@@ -1,0 +1,7 @@
+.DS_Store
+/figures/
+/report/
+/reports/
+/*.tex
+/Final_Report*.pdf
+/agentdesign/.npm-cache/

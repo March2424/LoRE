@@ -16,7 +16,7 @@ from localization_agent.memory import MemoryService
 from localization_agent.memory.store import VersionConflict, _json
 from localization_agent.retrieval.graph import GraphStore
 from localization_agent.retrieval.service import GraphConfig
-from localization_agent.schemas.graph import GraphNode, GraphSnapshot
+from localization_agent.schemas.graph import GraphNode, GraphRef, GraphSnapshot
 from localization_agent.schemas.memory import Evidence, MemoryRef, Occurrence, ReadView, Scope, TranslationCheck, text_hash
 
 from run_p0 import CONFIG, HERE, MANIFEST, NAEV_PROVENANCE, PI, P1_MANIFEST, digest, load
@@ -182,8 +182,9 @@ class Workbench:
         project_id = request["selection"].get("project", "naev")
         custom = self.projects.get(repo, project_id) if project_id != "naev" else None
         config = self.config
-        if custom:
-            config = {**config, "roles": self.projects.model_roles(repo, custom)}
+        roles = self.projects.model_roles(repo, custom) if custom else self.projects.workspace_models(repo)
+        if roles:
+            config = {**config, "roles": {**config.get("roles", {}), **roles}}
         if request.get("max_calls") is not None:
             config = {**config, "max_calls": request["max_calls"]}
         job = {
@@ -250,22 +251,58 @@ class Workbench:
         repo.put(job, event="job")
         return job["job_id"]
 
-    def list_jobs(self, project, offset, limit):
+    def list_jobs(self, project, offset, limit, *, kind=None, intent=None, status=None):
         scope = """COALESCE(json_extract(data,'$.project_id'),
                             CASE WHEN json_extract(data,'$.source_kind')='text' THEN 'text' ELSE 'naev' END)"""
+        status_groups = {
+            "active": {"queued", "running", "awaiting_input", "awaiting_review", "paused"},
+            "completed": {"completed", "partial"},
+            "failed": {"failed", "cancelled"},
+        }
         with closing(self.open()) as repo:
             repo.db.execute("BEGIN")
             where = f"WHERE (? IS NULL OR {scope}=?)"
-            total = repo.db.execute(f"SELECT COUNT(*) FROM p2_jobs {where}", (project, project)).fetchone()[0]
-            rows = repo.db.execute(f"SELECT data FROM p2_jobs {where} ORDER BY rowid DESC LIMIT ? OFFSET ?",
-                                   (project, project, limit, offset))
-            return {"total": total, "jobs": [{
-                "job_id": job["job_id"], "status": job["status"], "reason": job.get("reason"),
-                "project_id": job.get("project_id"), "source_kind": job.get("source_kind", "naev"),
-                "intents": (job.get("plan") or {}).get("intents") or job["request"].get("intents", []),
-                "title": (job["request"].get("text") or job["request"].get("source_text") or "")[:120],
-                "bulk_id": job.get("bulk_id"),
-            } for (data,) in rows for job in (json.loads(data),)]}
+            rows = repo.db.execute(f"SELECT data FROM p2_jobs {where} ORDER BY rowid DESC", (project, project))
+            kind_counts, intent_counts, status_counts, exact_statuses = {}, {}, {"active": 0, "completed": 0, "failed": 0}, {}
+            matched = []
+            for (data,) in rows:
+                job = json.loads(data)
+                job_kind = job.get("source_kind", "naev")
+                raw_intents = ["build_graph"] if job_kind == "graph_build" else (
+                    (job.get("plan") or {}).get("intents") or job["request"].get("intents")
+                    or (["translate"] if job_kind == "text" else [])
+                )
+                job_status = job["status"]
+                kind_counts[job_kind] = kind_counts.get(job_kind, 0) + 1
+                for item_intent in raw_intents:
+                    intent_counts[item_intent] = intent_counts.get(item_intent, 0) + 1
+                exact_statuses[job_status] = exact_statuses.get(job_status, 0) + 1
+                for group_name, states in status_groups.items():
+                    if job_status in states:
+                        status_counts[group_name] += 1
+                if kind and kind != "all" and job_kind != kind:
+                    continue
+                if intent and intent != "all" and intent not in raw_intents:
+                    continue
+                if status and status != "all":
+                    allowed = status_groups.get(status, {status})
+                    if job_status not in allowed:
+                        continue
+                matched.append({
+                    "job_id": job["job_id"], "status": job_status, "reason": job.get("reason"),
+                    "project_id": job.get("project_id"), "source_kind": job_kind,
+                    "intents": raw_intents,
+                    "title": (job["request"].get("text") or job["request"].get("source_text") or "")[:120],
+                    "bulk_id": job.get("bulk_id"),
+                })
+            return {
+                "total": len(matched),
+                "jobs": matched[offset:offset + limit],
+                "summary": {
+                    "kinds": kind_counts, "intents": intent_counts,
+                    "statuses": status_counts, "exact_statuses": exact_statuses,
+                },
+            }
 
     def version_history(self, job_id, source_id):
         with closing(self.open()) as repo:
@@ -417,9 +454,326 @@ class Workbench:
                     if candidate["mandatory"] and candidate["category"] == "term" and candidate["memory_ref"]
                 ],
                 "retrieved": retrieval[-1]["candidate_pool"]["candidates"] if retrieval else [],
+                "selection": repo.audit(job_id, "selection", item_id, lane=lane),
+                "drafts": repo.audit(job_id, "draft", item_id, lane=lane),
+                "hard_checks": repo.audit(job_id, "hard_check", item_id, lane=lane),
+                "repairs": repo.audit(job_id, "repair", item_id, lane=lane),
                 "reviews": repo.audit(job_id, "review", item_id, lane=lane),
                 "source_lookups": repo.audit(job_id, "review_tool", item_id, lane=lane),
             }
+
+    def enrich_resources(self, repo, rows):
+        if not rows:
+            return [], {"all": 0, "translated": 0, "untranslated": 0, "awaiting_review": 0}
+        heads = {row["item"]: (row["version"], bool(row["locked"]))
+                 for row in repo.db.execute("SELECT item,version,locked FROM p2_heads")}
+        latest_versions = {}
+        for item_id, (version, _) in heads.items():
+            if version > 0:
+                latest_versions[item_id] = repo.version(item_id, version)
+        active_items = {}
+        latest_any = {}
+        for row in repo.db.execute("""
+            SELECT j.status AS job_status, j.data AS job_data, t.step, t.item, t.data AS item_data
+            FROM p2_items t JOIN p2_jobs j ON j.id=t.job
+            ORDER BY t.rowid DESC
+        """):
+            item_id = row["item"]
+            item_data = json.loads(row["item_data"])
+            if item_id not in latest_any:
+                latest_any[item_id] = (row["job_status"], item_data)
+            if row["job_status"] == "awaiting_review" and item_id not in active_items:
+                job_data = json.loads(row["job_data"])
+                if row["step"] == job_data.get("cursor") and item_data.get("status") in ITEM_PENDING | {"failed"}:
+                    active_items[item_id] = item_data
+
+        counts = {"all": len(rows), "translated": 0, "untranslated": 0, "awaiting_review": 0}
+        enriched = []
+        for row in rows:
+            occ_id = row["occurrence_id"]
+            src_ver = row.get("source_version", 1)
+            head_ver, locked = heads.get(occ_id, (0, False))
+            release = latest_versions.get(occ_id)
+            active = active_items.get(occ_id)
+            if active and active.get("source_version") == src_ver:
+                t_status = "awaiting_review"
+                target = active.get("target")
+                latest_job = active.get("job_id")
+                latest_step = active.get("step")
+                review_reason = active.get("reason")
+            elif release and release.get("source_version") == src_ver and self._eligible(repo, occ_id, head_ver):
+                t_status = "translated"
+                target = release.get("target")
+                last = latest_any.get(occ_id)
+                latest_job = last[1].get("job_id") if last else release.get("origin_job")
+                latest_step = last[1].get("step") if last else 0
+                review_reason = None
+            else:
+                t_status = "untranslated"
+                target = None
+                last = latest_any.get(occ_id)
+                latest_job = last[1].get("job_id") if last else None
+                latest_step = last[1].get("step") if last else None
+                review_reason = last[1].get("reason") if last else None
+            counts[t_status] += 1
+            enriched.append({
+                **row,
+                "translation_status": t_status,
+                "target": target,
+                "target_version": head_ver,
+                "locked": locked,
+                "origin_job_id": release.get("origin_job") if release else None,
+                "latest_job_id": latest_job,
+                "latest_step": latest_step,
+                "review_reason": review_reason,
+            })
+        return enriched, counts
+
+    def inspect_occurrence(self, project_id, occurrence_id):
+        with closing(self.open()) as repo:
+            repo.db.execute("BEGIN")
+            if project_id == "naev":
+                if occurrence_id not in self.resources:
+                    raise JobError(404, "resource_not_found")
+                raw = self.resources[occurrence_id]
+                occ = repo.memory.source("naev", Evidence(occurrence_id, raw.get("source_version", 1), ""))
+                resource = {
+                    **raw,
+                    "label": occ.source,
+                    "source_version": occ.source_version,
+                    "metadata": occ.metadata,
+                    "location": raw.get("location") or self._native_source_location(occurrence_id),
+                }
+                snapshot_id = self.snapshot
+            else:
+                project = self.projects.get(repo, project_id)
+                all_res = self.projects.resources(repo, project_id)
+                if occurrence_id not in all_res:
+                    raise JobError(404, "resource_not_found")
+                resource = all_res[occurrence_id]
+                snapshot_id = project.get("graph_snapshot")
+
+            enriched_list, _ = self.enrich_resources(repo, [resource])
+            enriched = enriched_list[0]
+            head_ver, locked = repo.head(occurrence_id)
+            versions = [
+                {"version": ver, "target": rec["target"], "source_version": rec["source_version"],
+                 "origin_job": rec.get("origin_job"), "reviewer": rec.get("reviewer")}
+                for ver, data in repo.db.execute(
+                    "SELECT version, data FROM p2_versions WHERE item=? ORDER BY version DESC", (occurrence_id,))
+                for rec in (json.loads(data),)
+            ]
+
+            active_item = None
+            evidence = None
+            target_job_id = enriched.get("latest_job_id")
+            target_step = enriched.get("latest_step")
+            if target_job_id is None:
+                row = repo.db.execute(
+                    "SELECT job, step FROM p2_items WHERE item=? ORDER BY rowid DESC LIMIT 1", (occurrence_id,),
+                ).fetchone()
+                if row:
+                    target_job_id, target_step = row["job"], row["step"]
+
+            if target_job_id is not None and target_step is not None:
+                try:
+                    job_detail = self.detail(target_job_id)
+                    matched = next((it for it in job_detail["items"]
+                                    if it["occurrence_id"] == occurrence_id and it["step"] == target_step), None)
+                    if matched:
+                        active_item = {**matched, "job_status": job_detail["status"],
+                                       "target_lang": job_detail.get("target_lang")}
+                        evidence = self.item_evidence(target_job_id, target_step, occurrence_id)
+                except JobError:
+                    pass
+
+            graph_nodes, graph_edges = [], []
+            if snapshot_id:
+                try:
+                    store = GraphStore(repo.memory)
+                    snap = store.snapshot(snapshot_id)
+                    refs_set = set(snap.refs)
+                    occ_refs = {ref for ref in snap.refs if ref.kind == "node" and ref.id == occurrence_id}
+                    edges_all = [store.get(ref) for ref in snap.refs if ref.kind == "edge"]
+                    direct_edges = [
+                        edge for edge in edges_all
+                        if edge.source in occ_refs or edge.target in occ_refs
+                        or any(ev.occurrence_id == occurrence_id for ev in edge.evidence)
+                    ]
+                    entity_refs = {
+                        end for edge in direct_edges for end in (edge.source, edge.target)
+                        if end not in occ_refs and end in refs_set
+                    }
+                    hop_edges = [
+                        edge for edge in edges_all
+                        if edge.source in entity_refs and edge.target in entity_refs
+                    ]
+                    selected_edges = []
+                    seen_edge = set()
+                    for edge in (*direct_edges, *hop_edges):
+                        if edge.ref not in seen_edge:
+                            seen_edge.add(edge.ref)
+                            selected_edges.append(edge)
+                    node_refs = list(occ_refs | entity_refs)[:24]
+                    for ref in node_refs:
+                        obj = store.get(ref)
+                        graph_nodes.append({
+                            "id": obj.id, "version": obj.version, "kind": obj.kind,
+                            "valid": store.valid(ref), "attributes": obj.attributes,
+                            "evidence": [asdict(e) for e in obj.evidence],
+                        })
+                    node_id_set = {n["id"] for n in graph_nodes}
+                    for edge in selected_edges[:30]:
+                        if edge.source.id in node_id_set and edge.target.id in node_id_set:
+                            graph_edges.append({
+                                "id": edge.id, "version": edge.version, "relation": edge.relation,
+                                "source": edge.source.id, "target": edge.target.id,
+                                "valid": store.valid(edge.ref), "attributes": edge.attributes,
+                                "evidence": [asdict(e) for e in edge.evidence],
+                            })
+                except KeyError:
+                    pass
+
+            mem_records = (self.projects.memory(repo, project_id) if project_id != "naev"
+                           else repo.memory._approved(project="naev"))
+            relevant_memory = []
+            src_lower = resource["label"].casefold()
+            speaker = (resource.get("metadata") or {}).get("speaker_id")
+            for rec in mem_records:
+                if rec.kind == "term" and rec.content.get("source", "").casefold() in src_lower:
+                    relevant_memory.append(asdict(rec))
+                elif rec.kind == "style" and speaker and speaker in rec.scope.conditions.get("speaker_id", ()):
+                    relevant_memory.append(asdict(rec))
+                elif any(ev.occurrence_id == occurrence_id for ev in rec.evidence):
+                    relevant_memory.append(asdict(rec))
+
+            project_notes = (self.projects.list_notes(repo, project_id) if project_id != "naev" else [])
+            return {
+                "project_id": project_id,
+                "resource": enriched,
+                "translation": {
+                    "target": enriched.get("target"),
+                    "head_version": head_ver,
+                    "locked": locked,
+                    "versions": versions,
+                },
+                "active_item": active_item,
+                "evidence": evidence,
+                "project_notes": [n for n in project_notes if n.get("enabled", True)],
+                "graph": {"snapshot_id": snapshot_id, "nodes": graph_nodes, "edges": graph_edges},
+                "memory": relevant_memory[:30],
+            }
+
+    def ask_occurrence(self, project_id, occurrence_id, question):
+        inspect = self.inspect_occurrence(project_id, occurrence_id)
+        resource = inspect["resource"]
+        trans = inspect["translation"]
+        ev = inspect.get("evidence") or {}
+        graph = inspect.get("graph") or {}
+        selection = (ev.get("selection") or [None])[-1] or {}
+        reviews = ev.get("reviews") or []
+        lookups = ev.get("source_lookups") or []
+        actual_items = (ev.get("actual_context") or {}).get("items", [])
+        retrieved = ev.get("retrieved") or []
+        mandatory = ev.get("mandatory_terms") or []
+        hard_checks = ev.get("hard_checks") or []
+        repairs = ev.get("repairs") or []
+
+        citations = []
+        for entry in actual_items[:6]:
+            citations.append({"kind": "context", "id": entry["id"], "text": entry["text"][:160]})
+        for node in graph.get("nodes", []):
+            if node["kind"] == "entity":
+                citations.append({"kind": "graph_entity", "id": node["id"],
+                                  "text": f'{node["attributes"].get("name")} ({node["attributes"].get("entity_type")})'})
+        for lookup in lookups:
+            citations.append({"kind": "tool_lookup", "id": lookup["name"],
+                              "text": f'{lookup["name"]}({lookup.get("effective_query") or lookup.get("args", {}).get("query", "")}) -> {lookup["result"]["status"]}'})
+
+        if self.offline:
+            parts = [f'条目「{resource["label"][:80]}」当前状态：{resource["translation_status"]}（版本 v{trans["head_version"]}）。']
+            if trans.get("target"):
+                parts.append(f'当前译文：{trans["target"]}')
+            else:
+                parts.append("该条目尚未产生已提交或待复核译文，你可以在对话框直接输入「翻译这条」触发 Agent 翻译。")
+            if selection:
+                dec = selection.get("decision") or {}
+                if dec.get("rationale"):
+                    parts.append(f'上下文选择器理由：{dec["rationale"]}')
+                if selection.get("fallback"):
+                    parts.append(f'选择器回退标记：{selection["fallback"]}')
+            if mandatory:
+                parts.append("强制术语：" + "；".join(f'{t["source"]} → {t["target"]}' for t in mandatory))
+            if actual_items or retrieved:
+                parts.append(f'上下文证据：候选 {len(retrieved)} 条，实际采纳 {len(actual_items)} 条。')
+            if graph.get("edges"):
+                node_names = {n["id"]: n["attributes"].get("name") or n["id"] for n in graph.get("nodes", [])}
+                rels = [f'{node_names.get(e["source"], e["source"])} -[{e["relation"]}]-> {node_names.get(e["target"], e["target"])}'
+                        for e in graph["edges"][:5]]
+                parts.append("关联图谱关系：" + "；".join(rels))
+            if lookups:
+                parts.append("Pi 主动查证：" + "；".join(
+                    f'{l["name"]} 查询「{l.get("effective_query") or l.get("args", {}).get("query", "")}」→ {l["result"]["status"]}（屏蔽越界 {l.get("excluded_hits", 0)} 条）'
+                    for l in lookups))
+            if reviews:
+                parts.append("Pi 审校结论：" + "；".join(f'{r["verdict"]}（{r["reason"]}）' for r in reviews))
+            if repairs:
+                parts.append(f'定向修复：共经历 {len(repairs)} 次修复。')
+            if inspect.get("project_notes"):
+                parts.append("全局背景/System Prompt 记忆：" + "；".join(n["title"] for n in inspect["project_notes"]))
+            return {"answer": "\n".join(parts), "citations": citations, "offline": True, "model": "offline_trace"}
+
+        with closing(self.open()) as repo:
+            custom = self.projects.get(repo, project_id) if project_id != "naev" else None
+            roles = self.projects.model_roles(repo, custom) if custom else self.projects.workspace_models(repo)
+        config = {**self.config, "max_calls": 2}
+        if roles:
+            config["roles"] = {**config.get("roles", {}), **roles}
+        role = "intent" if "intent" in config.get("roles", {}) else "reviewer" if "reviewer" in config.get("roles", {}) else "translator"
+        trace_payload = {
+            "source": resource["label"],
+            "metadata": resource.get("metadata"),
+            "translation_status": resource["translation_status"],
+            "current_target": trans.get("target"),
+            "head_version": trans["head_version"],
+            "mandatory_terms": mandatory,
+            "selection_decision": selection.get("decision"),
+            "selection_fallback": selection.get("fallback"),
+            "adopted_context": actual_items,
+            "unused_candidates_count": max(0, len(retrieved) - len(actual_items)),
+            "unused_candidates": [c for c in retrieved if c["id"] not in {a["id"] for a in actual_items}][:8],
+            "graph_nodes": [{"id": n["id"], "kind": n["kind"], "name": n["attributes"].get("name"),
+                             "type": n["attributes"].get("entity_type"), "valid": n["valid"]}
+                            for n in graph.get("nodes", [])],
+            "graph_edges": [{"relation": e["relation"], "source": e["source"], "target": e["target"],
+                             "valid": e["valid"], "quotes": [x["quote"] for x in e.get("evidence", [])]}
+                            for e in graph.get("edges", [])],
+            "hard_checks": hard_checks,
+            "pi_tool_lookups": lookups,
+            "reviews": reviews,
+            "repairs": repairs,
+            "project_background_and_system_prompts": inspect.get("project_notes", []),
+        }
+        prompt = (
+            "你是 LoRE 本地化工作台的透明溯源助教。请严格基于下面给出的 JSON 证据与执行轨迹，用简洁清晰的简体中文回答用户关于这条翻译的问题。\n"
+            "规则：\n"
+            "1. 只能陈述 JSON 轨迹中真实存在的事实、记忆条目、图谱关系、选择器理由、工具查证结果与审校理由；\n"
+            "2. 如果某个字段为空或尚未翻译/未调用工具，请如实说明，不得编造设定或假装查询了外部资料；\n"
+            "3. 回答时尽量点出具体的术语、记忆 ID、图谱关系或 Pi Reviewer 判定依据。\n\n"
+            f"用户问题：{question}\n\n"
+            f"条目证据与轨迹：\n{json.dumps(trace_payload, ensure_ascii=False)}"
+        )
+        models = Responses(config, lambda *a, **k: None, PI, offline=False, secret_resolver=self.projects.resolve_secret)
+        try:
+            answer, _ = models.ask(role, prompt)
+        except ModelFailure as error:
+            raise JobError(502, error.code) from None
+        return {
+            "answer": answer.strip(),
+            "citations": citations,
+            "offline": False,
+            "model": config.get("roles", {}).get(role, {}).get("model", config["model"]),
+        }
 
     def _native_source_location(self, source_id):
         return self.native.resources.get(source_id, {}).get("location") or self.provenance.get(source_id)
@@ -480,7 +834,7 @@ class Workbench:
         parsed = job["intent"]
         if parsed is None and request.get("text") and not request.get("intents"):
             trace = self._trace(repo, job["job_id"], lane="intent")
-            base = Responses(job["config"], trace, PI, offline=self.offline)
+            base = Responses(job["config"], trace, PI, offline=self.offline, secret_resolver=self.projects.resolve_secret)
             models = JobModels(base, repo, job["job_id"], "intent")
             try:
                 receipt, _ = models.pi(job["prompts"]["intent"] + "\nRequest:\n" + request["text"],
@@ -658,18 +1012,20 @@ class Workbench:
         retriever = self._retriever(repo, job, source_id)
         lane = f'{item["step"]}:{source_id}'
         trace = self._trace(repo, job["job_id"], source_id, lane)
-        base = Responses(job["config"], trace, PI, offline=self.offline)
+        base = Responses(job["config"], trace, PI, offline=self.offline, secret_resolver=self.projects.resolve_secret)
         models = JobModels(base, repo, job["job_id"], lane)
         fixture = self.fixture.get(source_id) or {
             "selector": '{"selected_ids":[],"rationale":"offline"}', "translator": source.source,
             "reviewer": [{"verdict": "needs_human", "reason": "offline_fixture_unavailable"}],
         }
         # The offline fixture may deliberately introduce a fault. Live jobs use only editor input.
+        notes_prompt = self.projects.active_notes_prompt(repo, job.get("project_id"))
+        merged_req = "\n\n".join(p for p in (notes_prompt, job["plan"]["requirements"]) if p) or None
         case = {**self.cases.get(source_id, {})} if self.offline else {}
-        case.update(case="task", editor_requirement=job["plan"]["requirements"] or case.get("editor_requirement"))
+        case.update(case="task", editor_requirement=merged_req or case.get("editor_requirement"))
         maintenance = job.get("maintenance_items", {}).get(source_id)
         if maintenance:
-            case = {"case": "maintenance", "editor_requirement": job["plan"]["requirements"]}
+            case = {"case": "maintenance", "editor_requirement": merged_req}
             if self.offline:
                 verdict = {"verdict": "needs_human", "reason": "offline_no_deterministic_replacement"}
                 if maintenance["proposed"]:

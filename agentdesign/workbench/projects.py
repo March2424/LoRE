@@ -36,10 +36,13 @@ CREATE TABLE IF NOT EXISTS p6_resources (
     PRIMARY KEY(import_id,occurrence));
 CREATE INDEX IF NOT EXISTS p6_resource_history ON p6_resources(occurrence,version);
 CREATE TABLE IF NOT EXISTS p6_models (id TEXT PRIMARY KEY, data TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS p6_secrets (id TEXT PRIMARY KEY, api_key TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS p6_project_notes (id TEXT PRIMARY KEY, project TEXT NOT NULL, data TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS p6_pause (job TEXT PRIMARY KEY);
 CREATE TABLE IF NOT EXISTS p6_extracted (
     project TEXT NOT NULL, occurrence TEXT NOT NULL, version INTEGER NOT NULL,
     PRIMARY KEY(project,occurrence,version));
+CREATE TABLE IF NOT EXISTS p6_workspace_models (role TEXT PRIMARY KEY, profile TEXT NOT NULL);
 """
 
 
@@ -60,8 +63,9 @@ class ExtractionMemory(MemoryService):
 
     def _call(self, task, template, *, _reuse_logged=False, **values):
         prompt = (self.config.prompt_dir / template).read_text(encoding="utf-8").format(**values)
-        if estimate_tokens(prompt) > self.prompt_limit:
-            raise ModelFailure("graph_input_token_limit")
+        tokens = estimate_tokens(prompt)
+        if tokens > self.prompt_limit:
+            raise ModelFailure(f"graph_input_token_limit:{tokens}")
         fixture = '{"entities":[],"relations":[]}'
         output, call = self.models.ask("extractor", prompt, fixture=fixture)
         return json.dumps(parse_json_reply(output), ensure_ascii=False), call
@@ -101,32 +105,161 @@ class Projects:
             raise JobError(404, "model_profile_not_found")
         return json.loads(row[0])
 
-    def register_model(self, spec, key):
+    @staticmethod
+    def _mask_key(secret):
+        secret = secret.strip()
+        if len(secret) <= 8:
+            return "••••" + secret[-2:]
+        return f"{secret[:4]}••••{secret[-4:]}"
+
+    @staticmethod
+    def _secret_ids(repo):
+        return {row[0] for row in repo.db.execute("SELECT id FROM p6_secrets")}
+
+    def resolve_secret(self, profile_id):
+        if not profile_id:
+            return None
+        with closing(self.workbench.open()) as repo:
+            row = repo.db.execute("SELECT api_key FROM p6_secrets WHERE id=?", (profile_id,)).fetchone()
+            return row[0] if row else None
+
+    @staticmethod
+    def _enrich_profile(profile, *, has_secret=False):
+        endpoint = urlsplit(profile.get("base_url", ""))
+        local = endpoint.hostname in {"localhost", "127.0.0.1", "::1"}
+        credential = profile.get("api_key_env")
+        mode = profile.get("mode") or ("local" if local and not credential and not has_secret else "api")
+        source = "direct" if has_secret else "env" if credential else "local"
+        return {
+            **profile,
+            "mode": mode,
+            "api_format": profile.get("api_format") or "chat_completions",
+            "thinking": profile.get("thinking") or "disabled",
+            "credential_source": source,
+            "credential_configured": bool(has_secret or (os.environ.get(credential) if credential else local)),
+        }
+
+    def list_models(self):
+        with closing(self.workbench.open()) as repo:
+            secrets = self._secret_ids(repo)
+            return [
+                self._enrich_profile(data, has_secret=data["profile_id"] in secrets)
+                for row in repo.db.execute("SELECT data FROM p6_models ORDER BY rowid")
+                for data in (json.loads(row[0]),)
+            ]
+
+    def _prepare_model_payload(self, spec, *, existing=None, has_existing_secret=False):
         endpoint = urlsplit(spec["base_url"])
         local = endpoint.hostname in {"localhost", "127.0.0.1", "::1"}
         if endpoint.username or endpoint.password or endpoint.fragment or endpoint.query or not endpoint.hostname:
             raise JobError(422, "invalid_model_base_url")
         if endpoint.scheme != "https" and not (endpoint.scheme == "http" and local):
             raise JobError(422, "model_requires_https_or_loopback")
+        raw_key = (spec.get("api_key") or "").strip() or None
         credential = spec.get("api_key_env")
-        if credential == "DEEPSEEK_API_KEY":
-            trusted = self.workbench.config["base_url"]
-        elif credential and credential.startswith("WORKBENCH_MODEL_") and credential.endswith("_KEY"):
-            trusted = os.environ.get(credential.removesuffix("_KEY") + "_URL", "")
-        else:
-            trusted = spec["base_url"] if local and not credential else ""
-        if trusted.rstrip("/") != spec["base_url"].rstrip("/"):
-            raise JobError(422, "model_credential_endpoint_not_configured")
+        if raw_key and not credential:
+            credential = None
+        effective_secret = bool(raw_key) or (has_existing_secret and not credential)
+        mode = spec.get("mode") or ("local" if local and not credential and not effective_secret else "api")
+        if mode == "local" and not local:
+            raise JobError(422, "model_local_requires_loopback")
+        if mode == "api" and not effective_secret and not credential and not local:
+            raise JobError(422, "model_api_requires_credential")
+        if credential and credential.startswith("WORKBENCH_MODEL_") and credential.endswith("_KEY"):
+            configured_url = os.environ.get(credential.removesuffix("_KEY") + "_URL", "")
+            if configured_url and configured_url.rstrip("/") != spec["base_url"].rstrip("/"):
+                raise JobError(422, "model_credential_endpoint_not_configured")
+        safe = {k: v for k, v in spec.items() if k != "api_key"}
+        safe["api_key_env"] = credential
+        safe["mode"] = mode
+        if raw_key:
+            safe["api_key_masked"] = self._mask_key(raw_key)
+        elif credential or mode == "local":
+            safe.pop("api_key_masked", None)
+        elif existing and existing.get("api_key_masked"):
+            safe["api_key_masked"] = existing["api_key_masked"]
+        return safe, raw_key
+
+    def register_model(self, spec, key):
+        safe, raw_key = self._prepare_model_payload(spec)
+        action_payload = {**safe, **({"key_sha256": sha256(raw_key.encode()).hexdigest()[:12]} if raw_key else {})}
         with closing(self.workbench.open()) as repo, repo.transaction():
-            if receipt := repo.action("p6-model-create", key, spec):
-                return receipt
-            profile = {**spec, "profile_id": uuid4().hex}
+            if receipt := repo.action("p6-model-create", key, action_payload):
+                secrets = self._secret_ids(repo)
+                return self._enrich_profile(receipt, has_secret=receipt["profile_id"] in secrets)
+            profile = {**safe, "profile_id": uuid4().hex}
             repo.db.execute("INSERT INTO p6_models VALUES (?,?)", (profile["profile_id"], encode(profile)))
-            repo.save_action("p6-model-create", key, spec, profile)
-            return profile
+            if raw_key:
+                repo.db.execute("INSERT OR REPLACE INTO p6_secrets VALUES (?,?)", (profile["profile_id"], raw_key))
+            repo.save_action("p6-model-create", key, action_payload, profile)
+            return self._enrich_profile(profile, has_secret=bool(raw_key))
+
+    def update_model(self, profile_id, spec, key):
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            existing = self.profile(repo, profile_id)
+            has_secret = profile_id in self._secret_ids(repo)
+            safe, raw_key = self._prepare_model_payload(spec, existing=existing, has_existing_secret=has_secret)
+            action_payload = {
+                "profile_id": profile_id, **safe,
+                **({"key_sha256": sha256(raw_key.encode()).hexdigest()[:12]} if raw_key else {}),
+            }
+            scope = "p6-model-update:" + profile_id
+            if receipt := repo.action(scope, key, action_payload):
+                secrets = self._secret_ids(repo)
+                return self._enrich_profile(receipt, has_secret=profile_id in secrets)
+            profile = {**safe, "profile_id": profile_id}
+            repo.db.execute("UPDATE p6_models SET data=? WHERE id=?", (encode(profile), profile_id))
+            if raw_key:
+                repo.db.execute("INSERT OR REPLACE INTO p6_secrets VALUES (?,?)", (profile_id, raw_key))
+                has_secret = True
+            elif spec.get("api_key_env") or safe["mode"] == "local":
+                repo.db.execute("DELETE FROM p6_secrets WHERE id=?", (profile_id,))
+                has_secret = False
+            repo.save_action(scope, key, action_payload, profile)
+            return self._enrich_profile(profile, has_secret=has_secret)
+
+    def delete_model(self, profile_id):
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            self.profile(repo, profile_id)
+            in_project = any(
+                profile_id in json.loads(row[0]).get("models", {}).values()
+                for row in repo.db.execute("SELECT data FROM p6_projects")
+            )
+            in_workspace = repo.db.execute(
+                "SELECT 1 FROM p6_workspace_models WHERE profile=?", (profile_id,)
+            ).fetchone() is not None
+            if in_project or in_workspace:
+                raise JobError(409, "model_profile_in_use")
+            repo.db.execute("DELETE FROM p6_models WHERE id=?", (profile_id,))
+            repo.db.execute("DELETE FROM p6_secrets WHERE id=?", (profile_id,))
+            return {"deleted": profile_id}
+
+    def workspace_model_bindings(self, repo):
+        return {row["role"]: row["profile"]
+                for row in repo.db.execute("SELECT role, profile FROM p6_workspace_models")}
+
+    def workspace_models(self, repo):
+        return {role: self.profile(repo, profile) for role, profile in self.workspace_model_bindings(repo).items()}
+
+    def bind_workspace_models(self, bindings, key):
+        if set(bindings) - ROLES:
+            raise JobError(422, "unknown_model_role")
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            scope = "p6-workspace-model-roles"
+            if result := repo.action(scope, key, bindings):
+                return result
+            for profile in bindings.values():
+                self.profile(repo, profile)
+            repo.db.execute("DELETE FROM p6_workspace_models")
+            repo.db.executemany("INSERT INTO p6_workspace_models VALUES (?,?)", list(bindings.items()))
+            result = {"roles": bindings}
+            repo.save_action(scope, key, bindings, result)
+            return result
 
     def model_roles(self, repo, project):
-        return {role: self.profile(repo, profile) for role, profile in project["models"].items()}
+        merged = self.workspace_models(repo)
+        merged.update({role: self.profile(repo, profile) for role, profile in project["models"].items()})
+        return merged
 
     def bind_models(self, project_id, bindings, key):
         if set(bindings) - ROLES:
@@ -149,7 +282,7 @@ class Projects:
         with closing(self.workbench.open()) as repo:
             profile = self.profile(repo, profile_id)
         config = {**self.workbench.config, "max_calls": 2, "roles": {"probe": profile, "pi_probe": profile}}
-        models = Responses(config, lambda *args, **kwargs: None, PI)
+        models = Responses(config, lambda *args, **kwargs: None, PI, secret_resolver=self.resolve_secret)
         try:
             if role == "reviewer":
                 receipt, _ = models.pi("Call p0_echo, then return its token exactly.", mode="tools",
@@ -410,14 +543,17 @@ class Projects:
             if not resources:
                 raise JobError(409, "import_project_sources_first")
             batches, batch, size, context = [], [], 0, None
+            # Reserve tokens for discover_graph.txt (~1600), entity catalog (up to 1200), and framing buffer.
+            source_budget = min(5000, max(600, options["max_input_tokens"] - 3000))
             coverage = set() if options["rebuild"] else {tuple(row) for row in repo.db.execute(
                 "SELECT occurrence,version FROM p6_extracted WHERE project=?", (project_id,))}
-            for row in resources.values():
-                if (row["occurrence_id"], row["source_version"]) in coverage:
-                    continue
-                units = estimate_tokens(row["label"] + row["metadata"].get("native_context", ""))
+            pending = [row for row in resources.values() if (row["occurrence_id"], row["source_version"]) not in coverage]
+            if options.get("max_items"):
+                pending = pending[:options["max_items"]]
+            for row in pending:
+                units = estimate_tokens(row["label"] + row["metadata"].get("native_context", "")) + 48
                 grouping = tuple(row["metadata"].get(field) for field in ("branch_id", "phase_id", "requirements"))
-                if batch and (len(batch) >= options["batch_size"] or size + units > 2000 or grouping != context):
+                if batch and (len(batch) >= options["batch_size"] or size + units > source_budget or grouping != context):
                     batches.append(batch)
                     batch, size = [], 0
                 batch.append(["node", row["occurrence_id"], row["source_version"]])
@@ -426,8 +562,6 @@ class Projects:
                 batches.append(batch)
             if not options["extract"]:
                 batches = []
-            if options["extract"] and len(batches) > options["max_calls"]:
-                raise JobError(422, f"graph_calls_required:{len(batches)}")
             request = {"selection": {"project": project_id}, "intents": []}
             job = self.workbench._new_job(repo, request)
             job.update(source_kind="graph_build", project_id=project_id,
@@ -439,17 +573,52 @@ class Projects:
             self.save(repo, project)
             repo.put(job, event="job")
             result = {"job_id": job["job_id"], "status": "queued", "project_id": project_id,
-                      "rows": len(resources), "batches": len(batches), "max_calls": options["max_calls"]}
+                      "rows": len(pending), "total_rows": len(resources), "batches": len(batches), "max_calls": options["max_calls"]}
             repo.save_action(scope, key, options, result)
             return result
+
+    def _publish_snapshot(self, repo, graph, project_id, job, build, *, final=False):
+        project = self.get(repo, project_id)
+        active = self.resources(repo, project_id)
+        refs = []
+        for row in repo.db.execute("""
+            SELECT kind,id,MAX(version) AS version FROM graph_items WHERE project=? GROUP BY kind,id ORDER BY kind,id
+            """, (project_id,)):
+            ref = GraphRef(row["kind"], row["id"], row["version"])
+            obj = graph.get(ref)
+            if all(e.occurrence_id in active for e in obj.evidence) and graph.valid(ref):
+                refs.append(ref)
+        nodes = {ref for ref in refs if ref.kind == "node"}
+        refs = tuple(ref for ref in refs if ref.kind == "node" or
+                     (graph.get(ref).source in nodes and graph.get(ref).target in nodes))
+        snap_id = job["job_id"] + (":graph" if final else f":graph:{len(build['completed'])}")
+        snapshot = GraphSnapshot(snap_id, project_id, refs)
+        repo.db.execute("INSERT OR REPLACE INTO graph_snapshots VALUES (?,?)", (snapshot.id, encode(asdict(snapshot))))
+        project.update(graph_snapshot=snapshot.id, graph_revision=build["revision"])
+        self.save(repo, project)
+        summary = {"intent": "build_graph", "graph_snapshot": snapshot.id,
+                   "nodes": len(nodes), "edges": len(refs) - len(nodes),
+                   "completed_batches": len(build["completed"]), "total_batches": len(build["batches"])}
+        job["results"] = [item for item in job.get("results", []) if item.get("intent") != "build_graph"] + [summary]
 
     def advance(self, repo, job):
         build, project_id = job["build"], job["project_id"]
         graph = GraphStore(repo.memory)
         index = len(build["completed"])
         if build["extract"] and index < len(build["batches"]):
+            if index >= build["max_calls"]:
+                with repo.transaction():
+                    current = repo.get(job["job_id"])
+                    if current["status"] != "running":
+                        return
+                    self._publish_snapshot(repo, graph, project_id, job, build, final=True)
+                    status = "partial" if index > 0 else "failed"
+                    reason = "graph_partial_budget_reached" if index > 0 else "call_budget_exhausted"
+                    self.workbench._update_running(repo, job, status, reason)
+                return
             trace = self.workbench._trace(repo, job["job_id"], lane=f"graph:{index}")
-            models = JobModels(Responses(job["config"], trace, PI, offline=self.workbench.offline),
+            models = JobModels(Responses(job["config"], trace, PI, offline=self.workbench.offline,
+                                         secret_resolver=self.resolve_secret),
                                repo, job["job_id"], f"graph:{index}")
             memory = ExtractionMemory(repo.memory, models, build["max_input_tokens"])
             try:
@@ -462,36 +631,25 @@ class Projects:
                                                "model_call": result.extraction_call, "rejected": list(result.rejected)})
                     repo.db.executemany("INSERT OR IGNORE INTO p6_extracted VALUES (?,?,?)",
                                         ((project_id, ref[1], ref[2]) for ref in build["batches"][index]))
+                    self._publish_snapshot(repo, graph, project_id, job, build, final=False)
                     repo.put(job, event="graph_batch")
             except (ValueError, ModelFailure) as error:
+                code = getattr(error, "code", str(error))
                 with repo.transaction():
-                    self.workbench._update_running(repo, job, "failed", getattr(error, "code", str(error)))
+                    if build["completed"]:
+                        self._publish_snapshot(repo, graph, project_id, job, build, final=True)
+                    if code == "call_budget_exhausted" and build["completed"]:
+                        self.workbench._update_running(repo, job, "partial", "graph_partial_budget_reached")
+                    else:
+                        self.workbench._update_running(repo, job, "failed", code)
             return
 
         with repo.transaction():
             current = repo.get(job["job_id"])
             if current["status"] != "running":
                 return
-            project = self.get(repo, project_id)
-            active = self.resources(repo, project_id)
-            refs = []
-            for row in repo.db.execute("""
-                SELECT kind,id,MAX(version) AS version FROM graph_items WHERE project=? GROUP BY kind,id ORDER BY kind,id
-                """, (project_id,)):
-                ref = GraphRef(row["kind"], row["id"], row["version"])
-                obj = graph.get(ref)
-                if all(e.occurrence_id in active for e in obj.evidence) and graph.valid(ref):
-                    refs.append(ref)
-            nodes = {ref for ref in refs if ref.kind == "node"}
-            refs = tuple(ref for ref in refs if ref.kind == "node" or
-                         (graph.get(ref).source in nodes and graph.get(ref).target in nodes))
-            snapshot = GraphSnapshot(job["job_id"] + ":graph", project_id, refs)
-            repo.db.execute("INSERT INTO graph_snapshots VALUES (?,?)", (snapshot.id, encode(asdict(snapshot))))
-            project.update(graph_snapshot=snapshot.id, graph_revision=build["revision"])
-            self.save(repo, project)
+            self._publish_snapshot(repo, graph, project_id, job, build, final=True)
             job.update(status="completed", reason=None)
-            job["results"].append({"intent": "build_graph", "graph_snapshot": snapshot.id,
-                                   "nodes": len(nodes), "edges": len(refs) - len(nodes)})
             repo.put(job, event="job")
 
     def graph_view(self, project_id, snapshot_id, query, node_id, branch_id, offset, limit):
@@ -607,6 +765,57 @@ class Projects:
             self.save(repo, project)
             repo.save_action(scope_key, key, payload, result)
             return result
+
+    @staticmethod
+    def list_notes(repo, project_id):
+        return [json.loads(row[0]) for row in repo.db.execute(
+            "SELECT data FROM p6_project_notes WHERE project=? ORDER BY rowid", (project_id,))]
+
+    @classmethod
+    def active_notes_prompt(cls, repo, project_id):
+        if not project_id or project_id == "naev":
+            return None
+        labels = {"background": "游戏背景", "system_prompt": "System Prompt", "style_guide": "文风规范"}
+        lines = [f"[{labels.get(n.get('category'), '设定')}] {n['title']}: {n['content']}"
+                 for n in cls.list_notes(repo, project_id) if n.get("enabled", True)]
+        return "\n".join(lines) if lines else None
+
+    def create_note(self, project_id, spec, key):
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            self.get(repo, project_id)
+            scope_key = "p6-note-create:" + project_id
+            if receipt := repo.action(scope_key, key, spec):
+                return receipt
+            note = {"note_id": uuid4().hex, "project_id": project_id, **spec}
+            repo.db.execute("INSERT INTO p6_project_notes VALUES (?,?,?)",
+                            (note["note_id"], project_id, encode(note)))
+            repo.save_action(scope_key, key, spec, note)
+            return note
+
+    def update_note(self, project_id, note_id, spec, key):
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            self.get(repo, project_id)
+            row = repo.db.execute("SELECT data FROM p6_project_notes WHERE id=? AND project=?",
+                                  (note_id, project_id)).fetchone()
+            if not row:
+                raise JobError(404, "memory_not_found")
+            scope_key = f"p6-note-update:{project_id}:{note_id}"
+            if receipt := repo.action(scope_key, key, spec):
+                return receipt
+            note = {**json.loads(row[0]), **spec, "note_id": note_id, "project_id": project_id}
+            repo.db.execute("UPDATE p6_project_notes SET data=? WHERE id=? AND project=?",
+                            (encode(note), note_id, project_id))
+            repo.save_action(scope_key, key, spec, note)
+            return note
+
+    def delete_note(self, project_id, note_id):
+        with closing(self.workbench.open()) as repo, repo.transaction():
+            self.get(repo, project_id)
+            deleted = repo.db.execute("DELETE FROM p6_project_notes WHERE id=? AND project=?",
+                                      (note_id, project_id)).rowcount
+            if not deleted:
+                raise JobError(404, "memory_not_found")
+            return {"deleted": note_id}
 
     @staticmethod
     def term_problems(repo, project, release, record):

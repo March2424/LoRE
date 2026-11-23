@@ -44,18 +44,23 @@ class ImportOptions(Input):
 class GraphBuild(Input):
     extract: bool = True
     rebuild: bool = False
-    batch_size: int = Field(default=12, ge=1, le=36)
-    max_calls: int = Field(default=32, ge=1, le=5000)
-    max_input_tokens: int = Field(default=6000, ge=1000, le=16000)
-    max_output_tokens: int = Field(default=2048, ge=256, le=8192)
+    max_items: int | None = Field(default=None, ge=1, le=50000)
+    batch_size: int = Field(default=24, ge=1, le=64)
+    max_calls: int = Field(default=64, ge=1, le=5000)
+    max_input_tokens: int = Field(default=8000, ge=2000, le=32768)
+    max_output_tokens: int = Field(default=12288, ge=512, le=16384)
 
 
 class Profile(Input):
     name: Annotated[str, Field(min_length=1, max_length=120)]
     model: Annotated[str, Field(min_length=1, max_length=200)]
     base_url: HttpUrl
+    api_key: Annotated[str, Field(min_length=1, max_length=2000)] | None = None
     api_key_env: Annotated[str, Field(pattern=r"^[A-Z][A-Z0-9_]{1,80}$")] | None = None
     timeout_seconds: int = Field(default=75, ge=2, le=360)
+    mode: Literal["api", "local"] | None = None
+    api_format: Literal["chat_completions", "responses"] = "chat_completions"
+    thinking: Literal["auto", "disabled"] = "disabled"
 
 
 class Bindings(Input):
@@ -92,6 +97,13 @@ class MemoryDecision(Input):
     reason: MemoryText
 
 
+class ProjectNoteInput(Input):
+    category: Literal["background", "system_prompt", "style_guide"] = "background"
+    title: Annotated[str, Field(min_length=1, max_length=120)]
+    content: Annotated[str, Field(min_length=1, max_length=8000)]
+    enabled: bool = True
+
+
 def validate_workbook_zip(content):
     try:
         with ZipFile(BytesIO(content)) as book:
@@ -120,8 +132,14 @@ def router(service):
         projects = service().projects
         with closing(service().open()) as repo:
             project = projects.get(repo, project_id)
+            resources = projects.resources(repo, project_id)
+            extracted = {tuple(row) for row in repo.db.execute(
+                "SELECT occurrence,version FROM p6_extracted WHERE project=?", (project_id,))}
+            unextracted = sum(1 for row in resources.values()
+                              if (row["occurrence_id"], row["source_version"]) not in extracted)
             return {**project, "graph_ready": projects.ready(project),
-                    "resources": len(projects.resources(repo, project_id)),
+                    "resources": len(resources),
+                    "unextracted": unextracted,
                     "approved_memory": len(projects.memory(repo, project_id))}
 
     @api.post("/projects/{project_id}/imports", status_code=201)
@@ -150,7 +168,9 @@ def router(service):
         return await asyncio.to_thread(service().projects.import_file, project_id, filename, raw, spec, key, preview=preview)
 
     @api.get("/projects/{project_id}/resources")
-    def project_resources(project_id: str, file: str | None = None, query: str = "", offset: Annotated[int, Query(ge=0)] = 0,
+    def project_resources(project_id: str, file: str | None = None, query: str = "",
+                          status: Literal["all", "translated", "untranslated", "awaiting_review"] = "all",
+                          offset: Annotated[int, Query(ge=0)] = 0,
                           limit: Annotated[int, Query(ge=1, le=250)] = 50):
         projects = service().projects
         with closing(service().open()) as repo:
@@ -158,9 +178,12 @@ def router(service):
             needle = query.casefold()
             rows = [row for row in projects.resources(repo, project_id, file).values()
                     if not needle or any(needle in value.casefold()
-                                         for value in (row["label"], row["key"], *row["metadata"].values())
+                                         for value in (row["label"], row["key"], row.get("file"), *row["metadata"].values())
                                          if isinstance(value, str))]
-            return {"total": len(rows), "resources": rows[offset:offset + limit]}
+            enriched, counts = service().enrich_resources(repo, rows)
+            if status != "all":
+                enriched = [row for row in enriched if row["translation_status"] == status]
+            return {"total": len(enriched), "counts": counts, "resources": enriched[offset:offset + limit]}
 
     @api.get("/projects/{project_id}/imports")
     def project_imports(project_id: str):
@@ -200,7 +223,20 @@ def router(service):
                 AND NOT EXISTS (SELECT 1 FROM invalidations i WHERE i.id=r.id AND i.version=r.version)
                 ORDER BY rowid
                 """, (project_id,))]
-            return {"approved": projects.memory(repo, project_id), "drafts": drafts}
+            return {"approved": projects.memory(repo, project_id), "drafts": drafts,
+                    "notes": projects.list_notes(repo, project_id)}
+
+    @api.post("/projects/{project_id}/notes", status_code=201)
+    def create_note(project_id: str, body: ProjectNoteInput, key: Key):
+        return service().projects.create_note(project_id, body.model_dump(), key)
+
+    @api.put("/projects/{project_id}/notes/{note_id}")
+    def update_note(project_id: str, note_id: str, body: ProjectNoteInput, key: Key):
+        return service().projects.update_note(project_id, note_id, body.model_dump(), key)
+
+    @api.delete("/projects/{project_id}/notes/{note_id}")
+    def delete_note(project_id: str, note_id: str):
+        return service().projects.delete_note(project_id, note_id)
 
     @api.post("/projects/{project_id}/memory/drafts", status_code=201)
     def draft_memory(project_id: str, body: MemoryDraft, key: Key):
@@ -215,10 +251,21 @@ def router(service):
     def register_model(body: Profile, key: Key):
         return service().projects.register_model(body.model_dump(mode="json"), key)
 
+    @api.put("/model-profiles/{profile_id}")
+    def update_model(profile_id: str, body: Profile, key: Key):
+        return service().projects.update_model(profile_id, body.model_dump(mode="json"), key)
+
     @api.get("/model-profiles")
     def model_profiles():
-        with closing(service().open()) as repo:
-            return {"profiles": [json.loads(row[0]) for row in repo.db.execute("SELECT data FROM p6_models ORDER BY rowid")]}
+        return {"profiles": service().projects.list_models()}
+
+    @api.delete("/model-profiles/{profile_id}")
+    def delete_model(profile_id: str):
+        return service().projects.delete_model(profile_id)
+
+    @api.put("/workspace/model-roles")
+    def workspace_model_roles(body: Bindings, key: Key):
+        return service().projects.bind_workspace_models(body.roles, key)
 
     @api.post("/model-profiles/{profile_id}/probe")
     def probe(profile_id: str, body: ModelProbe):
