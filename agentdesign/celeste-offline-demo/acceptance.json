@@ -1,0 +1,158 @@
+{
+  "mode": "offline_fixture",
+  "project_id": "352844465a684e0ba93148f27f4f16e5",
+  "job_id": "a9a077b42265439c9453d4cf0c4d1ef7",
+  "import_id": "32398559436b4369a72c92c80933a583",
+  "records": 533,
+  "graph_settings": {
+    "batch_size": 24,
+    "max_calls": 200,
+    "max_input_tokens": 16000,
+    "max_output_tokens": 2048
+  },
+  "structure": {
+    "completed_batches": 0,
+    "edges": 0,
+    "graph_snapshot": "0776a52ab2c64a1f922c21a751f7bc2b:graph",
+    "intent": "build_graph",
+    "nodes": 533,
+    "total_batches": 0
+  },
+  "fixture_graph": {
+    "completed_batches": 24,
+    "edges": 7,
+    "graph_snapshot": "59f56f9a6fc44ecba5b1ca2edff9f277:graph",
+    "intent": "build_graph",
+    "nodes": 540,
+    "total_batches": 24
+  },
+  "fixture_extraction_batches": 24,
+  "graph_budget": {
+    "limit_calls": 200,
+    "reserved_or_spent": 24
+  },
+  "cases": {
+    "MENU_BEGIN": {
+      "initial_status": "committed",
+      "reason": null,
+      "direct_draft_exact_match": true,
+      "initial_workflow_exact_match": true,
+      "review_verdicts": [
+        "pass"
+      ]
+    },
+    "AREA_CHAPTER": {
+      "initial_status": "committed",
+      "reason": null,
+      "direct_draft_exact_match": false,
+      "initial_workflow_exact_match": true,
+      "review_verdicts": [
+        "repair",
+        "pass"
+      ]
+    },
+    "MOUNTAIN_COMPLETE_NORMAL_FULLCLEAR": {
+      "initial_status": "needs_human",
+      "reason": "演示固定回执：Clear 有多义，请核对章节完成界面含义。",
+      "direct_draft_exact_match": false,
+      "initial_workflow_exact_match": false,
+      "review_verdicts": [
+        "needs_human"
+      ]
+    },
+    "CH0_INTRO": {
+      "initial_status": "needs_human",
+      "reason": "演示故障注入：玩家名变量被写成了固定人名。",
+      "direct_draft_exact_match": false,
+      "initial_workflow_exact_match": false,
+      "review_verdicts": [
+        "needs_human"
+      ]
+    }
+  },
+  "direct_draft_exact_matches": 1,
+  "initial_workflow_exact_matches": 2,
+  "expected_initial_status_matches": 4,
+  "invalid_approval_http": 422,
+  "invalid_approval_reason": "hard_check_failed: Placeholder or tag set differs from source",
+  "approved_export_rows": 3,
+  "pending_for_live_demo": 1,
+  "reference_format_audit": {
+    "total": 533,
+    "workbench_gate_pass": 512,
+    "format_findings": {
+      "Line break count differs from source": 2,
+      "Placeholder or tag set differs from source": 20,
+      "Naev control markers differ from source": 1
+    },
+    "portrait_sequence_differs": 0,
+    "portrait_examples": [],
+    "reference_failures": {
+      "ASSIST_MODE_1": [
+        "Line break count differs from source"
+      ],
+      "POSTCARD_CSIDES": [
+        "Placeholder or tag set differs from source"
+      ],
+      "JOURNAL_SPEEDRUNS": [
+        "Placeholder or tag set differs from source"
+      ],
+      "JOURNAL_DASHES": [
+        "Placeholder or tag set differs from source"
+      ],
+      "JOURNAL_DEATHS": [
+        "Placeholder or tag set differs from source"
+      ],
+      "CH1_END": [
+        "Placeholder or tag set differs from source"
+      ],
+      "CH3_THEO_ESCAPING": [
+        "Placeholder or tag set differs from source"
+      ],
+      "CH3_OSHIRO_SUITE": [
+        "Placeholder or tag set differs from source"
+      ],
+      "CH3_OSHIRO_SUITE_SAD0": [
+        "Placeholder or tag set differs from source"
+      ],
+      "CH3_OSHIRO_SUITE_SAD6": [
+        "Placeholder or tag set differs from source"
+      ],
+      "CH5_THEO_MIRROR": [
+        "Placeholder or tag set differs from source",
+        "Naev control markers differ from source"
+      ],
+      "CH5_SHADOW_MADDY_1": [
+        "Placeholder or tag set differs from source"
+      ],
+      "CH5_REFLECTION": [
+        "Placeholder or tag set differs from source"
+      ],
+      "CH5_THEO_SAVING_SWITCH": [
+        "Placeholder or tag set differs from source"
+      ],
+      "CH5_BSIDE_THEO_A": [
+        "Placeholder or tag set differs from source"
+      ],
+      "CH7_ASCEND_5": [
+        "Placeholder or tag set differs from source"
+      ],
+      "APP_OLDLADY_A": [
+        "Placeholder or tag set differs from source",
+        "Line break count differs from source"
+      ],
+      "APP_OLDLADY_B": [
+        "Placeholder or tag set differs from source"
+      ],
+      "APP_OLDLADY_D": [
+        "Placeholder or tag set differs from source"
+      ],
+      "CH9_MISS_THE_BIRD": [
+        "Placeholder or tag set differs from source"
+      ],
+      "CH9_CATCH_THE_BIRD": [
+        "Placeholder or tag set differs from source"
+      ]
+    }
+  }
+}
