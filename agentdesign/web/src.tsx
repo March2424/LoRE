@@ -9,6 +9,7 @@ import { Knowledge } from "./knowledge";
 import { Models } from "./models";
 import { Glossary } from "./glossary";
 import { Evolution } from "./evolution";
+import { LocaleProvider, useI18n } from "./i18n";
 import {
   ASCII_MODES,
   ASCII_STORAGE_MODE,
@@ -19,9 +20,14 @@ import {
 } from "./ascii-ocean";
 
 const pages = {
-  home: "工作台", chat: "Agent 对话", jobs: "任务", knowledge: "图谱与记忆", models: "模型设置",
-  glossary: "术语变更", evolution: "进化中心",
-};
+  home: { en: "Workspace", zh: "工作台" },
+  chat: { en: "Agent Chat", zh: "Agent 对话" },
+  jobs: { en: "Jobs", zh: "任务" },
+  knowledge: { en: "Graph & Memory", zh: "图谱与记忆" },
+  models: { en: "Models", zh: "模型设置" },
+  glossary: { en: "Glossary", zh: "术语变更" },
+  evolution: { en: "Evolution", zh: "进化中心" },
+} as const;
 const pageNumbers: Record<keyof typeof pages, string> = {
   home: "01", chat: "02", jobs: "03", knowledge: "04", models: "05", glossary: "06", evolution: "07",
 };
@@ -48,8 +54,9 @@ function readRoute(): Route {
 }
 
 function NewProject({ close, created }: { close: () => void; created: (project: Project) => void }) {
+  const { t } = useI18n();
   const action = useAction();
-  return <Modal title="新建项目" close={close}>
+  return <Modal title={t("New Project", "新建项目")} close={close}>
     <ErrorNote error={action.error} />
     <form className="stack" onSubmit={event => {
       event.preventDefault();
@@ -59,16 +66,18 @@ function NewProject({ close, created }: { close: () => void; created: (project: 
         name: data.get("name"), source_lang: source, target_lang: source === "en" ? "zh" : "en",
       }))));
     }}>
-      <Field label="项目名称"><input className="input" name="name" required maxLength={120} autoFocus /></Field>
-      <Field label="翻译方向"><select className="input" name="source">
-        <option value="en">英语 → 简体中文</option><option value="zh">简体中文 → 英语</option>
+      <Field label={t("Project Name", "项目名称")}><input className="input" name="name" required maxLength={120} autoFocus /></Field>
+      <Field label={t("Language Pair", "翻译方向")}><select className="input" name="source">
+        <option value="en">{t("English → Simplified Chinese", "英语 → 简体中文")}</option>
+        <option value="zh">{t("Simplified Chinese → English", "简体中文 → 英语")}</option>
       </select></Field>
-      <div className="dialog__foot"><Button type="submit" primary disabled={action.busy}>创建项目</Button></div>
+      <div className="dialog__foot"><Button type="submit" primary disabled={action.busy}>{t("Create Project", "创建项目")}</Button></div>
     </form>
   </Modal>;
 }
 
 function App() {
+  const { locale, setLocale, t } = useI18n();
   const [route, setRoute] = useState(readRoute);
   const [selectedProject, setSelectedProject] = useState(() => stored("lore-project", ""));
   const [createdProject, setCreatedProject] = useState<Project>();
@@ -108,7 +117,7 @@ function App() {
   const project = detail.data ?? (scope !== "naev" ? chosen : undefined);
   const recent = useQuery<JobPage>(route.page === "home" ?
     `/jobs?${params({ project: scope, limit: 6 })}` : null, refresh);
-  const name = project?.name || (scope === "naev" ? "Naev 示范区" : "选择项目");
+  const name = project?.name || (scope === "naev" ? t("Naev Demo", "Naev 示范区") : t("Select Project", "选择项目"));
   const navigate = (page: Page, job?: string) => {
     const targetHash = page + (job ? "/" + job : "");
     const currentHash = location.hash.slice(1) || "chat";
@@ -155,7 +164,7 @@ function App() {
   }, [route.page, route.job, fileReview?.filename, route.reviewSelection, scope]);
   const nav = (page: Page) => <a href={`#${page}`} aria-current={route.page === page ? "page" : undefined}
     className={`nav${route.page === page ? " nav--active" : ""}`}>
-    <span className="nav__num">{pageNumbers[page]}</span>{pages[page]}
+    <span className="nav__num">{pageNumbers[page]}</span><span className="clip">{pages[page][locale]}</span>
   </a>;
   return <>
     <AsciiOcean mode={asciiMode} paused={asciiPaused} />
@@ -164,32 +173,40 @@ function App() {
       <aside className="rail">
         <div className="rail__brand">LoRE</div>
         <div className="ws">
-          <select className="ws__name" aria-label="切换项目" value={scope} onChange={e => { choose(e.target.value); navigate(route.page === "chat" ? "chat" : "home"); }}>
-            {!scope && <option value="">选择项目</option>}{workspace.data?.naev && <option value="naev">Naev 示范区</option>}
+          <select className="ws__name" aria-label={t("Switch project", "切换项目")} value={scope} onChange={e => { choose(e.target.value); navigate(route.page === "chat" ? "chat" : "home"); }}>
+            {!scope && <option value="">{t("Select Project", "选择项目")}</option>}{workspace.data?.naev && <option value="naev">{t("Naev Demo", "Naev 示范区")}</option>}
             {projects.map(item => <option key={item.project_id} value={item.project_id}>{item.name}</option>)}
           </select>
-          {scope && <div className="ws__meta">{project ? `${project.source_lang.toUpperCase()} → ${project.target_lang.toUpperCase()} · 源 v${project.revision}` : "EN → ZH · 内置"}</div>}
+          {scope && <div className="ws__meta">{project ? `${project.source_lang.toUpperCase()} → ${project.target_lang.toUpperCase()} · v${project.revision}` : t("EN → ZH · Built-in", "EN → ZH · 内置")}</div>}
         </div>
-        <nav aria-label="工作台导航">
-          <div className="nav__label">项目</div>
+        <nav aria-label={t("Workbench Navigation", "工作台导航")}>
+          <div className="nav__label">{t("PROJECTS", "项目")}</div>
           {nav("home")}{nav("chat")}{nav("jobs")}{project && nav("knowledge")}{nav("models")}
-          <div className="nav__label">维护</div>
+          <div className="nav__label">{t("MAINTENANCE", "维护")}</div>
           {workspace.data?.naev && nav("glossary")}{nav("evolution")}
         </nav>
         <div className="rail__foot">
           <AsciiDock mode={asciiMode} paused={asciiPaused} onCycleMode={cycleAsciiMode} onTogglePause={toggleAsciiPause} />
-          <div className={connected ? "live" : "rail__note"}>{connected ? "实时连接" : "正在连接"}</div>
-          <div className="rail__note">{workspace.data?.offline ? "离线模式 · 单 worker" : workspace.data ? "在线模式 · 单 worker" : ""}</div>
+          <div className={connected ? "live" : "rail__note"}>{connected ? t("Live Connected", "实时连接") : t("Connecting…", "正在连接")}</div>
+          <div className="rail__note">{workspace.data?.offline ? t("Offline Mode · 1 worker", "离线模式 · 单 worker") : workspace.data ? t("Live Mode · 1 worker", "在线模式 · 单 worker") : ""}</div>
         </div>
       </aside>
     <div className="canvas">
       <header className="topbar">
-        <div className="crumb"><b>{name}</b><i>/</i><span>{pages[route.page]}</span>
+        <div className="crumb"><b>{name}</b><i>/</i><span>{pages[route.page][locale]}</span>
           {route.job && <><i>/</i><span className="mono">J-{route.job.slice(0, 6)}</span></>}</div>
+        <div className="topbar__right">
+          <div className="lang-switch" role="group" aria-label={t("Language", "界面语言")}>
+            <button type="button" className={`lang-switch__btn${locale === "en" ? " lang-switch__btn--on" : ""}`}
+              onClick={() => setLocale("en")}>EN</button>
+            <button type="button" className={`lang-switch__btn${locale === "zh" ? " lang-switch__btn--on" : ""}`}
+              onClick={() => setLocale("zh")}>中文</button>
+          </div>
+        </div>
       </header>
       <main className="page">
         <ErrorNote error={workspace.error || catalog.error || detail.error} />
-        {!workspace.data && !workspace.error && <Empty title="正在连接工作台…" />}
+        {!workspace.data && !workspace.error && <Empty title={t("Connecting to workbench…", "正在连接工作台…")} />}
         {workspace.data && <>
           {route.page === "home" && <Resources key={scope || "empty"} project={project} scope={scope} projects={projects}
             jobs={recent.data} offline={workspace.data.offline} naev={workspace.data.naev}
@@ -217,11 +234,11 @@ function App() {
               onBack={navStack.length ? () => goBack("chat") : undefined} openChat={() => navigate("chat")} />)}
           {route.page === "knowledge" && (project ? <Knowledge key={scope} project={project} offline={workspace.data.offline}
             selection={selection} openJob={openJob} refresh={refresh} changed={changed}
-            onBack={navStack.length ? () => goBack("chat") : undefined} /> : <Empty title="请先选择一个导入项目" />)}
+            onBack={navStack.length ? () => goBack("chat") : undefined} /> : <Empty title={t("Select an imported project first", "请先选择一个导入项目")} />)}
           {route.page === "models" && <Models key={scope || "workspace"} project={project} projects={projects}
             workspace={workspace.data} offline={workspace.data.offline} changed={changed} />}
           {route.page === "glossary" && (workspace.data.naev ? <Glossary selected={scope === "naev" ? selection.ids : []}
-            openJob={openJob} refresh={refresh} changed={changed} /> : <Empty title="此工作区未加载 Naev 快照" />)}
+            openJob={openJob} refresh={refresh} changed={changed} /> : <Empty title={t("Naev snapshot is not loaded in this workspace", "此工作区未加载 Naev 快照")} />)}
           {route.page === "evolution" && <Evolution offline={workspace.data.offline} naev={workspace.data.naev}
             scope={scope || undefined} refresh={refresh} changed={changed} openJob={openJob} />}
         </>}
@@ -236,4 +253,4 @@ function App() {
   </>;
 }
 
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(<LocaleProvider><App /></LocaleProvider>);

@@ -38,7 +38,7 @@ npm --prefix web run build
 
 首次使用 `--projects-only` 会创建空的本地项目库。创建项目后即可导入 CSV、XLSX 或 PO。`--offline` 使用固定回执，普通项目的译文由编辑输入并批准。[网页工作台](http://127.0.0.1:8766/) · [API 文档](http://127.0.0.1:8766/docs)
 
-使用真实模型时，移除 `--offline`，然后在「模型设置」中配置连接和角色绑定。也可以在启动前设置 `DEEPSEEK_API_KEY`，由默认网关执行任务。离线和在线模式各有独立工作目录。
+网页默认使用英文，可在右上角用「EN / 中文」切换界面语言。使用真实模型时，移除 `--offline`，然后在「Models / 模型设置」中配置连接和角色绑定。也可以在启动前设置 `DEEPSEEK_API_KEY`，由默认网关执行任务。离线和在线模式各有独立工作目录。
 
 使用 CLI 时，可在另一个终端从 `agentdesign` 运行 `.venv/bin/python run_cli.py --url http://127.0.0.1:8766`，Windows 下将 Python 路径换为 `.\.venv\Scripts\python.exe`。
 

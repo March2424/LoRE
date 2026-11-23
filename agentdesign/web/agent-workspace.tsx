@@ -1,12 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-  type AskResponse, type FileReviewScope, type InspectData, type Job, type JobPage, type Project,
-  type Resource, type ResourceCounts, type Selection, type TranslationStatus, type Workspace,
-  intents, json, language, locationText, params, post, reasonText, stored, terminal, useQuery,
+  type AskResponse, type InspectData, type Job, type JobPage, type Project,
+  type Resource, type ResourceCounts, type Selection, type TranslationStatus,
+  intentLabel, json, langLabel, locationText, params, post, reasonText, stored, terminal, useQuery,
 } from "./api";
-import { Button, Empty, ErrorNote, Field, Modal, Pager, Section, Status, label, tone, useAction } from "./ui";
+import { type Locale, useI18n } from "./i18n";
+import { Button, Empty, ErrorNote, Field, Modal, Pager, Status, label, tone, useAction } from "./ui";
 import { type FileProgress, type Import, ImportDialog, type Upload } from "./resources";
-import { Clarify, FeedbackDialog, PoDelivery, TranslationChecks, itemStatus, reviewLabels, toolLabels } from "./jobs";
+import { Clarify, FeedbackDialog, PoDelivery, TranslationChecks, itemStatus, reviewLabel, toolLabel } from "./jobs";
 
 type ChatEntry =
   | { id: string; role: "user"; text: string; meta?: string }
@@ -14,19 +15,34 @@ type ChatEntry =
   | { id: string; role: "job"; jobId: string }
   | { id: string; role: "error"; text: string };
 
-const MEMORY_KIND_LABELS: Record<string, string> = {
-  term: "术语", style: "角色笔记", translation: "译例", summary: "摘要", source: "原文片段",
-};
-const META_LABELS: Record<string, string> = {
-  text_type: "文本类型", native_context: "上下文", document: "文档", scene: "场景", block: "对话块",
-  branch_id: "剧情分支", phase_id: "阶段", speaker_id: "说话人", addressee_id: "听话人", topic_id: "话题", requirements: "翻译要求",
-};
+const memoryKindLabel = (kind: string, locale: Locale) => ({
+  term: locale === "zh" ? "术语" : "Term",
+  style: locale === "zh" ? "角色笔记" : "Note",
+  translation: locale === "zh" ? "译例" : "TM",
+  summary: locale === "zh" ? "摘要" : "Summary",
+  source: locale === "zh" ? "原文片段" : "Source",
+}[kind] ?? kind);
+
+const metaLabel = (k: string, locale: Locale) => ({
+  text_type: locale === "zh" ? "文本类型" : "Text Type",
+  native_context: locale === "zh" ? "上下文" : "Context",
+  document: locale === "zh" ? "文档" : "Document",
+  scene: locale === "zh" ? "场景" : "Scene",
+  block: locale === "zh" ? "对话块" : "Block",
+  branch_id: locale === "zh" ? "剧情分支" : "Branch",
+  phase_id: locale === "zh" ? "阶段" : "Phase",
+  speaker_id: locale === "zh" ? "说话人" : "Speaker",
+  addressee_id: locale === "zh" ? "听话人" : "Addressee",
+  topic_id: locale === "zh" ? "话题" : "Topic",
+  requirements: locale === "zh" ? "翻译要求" : "Requirements",
+}[k] ?? k);
 
 function looksLikeQuestion(text: string, hasFocus: boolean, multiSelected: boolean) {
   if (!hasFocus || multiSelected) return false;
   const trimmed = text.trim();
   if (/^(把|请把|将|帮我|批量)?.*(翻译|重译|导出|审校|检查并导出|改成|更新术语)/.test(trimmed)) return false;
-  return /[?？]|为什么|为何|怎么|依据|记忆|图谱|候选|查证|review|审校|理由|解释|哪条|哪些/i.test(trimmed);
+  if (/^(translate|retranslate|export|review|validate|update\s+term)\b/i.test(trimmed)) return false;
+  return /[?？]|为什么|为何|怎么|依据|记忆|图谱|候选|查证|review|审校|理由|解释|哪条|哪些|why|how|which|what|evidence|memory|graph|explain/i.test(trimmed);
 }
 
 function JobBubbleCard({
@@ -37,6 +53,7 @@ function JobBubbleCard({
   onSyncJob: (jobId: string) => void;
   onOpenFullJob: (jobId: string) => void;
 }) {
+  const { locale, t } = useI18n();
   const query = useQuery<Job>(`/jobs/${jobId}`, refresh);
   const job = query.data;
   const action = useAction(changed);
@@ -45,7 +62,7 @@ function JobBubbleCard({
   const [confirmed, setConfirmed] = useState(false);
 
   if (query.error) return <div className="chat-card"><ErrorNote error={query.error} /></div>;
-  if (!job) return <div className="chat-card"><span className="hint">正在读取任务 J-{jobId.slice(0, 6)}…</span></div>;
+  if (!job) return <div className="chat-card"><span className="hint">{t(`Loading job J-${jobId.slice(0, 6)}…`, `正在读取任务 J-${jobId.slice(0, 6)}…`)}</span></div>;
 
   const can = (act: string) => job.next_actions.includes(act);
   const change = (path: string, payload: unknown = {}) => json(`/jobs/${jobId}/${path}`, post(payload));
@@ -59,41 +76,41 @@ function JobBubbleCard({
     <div className="row-set">
       <span className="mono">J-{job.job_id.slice(0, 6)}</span>
       <Status value={job.status} pill />
-      {job.source_lang && job.target_lang && <span className="hint">{language[job.source_lang]} → {language[job.target_lang]}</span>}
-      <span className="mono hint">{job.budget.reserved_or_spent}/{job.budget.limit_calls} 调用</span>
+      {job.source_lang && job.target_lang && <span className="hint">{langLabel(job.source_lang, locale)} → {langLabel(job.target_lang, locale)}</span>}
+      <span className="mono hint">{job.budget.reserved_or_spent}/{job.budget.limit_calls} {t("calls", "调用")}</span>
       <span className="sp" />
-      {!!job.items.length && <Button small ghost onClick={() => onSyncJob(job.job_id)}>在右侧追踪 ({job.items.length})</Button>}
-      <Button small ghost onClick={() => onOpenFullJob(job.job_id)}>打开完整任务页</Button>
+      {!!job.items.length && <Button small ghost onClick={() => onSyncJob(job.job_id)}>{t(`Track (${job.items.length})`, `在右侧追踪 (${job.items.length})`)}</Button>}
+      <Button small ghost onClick={() => onOpenFullJob(job.job_id)}>{t("Full Job", "打开完整任务页")}</Button>
     </div>
 
     {!!job.steps.length && <div className="row-set job-steps">
       {job.steps.map((step, i) => <span className="row-set" key={step.index}>
         {i > 0 && <span className="muted">→</span>}
-        <span>{intents[step.intent] ?? step.intent}</span>
+        <span>{intentLabel(step.intent, locale)}</span>
         <Status value={step.status} />
       </span>)}
     </div>}
 
     <ErrorNote error={action.error} />
-    {job.pause_requested && <div className="note note--warn">当前条目或批次结束后暂停…</div>}
-    {job.reason && !can("continue") && <div className="note">{reasonText(job.reason)} <code>{job.reason}</code></div>}
+    {job.pause_requested && <div className="note note--warn">{t("Pausing after current item or batch…", "当前条目或批次结束后暂停…")}</div>}
+    {job.reason && !can("continue") && <div className="note">{reasonText(job.reason, locale)} <code>{job.reason}</code></div>}
 
     {can("continue") && <Clarify key={JSON.stringify(job.missing)} job={job} changed={changed} />}
 
     {job.graph_build && <div className="stack">
       <div className="row-set">
-        <span>建图批次 {job.graph_build.completed.length} / {job.graph_build.batches}</span>
-        {job.results[0] && <span className="hint">{String(job.results[0].nodes)} 节点 · {String(job.results[0].edges)} 关系</span>}
+        <span>{t(`Graph batches ${job.graph_build.completed.length} / ${job.graph_build.batches}`, `建图批次 ${job.graph_build.completed.length} / ${job.graph_build.batches}`)}</span>
+        {job.results[0] && <span className="hint">{t(`${String(job.results[0].nodes)} nodes · ${String(job.results[0].edges)} relations`, `${String(job.results[0].nodes)} 节点 · ${String(job.results[0].edges)} 关系`)}</span>}
       </div>
       <div className="meter"><i style={{ width: `${job.status === "completed" ? 100 : 100 * job.graph_build.completed.length / (job.graph_build.batches || 1)}%` }} /></div>
     </div>}
 
     {!!job.items.length && <div className="stack">
       <div className="row-set hint">
-        <span>共 {job.counts.items} 条</span>
-        <span>· 通过 {job.counts.passed}</span>
-        {job.counts.awaiting_review > 0 && <span>· 待复核 {job.counts.awaiting_review}</span>}
-        {job.counts.exportable > 0 && <span>· 可导出 {job.counts.exportable}</span>}
+        <span>{t(`${job.counts.items} items`, `共 ${job.counts.items} 条`)}</span>
+        <span>· {t(`Passed ${job.counts.passed}`, `通过 ${job.counts.passed}`)}</span>
+        {job.counts.awaiting_review > 0 && <span>· {t(`Needs Review ${job.counts.awaiting_review}`, `待复核 ${job.counts.awaiting_review}`)}</span>}
+        {job.counts.exportable > 0 && <span>· {t(`Exportable ${job.counts.exportable}`, `可导出 ${job.counts.exportable}`)}</span>}
       </div>
       <div className="chat-items">
         {job.items.slice(0, 8).map(item => <button type="button" className="chat-item-row"
@@ -101,70 +118,70 @@ function JobBubbleCard({
           <span className={`dot ${tone(itemStatus(item)) ? "dot--" + tone(itemStatus(item)) : ""}`} />
           <span className="clip" style={{ flex: 1, textAlign: "left" }}>{item.source}</span>
           {item.target && <span className="clip muted" style={{ maxWidth: "40%" }}>→ {item.target}</span>}
-          <span className="mono hint">{label(itemStatus(item))}</span>
+          <span className="mono hint">{label(itemStatus(item), locale)}</span>
         </button>)}
-        {job.items.length > 8 && <span className="hint">另有 {job.items.length - 8} 条，可点击右上角「打开完整任务页」查看全部。</span>}
+        {job.items.length > 8 && <span className="hint">{t(`${job.items.length - 8} more items — open Full Job to see all.`, `另有 ${job.items.length - 8} 条，可点击右上角「打开完整任务页」查看全部。`)}</span>}
       </div>
     </div>}
 
     {explainResults.map((res, idx) => <div className="panel" key={`exp-${idx}`}>
-      <h4>依据解释结果</h4>
+      <h4>{t("Explanation Results", "依据解释结果")}</h4>
       {((res.records as Array<{ occurrence_id: string; version: number; target: string; reviews?: Array<{ verdict: string; reason: string }>; actual_context?: { items?: Array<{ category: string; text: string }> } }>) ?? []).map(rec => (
         <div key={rec.occurrence_id} className="block stack">
           <div className="row-set">
             <span className="mono hint">{rec.occurrence_id.slice(0, 18)} · v{rec.version}</span>
             <span className="sp" />
-            <Button small ghost onClick={() => onInspectItem(rec.occurrence_id, job.job_id)}>右侧看详情</Button>
+            <Button small ghost onClick={() => onInspectItem(rec.occurrence_id, job.job_id)}>{t("Inspect", "右侧看详情")}</Button>
           </div>
           <div className="target text-block">{rec.target}</div>
-          {!!rec.actual_context?.items?.length && <div className="hint">实际输入证据 {rec.actual_context.items.length} 条</div>}
-          {!!rec.reviews?.length && <div className="hint">审校：{rec.reviews.map(r => `${reviewLabels[r.verdict] ?? r.verdict} (${r.reason})`).join("；")}</div>}
+          {!!rec.actual_context?.items?.length && <div className="hint">{t(`Used ${rec.actual_context.items.length} evidence items`, `实际输入证据 ${rec.actual_context.items.length} 条`)}</div>}
+          {!!rec.reviews?.length && <div className="hint">{t("Reviews:", "审校：")} {rec.reviews.map(r => `${reviewLabel(r.verdict, locale)} (${r.reason})`).join("; ")}</div>}
         </div>
       ))}
     </div>)}
 
     {updateResults.map((res, idx) => <div className="panel" key={`upd-${idx}`}>
-      <h4>术语变更影响预演</h4>
+      <h4>{t("Glossary Update Preview", "术语变更影响预演")}</h4>
       {((res.records as Array<{ occurrence_id: string; status: string; diff: { current_target?: string; proposed_target?: string } }>) ?? []).map(rec => (
         <div key={rec.occurrence_id} className="block stack">
           <div className="row-set">
             <span className="mono hint">{rec.occurrence_id.slice(0, 18)}</span>
             <Status value={rec.status} />
             <span className="sp" />
-            <Button small ghost onClick={() => onInspectItem(rec.occurrence_id, job.job_id)}>查看</Button>
+            <Button small ghost onClick={() => onInspectItem(rec.occurrence_id, job.job_id)}>{t("Inspect", "查看")}</Button>
           </div>
-          <div className="text-block">{rec.diff.current_target ?? "暂无译文"}{rec.diff.proposed_target ? ` → ${rec.diff.proposed_target}` : ""}</div>
+          <div className="text-block">{rec.diff.current_target ?? t("No translation", "暂无译文")}{rec.diff.proposed_target ? ` → ${rec.diff.proposed_target}` : ""}</div>
         </div>
       ))}
     </div>)}
 
     <div className="row-set">
-      {can("pause") && <Button small ghost disabled={action.busy} onClick={() => void action.run(() => change("pause"))}>暂停</Button>}
-      {can("resume") && <Button small primary onClick={() => setDialog("resume")}>补充要求并继续</Button>}
-      {can("retry") && <Button small onClick={() => { setUnknown(false); setConfirmed(false); setDialog("retry"); }}>重试</Button>}
-      {can("accept_partial") && <Button small onClick={() => void action.run(() => change("accept-partial"))}>接受已完成部分</Button>}
-      {can("cancel") && <Button small ghost onClick={() => void action.run(() => change("cancel"))}>取消</Button>}
-      {job.artifacts.some(a => a.type === "po_preview") && <Button small primary onClick={() => setDialog("po")}>PO 导出预检</Button>}
-      {exportArtifact && <a className="btn btn--sm" href={exportArtifact.url}>下载译文 JSON</a>}
-      {reportArtifact && terminal.has(job.status) && <a className="btn btn--sm btn--ghost" href={reportArtifact.url}>任务报告</a>}
+      {can("pause") && <Button small ghost disabled={action.busy} onClick={() => void action.run(() => change("pause"))}>{t("Pause", "暂停")}</Button>}
+      {can("resume") && <Button small primary onClick={() => setDialog("resume")}>{t("Resume", "补充要求并继续")}</Button>}
+      {can("retry") && <Button small onClick={() => { setUnknown(false); setConfirmed(false); setDialog("retry"); }}>{t("Retry", "重试")}</Button>}
+      {can("accept_partial") && <Button small onClick={() => void action.run(() => change("accept-partial"))}>{t("Accept Partial", "接受已完成部分")}</Button>}
+      {can("cancel") && <Button small ghost onClick={() => void action.run(() => change("cancel"))}>{t("Cancel", "取消")}</Button>}
+      {job.artifacts.some(a => a.type === "po_preview") && <Button small primary onClick={() => setDialog("po")}>{t("PO Export Check", "PO 导出预检")}</Button>}
+      {exportArtifact && <a className="btn btn--sm" href={exportArtifact.url}>{t("Download JSON", "下载译文 JSON")}</a>}
+      {reportArtifact && terminal.has(job.status) && <a className="btn btn--sm btn--ghost" href={reportArtifact.url}>{t("Job Report", "任务报告")}</a>}
     </div>
 
-    {dialog === "resume" && <Modal title="补充后续要求并继续" close={() => setDialog(undefined)}>
+    {dialog === "resume" && <Modal title={t("Add Requirements & Resume", "补充后续要求并继续")} close={() => setDialog(undefined)}>
       <ErrorNote error={action.error} />
       <form className="stack" onSubmit={e => {
         e.preventDefault();
         const req = String(new FormData(e.currentTarget).get("requirements") || "").trim();
         void action.run(async () => { await change("resume", { requirements: req || undefined }); setDialog(undefined); });
       }}>
-        {!job.graph_build && <Field label="补充新要求（仅作用于尚未开始的条目）"><textarea name="requirements" className="textarea" maxLength={5000} /></Field>}
-        <div className="dialog__foot"><Button primary type="submit" disabled={action.busy}>继续执行</Button></div>
+        {!job.graph_build && <Field label={t("Extra Requirements (applies to unstarted items)", "补充新要求（仅作用于尚未开始的条目）")}><textarea name="requirements" className="textarea" maxLength={5000} /></Field>}
+        <div className="dialog__foot"><Button primary type="submit" disabled={action.busy}>{t("Resume", "继续执行")}</Button></div>
       </form>
     </Modal>}
 
-    {dialog === "retry" && <Modal title="重试任务" close={() => setDialog(undefined)}>
+    {dialog === "retry" && <Modal title={t("Retry Job", "重试任务")} close={() => setDialog(undefined)}>
       <ErrorNote error={action.error} />
-      <p className="muted">将重试失败或阻塞的步骤。</p>
-      {unknown && <label className="check"><input type="checkbox" checked={confirmed} onChange={e => setConfirmed(e.target.checked)} />确认前次调用结果未明，允许再次向模型发出请求</label>}
+      <p className="muted">{t("Failed or blocked steps will be retried.", "将重试失败或阻塞的步骤。")}</p>
+      {unknown && <label className="check"><input type="checkbox" checked={confirmed} onChange={e => setConfirmed(e.target.checked)} />{t("Allow potentially duplicate model call", "确认前次调用结果未明，允许再次向模型发出请求")}</label>}
       <div className="dialog__foot"><Button primary disabled={action.busy || (unknown && !confirmed)} onClick={() => void action.run(async () => {
         try {
           await change("retry", { occurrence_id: failedRows[0]?.occurrence_id, confirm_unknown_call: confirmed });
@@ -173,7 +190,7 @@ function JobBubbleCard({
           if (err && typeof err === "object" && "reason" in err && err.reason === "unknown_provider_result_requires_confirmation") setUnknown(true);
           throw err;
         }
-      })}>确认重试</Button></div>
+      })}>{t("Confirm Retry", "确认重试")}</Button></div>
     </Modal>}
 
     {dialog === "po" && <PoDelivery job={job} close={() => setDialog(undefined)} />}
@@ -187,6 +204,7 @@ function OccurrenceInspector({
   onBack: () => void; onAskFocused: (presetQuestion?: string) => void;
   onOpenJob: (jobId: string) => void; onOpenGraphNode: () => void;
 }) {
+  const { locale, t } = useI18n();
   const [tab, setTab] = useState<"overview" | "memory" | "graph" | "review">("overview");
   const inspectQuery = useQuery<InspectData>(`/occurrences/${scope}/${encodeURIComponent(occurrenceId)}/inspect`, refresh);
   const data = inspectQuery.data;
@@ -201,12 +219,12 @@ function OccurrenceInspector({
   }, [occurrenceId, data?.active_item?.draft_hash]);
 
   if (inspectQuery.error) return <div className="stack">
-    <div className="row-set"><Button small ghost onClick={onBack}>← 返回文本列表</Button></div>
+    <div className="row-set"><Button small ghost onClick={onBack}>{t("← Back to List", "← 返回文本列表")}</Button></div>
     <ErrorNote error={inspectQuery.error} />
   </div>;
   if (!data) return <div className="stack">
-    <div className="row-set"><Button small ghost onClick={onBack}>← 返回文本列表</Button></div>
-    <Empty title="正在读取条目完整溯源细节…" />
+    <div className="row-set"><Button small ghost onClick={onBack}>{t("← Back to List", "← 返回文本列表")}</Button></div>
+    <Empty title={t("Loading entry provenance & details…", "正在读取条目完整溯源细节…")} />
   </div>;
 
   const { resource, translation, active_item: activeItem, evidence, graph, memory } = data;
@@ -236,20 +254,20 @@ function OccurrenceInspector({
 
   return <div className="stack inspector">
     <div className="row-set">
-      <Button small ghost onClick={onBack}>← 返回列表</Button>
+      <Button small ghost onClick={onBack}>{t("← Back", "← 返回列表")}</Button>
       <Status value={resource.translation_status ?? "untranslated"} pill />
       {translation.locked && <Status value="locked" pill />}
-      <span className="mono hint">v{translation.head_version} · 源 v{resource.source_version}</span>
+      <span className="mono hint">v{translation.head_version} · {t("Src", "源")} v{resource.source_version}</span>
       <span className="sp" />
-      <Button small primary onClick={() => onAskFocused()}>在左侧提问此条</Button>
+      <Button small primary onClick={() => onAskFocused()}>{t("Ask in Chat", "在左侧提问此条")}</Button>
     </div>
 
     <div className="segs inspector__tabs">
       {([
-        ["overview", "概览与译文"],
-        ["memory", `记忆与选择${evidence ? ` (${actualItems.length}/${evidence.retrieved.length})` : ""}`],
-        ["graph", `图谱 (${graph.edges.length})`],
-        ["review", `审校与查证 (${evidence?.reviews.length ?? 0})`],
+        ["overview", t("Overview", "概览与译文")],
+        ["memory", t(`Memory${evidence ? ` (${actualItems.length}/${evidence.retrieved.length})` : ""}`, `记忆与选择${evidence ? ` (${actualItems.length}/${evidence.retrieved.length})` : ""}`)],
+        ["graph", t(`Graph (${graph.edges.length})`, `图谱 (${graph.edges.length})`)],
+        ["review", t(`Review (${evidence?.reviews.length ?? 0})`, `审校与查证 (${evidence?.reviews.length ?? 0})`)],
       ] as const).map(([k, title]) => (
         <button key={k} type="button" className={`seg${tab === k ? " seg--on" : ""}`}
           aria-pressed={tab === k} onClick={() => setTab(k)}>{title}</button>
@@ -261,7 +279,7 @@ function OccurrenceInspector({
     {tab === "overview" && <div className="stack">
       <div className="field">
         <div className="row-set">
-          <span className="label">原文</span><span className="sp" />
+          <span className="label">{t("Source", "原文")}</span><span className="sp" />
           <span className="mono hint">{locationText(resource.location, resource.file) || resource.occurrence_id.slice(0, 18)}</span>
         </div>
         <div className="source text-block">{resource.label}</div>
@@ -269,29 +287,29 @@ function OccurrenceInspector({
 
       {!!Object.keys(resource.metadata ?? {}).length && <div className="ctxgrid">
         {Object.entries(resource.metadata ?? {}).map(([k, v]) => <div className="ctxcell" key={k}>
-          <span>{META_LABELS[k] ?? k}</span><b>{v}</b>
+          <span>{metaLabel(k, locale)}</span><b>{v}</b>
         </div>)}
       </div>}
 
       <div className="field">
         <div className="row-set">
-          <span className="label">{canEdit ? "待复核草稿（可直接编辑并批准）" : "当前译文"}</span>
+          <span className="label">{canEdit ? t("Draft for Review (editable)", "待复核草稿（可直接编辑并批准）") : t("Current Translation", "当前译文")}</span>
           <span className="sp" />
-          {activeItem && <Button small ghost onClick={() => onOpenJob(activeItem.job_id)}>查看来源任务 J-{activeItem.job_id.slice(0, 6)}</Button>}
+          {activeItem && <Button small ghost onClick={() => onOpenJob(activeItem.job_id)}>{t(`Job J-${activeItem.job_id.slice(0, 6)}`, `查看来源任务 J-${activeItem.job_id.slice(0, 6)}`)}</Button>}
         </div>
         {canEdit ? <>
           <textarea className="target" value={editorValue} onChange={e => setDraftText(e.target.value)} maxLength={5000} />
           <TranslationChecks source={resource.label} target={editorValue} terms={evidence?.mandatory_terms} />
-          {activeItem?.reason && <div className="note note--warn">{activeItem.display_reason && activeItem.display_reason !== activeItem.reason ? activeItem.display_reason : reasonText(activeItem.reason)} <code>{activeItem.reason}</code></div>}
-          <Field label="修改原因（可选，自动写入反馈库）">
-            <input className="input" value={editReason} onChange={e => setEditReason(e.target.value)} maxLength={1000} placeholder="例如：补充设定语气或修正术语" />
+          {activeItem?.reason && <div className="note note--warn">{activeItem.display_reason && activeItem.display_reason !== activeItem.reason ? activeItem.display_reason : reasonText(activeItem.reason, locale)} <code>{activeItem.reason}</code></div>}
+          <Field label={t("Edit Reason (optional, saved to feedback)", "修改原因（可选，自动写入反馈库）")}>
+            <input className="input" value={editReason} onChange={e => setEditReason(e.target.value)} maxLength={1000} placeholder={t("e.g. Fix character tone or term", "例如：补充设定语气或修正术语")} />
           </Field>
           <div className="row-set">
-            <Button primary disabled={action.busy || !editorValue.trim()} onClick={approveItem}>批准译文</Button>
+            <Button primary disabled={action.busy || !editorValue.trim()} onClick={approveItem}>{t("Approve Translation", "批准译文")}</Button>
           </div>
         </> : <>
           {translation.target ? <div className="target text-block">{translation.target}</div>
-            : <Empty title="该条目尚未翻译">可在左侧直接输入「翻译这条」或点击上方按钮提问。</Empty>}
+            : <Empty title={t("Not translated yet", "该条目尚未翻译")}>{t("Type 'Translate this entry' on the left or click Ask above.", "可在左侧直接输入「翻译这条」或点击上方按钮提问。")}</Empty>}
         </>}
       </div>
 
@@ -300,24 +318,24 @@ function OccurrenceInspector({
           <Button small ghost disabled={action.busy} onClick={() => void action.run(() =>
             json(`/jobs/${activeItem.job_id}/versions/${encodeURIComponent(resource.occurrence_id)}/${translation.locked ? "unlock" : "lock"}`,
               post({ expected_version: translation.head_version })))}>
-            {translation.locked ? "解锁版本" : "锁定版本"}
+            {translation.locked ? t("Unlock", "解锁版本") : t("Lock", "锁定版本")}
           </Button>
         )}
-        {!["queued", "running"].includes(activeItem.status) && <Button small ghost onClick={() => setFeedbackOpen(true)}>登记反馈</Button>}
-        <Button small ghost onClick={() => onAskFocused("为什么这样翻译？请结合选中的记忆与审校依据说明。")}>提问：为什么这样翻？</Button>
+        {!["queued", "running"].includes(activeItem.status) && <Button small ghost onClick={() => setFeedbackOpen(true)}>{t("Feedback", "登记反馈")}</Button>}
+        <Button small ghost onClick={() => onAskFocused(t("Why was it translated this way? Explain the memory and review evidence.", "为什么这样翻译？请结合选中的记忆与审校依据说明。"))}>{t("Ask: Why this translation?", "提问：为什么这样翻？")}</Button>
       </div>}
 
       {!!translation.versions.length && <details>
-        <summary>历史版本（{translation.versions.length}）</summary>
+        <summary>{t(`Version History (${translation.versions.length})`, `历史版本（${translation.versions.length}）`)}</summary>
         <div className="stack">
           {translation.versions.map(v => <div className="block stack" key={v.version}>
             <div className="row-set">
-              <b>v{v.version}</b><span className="hint">源 v{v.source_version} · {v.reviewer ?? "agent"}</span>
+              <b>v{v.version}</b><span className="hint">{t("Src", "源")} v{v.source_version} · {v.reviewer ?? "agent"}</span>
               <span className="sp" />
               {activeItem && v.version < translation.head_version && !translation.locked &&
                 <Button small ghost disabled={action.busy} onClick={() => void action.run(() =>
                   json(`/jobs/${activeItem.job_id}/versions/${encodeURIComponent(resource.occurrence_id)}/rollback`,
-                    post({ expected_version: translation.head_version, to_version: v.version })))}>回滚</Button>}
+                    post({ expected_version: translation.head_version, to_version: v.version })))}>{t("Rollback", "回滚")}</Button>}
             </div>
             <div className="text-block">{v.target}</div>
           </div>)}
@@ -327,44 +345,44 @@ function OccurrenceInspector({
 
     {tab === "memory" && <div className="stack">
       {!!data.project_notes?.length && <div className="panel">
-        <h4>全局背景 / System Prompt 记忆（{data.project_notes.length}）</h4>
+        <h4>{t(`Project Lore / System Prompt (${data.project_notes.length})`, `全局背景 / System Prompt 记忆（${data.project_notes.length}）`)}</h4>
         {data.project_notes.map(n => <div className="block stack" key={n.note_id}>
           <div className="row-set"><b>{n.title}</b><span className="pill pill--plain">{n.category}</span></div>
           <div className="text-block">{n.content}</div>
         </div>)}
       </div>}
-      {!evidence ? <Empty title="暂无本次翻译/审校的上下文选择记录">请先对该条目发起一次翻译或审校。</Empty> : <>
+      {!evidence ? <Empty title={t("No context selection trace yet", "暂无本次翻译/审校的上下文选择记录")}>{t("Run a translation or review job on this entry first.", "请先对该条目发起一次翻译或审校。")}</Empty> : <>
         {latestSelection?.decision?.rationale && <div className="note note--ok">
-          <b>ContextSelector 选择器决策理由</b>
+          <b>{t("ContextSelector Rationale", "ContextSelector 选择器决策理由")}</b>
           <div className="text-block">{latestSelection.decision.rationale}</div>
-          {latestSelection.fallback && <div className="hint">触发回退：{latestSelection.fallback}</div>}
+          {latestSelection.fallback && <div className="hint">{t("Fallback triggered:", "触发回退：")} {latestSelection.fallback}</div>}
         </div>}
 
         {!!evidence.mandatory_terms.length && <div className="panel">
-          <h4>强制硬术语（绕过剪枝，必须遵守）</h4>
-          {evidence.mandatory_terms.map((t, i) => <div className="term" key={i}><b>{t.target}</b>← <code>{t.source}</code><em>强制</em></div>)}
+          <h4>{t("Mandatory Terms (enforced)", "强制硬术语（绕过剪枝，必须遵守）")}</h4>
+          {evidence.mandatory_terms.map((tItem, i) => <div className="term" key={i}><b>{tItem.target}</b>← <code>{tItem.source}</code><em>{t("REQ", "强制")}</em></div>)}
         </div>}
 
         <div className="panel">
           <div className="row-set">
-            <h4>实际传入 ContextPack 的证据（{actualItems.length}）</h4>
+            <h4>{t(`Selected into ContextPack (${actualItems.length})`, `实际传入 ContextPack 的证据（${actualItems.length}）`)}</h4>
             <span className="sp" />
-            <Button small ghost onClick={() => onAskFocused("ContextSelector 为什么选择了这些记忆而放弃了其他候选？")}>针对选证提问</Button>
+            <Button small ghost onClick={() => onAskFocused(t("Why did ContextSelector choose these memories instead of the other candidates?", "ContextSelector 为什么选择了这些记忆而放弃了其他候选？"))}>{t("Ask About Selection", "针对选证提问")}</Button>
           </div>
-          {!actualItems.length ? <p className="muted">本次未注入额外软证据。</p>
+          {!actualItems.length ? <p className="muted">{t("No extra soft evidence injected.", "本次未注入额外软证据。")}</p>
             : actualItems.map(item => <div className="block stack" key={item.id}>
-              <div className="row-set"><span className="pill pill--plain">{MEMORY_KIND_LABELS[item.category] ?? item.category}</span>
-                {item.mandatory && <span className="pill pill--warn">强制</span>}
+              <div className="row-set"><span className="pill pill--plain">{memoryKindLabel(item.category, locale)}</span>
+                {item.mandatory && <span className="pill pill--warn">{t("Required", "强制")}</span>}
                 <span className="mono hint">{item.id}</span></div>
               <div className="text-block">{item.text}</div>
             </div>)}
         </div>
 
         {!!unusedCandidates.length && <details>
-          <summary>检索到但未被选择器采用的候选（{unusedCandidates.length}）</summary>
+          <summary>{t(`Retrieved but Unselected (${unusedCandidates.length})`, `检索到但未被选择器采用的候选（${unusedCandidates.length}）`)}</summary>
           <div className="stack">
             {unusedCandidates.map(c => <div className="block stack" key={c.id}>
-              <span className="mono hint">{MEMORY_KIND_LABELS[c.category] ?? c.category} · {c.id}</span>
+              <span className="mono hint">{memoryKindLabel(c.category, locale)} · {c.id}</span>
               <div className="text-block">{c.text}</div>
             </div>)}
           </div>
@@ -372,10 +390,10 @@ function OccurrenceInspector({
       </>}
 
       {!!memory.length && <details open={!evidence}>
-        <summary>当前项目/示范区匹配记忆（{memory.length}）</summary>
+        <summary>{t(`Matching Project Memory (${memory.length})`, `当前项目/示范区匹配记忆（${memory.length}）`)}</summary>
         <div className="stack">
           {memory.map(m => <div className="block" key={`${m.record_id}:${m.version}`}>
-            <span className="pill pill--plain">{MEMORY_KIND_LABELS[m.kind] ?? m.kind}</span>
+            <span className="pill pill--plain">{memoryKindLabel(m.kind, locale)}</span>
             <div className="text-block">{[m.content.source, m.content.target, m.content.note].filter(Boolean).join(" → ")}</div>
           </div>)}
         </div>
@@ -384,26 +402,26 @@ function OccurrenceInspector({
 
     {tab === "graph" && <div className="stack">
       <div className="row-set">
-        <span className="hint">{graph.snapshot_id ? `快照：${graph.snapshot_id}` : "当前尚未发布图谱快照"}</span>
+        <span className="hint">{graph.snapshot_id ? `${t("Snapshot:", "快照：")} ${graph.snapshot_id}` : t("No graph snapshot published yet", "当前尚未发布图谱快照")}</span>
         <span className="sp" />
-        {project && <Button small ghost onClick={onOpenGraphNode}>在「图谱与记忆」中查看</Button>}
+        {project && <Button small ghost onClick={onOpenGraphNode}>{t("Open in Graph & Memory", "在「图谱与记忆」中查看")}</Button>}
       </div>
       {!graph.edges.length && !graph.nodes.filter(n => n.kind === "entity").length
-        ? <Empty title="该条目暂无关联实体关系">若刚导入文件，请先构建知识图谱；或点击上方对整份文件抽图。</Empty>
+        ? <Empty title={t("No linked entity relations", "该条目暂无关联实体关系")}>{t("Build the knowledge graph after importing sources to view entity links.", "若刚导入文件，请先构建知识图谱；或点击上方对整份文件抽图。")}</Empty>
         : <>
           <div className="panel">
-            <h4>关联实体节点（{graph.nodes.filter(n => n.kind === "entity").length}）</h4>
+            <h4>{t(`Linked Entities (${graph.nodes.filter(n => n.kind === "entity").length})`, `关联实体节点（${graph.nodes.filter(n => n.kind === "entity").length}）`)}</h4>
             {graph.nodes.filter(n => n.kind === "entity").map(n => <div className="block stack" key={n.id}>
               <div className="row-set">
                 <b>{String(n.attributes?.name || n.id)}</b>
                 <span className="pill pill--info">{String(n.attributes?.entity_type || "entity")}</span>
                 <Status value={n.valid ? "valid" : "invalid"} />
               </div>
-              {n.evidence.slice(0, 2).map((e, i) => <div key={i} className="hint text-block">引文：{e.quote}</div>)}
+              {n.evidence.slice(0, 2).map((e, i) => <div key={i} className="hint text-block">{t("Quote:", "引文：")} {e.quote}</div>)}
             </div>)}
           </div>
           <div className="panel">
-            <h4>关联关系边（{graph.edges.length}）</h4>
+            <h4>{t(`Relations (${graph.edges.length})`, `关联关系边（${graph.edges.length}）`)}</h4>
             {graph.edges.map(e => <div className="block stack" key={e.id}>
               <div className="row-set">
                 <span>{nodeNames.get(e.source) ?? e.source}</span>
@@ -411,34 +429,34 @@ function OccurrenceInspector({
                 <span>{nodeNames.get(e.target) ?? e.target}</span>
                 <Status value={e.valid ? "valid" : "invalid"} />
               </div>
-              {e.evidence.slice(0, 2).map((evItem, i) => <div key={i} className="hint text-block">依据：{evItem.quote}</div>)}
+              {e.evidence.slice(0, 2).map((evItem, i) => <div key={i} className="hint text-block">{t("Evidence:", "依据：")} {evItem.quote}</div>)}
             </div>)}
           </div>
         </>}
     </div>}
 
     {tab === "review" && <div className="stack">
-      {!evidence ? <Empty title="暂无审校与查证轨迹" /> : <>
-        {excludedTotal > 0 && <div className="note note--warn">作用域隔离：已自动拦截并屏蔽 {excludedTotal} 条越界或跨分支命中。</div>}
+      {!evidence ? <Empty title={t("No review trace recorded yet", "暂无审校与查证轨迹")} /> : <>
+        {excludedTotal > 0 && <div className="note note--warn">{t(`Scope isolation: masked ${excludedTotal} out-of-scope hits.`, `作用域隔离：已自动拦截并屏蔽 ${excludedTotal} 条越界或跨分支命中。`)}</div>}
 
         {!!evidence.hard_checks?.length && <div className="panel">
-          <h4>程序硬检查（{evidence.hard_checks.length} 轮）</h4>
+          <h4>{t(`Deterministic Hard Checks (${evidence.hard_checks.length})`, `程序硬检查（${evidence.hard_checks.length} 轮）`)}</h4>
           {evidence.hard_checks.map((hc, i) => <div className="row-set" key={i}>
             <Status value={hc.problems.length ? "failed" : "passed"} />
-            <span>{hc.problems.length ? hc.problems.join("；") : "占位符、换行、空白与强制术语均通过"}</span>
+            <span>{hc.problems.length ? hc.problems.join("; ") : t("Placeholders, line breaks, whitespace & mandatory terms passed", "占位符、换行、空白与强制术语均通过")}</span>
           </div>)}
         </div>}
 
         <div className="panel">
-          <h4>Pi Reviewer 主动工具查证（{lookups.length}）</h4>
-          {!lookups.length ? <p className="muted">本次审校未发起额外只读工具查证。</p>
+          <h4>{t(`Pi Reviewer Tool Lookups (${lookups.length})`, `Pi Reviewer 主动工具查证（${lookups.length}）`)}</h4>
+          {!lookups.length ? <p className="muted">{t("No extra read-only tool calls made during this review.", "本次审校未发起额外只读工具查证。")}</p>
             : lookups.map((entry, idx) => <div className="block stack" key={idx}>
               <div className="row-set">
-                <b>{toolLabels[entry.name] ?? entry.name}</b>
-                <span className="pill pill--plain">{reviewLabels[entry.result.status] ?? entry.result.status}</span>
-                {entry.excluded_hits > 0 && <span className="hint">屏蔽 {entry.excluded_hits} 条越界</span>}
+                <b>{toolLabel(entry.name, locale)}</b>
+                <span className="pill pill--plain">{reviewLabel(entry.result.status, locale)}</span>
+                {entry.excluded_hits > 0 && <span className="hint">{t(`Masked ${entry.excluded_hits}`, `屏蔽 ${entry.excluded_hits} 条越界`)}</span>}
               </div>
-              <div className="mono hint">查询：{entry.effective_query ?? entry.args.query ?? "{}"}</div>
+              <div className="mono hint">{t("Query:", "查询：")} {entry.effective_query ?? entry.args.query ?? "{}"}</div>
               {entry.result.evidence.map((item, j) => <div key={j} className="text-block block">
                 {String(item.quote || item.target || item.note || JSON.stringify(item))}
               </div>)}
@@ -447,21 +465,21 @@ function OccurrenceInspector({
 
         <div className="panel">
           <div className="row-set">
-            <h4>审校结论（{evidence.reviews.length} 轮）</h4>
+            <h4>{t(`Review Verdicts (${evidence.reviews.length})`, `审校结论（${evidence.reviews.length} 轮）`)}</h4>
             <span className="sp" />
-            <Button small ghost onClick={() => onAskFocused("Pi Reviewer 给出了什么结论和原因？如果经过了修复，修改了哪里？")}>提问审校详情</Button>
+            <Button small ghost onClick={() => onAskFocused(t("What did Pi Reviewer conclude and why? What changed during repair if any?", "Pi Reviewer 给出了什么结论和原因？如果经过了修复，修改了哪里？"))}>{t("Ask About Review", "提问审校详情")}</Button>
           </div>
-          {!evidence.reviews.length ? <p className="muted">暂无审校记录。</p>
+          {!evidence.reviews.length ? <p className="muted">{t("No review records yet.", "暂无审校记录。")}</p>
             : evidence.reviews.map((rev, idx) => <div className="block stack" key={idx}>
-              <div className="row-set"><b>第 {idx + 1} 轮</b><span className="pill pill--plain">{reviewLabels[rev.verdict] ?? rev.verdict}</span></div>
+              <div className="row-set"><b>{t(`Round ${idx + 1}`, `第 ${idx + 1} 轮`)}</b><span className="pill pill--plain">{reviewLabel(rev.verdict, locale)}</span></div>
               <div className="text-block">{rev.reason}</div>
             </div>)}
         </div>
 
         {!!evidence.repairs?.length && <div className="panel">
-          <h4>定向修复对比</h4>
-          {evidence.drafts?.[0] && <div className="hint text-block">初稿：{evidence.drafts[0].target}</div>}
-          {evidence.repairs.map((rep, i) => <div key={i} className="target text-block">修复 {i + 1}：{rep.target}</div>)}
+          <h4>{t("Targeted Repair Diff", "定向修复对比")}</h4>
+          {evidence.drafts?.[0] && <div className="hint text-block">{t("Draft:", "初稿：")} {evidence.drafts[0].target}</div>}
+          {evidence.repairs.map((rep, i) => <div key={i} className="target text-block">{t(`Repair ${i + 1}:`, `修复 ${i + 1}：`)} {rep.target}</div>)}
         </div>}
       </>}
     </div>}
@@ -481,6 +499,7 @@ export function AgentWorkspace({
   navigate: (page: "home" | "jobs" | "knowledge" | "models" | "glossary" | "evolution") => void;
   openJob: (id: string) => void; composeText?: () => void; openGraph: () => void;
 }) {
+  const { locale, t } = useI18n();
   const storageKey = `lore-chat-${scope || "empty"}`;
   const [messages, setMessages] = useState<ChatEntry[]>(() => stored(storageKey, []));
   useEffect(() => { setMessages(stored(storageKey, [])); }, [storageKey]);
@@ -583,7 +602,7 @@ export function AgentWorkspace({
       const targetOcc = focusedId;
       const sourceLabel = focusedResource?.label ?? targetOcc;
       if (!customText) setInput("");
-      pushMessages(old => [...old, { id: crypto.randomUUID(), role: "user", text, meta: `针对条目提问 · ${sourceLabel.slice(0, 26)}` }]);
+      pushMessages(old => [...old, { id: crypto.randomUUID(), role: "user", text, meta: `${t("Ask about entry", "针对条目提问")} · ${sourceLabel.slice(0, 26)}` }]);
       void chatAction.run(async () => {
         const res = await json<AskResponse>(`/occurrences/${scope}/${encodeURIComponent(targetOcc)}/ask`, post({ question: text }));
         pushMessages(old => [...old, { id: crypto.randomUUID(), role: "ask", occurrenceId: targetOcc, source: sourceLabel, data: res }]);
@@ -594,10 +613,10 @@ export function AgentWorkspace({
     const targetsToSend = explicitTargets ?? (selection.ids.length ? selection.ids : focusedId ? [focusedId] : []);
     if (!customText) setInput("");
     const metaParts = [
-      targetsToSend.length ? `绑定 ${targetsToSend.length} 条` : undefined,
-      selection.file ? `文件 ${selection.file}` : undefined,
+      targetsToSend.length ? t(`${targetsToSend.length} bound`, `绑定 ${targetsToSend.length} 条`) : undefined,
+      selection.file ? `${t("File", "文件")} ${selection.file}` : undefined,
     ].filter(Boolean).join(" · ");
-    pushMessages(old => [...old, { id: crypto.randomUUID(), role: "user", text, meta: metaParts || "工作区指令" }]);
+    pushMessages(old => [...old, { id: crypto.randomUUID(), role: "user", text, meta: metaParts || t("Workspace command", "工作区指令") }]);
 
     void chatAction.run(async () => {
       const job = await json<Job>("/jobs", post({
@@ -615,7 +634,7 @@ export function AgentWorkspace({
   const runDirectTask = (intentsList: string[], labelText: string) => {
     const targetsToSend = selection.ids.length ? selection.ids : focusedId ? [focusedId] : [];
     if (!targetsToSend.length || !scope) return;
-    pushMessages(old => [...old, { id: crypto.randomUUID(), role: "user", text: labelText, meta: `选中 ${targetsToSend.length} 条` }]);
+    pushMessages(old => [...old, { id: crypto.randomUUID(), role: "user", text: labelText, meta: t(`${targetsToSend.length} selected`, `选中 ${targetsToSend.length} 条`) }]);
     void chatAction.run(async () => {
       const job = await json<Job>("/jobs", post({
         intents: intentsList,
@@ -632,39 +651,39 @@ export function AgentWorkspace({
   const composerControls = <>
     {(focusedId || selection.ids.length > 0) && <div className="chat-context-bar">
       {focusedResource && <span className="pill pill--info">
-        聚焦：{focusedResource.label.slice(0, 26)}…
-        <button type="button" className="chip-x" aria-label="取消聚焦" onClick={() => setFocusedId("")}>×</button>
+        {t("Focus:", "聚焦：")} {focusedResource.label.slice(0, 24)}…
+        <button type="button" className="chip-x" aria-label={t("Clear focus", "取消聚焦")} onClick={() => setFocusedId("")}>×</button>
       </span>}
       {selection.ids.length > 0 && <span className="pill pill--warn">
-        已勾选 {selection.ids.length}/{limit} 条
-        <button type="button" className="chip-x" aria-label="清空勾选" onClick={() => setSelection({ ...selection, ids: [] })}>×</button>
+        {t(`Selected ${selection.ids.length}/${limit}`, `已勾选 ${selection.ids.length}/${limit} 条`)}
+        <button type="button" className="chip-x" aria-label={t("Clear selection", "清空勾选")} onClick={() => setSelection({ ...selection, ids: [] })}>×</button>
       </span>}
       <span className="sp" />
       {(selection.ids.length > 0 || focusedId) && <>
         <Button small disabled={!!project && !project.graph_ready}
-          onClick={() => runDirectTask(["translate", "export"], "翻译并导出选中文本")}>翻译并导出</Button>
+          onClick={() => runDirectTask(["translate", "export"], t("Translate and export selected entries", "翻译并导出选中文本"))}>{t("Translate & Export", "翻译并导出")}</Button>
         <Button small ghost disabled={!!project && !project.graph_ready}
-          onClick={() => runDirectTask(["review"], "审校选中文本")}>仅审校</Button>
+          onClick={() => runDirectTask(["review"], t("Review selected entries", "审校选中文本"))}>{t("Review Only", "仅审校")}</Button>
       </>}
     </div>}
 
     <div className="row-set" style={{ marginBottom: 4 }}>
-      <span className="micro">模式</span>
+      <span className="micro">{t("Mode", "模式")}</span>
       <button type="button" className={`seg${effectiveMode === "ask" ? " seg--on" : ""}`} disabled={!focusedId}
-        onClick={() => setInputMode("ask")}>提问当前条目{!focusedId ? "（右侧点选）" : ""}</button>
+        onClick={() => setInputMode("ask")}>{t("Ask Entry", "提问当前条目")}{!focusedId ? t(" (select right)", "（右侧点选）") : ""}</button>
       <button type="button" className={`seg${effectiveMode === "job" ? " seg--on" : ""}`}
-        onClick={() => setInputMode("job")}>下达任务</button>
+        onClick={() => setInputMode("job")}>{t("Run Task", "下达任务")}</button>
       <button type="button" className={`seg${inputMode === "auto" ? " seg--on" : ""}`}
-        onClick={() => setInputMode("auto")}>自动识别</button>
+        onClick={() => setInputMode("auto")}>{t("Auto", "自动识别")}</button>
       <span className="sp" />
-      <Button small ghost onClick={() => setShowOpts(v => !v)}>{showOpts ? "收起参数" : "参数 / 预算"}</Button>
+      <Button small ghost onClick={() => setShowOpts(v => !v)}>{showOpts ? t("Hide Options", "收起参数") : t("Options / Budget", "参数 / 预算")}</Button>
     </div>
 
     {showOpts && <div className="form-grid" style={{ marginBottom: 6 }}>
-      <Field label="附加翻译要求（可选）"><input className="input" value={requirements} onChange={e => setRequirements(e.target.value)}
-        placeholder="例如：保持科幻军事口吻" /></Field>
-      <Field label="调用上限 max_calls（可选）"><input className="input" type="number" min="1" max="1000" value={budget}
-        onChange={e => setBudget(e.target.value)} placeholder="默认" /></Field>
+      <Field label={t("Extra Requirements (Optional)", "附加翻译要求（可选）")}><input className="input" value={requirements} onChange={e => setRequirements(e.target.value)}
+        placeholder={t("e.g. Keep sci-fi military tone", "例如：保持科幻军事口吻")} /></Field>
+      <Field label={t("Budget Limit max_calls (Optional)", "调用上限 max_calls（可选）")}><input className="input" type="number" min="1" max="1000" value={budget}
+        onChange={e => setBudget(e.target.value)} placeholder={t("Default", "默认")} /></Field>
     </div>}
 
     <form className="chat-input-row" onSubmit={e => { e.preventDefault(); sendMessage(); }}>
@@ -674,8 +693,8 @@ export function AgentWorkspace({
         value={input}
         disabled={chatAction.busy}
         placeholder={effectiveMode === "ask"
-          ? "针对右侧当前查看的译文提问，例如：为什么这样翻译？使用了哪些记忆与图谱关系？"
-          : "输入自然语言任务指令（Enter 发送，Shift+Enter 换行），例如：把选中的条目翻译成简体中文并导出"}
+          ? t("Ask about the focused entry on the right, e.g. Why was it translated this way?", "针对右侧当前查看的译文提问，例如：为什么这样翻译？使用了哪些记忆与图谱关系？")
+          : t("Type a natural-language task (Enter to send, Shift+Enter for newline), e.g. Translate selected entries to Chinese", "输入自然语言任务指令（Enter 发送，Shift+Enter 换行），例如：把选中的条目翻译成简体中文并导出")}
         onChange={e => setInput(e.target.value)}
         onKeyDown={e => {
           if (e.key === "Enter" && !e.shiftKey) {
@@ -688,76 +707,79 @@ export function AgentWorkspace({
           <path d="M5 12h14" />
           <path d="m13 6 6 6-6 6" />
         </svg>
-        <span>{chatAction.busy ? "处理中…" : effectiveMode === "ask" ? "提问" : "发送"}</span>
+        <span>{chatAction.busy ? t("Working…", "处理中…") : effectiveMode === "ask" ? t("Ask", "提问") : t("Send", "发送")}</span>
       </Button>
     </form>
   </>;
 
   return <div className={`agent-shell${rightOpen ? "" : " agent-shell--single"}`}>
     {/* ==================== LEFT: CONVERSATIONAL AGENT ==================== */}
-    <section className={`chat-pane${scope && !messages.length ? " chat-pane--hero" : ""}`} aria-label="Agent 对话工作区">
+    <section className={`chat-pane${scope && !messages.length ? " chat-pane--hero" : ""}`} aria-label={t("Agent Conversation Workspace", "Agent 对话工作区")}>
       <header className="chat-pane__head">
         <div>
           <div className="row-set">
-            <h1>{project ? project.name : scope === "naev" ? "Naev 示范区" : "LoRE Agent 对话"}</h1>
+            <h1>{project ? project.name : scope === "naev" ? t("Naev Demo", "Naev 示范区") : t("LoRE Agent Chat", "LoRE Agent 对话")}</h1>
             {project && <span className={`pill ${project.graph_ready ? "pill--ok" : "pill--warn"}`}>
-              {project.graph_ready ? "图谱就绪" : "待建图"}
+              {project.graph_ready ? t("Graph Ready", "图谱就绪") : t("Needs Graph", "待建图")}
             </span>}
-            {offline && <span className="pill pill--plain">离线演示</span>}
+            {offline && <span className="pill pill--plain">{t("Offline Demo", "离线演示")}</span>}
           </div>
           <div className="sub">
-            {project ? `${language[project.source_lang]} → ${language[project.target_lang]} · 源 v${project.revision} · 已批准记忆 ${project.approved_memory ?? 0}`
-              : scope === "naev" ? "英语 → 简体中文 · 支持自然语言任务、主动取证与译文溯源提问" : "请先在右侧或点击新建项目"}
+            {project ? `${langLabel(project.source_lang, locale)} → ${langLabel(project.target_lang, locale)} · v${project.revision} · ${t(`Approved Memory ${project.approved_memory ?? 0}`, `已批准记忆 ${project.approved_memory ?? 0}`)}`
+              : scope === "naev" ? t("English → Simplified Chinese · Commands, active lookup & provenance Q&A", "英语 → 简体中文 · 支持自然语言任务、主动取证与译文溯源提问") : t("Select a project on the right or create a new project", "请先在右侧或点击新建项目")}
           </div>
         </div>
         <div className="actions">
-          {project && !project.graph_ready && (project.resources ?? 0) > 0 && <Button small primary onClick={openGraph}>去构建图谱</Button>}
-          {!!messages.length && <Button small ghost onClick={() => pushMessages(() => [])}>清空对话</Button>}
+          {project && !project.graph_ready && (project.resources ?? 0) > 0 && <Button small primary onClick={openGraph}>{t("Build Graph", "去构建图谱")}</Button>}
+          {!!messages.length && <Button small ghost onClick={() => pushMessages(() => [])}>{t("Clear Chat", "清空对话")}</Button>}
           <Button small ghost={!rightOpen} onClick={() => toggleRight()} aria-expanded={rightOpen}
-            title={rightOpen ? "收起右侧译文与透明检视栏" : "展开右侧译文与透明检视栏"}>
-            {rightOpen ? "收起右侧栏" : `展开译文栏${scope ? ` (${counts.all})` : ""}`}
+            title={rightOpen ? t("Collapse translation & provenance inspector", "收起右侧译文与透明检视栏") : t("Expand translation & provenance inspector", "展开右侧译文与透明检视栏")}>
+            {rightOpen ? t("Hide Panel", "收起右侧栏") : `${t("Show Entries", "展开译文栏")}${scope ? ` (${counts.all})` : ""}`}
           </Button>
         </div>
       </header>
 
       {!scope ? <div className="chat-feed">
         <div className="chat-hero">
-          <h2 className="chat-hero__title">欢迎使用 LoRE 本地化工作台</h2>
-          <p className="chat-hero__sub">请先创建一个本地化项目并导入文本文件，或进入「模型设置」配置 OpenAI 协议接口与本地模型连接。</p>
+          <h2 className="chat-hero__title">{t("Welcome to LoRE Workbench", "欢迎使用 LoRE 本地化工作台")}</h2>
+          <p className="chat-hero__sub">{t("Create a localization project and import CSV/XLSX/PO files, or configure your OpenAI-compatible API / local models first.", "请先创建一个本地化项目并导入文本文件，或进入「模型设置」配置 OpenAI 协议接口与本地模型连接。")}</p>
           <div className="row-set">
-            <Button primary onClick={createProject}>+ 新建项目</Button>
-            <Button onClick={() => navigate("models")}>配置模型连接</Button>
+            <Button primary onClick={createProject}>{t("+ New Project", "+ 新建项目")}</Button>
+            <Button onClick={() => navigate("models")}>{t("Model Settings", "配置模型连接")}</Button>
           </div>
         </div>
       </div> : <>
         <div className="chat-feed">
           {!messages.length && <div className="chat-hero">
-            <h2 className="chat-hero__title">{focusedId ? "向 Agent 追问当前译文细节" : "今天想推进哪部分本地化？"}</h2>
+            <h2 className="chat-hero__title">{focusedId ? t("Ask Agent About This Translation", "向 Agent 追问当前译文细节") : t("What would you like to localize today?", "今天想推进哪部分本地化？")}</h2>
             <p className="chat-hero__sub">
-              直接用自然语言下达翻译、审校或术语变更指令；或在右侧挑选任意条目，查看记忆检索依据、知识图谱关联与 Pi 审校细节。
+              {t(
+                "Send natural-language translation, review, or glossary commands here, or select any entry on the right to inspect memory selection, graph links, and Pi review details.",
+                "直接用自然语言下达翻译、审校或术语变更指令；或在右侧挑选任意条目，查看记忆检索依据、知识图谱关联与 Pi 审校细节。",
+              )}
             </p>
             <div className="center-panel glass">
               {composerControls}
             </div>
             <div className="row-set" style={{ justifyContent: "center" }}>
               {focusedId ? <>
-                <Button small ghost onClick={() => sendMessage("为什么这样翻译？用了哪些记忆和依据？", "ask")}>提问：为什么这样翻？</Button>
-                <Button small ghost onClick={() => sendMessage("上下文选择器为什么选中了这些记忆，没选其他候选？", "ask")}>提问：记忆选择理由</Button>
-                <Button small ghost onClick={() => sendMessage("这条文本在知识图谱里关联了哪些实体和关系？", "ask")}>提问：图谱关系</Button>
-                <Button small ghost onClick={() => sendMessage("Pi Reviewer 做了什么查证与审校判定？", "ask")}>提问：Review 细节</Button>
+                <Button small ghost onClick={() => sendMessage(t("Why was this translated this way? Which memories and evidence were used?", "为什么这样翻译？用了哪些记忆和依据？"), "ask")}>{t("Ask: Why this phrasing?", "提问：为什么这样翻？")}</Button>
+                <Button small ghost onClick={() => sendMessage(t("Why did ContextSelector select these memories over other candidates?", "上下文选择器为什么选中了这些记忆，没选其他候选？"), "ask")}>{t("Ask: Memory rationale", "提问：记忆选择理由")}</Button>
+                <Button small ghost onClick={() => sendMessage(t("Which entities and relations are linked to this entry in the graph?", "这条文本在知识图谱里关联了哪些实体和关系？"), "ask")}>{t("Ask: Graph links", "提问：图谱关系")}</Button>
+                <Button small ghost onClick={() => sendMessage(t("What lookups and verdict did Pi Reviewer produce?", "Pi Reviewer 做了什么查证与审校判定？"), "ask")}>{t("Ask: Review trace", "提问：Review 细节")}</Button>
               </> : <>
-                <Button small ghost onClick={() => setInput("把选中的条目翻译成简体中文并导出")}>示例：翻译选中条目并导出</Button>
-                <Button small ghost onClick={() => setInput("帮我审校选中的译文，检查是否漏掉上下文设定")}>示例：审校选中译文</Button>
-                {scope === "naev" && <Button small ghost onClick={() => setInput("把术语 Landing 改成 着陆，预演会影响哪些句子")}>示例：术语变更预演</Button>}
+                <Button small ghost onClick={() => setInput(t("Translate selected entries to Simplified Chinese and export", "把选中的条目翻译成简体中文并导出"))}>{t("Example: Translate & export", "示例：翻译选中条目并导出")}</Button>
+                <Button small ghost onClick={() => setInput(t("Review selected translations and check missing context", "帮我审校选中的译文，检查是否漏掉上下文设定"))}>{t("Example: Review selected", "示例：审校选中译文")}</Button>
+                {scope === "naev" && <Button small ghost onClick={() => setInput(t("Preview changing term Landing to 着陆", "把术语 Landing 改成 着陆，预演会影响哪些句子"))}>{t("Example: Glossary preview", "示例：术语变更预演")}</Button>}
               </>}
             </div>
             {!!recentJobs.data?.jobs.length && <div className="row-set" style={{ justifyContent: "center" }}>
-              <span className="micro">最近任务</span>
+              <span className="micro">{t("Recent Jobs", "最近任务")}</span>
               {recentJobs.data.jobs.map(j => <Button key={j.job_id} small ghost onClick={() => {
                 if (!messages.some(m => m.role === "job" && m.jobId === j.job_id)) {
                   pushMessages(old => [...old, { id: crypto.randomUUID(), role: "job", jobId: j.job_id }]);
                 }
-              }}>J-{j.job_id.slice(0, 6)} · {label(j.status)}</Button>)}
+              }}>J-{j.job_id.slice(0, 6)} · {label(j.status, locale)}</Button>)}
             </div>}
           </div>}
 
@@ -774,10 +796,10 @@ export function AgentWorkspace({
               return <div className="chat-msg chat-msg--agent" key={msg.id}>
                 <div className="chat-card">
                   <div className="row-set">
-                    <b>LoRE 溯源回答</b>
+                    <b>{t("LoRE Provenance Answer", "LoRE 溯源回答")}</b>
                     <span className="pill pill--plain mono">{msg.data.model}</span>
                     <span className="sp" />
-                    <Button small ghost onClick={() => setFocusedId(msg.occurrenceId)}>查看右侧完整细节</Button>
+                    <Button small ghost onClick={() => setFocusedId(msg.occurrenceId)}>{t("Inspect Full Details", "查看右侧完整细节")}</Button>
                   </div>
                   <div className="text-block chat-answer">{msg.data.answer}</div>
                   {!!msg.data.citations.length && <div className="row-set">
@@ -809,16 +831,16 @@ export function AgentWorkspace({
     </section>
 
     {/* ==================== RIGHT: TRANSLATED / UNTRANSLATED LIST & TRANSPARENT INSPECTOR ==================== */}
-    {rightOpen && <aside className="inspect-pane" aria-label="文本列表与透明细节">
+    {rightOpen && <aside className="inspect-pane" aria-label={t("Entries & transparent inspector", "文本列表与透明细节")}>
       <div className="row-set inspect-pane__bar">
-        <span className="micro">{focusedId ? "译文透明检视" : "译文与待译列表"}</span>
+        <span className="micro">{focusedId ? t("Provenance Inspector", "译文透明检视") : t("Translated & Untranslated", "译文与待译列表")}</span>
         <span className="sp" />
-        <Button small ghost onClick={() => toggleRight(false)}>收起</Button>
+        <Button small ghost onClick={() => toggleRight(false)}>{t("Hide", "收起")}</Button>
       </div>
       {!scope ? <div className="panel">
-        <h4>已有项目</h4>
-        {naev && <div className="row-set"><b>Naev 示范区</b><span className="sp" /><Button small onClick={() => choose("naev")}>打开</Button></div>}
-        {projects.map(p => <div className="row-set" key={p.project_id}><b>{p.name}</b><span className="sp" /><Button small onClick={() => choose(p.project_id)}>打开</Button></div>)}
+        <h4>{t("Projects", "已有项目")}</h4>
+        {naev && <div className="row-set"><b>{t("Naev Demo", "Naev 示范区")}</b><span className="sp" /><Button small onClick={() => choose("naev")}>{t("Open", "打开")}</Button></div>}
+        {projects.map(p => <div className="row-set" key={p.project_id}><b>{p.name}</b><span className="sp" /><Button small onClick={() => choose(p.project_id)}>{t("Open", "打开")}</Button></div>)}
       </div> : focusedId ? <OccurrenceInspector
         scope={scope} project={project} occurrenceId={focusedId} refresh={refresh} changed={changed}
         onBack={() => setFocusedId("")}
@@ -830,27 +852,27 @@ export function AgentWorkspace({
         onOpenGraphNode={openGraph}
       /> : <div className="stack" style={{ minHeight: 0, flex: 1 }}>
         {linkedJobQuery.data && linkedIds.size > 0 && <div className="note note--ok row-set">
-          <span>联动任务 <b className="mono" style={{ display: "inline" }}>J-{linkedJobId.slice(0, 6)}</b>（{linkedIds.size} 条）</span>
+          <span>{t("Linked", "联动任务")} <b className="mono" style={{ display: "inline" }}>J-{linkedJobId.slice(0, 6)}</b> ({linkedIds.size})</span>
           <span className="sp" />
           <Button small ghost={!onlyLinkedJob} primary={onlyLinkedJob}
-            onClick={() => setOnlyLinkedJob(v => !v)}>{onlyLinkedJob ? "显示全部条目" : "只看本任务"}</Button>
-          <Button small ghost onClick={() => openJob(linkedJobId)}>详情</Button>
-          <button type="button" className="chip-x" aria-label="取消任务联动" onClick={() => { setLinkedJobId(""); setOnlyLinkedJob(false); }}>×</button>
+            onClick={() => setOnlyLinkedJob(v => !v)}>{onlyLinkedJob ? t("Show All", "显示全部条目") : t("Only Job", "只看本任务")}</Button>
+          <Button small ghost onClick={() => openJob(linkedJobId)}>{t("Details", "详情")}</Button>
+          <button type="button" className="chip-x" aria-label={t("Unlink job", "取消任务联动")} onClick={() => { setLinkedJobId(""); setOnlyLinkedJob(false); }}>×</button>
         </div>}
 
         <div className="row-set">
           {project ? <>
-            <select className="input" style={{ flex: 1, minWidth: 0 }} aria-label="按文件筛选" value={selection.file ?? ""} onChange={e => {
+            <select className="input" style={{ flex: 1, minWidth: 0 }} aria-label={t("Filter by file", "按文件筛选")} value={selection.file ?? ""} onChange={e => {
               setOffset(0); setSelection({ ids: [], file: e.target.value || undefined });
             }}>
-              <option value="">全部文件 ({counts.all})</option>
+              <option value="">{t("All Files", "全部文件")} ({counts.all})</option>
               {currentFiles.map(f => <option key={f.import_id} value={f.filename}>{f.filename}</option>)}
             </select>
-            {!project.resources && <Button small primary onClick={() => setImportOpen(true)}>+ 导入文件</Button>}
+            {!project.resources && <Button small primary onClick={() => setImportOpen(true)}>{t("+ Import", "+ 导入文件")}</Button>}
           </> : <>
-            <span className="label">Naev 示范资源</span>
+            <span className="label">{t("Naev Demo Resources", "Naev 示范资源")}</span>
             <span className="sp" />
-            <label className="btn btn--sm">上传 PO<input className="file-control" type="file" accept=".po"
+            <label className="btn btn--sm">{t("Upload PO", "上传 PO")}<input className="file-control" type="file" accept=".po"
               onChange={event => {
                 const file = event.target.files?.[0];
                 if (file) void json<Upload>(`/po-uploads?${params({ filename: file.name })}`, { method: "POST", body: file })
@@ -859,16 +881,16 @@ export function AgentWorkspace({
           </>}
         </div>
 
-        {project && !!progress.data?.files.length && <div className="meter" title={`可交付 ${counts.translated} / ${counts.all}`}>
+        {project && !!progress.data?.files.length && <div className="meter" title={`${t("Exportable", "可交付")} ${counts.translated} / ${counts.all}`}>
           <i style={{ width: `${counts.all ? Math.round(100 * counts.translated / counts.all) : 0}%` }} />
         </div>}
 
-        <div className="segs" role="tablist" aria-label="按翻译状态筛选">
+        <div className="segs" role="tablist" aria-label={t("Filter by translation status", "按翻译状态筛选")}>
           {([
-            ["all", `全部 ${counts.all}`],
-            ["untranslated", `未翻译 ${counts.untranslated}`],
-            ["awaiting_review", `待复核 ${counts.awaiting_review}`],
-            ["translated", `已翻译 ${counts.translated}`],
+            ["all", `${t("All", "全部")} ${counts.all}`],
+            ["untranslated", `${t("Untranslated", "未翻译")} ${counts.untranslated}`],
+            ["awaiting_review", `${t("Review", "待复核")} ${counts.awaiting_review}`],
+            ["translated", `${t("Translated", "已翻译")} ${counts.translated}`],
           ] as const).map(([key, title]) => (
             <button key={key} type="button" role="tab" aria-selected={statusFilter === key}
               className={`seg${statusFilter === key ? " seg--on" : ""}`}
@@ -877,28 +899,28 @@ export function AgentWorkspace({
         </div>
 
         <form className="row-set" onSubmit={e => { e.preventDefault(); setOffset(0); setSearch(searchInput.trim()); }}>
-          <input className="input" style={{ flex: 1 }} placeholder="搜索原文或上下文…" value={searchInput}
+          <input className="input" style={{ flex: 1 }} placeholder={t("Search source or context…", "搜索原文或上下文…")} value={searchInput}
             onChange={e => setSearchInput(e.target.value)} />
-          <Button small type="submit">搜</Button>
-          {search && <Button small ghost onClick={() => { setSearchInput(""); setSearch(""); setOffset(0); }}>清除</Button>}
+          <Button small type="submit">{t("Go", "搜")}</Button>
+          {search && <Button small ghost onClick={() => { setSearchInput(""); setSearch(""); setOffset(0); }}>{t("Clear", "清除")}</Button>}
         </form>
 
         <div className="row-set">
           <label className="check">
-            <input type="checkbox" checked={allVisibleSelected} onChange={toggleAllVisible} />全选本页
+            <input type="checkbox" checked={allVisibleSelected} onChange={toggleAllVisible} />{t("Select page", "全选本页")}
           </label>
           <span className="sp" />
-          <span className="hint">点击任意文本查看细节（记忆/图谱/Review）</span>
+          <span className="hint">{t("Click any entry to inspect", "点击任意文本查看细节（记忆/图谱/Review）")}</span>
         </div>
 
         <ErrorNote error={resourcesQuery.error} />
         <div className="inspect-list">
-          {!rows.length ? <Empty title={search ? "没有匹配的文本" : "当前分类下暂无文本"}>{project && !project.resources ? "请点击上方「+ 导入」上传 CSV、XLSX 或 UTF-8 PO 文件。" : undefined}</Empty>
+          {!rows.length ? <Empty title={search ? t("No matching entries", "没有匹配的文本") : t("No entries in this view", "当前分类下暂无文本")}>{project && !project.resources ? t("Click '+ Import' above to upload CSV, XLSX, or UTF-8 PO files.", "请点击上方「+ 导入」上传 CSV、XLSX 或 UTF-8 PO 文件。") : undefined}</Empty>
             : rows.map(row => {
               const st = row.translation_status ?? "untranslated";
               const dotTone = st === "translated" ? "ok" : st === "awaiting_review" ? "warn" : undefined;
               return <div key={row.occurrence_id} className="inspect-row">
-                <input type="checkbox" aria-label={`勾选 ${row.occurrence_id}`}
+                <input type="checkbox" aria-label={t(`Select ${row.occurrence_id}`, `勾选 ${row.occurrence_id}`)}
                   checked={selection.ids.includes(row.occurrence_id)}
                   disabled={!selection.ids.includes(row.occurrence_id) && selection.ids.length >= limit}
                   onChange={() => toggleSelect(row.occurrence_id)} />
@@ -906,12 +928,12 @@ export function AgentWorkspace({
                   <div className="row-set">
                     <span className={`dot ${dotTone ? "dot--" + dotTone : ""}`} />
                     <span className="clip" style={{ flex: 1, fontWeight: 500 }}>{row.label}</span>
-                    {row.locked && <span className="mono hint">锁定</span>}
+                    {row.locked && <span className="mono hint">{t("Locked", "锁定")}</span>}
                     {!!row.target_version && <span className="mono hint">v{row.target_version}</span>}
                   </div>
                   <div className="row-set">
                     <span className="clip muted" style={{ flex: 1 }}>
-                      {row.target ? `译：${row.target}` : st === "awaiting_review" ? "待人工复核" : "尚未翻译"}
+                      {row.target ? `${t("Target:", "译：")} ${row.target}` : st === "awaiting_review" ? t("Needs review", "待人工复核") : t("Untranslated", "尚未翻译")}
                     </span>
                     <span className="mono hint">{locationText(row.location, row.file)}</span>
                   </div>

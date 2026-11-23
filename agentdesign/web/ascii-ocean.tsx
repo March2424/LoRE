@@ -1,13 +1,14 @@
 import React, { useEffect, useRef } from "react";
+import { useI18n } from "./i18n";
 
 export type AsciiMode = "ascii" | "braille" | "blocks" | "lines" | "hanzi";
 
-export const ASCII_MODES: ReadonlyArray<{ id: AsciiMode; label: string }> = [
-  { id: "ascii", label: "ASCII" },
-  { id: "braille", label: "盲文点阵" },
-  { id: "blocks", label: "像素块" },
-  { id: "lines", label: "细线条" },
-  { id: "hanzi", label: "水墨汉字" },
+export const ASCII_MODES: ReadonlyArray<{ id: AsciiMode; en: string; zh: string }> = [
+  { id: "ascii", en: "ASCII", zh: "ASCII" },
+  { id: "braille", en: "Braille", zh: "盲文点阵" },
+  { id: "blocks", en: "Blocks", zh: "像素块" },
+  { id: "lines", en: "Lines", zh: "细线条" },
+  { id: "hanzi", en: "Hanzi", zh: "水墨汉字" },
 ];
 
 export const ASCII_STORAGE_MODE = "lore_ascii_mode";
@@ -417,14 +418,16 @@ export function AsciiDock({
   onCycleMode: () => void;
   onTogglePause: () => void;
 }) {
-  const modeLabel = ASCII_MODES.find((m) => m.id === mode)?.label ?? "ASCII";
+  const { locale, t } = useI18n();
+  const found = ASCII_MODES.find((m) => m.id === mode);
+  const modeLabel = found ? (locale === "zh" ? found.zh : found.en) : "ASCII";
   return (
-    <div className="ascii-dock glass" role="group" aria-label="背景字符风格控制">
+    <div className="ascii-dock glass" role="group" aria-label={t("Backdrop glyph controls", "背景字符风格控制")}>
       <button
         type="button"
         className="ascii-dock__btn"
         onClick={onCycleMode}
-        title="切换背景字符材质 (ASCII / 盲文点阵 / 像素块 / 细线条 / 水墨汉字)"
+        title={t("Switch backdrop glyph style (ASCII / Braille / Blocks / Lines / Hanzi)", "切换背景字符材质 (ASCII / 盲文点阵 / 像素块 / 细线条 / 水墨汉字)")}
       >
         <span className="ascii-dock__tag">~</span>
         <span>{modeLabel}</span>
@@ -434,8 +437,8 @@ export function AsciiDock({
         type="button"
         className="ascii-dock__icon"
         onClick={onTogglePause}
-        title={paused ? "继续海流动画" : "暂停海流动画"}
-        aria-label={paused ? "继续海流动画" : "暂停海流动画"}
+        title={paused ? t("Resume ocean animation", "继续海流动画") : t("Pause ocean animation", "暂停海流动画")}
+        aria-label={paused ? t("Resume ocean animation", "继续海流动画") : t("Pause ocean animation", "暂停海流动画")}
       >
         {paused ? (
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
