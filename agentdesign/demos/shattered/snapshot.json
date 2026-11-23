@@ -1,0 +1,39 @@
+{
+  "game": "Shattered Pixel Dungeon",
+  "upstream_revision": "57a4e06a4caf162446d1c28caa7983f0493fecf0",
+  "license": "GPL-3.0-or-later",
+  "source_lang": "en",
+  "target_lang": "zh-Hans",
+  "mode": "offline_fixture",
+  "records": 600,
+  "official_references": 600,
+  "types": {
+    "character_name": 14,
+    "dialogue": 65,
+    "item_description": 120,
+    "item_name": 100,
+    "narrative": 90,
+    "skill_description": 55,
+    "system_message": 25,
+    "ui": 129,
+    "unknown": 2
+  },
+  "project_id": "5f7506e3d6de4bc4858dcc153ef57873",
+  "translation_job_id": "6b43eced44154e84a3d6a404b7576cf6",
+  "import_id": "3d3f940689414aea9157cd2e00638c2c",
+  "graph_nodes": 607,
+  "graph_edges": 9,
+  "graph_batches": 25,
+  "initial_status_by_localization_key": {
+    "scenes.welcomescene.continue": "committed",
+    "actors.mobs.npcs.imp.cya": "committed",
+    "windows.wndkeybindings.back": "needs_human",
+    "actors.mobs.npcs.wandmaker.reminder_dust": "needs_human"
+  },
+  "invalid_approval_http": 422,
+  "approved_exports": 3,
+  "awaiting_review": 1,
+  "source_csv_sha256": "722e3781f16e7496f664a07bbc6c08caa9acadf397a6a52cf24e0a6a33158201",
+  "snapshot_sha256": "e5afe748c87b42ef07378a37f92bbf71dc5cdb8152d59212ed8ba761d092c445",
+  "reopened_export_after_approval": 4
+}
