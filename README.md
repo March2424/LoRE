@@ -10,6 +10,8 @@ LoRE 面向游戏台词、任务描述、物品名称和界面文本，支持中
 
 ## 快速启动
 
+想直接体验有数据的工作台，可启动 [《破碎的像素地牢》免安装演示数据库](agentdesign/demos/shattered/README.md)。
+
 需要 uv、Python 3.14 和 Node.js 22.19 或更新版本。以下命令从仓库根目录执行。[uv 安装文档](https://docs.astral.sh/uv/getting-started/installation/)
 
 **macOS / Linux**
